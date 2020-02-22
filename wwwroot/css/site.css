@@ -1,71 +1,401 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/**
+*   CSS Selectors flow from top of page down
+*   and left to right
+*
+*   Selector attributes are stacked alphabetically
+*
+*   Media Queries are at the bottom and flow from largest down to smallest
+*/
 
+
+
+
+/**
+*   Navbar
+*/
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    text-align: center;
+    white-space: normal;
+    word-break: break-all;
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
+html {
+    color: #4D5F69;
+    font-size: 14px;
+    min-height: 100%;
+    position: relative;
+}
+
+#nav-logo {
+    height: auto;
+    max-width: 12rem;
+}
+
+
+
+/**
+*   Main Page
+*/
+#main-row {
+    padding-top: 1rem;
+}
+
+#main-brand {
+    color: #D12A2E;
+}
+
+
+
+/**
+*   Left Column
+*/
+#left-nav {
+    float: none;
+    position: relative;
+    width: 10%;
+}
+
+#left-nav-head {
+    color: #192838;
+    text-align: left;
+}
+
+#filterSearch-wrapper {
+    color: #4D5F69;
+    font: Museo Sans 700;
+    font-size: 1.6rem;
+}
+
+    #filterSearch-wrapper a.btn-link .panelTitleBox {
+        display: inline-block;
+        font-size: 2rem;
+    }
+
+    #filterSearch-wrapper a.btn-link .panel-name {
+        color: #192838;
+    }
+
+
+
+/**
+*   Center Column
+*/
+#center-index {
+    float: none;
+    position: relative;
+    width: 70%;
+}
+
+#mapBlock {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#map-wrapper {
+    height: 600px;
+    margin: auto;
+    width: 100%;
+}
+
+#mapBlock #directionsPanel {
+    background-color: #F4F5F5;
+    border-color: #4D5F69;
+    color: #192838;
+    float: right;
+    height: 100%;
+    width: 80%;
+}
+
+
+
+/**
+*   Right Column
+*/
+#right-sidebar {
+    float: none;
+    position: relative;
+    width: 20%;
+}
+
+#right-sidebar-head {
+    color: #192838;
+    text-align: center;
+}
+
+#right-sidebar .card {
+    color: #4D5F69;
+    font: Museo Sans 700;
+    stroke: #D5D7D9;
+}
+
+    #right-sidebar .card .card-header {
+        background-color: #EAEBEC;
+    }
+
+    #right-sidebar .card .card-body {
+        background-color: #F4F5F5;
+    }
+
+        #right-sidebar .card .card-body div.card-subtitle {
+            padding-bottom: 1rem;
+        }
+
+    #right-sidebar .card a.btn-link .cardTitleBox {
+        color: #006979;
+        display: inline-block;
+        font-size: 1.6rem;
+    }
+
+        #right-sidebar .card a.btn-link .cardTitleBox .card-name {
+            font: Museo Sans 700;
+        }
+
+    #right-sidebar .card p {
+        color: #4D5F69;
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    #right-sidebar .card a.btn-link:hover span.card-name {
+        text-decoration: underline;
+    }
+
+    #right-sidebar .card a.btn-link .fas {
+        display: inline-block;
+        padding-right: 5px;
+    }
+
+    #right-sidebar .card a.btn-link .fa-plus {
+        display: none;
+    }
+
+    #right-sidebar .card a.btn-link[aria-expanded="false"] .fa-plus {
+        display: initial;
+    }
+
+    #right-sidebar .card a.btn-link[aria-expanded="false"] .fa-minus {
+        display: none;
+    }
+
+    #right-sidebar .card div.card-footer {
+        background-color: #FFFFFF;
+    }
+
+        #right-sidebar .card div.card-footer a.webAddressLink {
+            color: #006979;
+        }
+
+        #right-sidebar .card div.card-footer a.phoneLink {
+            color: #006979;
+        }
+
+    #right-sidebar .card .contactInfo span.cardTitleBox {
+        color: #192838;
+        font-size: 1.6rem;
+    }
+
+
+
+/**
+*   bootstrap collapse setting for large screens
+*/
+#filterSearch-wrapper .panel-header {
+    position: relative;
+    text-decoration: none;
+}
+
+#filterSearch-wrapper a:after {
+    position: absolute;
+}
+
+#filterSearch-wrapper .collapse:not(.show) {
+    display: block;
+}
+
+
+
+/**
+*   grid areas for responsive screens
+*/
+#left-nav.col {
+    grid-area: lhs;
+}
+
+#center-index.col {
+    grid-area: main-map;
+}
+
+#right-sidebar.col {
+    grid-area: sidebar;
+}
+
+
+
+/** Defines the left hand column on screens larger than mobile **/
+@media (min-width: 768px) {
+
+    #filterSearch-wrapper .panel-header a.btn-link {
+        cursor: default;
+        display: inline-block;
+        pointer-events: none;
+    }
+
+        #filterSearch-wrapper .panel-header a.btn-link .fas {
+            display: none;
+        }
+
+        #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
+            display: none;
+        }
+
+        #filterSearch-wrapper .panel-header a.btn-link .fa-minus {
+            display: none;
+        }
+}
+
+
+
+/**
+*   Media queries xlarge screens
+*/
+@media (max-width: 1400px) {
+
+    #mapBlock {
+        width: 75%;
+    }
+}
+
+
+
+/**
+*   Media queries large screens
+*/
+@media (max-width: 1200px) {
+
+    #mapBlock {
+        width: auto;
+    }
+}
+
+
+
+/**
+*   Media queries small screens
+*/
+@media (max-width: 767px) {
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panelTitleBox {
+        color: #006979;
+        font-size: 1.6rem;
+    }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panel-name {
+        color: #006979;
+    }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
+            text-decoration: underline;
+        }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link:after {
+        display: none;
+    }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel .collapse:not(.show) {
+        display: none;
+    }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .fas {
+        display: inline-block;
+        padding-right: 5px;
+    }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
+        display: none;
+    }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-plus {
+        display: initial;
+    }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-minus {
+        display: none;
+    }
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-body {
+        font-size: 1.2rem;
+    }
+
+    .grid {
+        grid-template-areas: 'lhs' 'main-map' 'sidebar';
+    }
+
+    #left-nav {
+        width: 100%;
+    }
+
+    #center-index {
+        width: 100%;
+    }
+
+    #right-sidebar {
+        width: 100%;
+    }
+}
+
+
+
+/**
+*   Main Row Footer
+*/
+#capstone-info {
+    color: #4D5F69;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+#capstone-link {
+    color: #006979;
+}
+
+
+
+/**
+*   Sticky footer styles
+*/
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    bottom: 0;
+    color: #4D5F69;
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
 }
+
+    .footer #privacy-link {
+        color: #006979;
+    }
