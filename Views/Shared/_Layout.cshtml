@@ -6,6 +6,25 @@
     <title>@ViewData["Title"] - Locator</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="https://kit.fontawesome.com/44effbaeaf.js" crossorigin="anonymous"></script>
+    @*<script src="https://kit.fontawesome.com/e1e75ed5a3.js" crossorigin="anonymous"></script>*@
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
+
+    @*Display custom favicon*@
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon_maphawks.ico">
+
+    @* This is a dev only key with very limited functionality:  *@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR_KkOxYdpXhbRLPAvidcUJdfeXHHHAew&libraries=places" async defer></script>
+
+    <!--call google map function without the button-->
+    @*<script>
+        window.onload = function () {
+            DisplayGoogleMap();
+        }
+    </script>*@
 </head>
 <body>
     <header>
