@@ -20,15 +20,6 @@ namespace Locator.Models
         public virtual DbSet<Locations> Locations { get; set; }
         public virtual DbSet<SpecialQualities> SpecialQualities { get; set; }
 
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//        {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseSqlServer("Server=csp199.cslab.seattleu.edu;Database=Maphawks;User Id=sa;Password=KoeningMPass2019!;");
-//            }
-//        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Contacts>(entity =>

@@ -1,7 +1,8 @@
-﻿@{
+﻿@model IEnumerable<Locator.Models.Locations>
+@{
     ViewData["Title"] = "MapHawks Locator";
 }
-
+ 
 
 <!--
     main row is split into three columns
@@ -20,7 +21,8 @@
         </div>
         <div class="col-xs-12 col-md-3 text-left" id="sidebar-wrapper">
             <h3 id="sidebar-head">ATM Nearby</h3>
-            <div class="col-12" id="cards-wrapper"></div>
+            <div class="col-12" id="cards-wrapper">
+            </div>
         </div>
     </div>
 </div>
