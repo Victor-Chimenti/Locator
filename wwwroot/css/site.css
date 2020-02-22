@@ -61,22 +61,22 @@ html {
     padding-top: 1rem;
 }
 
-#main-brand {
+/*#main-brand {
     color: #D12A2E;
-}
+}*/
 
 
 
 /**
 *   Left Column
 */
-#left-nav {
+#filter-wrapper {
     float: none;
     position: relative;
     width: 10%;
 }
 
-#left-nav-head {
+#filter-head {
     color: #192838;
     text-align: left;
 }
@@ -87,14 +87,14 @@ html {
     font-size: 1.6rem;
 }
 
-    #filterSearch-wrapper a.btn-link .panelTitleBox {
-        display: inline-block;
-        font-size: 2rem;
-    }
+#filterSearch-wrapper a.btn-link .panelTitleBox {
+    display: inline-block;
+    font-size: 2rem;
+}
 
-    #filterSearch-wrapper a.btn-link .panel-name {
-        color: #192838;
-    }
+#filterSearch-wrapper a.btn-link .panel-name {
+    color: #192838;
+}
 
 
 
@@ -134,30 +134,30 @@ html {
 /**
 *   Right Column
 */
-#right-sidebar {
+#sidebar-wrapper {
     float: none;
     position: relative;
-    width: 20%;
+    /*width: 20%;*/
 }
 
-#right-sidebar-head {
+#sidebar-head {
     color: #192838;
     text-align: center;
 }
 
-#right-sidebar .card {
+#sidebar-wrapper .card {
     color: #4D5F69;
     font: Museo Sans 700;
     stroke: #D5D7D9;
 }
 
-    #right-sidebar .card .card-header {
-        background-color: #EAEBEC;
-    }
+#sidebar-wrapper .card .card-header {
+    background-color: #EAEBEC;
+}
 
-    #right-sidebar .card .card-body {
-        background-color: #F4F5F5;
-    }
+#right-sidebar .card .card-body {
+    background-color: #F4F5F5;
+}
 
         #right-sidebar .card .card-body div.card-subtitle {
             padding-bottom: 1rem;
