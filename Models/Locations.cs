@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Locator.Models
 {
     public partial class Locations
     {
+
         public string LocationId { get; set; }
         public string CoopLocationId { get; set; }
         public bool TakeCoopData { get; set; }
@@ -25,5 +27,10 @@ namespace Locator.Models
         public virtual Contacts Contacts { get; set; }
         public virtual DailyHours DailyHours { get; set; }
         public virtual SpecialQualities SpecialQualities { get; set; }
+
+
+
+
+
     }
 }
