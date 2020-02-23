@@ -32,7 +32,9 @@
                 @foreach (var card in Model)
                 {
                     // Card Header
-                    @*<input type="text" id="@strElementID" class="@strCSSClass" />*@
+                @*<input asp-for="Name" class="form-control" readonly="@(Model.MyCondition ? "readonly" : null )" />*@
+
+
                     <p class="@card.LocationId" value="@card.LocationId">@card.LocationId</p>
                     <p class="@card.Name" value="@card.Name">@card.Name</p>
                     <p class="@card.Address" value="@card.Address">@card.Address</p>
@@ -40,33 +42,33 @@
                     <p class="@card.Longitude" value="@card.Longitude">@card.Longitude</p>
 
                     // Card Subtitle
-                    <p class="@card.Hours" value="@card.Hours">@card.Hours</p>
-                    <p class="@card.RetailOutlet" value="@card.RetailOutlet">@card.RetailOutlet</p>
-                    <p class="@card.SpecialQualities.InstallationType" value="@card.SpecialQualities.InstallationType">@card.SpecialQualities.InstallationType</p>
-                    <p class="@card.SpecialQualities.AccessNotes" value="@card.SpecialQualities.AccessNotes">@card.SpecialQualities.AccessNotes</p>
+                    <p class="@(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
+                    <p class="@(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">@(card.RetailOutlet ?? "Unknown")</p>
+                    @*<p class="@(card.SpecialQualities.InstallationType ?? "empty")" value="@(card.SpecialQualities.InstallationType ?? "Unknown")">@(card.SpecialQualities.InstallationType ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.AccessNotes ?? "empty")" value="@(card.SpecialQualities.AccessNotes ?? "Unknown")">@(card.SpecialQualities.AccessNotes ?? "Unknown")</p>
 
                     // Card List Items
-                    <p class="@card.SpecialQualities.HandicapAccess" value="@card.SpecialQualities.HandicapAccess">@card.SpecialQualities.HandicapAccess</p>
-                    <p class="@card.SpecialQualities.Surcharge" value="@card.SpecialQualities.Surcharge">@card.SpecialQualities.Surcharge</p>
-                    <p class="@card.SpecialQualities.DriveThruOnly" value="@card.SpecialQualities.DriveThruOnly">@card.SpecialQualities.DriveThruOnly</p>
-                    <p class="@card.SpecialQualities.AcceptDeposit" value="@card.SpecialQualities.AcceptDeposit">@card.SpecialQualities.AcceptDeposit</p>
-                    <p class="@card.SpecialQualities.AcceptCash" value="@card.SpecialQualities.AcceptCash">@card.SpecialQualities.AcceptCash</p>
-                    <p class="@card.SpecialQualities.Cashless" value="@card.SpecialQualities.Cashless">@card.SpecialQualities.Cashless</p>
-                    <p class="@card.SpecialQualities.SelfServiceDevice" value="@card.SpecialQualities.SelfServiceDevice">@card.SpecialQualities.SelfServiceDevice</p>
-                    <p class="@card.SpecialQualities.SelfServiceOnly" value="@card.SpecialQualities.SelfServiceOnly">@card.SpecialQualities.SelfServiceOnly</p>
-                    <p class="@card.SpecialQualities.OnMilitaryBase" value="@card.SpecialQualities.OnMilitaryBase">@card.SpecialQualities.OnMilitaryBase</p>
-                    <p class="@card.SpecialQualities.MilitaryIdRequired" value="@card.SpecialQualities.MilitaryIdRequired">@card.SpecialQualities.MilitaryIdRequired</p>
-                    <p class="@card.SpecialQualities.RestrictedAccess" value="@card.SpecialQualities.RestrictedAccess">@card.SpecialQualities.RestrictedAccess</p>
+                    <p class="@(card.SpecialQualities.HandicapAccess ?? "empty")" value="@card.SpecialQualities.HandicapAccess" readonly="@(card.SpecialQualities.HandicapAccess ?? "Unknown")">@card.SpecialQualities.HandicapAccess</p>
+                    <p class="@(card.SpecialQualities.Surcharge ?? "empty")" value="@(card.SpecialQualities.Surcharge ?? "Unknown")">@(card.SpecialQualities.Surcharge ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.DriveThruOnly ?? "empty")" value="@(card.SpecialQualities.DriveThruOnly ?? "Unknown")">@(card.SpecialQualities.DriveThruOnly ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.AcceptDeposit ?? "empty")" value="@(card.SpecialQualities.AcceptDeposit ?? "Unknown")">@(card.SpecialQualities.AcceptDeposit ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.AcceptCash ?? "empty")" value="@(card.SpecialQualities.AcceptCash ?? "Unknown")">@(card.SpecialQualities.AcceptCash ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.Cashless ?? "empty")" value="@(card.SpecialQualities.Cashless ?? "Unknown")">@(card.SpecialQualities.Cashless ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.SelfServiceDevice ?? "empty")" value="@(card.SpecialQualities.SelfServiceDevice ?? "Unknown")">@(card.SpecialQualities.SelfServiceDevice ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.SelfServiceOnly ?? "empty")" value="@(card.SpecialQualities.SelfServiceOnly ?? "Unknown")">@(card.SpecialQualities.SelfServiceOnly ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.OnMilitaryBase ?? "empty")" value="@(card.SpecialQualities.OnMilitaryBase ?? "Unknown")">@(card.SpecialQualities.OnMilitaryBase ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.MilitaryIdRequired ?? "empty")" value="@(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")">@(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")</p>
+                    <p class="@(card.SpecialQualities.RestrictedAccess ?? "empty")" value="@(card.SpecialQualities.RestrictedAccess ?? "Unknown")">@(card.SpecialQualities.RestrictedAccess ?? "Unknown")</p>*@
 
                     // Card Footer
-                    <p>@card.Name</p>
-                    <p>@card.Contacts.Phone</p>
-                    <p>@card.Address</p>
-                    <p>@card.City</p>
-                    <p>@card.State</p>
-                    <p>@card.PostalCode</p>
-                    <p>@card.Contacts.WebAddress</p>
-                    <p>@card.LocationType</p>
+                    <p class="@card.Name" value="@card.Name">@card.Name</p>
+                    @*<p class="@card.Contacts.Phone" value="@card.Contacts.Phone">@card.Contacts.Phone</p>*@
+                    <p class="@card.Address" value="@card.Address">@card.Address</p>
+                    <p class="@card.City" value="@card.City">@card.City</p>
+                    <p class="@card.State" value="@card.State">@card.State</p>
+                    <p class="@card.PostalCode" value="@card.PostalCode">@card.PostalCode</p>
+                    @*<p class="@card.Contacts.WebAddress" value="@card.Contacts.WebAddress">@card.Contacts.WebAddress</p>*@
+                    <p class="@card.LocationType" value="@card.LocationType">@card.LocationType</p>
                 }
             </div>
         </div>

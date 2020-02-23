@@ -7,7 +7,9 @@
 *   Media Queries are at the bottom and flow from largest down to smallest
 */
 
-
+p.empty {
+    display: none;
+}
 
 
 /**
