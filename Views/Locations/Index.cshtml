@@ -31,44 +31,42 @@
             <div class="col-12" id="cards-wrapper">
                 @foreach (var card in Model)
                 {
+                    // Card Header
                     <p>@card.LocationId</p>
                     <p>@card.Name</p>
                     <p>@card.Address</p>
                     <p>@card.Latitude</p>
                     <p>@card.Longitude</p>
 
-                    S
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
+                    // Card Subtitle
+                    <p>@card.Hours</p>
+                    <p>@card.RetailOutlet</p>
+                    <p>@card.SpecialQualities.InstallationType</p>
+                    <p>@card.SpecialQualities.AccessNotes</p>
 
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
+                    // Card List Items
+                    <p>@card.SpecialQualities.HandicapAccess</p>
+                    <p>@card.SpecialQualities.Surcharge</p>
+                    <p>@card.SpecialQualities.DriveThruOnly</p>
+                    <p>@card.SpecialQualities.AcceptDeposit</p>
+                    <p>@card.SpecialQualities.AcceptCash</p>
+                    <p>@card.SpecialQualities.Cashless</p>
+                    <p>@card.SpecialQualities.SelfServiceDevice</p>
+                    <p>@card.SpecialQualities.SelfServiceOnly</p>
+                    <p>@card.SpecialQualities.OnMilitaryBase</p>
+                    <p>@card.SpecialQualities.MilitaryIdRequired</p>
+                    <p>@card.SpecialQualities.RestrictedAccess</p>
 
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-                    <p>@card.LocationId</p>
-
-
-
+                    // Card Footer
+                    <p>@card.Name</p>
+                    <p>@card.Contacts.Phone</p>
+                    <p>@card.Address</p>
+                    <p>@card.City</p>
+                    <p>@card.State</p>
+                    <p>@card.PostalCode</p>
+                    <p>@card.Contacts.WebAddress</p>
+                    <p>@card.LocationType</p>
                 }
-                <p></p>
             </div>
         </div>
     </div>
