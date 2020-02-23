@@ -32,30 +32,31 @@
                 @foreach (var card in Model)
                 {
                     // Card Header
-                    <p>@card.LocationId</p>
-                    <p>@card.Name</p>
-                    <p>@card.Address</p>
-                    <p>@card.Latitude</p>
-                    <p>@card.Longitude</p>
+                    @*<input type="text" id="@strElementID" class="@strCSSClass" />*@
+                    <p class="@card.LocationId" value="@card.LocationId">@card.LocationId</p>
+                    <p class="@card.Name" value="@card.Name">@card.Name</p>
+                    <p class="@card.Address" value="@card.Address">@card.Address</p>
+                    <p class="@card.Latitude" value="@card.Latitude">@card.Latitude</p>
+                    <p class="@card.Longitude" value="@card.Longitude">@card.Longitude</p>
 
                     // Card Subtitle
-                    <p>@card.Hours</p>
-                    <p>@card.RetailOutlet</p>
-                    <p>@card.SpecialQualities.InstallationType</p>
-                    <p>@card.SpecialQualities.AccessNotes</p>
+                    <p class="@card.Hours" value="@card.Hours">@card.Hours</p>
+                    <p class="@card.RetailOutlet" value="@card.RetailOutlet">@card.RetailOutlet</p>
+                    <p class="@card.SpecialQualities.InstallationType" value="@card.SpecialQualities.InstallationType">@card.SpecialQualities.InstallationType</p>
+                    <p class="@card.SpecialQualities.AccessNotes" value="@card.SpecialQualities.AccessNotes">@card.SpecialQualities.AccessNotes</p>
 
                     // Card List Items
-                    <p>@card.SpecialQualities.HandicapAccess</p>
-                    <p>@card.SpecialQualities.Surcharge</p>
-                    <p>@card.SpecialQualities.DriveThruOnly</p>
-                    <p>@card.SpecialQualities.AcceptDeposit</p>
-                    <p>@card.SpecialQualities.AcceptCash</p>
-                    <p>@card.SpecialQualities.Cashless</p>
-                    <p>@card.SpecialQualities.SelfServiceDevice</p>
-                    <p>@card.SpecialQualities.SelfServiceOnly</p>
-                    <p>@card.SpecialQualities.OnMilitaryBase</p>
-                    <p>@card.SpecialQualities.MilitaryIdRequired</p>
-                    <p>@card.SpecialQualities.RestrictedAccess</p>
+                    <p class="@card.SpecialQualities.HandicapAccess" value="@card.SpecialQualities.HandicapAccess">@card.SpecialQualities.HandicapAccess</p>
+                    <p class="@card.SpecialQualities.Surcharge" value="@card.SpecialQualities.Surcharge">@card.SpecialQualities.Surcharge</p>
+                    <p class="@card.SpecialQualities.DriveThruOnly" value="@card.SpecialQualities.DriveThruOnly">@card.SpecialQualities.DriveThruOnly</p>
+                    <p class="@card.SpecialQualities.AcceptDeposit" value="@card.SpecialQualities.AcceptDeposit">@card.SpecialQualities.AcceptDeposit</p>
+                    <p class="@card.SpecialQualities.AcceptCash" value="@card.SpecialQualities.AcceptCash">@card.SpecialQualities.AcceptCash</p>
+                    <p class="@card.SpecialQualities.Cashless" value="@card.SpecialQualities.Cashless">@card.SpecialQualities.Cashless</p>
+                    <p class="@card.SpecialQualities.SelfServiceDevice" value="@card.SpecialQualities.SelfServiceDevice">@card.SpecialQualities.SelfServiceDevice</p>
+                    <p class="@card.SpecialQualities.SelfServiceOnly" value="@card.SpecialQualities.SelfServiceOnly">@card.SpecialQualities.SelfServiceOnly</p>
+                    <p class="@card.SpecialQualities.OnMilitaryBase" value="@card.SpecialQualities.OnMilitaryBase">@card.SpecialQualities.OnMilitaryBase</p>
+                    <p class="@card.SpecialQualities.MilitaryIdRequired" value="@card.SpecialQualities.MilitaryIdRequired">@card.SpecialQualities.MilitaryIdRequired</p>
+                    <p class="@card.SpecialQualities.RestrictedAccess" value="@card.SpecialQualities.RestrictedAccess">@card.SpecialQualities.RestrictedAccess</p>
 
                     // Card Footer
                     <p>@card.Name</p>
