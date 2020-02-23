@@ -253,9 +253,29 @@ html {
 }
 
 
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+
+@media (min-width: 992px) {
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+
 
 /** Defines the left hand column on screens larger than mobile **/
 @media (min-width: 768px) {
+
+    .container {
+        max-width: 100%;
+    }
 
     #filterSearch-wrapper .panel-header a.btn-link {
         cursor: default;
@@ -263,139 +283,146 @@ html {
         pointer-events: none;
     }
 
-        #filterSearch-wrapper .panel-header a.btn-link .fas {
-            display: none;
-        }
-
-        #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
-            display: none;
-        }
-
-        #filterSearch-wrapper .panel-header a.btn-link .fa-minus {
-            display: none;
-        }
-}
-
-
-
-/**
-*   Media queries xlarge screens
-*/
-@media (max-width: 1400px) {
-
-    #mapBlock {
-        width: 75%;
-    }
-}
-
-
-
-/**
-*   Media queries large screens
-*/
-@media (max-width: 1200px) {
-
-    #mapBlock {
-        width: auto;
-    }
-}
-
-
-
-/**
-*   Media queries small screens
-*/
-@media (max-width: 767px) {
-    /** setting for left nav collapsable show on mobile **/
-    #filterSearch-wrapper .panel-header a.btn-link .panelTitleBox {
-        color: #006979;
-        font-size: 1.6rem;
-    }
-    /** setting for left nav collapsable show on mobile **/
-    #filterSearch-wrapper .panel-header a.btn-link .panel-name {
-        color: #006979;
-    }
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
-            text-decoration: underline;
-        }
-    /** setting for left nav collapsable show on mobile **/
-    #filterSearch-wrapper .panel-header a.btn-link:after {
-        display: none;
-    }
-    /** setting for left nav collapsable show on mobile **/
-    #filterSearch-wrapper .panel .collapse:not(.show) {
-        display: none;
-    }
-    /** setting for left nav collapsable show on mobile **/
     #filterSearch-wrapper .panel-header a.btn-link .fas {
-        display: inline-block;
-        padding-right: 5px;
+        display: none;
     }
-    /** setting for left nav collapsable show on mobile **/
+
     #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
         display: none;
     }
-    /** setting for left nav collapsable show on mobile **/
-    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-plus {
-        display: initial;
-    }
-    /** setting for left nav collapsable show on mobile **/
-    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-minus {
+
+    #filterSearch-wrapper .panel-header a.btn-link .fa-minus {
         display: none;
     }
-    /** setting for left nav collapsable show on mobile **/
-    #filterSearch-wrapper .panel-body {
-        font-size: 1.2rem;
-    }
+}
 
-    .grid {
-        grid-template-areas: 'lhs' 'main-map' 'sidebar';
-    }
+@media (min-width: 576px) {
 
-    #left-nav {
-        width: 100%;
-    }
-
-    #center-index {
-        width: 100%;
-    }
-
-    #right-sidebar {
-        width: 100%;
+    .container {
+        max-width: 100%;
     }
 }
 
 
 
-/**
+    /**
+*   Media queries xlarge screens
+*/
+    @media (max-width: 1400px) {
+
+        #mapBlock {
+            width: 75%;
+        }
+    }
+
+
+
+    /**
+*   Media queries large screens
+*/
+    @media (max-width: 1200px) {
+
+        #mapBlock {
+            width: auto;
+        }
+    }
+
+
+
+    /**
+*   Media queries small screens
+*/
+    @media (max-width: 767px) {
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link .panelTitleBox {
+            color: #006979;
+            font-size: 1.6rem;
+        }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link .panel-name {
+            color: #006979;
+        }
+            /** setting for left nav collapsable show on mobile **/
+            #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
+                text-decoration: underline;
+            }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link:after {
+            display: none;
+        }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel .collapse:not(.show) {
+            display: none;
+        }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link .fas {
+            display: inline-block;
+            padding-right: 5px;
+        }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
+            display: none;
+        }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-plus {
+            display: initial;
+        }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-minus {
+            display: none;
+        }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-body {
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            grid-template-areas: 'lhs' 'main-map' 'sidebar';
+        }
+
+        #left-nav {
+            width: 100%;
+        }
+
+        #center-index {
+            width: 100%;
+        }
+
+        #right-sidebar {
+            width: 100%;
+        }
+    }
+
+
+
+    /**
 *   Main Row Footer
 */
-#capstone-info {
-    color: #4D5F69;
-    padding-top: 1rem;
-    text-align: center;
-}
+    #capstone-info {
+        color: #4D5F69;
+        padding-top: 1rem;
+        text-align: center;
+    }
 
-#capstone-link {
-    color: #006979;
-}
-
-
-
-/**
-*   Sticky footer styles
-*/
-.footer {
-    bottom: 0;
-    color: #4D5F69;
-    height: 60px;
-    line-height: 60px;
-    position: absolute;
-    width: 100%;
-    white-space: nowrap;
-}
-
-    .footer #privacy-link {
+    #capstone-link {
         color: #006979;
     }
+
+
+
+    /**
+*   Sticky footer styles
+*/
+    .footer {
+        bottom: 0;
+        color: #4D5F69;
+        height: 60px;
+        line-height: 60px;
+        position: absolute;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+        .footer #privacy-link {
+            color: #006979;
+        }

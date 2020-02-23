@@ -11,13 +11,20 @@
         right-sidebar   :   Location Cards
  -->
 <div class="container-fluid">
-    <div class="row d-block text-left" id="main-row">
+    <div class="row" id="main-row">
         <div class="col-xs-12 col-md-3" id="filter-wrapper">
             <h3 id="filter-head">Refine by</h3>
-            <div id="filterSearch-wrapper"></div>
+            <div class="text-left" id="filterSearch-wrapper">
+                <div class="accordion panel"></div>
+                <div class="accordion panel"></div>
+            </div>
         </div>
         <div class="col-xs-12 col-md-6" id="center-index">
-            <div class="col-12 text-center" id="mapBlock"><h1 class="text-justify" style="width: 100%";>Map Goes Here</h1></div>
+            <div class="col-12 text-center" id="mapBlock">
+                <h1 class="text-justify" style="width: 100%";>Map Goes Here</h1>
+                <div class="d-block" id="map-wrapper" style="position: relative; overflow: hidden;"></div>
+                <div id="directionsPanel"></div>
+            </div>
         </div>
         <div class="col-xs-12 col-md-3" id="sidebar-wrapper">
             <h3 id="sidebar-head">ATM Nearby</h3>
