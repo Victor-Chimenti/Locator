@@ -73,7 +73,7 @@ html {
 #filter-wrapper {
     float: none;
     position: relative;
-    width: 10%;
+    width: 100%;
 }
 
 #filter-head {
@@ -140,7 +140,7 @@ html {
     /*width: 20%;*/
 }
 
-#sidebar-head {
+#sidebar-wrapper #sidebar-head {
     color: #192838;
     text-align: center;
 }
