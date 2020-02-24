@@ -11,6 +11,14 @@ p.empty {
     display: none;
 }
 
+li.empty {
+    display:none;
+}
+
+span.empty {
+    display: none;
+}
+
 
 /**
 *   Navbar
@@ -139,7 +147,7 @@ html {
 #sidebar-wrapper {
     float: none;
     position: relative;
-    /*width: 20%;*/
+    width: 1000%;
 }
 
 #sidebar-wrapper #sidebar-head {
@@ -165,50 +173,50 @@ background-color: #F4F5F5;
     padding-bottom: 1rem;
 }
 
-a.btn-link {
-    color: #006979 !important;
-    display: inline-block !important;
-    font-size: 1.6rem !important;
+div.card-header a.btn-link {
+    color: #006979;
+    display: inline-block;
+    font-size: 1.6rem;
 }
 
-div#sidebar-wrapper div.card div.card-header a.btn-link .cardTitleBox {
-    color: #006979 !important;
-    display: inline-block !important;
-    font-size: 1.6rem !important;
+div.card-header a.btn-link div.cardTitleBox {
+    color: #006979;
+    display: inline-block;
+    font-size: 1.6rem;
 }
 
-    #sidebar-wrapper .card a.btn-link .cardTitleBox span.card-title {
+    div.card-header a.btn-link div.cardTitleBox span.card-title {
         color: #006979;
         font: Museo Sans 700;
     }
 
-#sidebar-wrapper .card p {
+div#sidebar-wrapper div.card p {
     color: #4D5F69;
     font-size: 1.2rem;
     margin: 0;
 }
 
-    #sidebar-wrapper .card .card-header a.btn-link:hover span.card-name {
-        color: #006979;
-        text-decoration: underline;
-    }
-
-div#sidebar-wrapper div.card div.card-header a.btn-link i.fas {
-    color: #006979 !important;
-    display: inline-block !important;
-    padding-right: 5px !important;
+div.card div.card-header a.btn-link:hover span.card-name {
+    color: #006979;
+    text-decoration: underline;
 }
 
-div#sidebar-wrapper div.card a.btn-link i.fa-plus {
-    display: none !important;
+div.card div.card-header a.btn-link span.cardTitleBox i.fas {
+    color: #006979;
+    display: inline-block;
+    padding-right: 5px;
 }
 
-div#sidebar-wrapper div.card a.btn-link[aria-expanded="false"] i.fa-plus {
-    display: initial !important;
+div.card div.card-header a.btn-link span.cardTitleBox i.fa-plus {
+    display: none;
 }
 
-div#sidebar-wrapper div.card a.btn-link[aria-expanded="false"] i.fa-minus {
-    display: none !important;
+div.card div.card-header a.btn-link[aria-expanded="false"] span.cardTitleBox i.fa-plus {
+    display: initial;
+}
+
+div.card div.card-header a.btn-link[aria-expanded="false"] span.cardTitleBox i.fa-minus {
+    display: none;
 }
 
 #sidebar-wrapper .card div.card-footer {
