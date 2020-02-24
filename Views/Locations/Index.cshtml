@@ -44,9 +44,9 @@
                         <div class="collapse in" id="collapse-@card.LocationId" aria-expanded="false">
                             <div class="card-body">
                                 <div class="card-subtitle">
-                                    <p class="subTitle @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">Hours: @(card.Hours ?? "Unknown")</p>
-                                    <p class="subTitle @(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">Retail Outlet: @(card.RetailOutlet ?? "Unknown")</p>
-                                    <p class="subTitle @(card.SpecialQualities.InstallationType ?? "empty")" value="@(card.SpecialQualities.InstallationType ?? "Unknown")">Installation Type: @(card.SpecialQualities.InstallationType ?? "Unknown")</p>
+                                    <p class="subTitle @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
+                                    <p class="subTitle @(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">@(card.RetailOutlet ?? "Unknown")</p>
+                                    <p class="subTitle @(card.SpecialQualities.InstallationType ?? "empty")" value="@(card.SpecialQualities.InstallationType ?? "Unknown")">@(card.SpecialQualities.InstallationType ?? "Unknown")</p>
                                     <p class="subTitle @(card.SpecialQualities.AccessNotes ?? "empty")" value="@(card.SpecialQualities.AccessNotes ?? "Unknown")">Notes: @(card.SpecialQualities.AccessNotes ?? "Unknown")</p>
                                 </div>
                                 <ul class="list-group">
