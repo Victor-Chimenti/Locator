@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Locator.Models;
 
+
 namespace Locator.Controllers
 {
     public class LocationsController : Controller

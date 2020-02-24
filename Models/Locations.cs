@@ -11,8 +11,7 @@ namespace Locator.Models
         public string LocationId { get; set; }
         [Display(Name = "Name")]
         public string Name { get; set; }
-        //[Display(Name = "Address")]
-        [DisplayName("Address")]
+        [Display(Name = "Address")]
         public string Address { get; set; }
         [Display(Name = "City")]
         public string City { get; set; }
