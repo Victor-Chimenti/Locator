@@ -1,4 +1,33 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿/**
+ * @author Victor Chimenti
+ * @file site.js
+ */
 
-// Write your JavaScript code.
+
+
+
+// function validateOnlyUserPosition
+function validateOnlyUserPosition(pos) {
+    console.log("userPosition: " + pos);
+}
+
+function showError() {
+    alert("Geolocation is not supported by this browser.");
+}
+
+// assign users coordinates
+function assignPosition(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    var userPosition = lat + ', ' + lng;
+    validateOnlyUserPosition(userPosition);
+}
+
+// get users location on command
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(assignPosition, showError);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}

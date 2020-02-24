@@ -19,6 +19,12 @@
     @* This is a dev only key with very limited functionality:  *@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR_KkOxYdpXhbRLPAvidcUJdfeXHHHAew&libraries=places" async defer></script>
 
+    <script>
+        window.onload = function () {
+            getLocation();
+        }
+    </script>
+
     <!--call google map function without the button-->
     @*<script>
         window.onload = function () {
