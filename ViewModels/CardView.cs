@@ -6,15 +6,41 @@ using System.Threading.Tasks;
 
 namespace Locator.ViewModels
 {
-    public class CardView
+    public class Locations
     {
-        public string CardName { get; set; }
-        public string LocationName { get; set; }
-        public int Id { get; set; }
+        //public string CardName { get; set; }
+        //public string LocationName { get; set; }
+        //public int Id { get; set; }
+
+        //private Models.Locations card = new List<Locations>();
+
+        //public CardView(Locations location)
+        //{
+
+        //}
 
 
 
-        //public IEnumerable<Locations> Location { get; set; }
+        //public List<Locations> Location { get; set; }
+        //public List<List<Locations>> cardList = new List<List<Locations>>();
+        //public CardView (Locations location) {
+        //    cardList.Add(new List<Locations> {  location.LocationId,
+        //                                        location.Name
+        //    });
+        //}
+        //public Object Card;
+        //public IEnumerable<Models.Locations> cardList;
+        //public CardView (Locations location)
+        //{
+        //    Card card = new Card;
+        //    cardList.Add(new List<T>
+        //    {
+        //        location.LocationId,
+        //        location.Name
+        //    });
+
+        //}
+
 
 
         //public string Key { get; set; }

@@ -45,5 +45,10 @@ namespace Locator.Models
         public virtual Contacts Contacts { get; set; }
         public virtual DailyHours DailyHours { get; set; }
         public virtual SpecialQualities SpecialQualities { get; set; }
+
+        public static implicit operator Locations(List<ViewModels.Locations> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
