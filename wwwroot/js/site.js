@@ -8,7 +8,7 @@
 
 // function validateOnlyUserPosition
 function validateOnlyUserPosition(pos) {
-    console.log("userPosition: " + pos);
+    console.log("userPosition: ", pos);
 }
 
 function showError() {
