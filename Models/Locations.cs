@@ -31,21 +31,20 @@ namespace Locator.Models
         [Display(Name = "Location Type")]
         public string LocationType { get; set; }
 
-        public virtual Contacts Contacts { get; set; }
-        public virtual DailyHours DailyHours { get; set; }
-        public virtual SpecialQualities SpecialQualities { get; set; }
 
 
 
-
+        
+        // Schema fields not needed
         public string CoopLocationId { get; set; }
         public bool TakeCoopData { get; set; }
         public bool SoftDelete { get; set; }
         public string County { get; set; }
         public string Country { get; set; }
-
-
-
-
+        
+        // virtual
+        public virtual Contacts Contacts { get; set; }
+        public virtual DailyHours DailyHours { get; set; }
+        public virtual SpecialQualities SpecialQualities { get; set; }
     }
 }
