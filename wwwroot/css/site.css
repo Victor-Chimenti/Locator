@@ -165,30 +165,38 @@ background-color: #F4F5F5;
     padding-bottom: 1rem;
 }
 
-#sidebar-wrapper .card a.btn-link .cardTitleBox {
-color: #006979;
-display: inline-block;
-font-size: 1.6rem;
+a.btn-link {
+    color: #006979 !important;
+    display: inline-block !important;
+    font-size: 1.6rem !important;
 }
 
-#sidebar-wrapper .card a.btn-link .cardTitleBox span.card-name {
-    color: #006979;
-    font: Museo Sans 700;
+div#sidebar-wrapper div.card div.card-header a.btn-link .cardTitleBox {
+    color: #006979 !important;
+    display: inline-block !important;
+    font-size: 1.6rem !important;
 }
+
+    #sidebar-wrapper .card a.btn-link .cardTitleBox span.card-title {
+        color: #006979;
+        font: Museo Sans 700;
+    }
 
 #sidebar-wrapper .card p {
-color: #4D5F69;
-font-size: 1.2rem;
-margin: 0;
+    color: #4D5F69;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
-#sidebar-wrapper .card a.btn-link:hover span.card-name {
-text-decoration: underline;
-}
+    #sidebar-wrapper .card .card-header a.btn-link:hover span.card-name {
+        color: #006979;
+        text-decoration: underline;
+    }
 
-#sidebar-wrapper .card a.btn-link i.fas {
-display: inline-block;
-padding-right: 5px;
+div#sidebar-wrapper div.card div.card-header a.btn-link i.fas {
+    color: #006979 !important;
+    display: inline-block !important;
+    padding-right: 5px !important;
 }
 
 #sidebar-wrapper .card a.btn-link i.fa-plus {
