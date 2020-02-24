@@ -44,41 +44,48 @@
                             </a>
                             <p class="address" value="@card.Address">@card.Address</p>
                         </div>
+                        <div class="collapse in" id="collapse-@card.LocationId" aria-expanded="false">
+                            <div class="card-body">
+                                <div class="card-subtitle">
+                                    <p class="subTitle @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">Hours: @(card.Hours ?? "Unknown")</p>
+                                    <p class="subTitle @(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">Retail Outlet: @(card.RetailOutlet ?? "Unknown")</p>
+                                    <p class="subTitle @(card.SpecialQualities.InstallationType ?? "empty")" value="@(card.SpecialQualities.InstallationType ?? "Unknown")">Installation Type: @(card.SpecialQualities.InstallationType ?? "Unknown")</p>
+                                    <p class="subTitle @(card.SpecialQualities.AccessNotes ?? "empty")" value="@(card.SpecialQualities.AccessNotes ?? "Unknown")">Notes: @(card.SpecialQualities.AccessNotes ?? "Unknown")</p>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item @(card.SpecialQualities.HandicapAccess ?? "empty")" value="@(card.SpecialQualities.HandicapAccess ?? "Unknown")">Handicap Access: @(card.SpecialQualities.HandicapAccess ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.DriveThruOnly ?? "empty")" value="@(card.SpecialQualities.DriveThruOnly ?? "Unknown")">Drive Thru Only: @(card.SpecialQualities.DriveThruOnly ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.Surcharge ?? "empty")" value="@(card.SpecialQualities.Surcharge ?? "Unknown")">Surcharge: @(card.SpecialQualities.Surcharge ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.AcceptDeposit ?? "empty")" value="@(card.SpecialQualities.AcceptDeposit ?? "Unknown")">Accepts Deposits: @(card.SpecialQualities.AcceptDeposit ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.AcceptCash ?? "empty")" value="@(card.SpecialQualities.AcceptCash ?? "Unknown")">Accepts Cash: @(card.SpecialQualities.AcceptCash ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.Cashless ?? "empty")" value="@(card.SpecialQualities.Cashless ?? "Unknown")">Cashless: @(card.SpecialQualities.Cashless ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.SelfServiceDevice ?? "empty")" value="@(card.SpecialQualities.SelfServiceDevice ?? "Unknown")">Self Service Device: @(card.SpecialQualities.SelfServiceDevice ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.SelfServiceOnly ?? "empty")" value="@(card.SpecialQualities.SelfServiceOnly ?? "Unknown")">Self Service Only: @(card.SpecialQualities.SelfServiceOnly ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.OnMilitaryBase ?? "empty")" value="@(card.SpecialQualities.OnMilitaryBase ?? "Unknown")">On Military Base: @(card.SpecialQualities.OnMilitaryBase ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.MilitaryIdRequired ?? "empty")" value="@(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")">Military ID Required: @(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")</li>
+                                    <li class="list-group-item @(card.SpecialQualities.RestrictedAccess ?? "empty")" value="@(card.SpecialQualities.RestrictedAccess ?? "Unknown")">Restricted Access: @(card.SpecialQualities.RestrictedAccess ?? "Unknown")</li>
+                                </ul>
 
 
-                    <p class="@card.Latitude" value="@card.Latitude">@card.Latitude</p>
-                    <p class="@card.Longitude" value="@card.Longitude">@card.Longitude</p>
 
-                    // Card Subtitle
-                    <p class="@(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
-                    <p class="@(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">@(card.RetailOutlet ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.InstallationType ?? "empty")" value="@(card.SpecialQualities.InstallationType ?? "Unknown")">@(card.SpecialQualities.InstallationType ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.AccessNotes ?? "empty")" value="@(card.SpecialQualities.AccessNotes ?? "Unknown")">@(card.SpecialQualities.AccessNotes ?? "Unknown")</p>
 
-                    // Card List Items
-                    <p class="@(card.SpecialQualities.HandicapAccess ?? "empty")" value="@card.SpecialQualities.HandicapAccess" readonly="@(card.SpecialQualities.HandicapAccess ?? "Unknown")">@card.SpecialQualities.HandicapAccess</p>
-                    <p class="@(card.SpecialQualities.Surcharge ?? "empty")" value="@(card.SpecialQualities.Surcharge ?? "Unknown")">@(card.SpecialQualities.Surcharge ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.DriveThruOnly ?? "empty")" value="@(card.SpecialQualities.DriveThruOnly ?? "Unknown")">@(card.SpecialQualities.DriveThruOnly ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.AcceptDeposit ?? "empty")" value="@(card.SpecialQualities.AcceptDeposit ?? "Unknown")">@(card.SpecialQualities.AcceptDeposit ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.AcceptCash ?? "empty")" value="@(card.SpecialQualities.AcceptCash ?? "Unknown")">@(card.SpecialQualities.AcceptCash ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.Cashless ?? "empty")" value="@(card.SpecialQualities.Cashless ?? "Unknown")">@(card.SpecialQualities.Cashless ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.SelfServiceDevice ?? "empty")" value="@(card.SpecialQualities.SelfServiceDevice ?? "Unknown")">@(card.SpecialQualities.SelfServiceDevice ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.SelfServiceOnly ?? "empty")" value="@(card.SpecialQualities.SelfServiceOnly ?? "Unknown")">@(card.SpecialQualities.SelfServiceOnly ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.OnMilitaryBase ?? "empty")" value="@(card.SpecialQualities.OnMilitaryBase ?? "Unknown")">@(card.SpecialQualities.OnMilitaryBase ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.MilitaryIdRequired ?? "empty")" value="@(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")">@(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")</p>
-                    <p class="@(card.SpecialQualities.RestrictedAccess ?? "empty")" value="@(card.SpecialQualities.RestrictedAccess ?? "Unknown")">@(card.SpecialQualities.RestrictedAccess ?? "Unknown")</p>
 
-                    // Card Footer
-                    <p class="@card.Name" value="@card.Name">@card.Name</p>
-                    @*<p class="@card.Contacts.Phone" value="@card.Contacts.Phone">@card.Contacts.Phone</p>*@
-                    <p class="@card.Address" value="@card.Address">@card.Address</p>
-                    <p class="@card.City" value="@card.City">@card.City</p>
-                    <p class="@card.State" value="@card.State">@card.State</p>
-                    <p class="@card.PostalCode" value="@card.PostalCode">@card.PostalCode</p>
-                    @*<p class="@card.Contacts.WebAddress" value="@card.Contacts.WebAddress">@card.Contacts.WebAddress</p>*@
-                    <p class="@card.LocationType" value="@card.LocationType">@card.LocationType</p>
+                                    <p class="@card.Latitude" value="@card.Latitude">@card.Latitude</p>
+                                    <p class="@card.Longitude" value="@card.Longitude">@card.Longitude</p>
 
-                </div>
+
+                                    <p class="@card.Name" value="@card.Name">@card.Name</p>
+                                    @*<p class="@card.Contacts.Phone" value="@card.Contacts.Phone">@card.Contacts.Phone</p>*@
+                                    <p class="@card.Address" value="@card.Address">@card.Address</p>
+                                    <p class="@card.City" value="@card.City">@card.City</p>
+                                    <p class="@card.State" value="@card.State">@card.State</p>
+                                    <p class="@card.PostalCode" value="@card.PostalCode">@card.PostalCode</p>
+                                    @*<p class="@card.Contacts.WebAddress" value="@card.Contacts.WebAddress">@card.Contacts.WebAddress</p>*@
+                                    <p class="@card.LocationType" value="@card.LocationType">@card.LocationType</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
-    </div>
 </div>
