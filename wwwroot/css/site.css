@@ -200,15 +200,15 @@ div#sidebar-wrapper div.card div.card-header a.btn-link i.fas {
 }
 
 div#sidebar-wrapper div.card a.btn-link i.fa-plus {
-display: none;
+    display: none !important;
 }
 
 div#sidebar-wrapper div.card a.btn-link[aria-expanded="false"] i.fa-plus {
-display: initial;
+    display: initial !important;
 }
 
 div#sidebar-wrapper div.card a.btn-link[aria-expanded="false"] i.fa-minus {
-display: none;
+    display: none !important;
 }
 
 #sidebar-wrapper .card div.card-footer {
