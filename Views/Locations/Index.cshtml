@@ -31,9 +31,6 @@
             <div class="col-12" id="cards-wrapper">
                 @foreach (var card in Model)
                 {
-                    // Card Header
-                    @*<input asp-for="Name" class="form-control" readonly="@(Model.MyCondition ? "readonly" : null )" />*@
-
                     <div class="accordion card" id="id-@card.LocationId">
                         <div class="card-header" id="heading-@card.LocationId">
                             <a href="#" class="btn-link" id="button-@card.LocationId" data-toggle="collapse" data-target="#collapse-@card.LocationId" aria-expanded="false" aria-controls="collapse-@card.LocationId">
@@ -65,27 +62,31 @@
                                     <li class="list-group-item @(card.SpecialQualities.MilitaryIdRequired ?? "empty")" value="@(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")">Military ID Required: @(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")</li>
                                     <li class="list-group-item @(card.SpecialQualities.RestrictedAccess ?? "empty")" value="@(card.SpecialQualities.RestrictedAccess ?? "Unknown")">Restricted Access: @(card.SpecialQualities.RestrictedAccess ?? "Unknown")</li>
                                 </ul>
-
-
-
-
-
-                                    <p class="@card.Latitude" value="@card.Latitude">@card.Latitude</p>
-                                    <p class="@card.Longitude" value="@card.Longitude">@card.Longitude</p>
-
-
-                                    <p class="@card.Name" value="@card.Name">@card.Name</p>
-                                    @*<p class="@card.Contacts.Phone" value="@card.Contacts.Phone">@card.Contacts.Phone</p>*@
-                                    <p class="@card.Address" value="@card.Address">@card.Address</p>
-                                    <p class="@card.City" value="@card.City">@card.City</p>
-                                    <p class="@card.State" value="@card.State">@card.State</p>
-                                    <p class="@card.PostalCode" value="@card.PostalCode">@card.PostalCode</p>
-                                    @*<p class="@card.Contacts.WebAddress" value="@card.Contacts.WebAddress">@card.Contacts.WebAddress</p>*@
-                                    <p class="@card.LocationType" value="@card.LocationType">@card.LocationType</p>
-
-                                </div>
+                            </div>
+                            <div class="card-footer contactInfo">
+                                <h4 class="card-title contactInfoHeader">Contact Information</h4>
+                                <p class="name @card.Name" value="@card.Name">@card.Name</p>
+                                <p class="address @card.Address" value="@card.Address">@card.Address</p>
+                                <p class="city-state-zip">
+                                    <span class="city @card.City" value="@card.City">@card.City</span>
+                                    <span>, </span>
+                                    <span class="state @card.State" value="@card.State">@card.State </span>
+                                    <span class="postalCode @card.PostalCode" value="@card.PostalCode">@card.PostalCode</span>
+                                </p>
+                                @*<p class="phone @(card.Contacts.Phone ?? "empty")" value="@(card.Contacts.Phone ?? "empty")">Phone: @(card.Contacts.Phone ?? "empty")</p>*@
+                                @*<p class="webAddress @(card.Contacts.WebAddress ?? "empty")" value="@(card.Contacts.WebAddress ?? "empty")">@(card.Contacts.WebAddress ?? "empty")</p>*@
+                                <p class="lat @card.Latitude" value="@card.Latitude">Latitude: @card.Latitude</p>
+                                <p class="lng @card.Longitude" value="@card.Longitude">Longitude: @card.Longitude</p>
+                                <blockquote class="blockquote my-1 pt-1">
+                                    <h5 class="blockquote-footer locationType" value="@card.LocationType">
+                                        Location Type: <cite title="@card.LocationType">@card.LocationType</cite>
+                                    </h5>
+                                </blockquote>
                             </div>
                         </div>
                     </div>
                 }
+            </div>
+        </div>
+    </div>
 </div>
