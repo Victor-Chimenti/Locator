@@ -157,67 +157,68 @@ html {
     background-color: #EAEBEC;
 }
 
-#right-sidebar .card .card-body {
-    background-color: #F4F5F5;
+#sidebar-wrapper .card .card-body {
+background-color: #F4F5F5;
 }
 
-        #right-sidebar .card .card-body div.card-subtitle {
-            padding-bottom: 1rem;
-        }
+#sidebar-wrapper .card .card-body div.card-subtitle {
+    padding-bottom: 1rem;
+}
 
-    #right-sidebar .card a.btn-link .cardTitleBox {
-        color: #006979;
-        display: inline-block;
-        font-size: 1.6rem;
-    }
+#sidebar-wrapper .card a.btn-link .cardTitleBox {
+color: #006979;
+display: inline-block;
+font-size: 1.6rem;
+}
 
-        #right-sidebar .card a.btn-link .cardTitleBox .card-name {
-            font: Museo Sans 700;
-        }
+#sidebar-wrapper .card a.btn-link .cardTitleBox span.card-name {
+    color: #006979;
+    font: Museo Sans 700;
+}
 
-    #right-sidebar .card p {
-        color: #4D5F69;
-        font-size: 1.2rem;
-        margin: 0;
-    }
+#sidebar-wrapper .card p {
+color: #4D5F69;
+font-size: 1.2rem;
+margin: 0;
+}
 
-    #right-sidebar .card a.btn-link:hover span.card-name {
-        text-decoration: underline;
-    }
+#sidebar-wrapper .card a.btn-link:hover span.card-name {
+text-decoration: underline;
+}
 
-    #right-sidebar .card a.btn-link .fas {
-        display: inline-block;
-        padding-right: 5px;
-    }
+#sidebar-wrapper .card a.btn-link i.fas {
+display: inline-block;
+padding-right: 5px;
+}
 
-    #right-sidebar .card a.btn-link .fa-plus {
-        display: none;
-    }
+#sidebar-wrapper .card a.btn-link i.fa-plus {
+display: none;
+}
 
-    #right-sidebar .card a.btn-link[aria-expanded="false"] .fa-plus {
-        display: initial;
-    }
+#sidebar-wrapper .card a.btn-link[aria-expanded="false"] i.fa-plus {
+display: initial;
+}
 
-    #right-sidebar .card a.btn-link[aria-expanded="false"] .fa-minus {
-        display: none;
-    }
+#sidebar-wrapper .card a.btn-link[aria-expanded="false"] i.fa-minus {
+display: none;
+}
 
-    #right-sidebar .card div.card-footer {
-        background-color: #FFFFFF;
-    }
+#sidebar-wrapper .card div.card-footer {
+background-color: #FFFFFF;
+}
 
-        #right-sidebar .card div.card-footer a.webAddressLink {
-            color: #006979;
-        }
+#sidebar-wrapper .card div.card-footer a.webAddressLink {
+    color: #006979;
+}
 
-        #right-sidebar .card div.card-footer a.phoneLink {
-            color: #006979;
-        }
+#sidebar-wrapper .card div.card-footer a.phoneLink {
+    color: #006979;
+}
 
-    #right-sidebar .card .contactInfo span.cardTitleBox {
-        color: #192838;
-        font-size: 1.6rem;
-    }
+#sidebar-wrapper .card .contactInfo span.cardTitleBox {
+color: #192838;
+font-size: 1.6rem;
+}
 
 
 
