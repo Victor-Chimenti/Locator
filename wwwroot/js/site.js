@@ -7,9 +7,9 @@
 
 
 // function validateOnlyUserPosition
-function validateOnlyUserPosition(pos) {
-    console.log("userPosition: ", pos);
-}
+//function validateOnlyUserPosition(pos) {
+//    console.log("userPosition: ", pos);
+//}
 
 function showError() {
     alert("Geolocation is not supported by this browser.");
@@ -20,7 +20,7 @@ function assignPosition(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     var userPosition = lat + ', ' + lng;
-    validateOnlyUserPosition(userPosition);
+    //validateOnlyUserPosition(userPosition);
 }
 
 // get users location on command
