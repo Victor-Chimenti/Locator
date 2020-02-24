@@ -21,7 +21,11 @@ namespace Locator.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Locations.ToListAsync());
+            return View(await _context.Locations.
+                                Include(c => c.Contacts).
+                                Include(s => s.SpecialQualities).
+                                Include(h => h.DailyHours).
+                                ToListAsync());
         }
 
         // GET: Locations/Details/5
