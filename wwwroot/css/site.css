@@ -199,15 +199,15 @@ div#sidebar-wrapper div.card div.card-header a.btn-link i.fas {
     padding-right: 5px !important;
 }
 
-#sidebar-wrapper .card a.btn-link i.fa-plus {
+div#sidebar-wrapper div.card a.btn-link i.fa-plus {
 display: none;
 }
 
-#sidebar-wrapper .card a.btn-link[aria-expanded="false"] i.fa-plus {
+div#sidebar-wrapper div.card a.btn-link[aria-expanded="false"] i.fa-plus {
 display: initial;
 }
 
-#sidebar-wrapper .card a.btn-link[aria-expanded="false"] i.fa-minus {
+div#sidebar-wrapper div.card a.btn-link[aria-expanded="false"] i.fa-minus {
 display: none;
 }
 
