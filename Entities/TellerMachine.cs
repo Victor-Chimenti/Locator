@@ -14,9 +14,9 @@ namespace Locator.Entities
     // Child class inherits from the Locations Model
     public class TellerMachine : Locations
     {
-
         public IEnumerable<Locations> Locations { get; private set; }
 
+        public int Id { get; set; }
         public double Distance { get; set; }
         [Column(TypeName = "geometry")]
         public Point Position { get; set; }

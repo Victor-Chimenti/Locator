@@ -31,8 +31,8 @@ namespace Locator.Controllers
             _child_context = child_context;
         }
 
-    // GET: Locations
-    public async Task<IActionResult> Index()
+        // GET: Locations
+        public async Task<IActionResult> Index()
         {
             return View(await _context.Locations.
                                 Include(c => c.Contacts).
@@ -198,7 +198,7 @@ namespace Locator.Controllers
                     Name = t.Place.Name
                 }).ToList();
 
-            return View(indexViewModel);
+            return View("index", indexViewModel);
         }
     }
 }
