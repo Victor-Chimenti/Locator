@@ -11,6 +11,25 @@
 //    console.log("userPosition: ", pos);
 //}
 
+function ajaxCallResult(result) {
+    return result;
+}
+
+function returnValueToCOntroller(param) {
+    $.ajax({
+        url: "/LocationsController/GetUserCoords",
+        data: { param: param },
+        cache: false,
+        dataType: "json",
+        success: function (result) {
+            ajaxCallResult(result);
+        },
+        error: function (req, status, error) {
+            ajaxCallResult("error");
+        }
+    });
+}
+
 function showError() {
     alert("Geolocation is not supported by this browser.");
 }
@@ -21,6 +40,7 @@ function assignPosition(position) {
     var lng = position.coords.longitude;
     var userPosition = lat + ', ' + lng;
     //validateOnlyUserPosition(userPosition);
+    returnValueToCOntroller(userPosition);
 }
 
 // get users location on command

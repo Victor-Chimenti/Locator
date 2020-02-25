@@ -153,5 +153,11 @@ namespace Locator.Controllers
         {
             return _context.Locations.Any(e => e.LocationId == id);
         }
+
+        [HttpPost]
+        public ActionResult GetUserCoords(string stringCoord)
+        {
+            return Json(stringCoord);
+        }
     }
 }
