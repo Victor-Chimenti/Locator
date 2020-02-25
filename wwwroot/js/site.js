@@ -15,10 +15,10 @@ function ajaxCallResult(result) {
     return result;
 }
 
-function returnValueToCOntroller(param) {
+function returnValueToController(lat, lng) {
     $.ajax({
         url: "/LocationsController/GetUserCoords",
-        data: { param: param },
+        data: { lat: lat, lng: lng },
         dataType: "json",
         success: function (result) {
             ajaxCallResult(result);
@@ -39,7 +39,7 @@ function assignPosition(position) {
     var lng = position.coords.longitude;
     var userPosition = lat + ', ' + lng;
     //validateOnlyUserPosition(userPosition);
-    returnValueToCOntroller(userPosition);
+    returnValueToController(lat, lng);
 }
 
 // get users location on command
