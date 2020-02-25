@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Locator.Models;
-
+using Locator.ViewModels;
 
 namespace Locator.Controllers
 {
@@ -158,6 +158,14 @@ namespace Locator.Controllers
         public ActionResult GetUserCoords(string stringCoord)
         {
             return Json(stringCoord);
+        }
+        [HttpPost]
+        public IActionResult Search(IndexViewPageModel, indexModel)
+        {
+            var indexViewModel = new IndexViewPageModel
+            {
+                LocationInput
+            }
         }
     }
 }
