@@ -18,6 +18,11 @@ namespace Locator.Models
         {
         }
 
+        protected MaphawksContext(DbContextOptions options)
+            : base(options)
+        {
+        }
+
         public virtual DbSet<Contacts> Contacts { get; set; }
         public virtual DbSet<DailyHours> DailyHours { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }

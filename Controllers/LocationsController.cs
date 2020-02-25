@@ -175,6 +175,11 @@ namespace Locator.Controllers
 
             var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
 
+            var tellerMachines = _context.TellerMachineViewModel;
+                .Locations
+                .TellerMachineViewModel
+
+                ;
 
             indexViewModel.TellerMachines = tellerMachines
                 .OrderBy(x => x.Distance)
