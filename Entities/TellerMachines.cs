@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Locator.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+using NetTopologySuite;
+using GeoAPI.Geometries;
+using Locator.Models;
 
-namespace Locator.Models
+
+namespace Locator.Entities
 {
-    public partial class Locations
+    public class TellerMachines
     {
+
         [Key]
         public string LocationId { get; set; }
         [Display(Name = "Name")]
@@ -30,22 +36,11 @@ namespace Locator.Models
         public string RetailOutlet { get; set; }
         [Display(Name = "Location Type")]
         public string LocationType { get; set; }
-
-
-
-
-        
-        // Schema fields not needed
-        public string CoopLocationId { get; set; }
-        public bool TakeCoopData { get; set; }
-        public bool SoftDelete { get; set; }
-        public string County { get; set; }
-        public string Country { get; set; }
-        
-        // virtual
         public virtual Contacts Contacts { get; set; }
         public virtual DailyHours DailyHours { get; set; }
         public virtual SpecialQualities SpecialQualities { get; set; }
 
+        [Column(TypeName = "geometry")]
+        public IPoint Location { get; set; }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using NetTopologySuite;
+using GeoAPI.Geometries;
+using Locator.Entities;
 
 namespace Locator.Models
 {
