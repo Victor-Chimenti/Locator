@@ -11,11 +11,11 @@ using Locator.Models;
 
 namespace Locator.Entities
 {
-    // Child class inherits from the Locations Model
-    public class TellerMachine : Locations
-    {
+    //// Child class inherits from the Locations Model
+    //public class TellerMachine : Locations
+    //{
 
-        [Column(TypeName = "geometry")]
-        public IPoint Location { get; set; }
-    }
+    //    [Column(TypeName = "geometry")]
+    //    public IPoint Location { get; set; }
+    //}
 }
