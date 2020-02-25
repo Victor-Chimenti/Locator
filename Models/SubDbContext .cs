@@ -1,4 +1,5 @@
-﻿using Locator.ViewModels;
+﻿using Locator.Entities;
+using Locator.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Locator.Models
         {
         }
 
-        public DbSet<TellerMachineViewModel> TellerMachineViewModels { get; set; }
+        public DbSet<TellerMachine> TellerMachines { get; set; }
 
     }
 }
