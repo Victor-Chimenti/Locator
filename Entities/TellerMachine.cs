@@ -11,7 +11,7 @@ using Locator.Models;
 
 namespace Locator.Entities
 {
-    public class TellerMachines
+    public class TellerMachine
     {
 
         [Key]
