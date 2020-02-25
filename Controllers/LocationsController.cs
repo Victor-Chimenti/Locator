@@ -11,6 +11,7 @@ using Locator.ViewModels;
 using NetTopologySuite;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Locator.Entities;
 
 namespace Locator.Controllers
 {
@@ -183,7 +184,7 @@ namespace Locator.Controllers
             var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
 
             var tellerMachines = _child_context
-                .TellerMachineViewModels
+                .TellerMachines
                 .Select(teller => new { Place = teller, Distance = teller.Position.Distance(searchLocation) })
                 .ToList();
 
@@ -192,8 +193,8 @@ namespace Locator.Controllers
                 .Select(t => new TellerMachineViewModel
                 {
                     Distance = Math.Round(t.Distance, 6),
-                    TellerPosition.Lat = t.Place.Position.X,
-                    TellerPosition.Lng = t.Place.Position.Y,
+                    Latitude = t.Place.Position.X,
+                    Longitude = t.Place.Position.Y,
                     Name = t.Place.Name
                 }).ToList();
 
