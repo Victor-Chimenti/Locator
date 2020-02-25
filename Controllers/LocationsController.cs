@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Locator.Models;
 using Locator.ViewModels;
 using NetTopologySuite;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Locator.Controllers
 {
@@ -159,26 +161,20 @@ namespace Locator.Controllers
         [HttpPost]
         public ActionResult GetUserCoords(string stringCoord)
         {
-            return Json(stringCoord);
+            var locationInput = JsonSerializer.Deserialize<LocationInputModel>(stringCoord);
+            return View(locationInput);
         }
+
         [HttpPost]
-        public IActionResult LocationSearch([FromQuery]IndexViewPageModel, indexModel)
+        public IActionResult LocationSearch(IndexViewPageModel indexModel)
         {
-            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            //var currentLocation = geometryFactory.CreatePoint(-122.121512, 47.6739882);
             var indexViewModel = new IndexViewPageModel
             {
                 LocationInput = indexModel.LocationInput
             };
-            var searchLocation = geometryFactory.CreatePoint(indexModel.LocationInput.Latitude,
-                indexModel.LocationInput.Longitude);
-            var atmLocation = geometryFactory.CreatePoint(new Coordinate(
-                TellerMachineViewModel.Latitude, TellerMachineViewModel.Longitude));
 
-            var tellerMachines = _context
-                .Locations
-                .Select(t => new { Place = t, Distance = t.atmLocation.Distance(searchLocation})
-                .ToList();
+            var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
+
 
             indexViewModel.TellerMachines = tellerMachines
                 .OrderBy(x => x.Distance)

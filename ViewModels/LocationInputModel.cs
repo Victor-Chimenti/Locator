@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Locator.Controllers;
 
 namespace Locator.ViewModels
 {
@@ -9,5 +12,6 @@ namespace Locator.ViewModels
     {
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+
     }
 }
