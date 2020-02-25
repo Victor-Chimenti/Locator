@@ -183,18 +183,17 @@ namespace Locator.Controllers
             var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
 
             var tellerMachines = _child_context
-                .Locations
-                .TellerMachineViewModel
-
-                ;
+                .TellerMachineViewModels
+                .Select(teller => new { Place = teller, Distance = teller.Position.Distance(searchLocation) })
+                .ToList();
 
             indexViewModel.TellerMachines = tellerMachines
                 .OrderBy(x => x.Distance)
                 .Select(t => new TellerMachineViewModel
                 {
                     Distance = Math.Round(t.Distance, 6),
-                    Latitude = t.Place.Location.X,
-                    Longitude = t.Place.Location.Y,
+                    TellerPosition.Lat = t.Place.Position.X,
+                    TellerPosition.Lng = t.Place.Position.Y,
                     Name = t.Place.Name
                 }).ToList();
 
