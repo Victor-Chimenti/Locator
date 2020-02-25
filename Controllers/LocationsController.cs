@@ -17,10 +17,17 @@ namespace Locator.Controllers
     public class LocationsController : Controller
     {
         private readonly MaphawksContext _context;
+        private readonly SubDbContext _child_context;
+
 
         public LocationsController(MaphawksContext context)
         {
             _context = context;
+        }
+
+        public LocationsController(SubDbContext child_context)
+        {
+            _child_context = child_context;
         }
 
         // GET: Locations
@@ -175,7 +182,7 @@ namespace Locator.Controllers
 
             var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
 
-            var tellerMachines = _context.TellerMachineViewModel;
+            var tellerMachines = _child_context
                 .Locations
                 .TellerMachineViewModel
 

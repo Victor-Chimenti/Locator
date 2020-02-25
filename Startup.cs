@@ -35,6 +35,13 @@ namespace Locator
                     x => x.UseNetTopologySuite()
                 );
             });
+            services.AddDbContext<SubDbContext>(options =>
+            {
+                options.UseSqlServer(
+                    connection, //Configuration.GetConnectionString("ATMLocatorDatabase")));
+                    x => x.UseNetTopologySuite()
+                );
+            });
             services.AddControllersWithViews();
         }
 
