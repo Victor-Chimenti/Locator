@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Geometries;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Locator.Models;
 using Locator.ViewModels;
+using NetTopologySuite;
 
 namespace Locator.Controllers
 {
@@ -160,12 +162,35 @@ namespace Locator.Controllers
             return Json(stringCoord);
         }
         [HttpPost]
-        public IActionResult Search(IndexViewPageModel, indexModel)
+        public IActionResult LocationSearch([FromQuery]IndexViewPageModel, indexModel)
         {
+            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
+            //var currentLocation = geometryFactory.CreatePoint(-122.121512, 47.6739882);
             var indexViewModel = new IndexViewPageModel
             {
-                LocationInput
-            }
+                LocationInput = indexModel.LocationInput
+            };
+            var searchLocation = geometryFactory.CreatePoint(indexModel.LocationInput.Latitude,
+                indexModel.LocationInput.Longitude);
+            var atmLocation = geometryFactory.CreatePoint(new Coordinate(
+                TellerMachineViewModel.Latitude, TellerMachineViewModel.Longitude));
+
+            var tellerMachines = _context
+                .Locations
+                .Select(t => new { Place = t, Distance = t.atmLocation.Distance(searchLocation})
+                .ToList();
+
+            indexViewModel.TellerMachines = tellerMachines
+                .OrderBy(x => x.Distance)
+                .Select(t => new TellerMachineViewModel
+                {
+                    Distance = Math.Round(t.Distance, 6),
+                    Latitude = t.Place.Location.X,
+                    Longitude = t.Place.Location.Y,
+                    Name = t.Place.Name
+                }).ToList();
+
+            return View("Index", indexViewModel);
         }
     }
 }
