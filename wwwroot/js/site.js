@@ -19,7 +19,6 @@ function returnValueToCOntroller(param) {
     $.ajax({
         url: "/LocationsController/GetUserCoords",
         data: { param: param },
-        cache: false,
         dataType: "json",
         success: function (result) {
             ajaxCallResult(result);
