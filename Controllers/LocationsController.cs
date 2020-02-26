@@ -10,6 +10,7 @@ using Locator.Models;
 using NetTopologySuite;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http;
 
 namespace Locator.Controllers
 {
@@ -17,6 +18,16 @@ namespace Locator.Controllers
     {
         private readonly MaphawksContext _context;
 
+        public const string SessionKeyLatitude = "latitude";
+        public const string SessionKeyLongitude = "longitude";
+
+        const string SessionKeyTime = "_Time";
+
+        public string SessionInfo_Latitude { get; private set; }
+        public string SessionInfo_Longitude { get; private set; }
+        public string SessionInfo_CurrentTime { get; private set; }
+        public string SessionInfo_SessionTime { get; private set; }
+        public string SessionInfo_MiddlewareValue { get; private set; }
 
         public LocationsController(MaphawksContext context)
         {
@@ -26,11 +37,30 @@ namespace Locator.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Locations.
+            var data = await _context.Locations.
                                 Include(c => c.Contacts).
                                 Include(s => s.SpecialQualities).
                                 Include(h => h.DailyHours).
-                                ToListAsync());
+                                ToListAsync();
+
+            var Latitude = Request.Cookies[SessionKeyLatitude];
+            var Longitude = Request.Cookies[SessionKeyLongitude];
+
+            // Requires: using Microsoft.AspNetCore.Http;
+            if (string.IsNullOrEmpty(Latitude))
+            {
+                return View(data);
+            }
+
+            if (string.IsNullOrEmpty(Longitude))
+            {
+                return View(data);
+            }
+
+            // TODO, for now filter down to just 3 records
+            data = data.GetRange(0, 3).ToList();
+
+            return View(data);
         }
 
         // GET: Locations/Details/5
