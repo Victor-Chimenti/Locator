@@ -30,7 +30,7 @@ function returnValueToController(lat, lng) {
 }
 
 function showError() {
-    alert("Geolocation is not supported by this browser.");
+    alert("Error: Geolocation is not supported by this browser.");
 }
 
 // assign users coordinates
@@ -47,6 +47,6 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(assignPosition, showError);
     } else {
-        alert("Geolocation is not supported by this browser.");
+        alert("Geolocation is not supported by current browser.");
     }
 }

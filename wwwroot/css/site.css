@@ -166,7 +166,7 @@ html {
 }
 
 #sidebar-wrapper .card .card-body {
-background-color: #F4F5F5;
+    background-color: #F4F5F5;
 }
 
 #sidebar-wrapper .card .card-body div.card-subtitle {
@@ -196,15 +196,34 @@ div#sidebar-wrapper div.card p {
     margin: 0;
 }
 
+btn-link:hover {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+
 div.card div.card-header a.btn-link:hover span.card-name {
     color: #006979;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 div.card div.card-header a.btn-link span.cardTitleBox i.fas {
     color: #006979;
     display: inline-block;
     padding-right: 5px;
+}
+
+div.card-header a.btn-link:hover {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:hover span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+span.card-name:hover {
+    text-decoration: underline;
 }
 
 div.card div.card-header a.btn-link span.cardTitleBox i.fa-plus {
