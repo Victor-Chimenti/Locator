@@ -7,29 +7,21 @@ using NetTopologySuite.Geometries;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Locator.Models;
-using Locator.ViewModels;
 using NetTopologySuite;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Locator.Entities;
 
 namespace Locator.Controllers
 {
     public class LocationsController : Controller
     {
         private readonly MaphawksContext _context;
-        //private readonly SubDbContext _child_context;
 
 
         public LocationsController(MaphawksContext context)
         {
             _context = context;
         }
-
-        //public LocationsController(SubDbContext child_context)
-        //{
-        //    _child_context = child_context;
-        //}
 
         // GET: Locations
         public async Task<IActionResult> Index()

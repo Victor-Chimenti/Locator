@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using NetTopologySuite;
 using GeoAPI.Geometries;
-using Locator.Entities;
 
 namespace Locator.Models
 {
@@ -18,10 +17,6 @@ namespace Locator.Models
         {
         }
 
-        protected MaphawksContext(DbContextOptions options)
-            : base(options)
-        {
-        }
 
         public virtual DbSet<Contacts> Contacts { get; set; }
         public virtual DbSet<DailyHours> DailyHours { get; set; }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Locator.Models;
-using Locator.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,13 +31,6 @@ namespace Locator
             {
                 options.UseSqlServer(
                     connection, /*providerOptions => providerOptions.EnableRetryOnFailure(),*/
-                    x => x.UseNetTopologySuite()
-                );
-            });
-            services.AddDbContext<SubDbContext>(options =>
-            {
-                options.UseSqlServer(
-                    connection, //Configuration.GetConnectionString("ATMLocatorDatabase")));
                     x => x.UseNetTopologySuite()
                 );
             });
