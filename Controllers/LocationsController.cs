@@ -18,16 +18,13 @@ namespace Locator.Controllers
     {
         private readonly MaphawksContext _context;
 
-        public const string SessionKeyLatitude = "latitude";
-        public const string SessionKeyLongitude = "longitude";
+        ////const string SessionKeyTime = "_Time";
 
-        const string SessionKeyTime = "_Time";
-
-        public string SessionInfo_Latitude { get; private set; }
-        public string SessionInfo_Longitude { get; private set; }
-        public string SessionInfo_CurrentTime { get; private set; }
-        public string SessionInfo_SessionTime { get; private set; }
-        public string SessionInfo_MiddlewareValue { get; private set; }
+        //public string SessionInfo_Latitude { get; private set; }
+        //public string SessionInfo_Longitude { get; private set; }
+        //public string SessionInfo_CurrentTime { get; private set; }
+        //public string SessionInfo_SessionTime { get; private set; }
+        //public string SessionInfo_MiddlewareValue { get; private set; }
 
         public LocationsController(MaphawksContext context)
         {
@@ -43,10 +40,9 @@ namespace Locator.Controllers
                                 Include(h => h.DailyHours).
                                 ToListAsync();
 
-            var Latitude = Request.Cookies[SessionKeyLatitude];
-            var Longitude = Request.Cookies[SessionKeyLongitude];
+            var Latitude = Request.Cookies["latitude"];
+            var Longitude = Request.Cookies["longitude"];
 
-            // Requires: using Microsoft.AspNetCore.Http;
             if (string.IsNullOrEmpty(Latitude))
             {
                 return View(data);

@@ -62,7 +62,7 @@ function setLocationCookie(position) {
 
         // check if the browser supports cookie
         var testCookie = "testcookieLocationCookie";
-        setCookie(testCookie, "1", "2", myExpiration);
+        setCookie(testCookie, "1", myExpiration);
         myCookieValue = getCookie(testCookie);
 
         if (myCookieValue !== "") {
