@@ -166,39 +166,39 @@ namespace Locator.Controllers
             return _context.Locations.Any(e => e.LocationId == id);
         }
 
-        [HttpPost]
-        public ActionResult GetUserCoords(string stringCoord)
-        {
-            var locationInput = JsonSerializer.Deserialize<LocationInputModel>(stringCoord);
-            return View(locationInput);
-        }
+        //[HttpPost]
+        //public ActionResult GetUserCoords(string stringCoord)
+        //{
+        //    var locationInput = JsonSerializer.Deserialize<LocationInputModel>(stringCoord);
+        //    return View(locationInput);
+        //}
 
-        [HttpPost]
-        public IActionResult LocationSearch(IndexViewPageModel indexModel)
-        {
-            var indexViewModel = new IndexViewPageModel
-            {
-                LocationInput = indexModel.LocationInput
-            };
+        //[HttpPost]
+        //public IActionResult LocationSearch(IndexViewPageModel indexModel)
+        //{
+        //    var indexViewModel = new IndexViewPageModel
+        //    {
+        //        LocationInput = indexModel.LocationInput
+        //    };
 
-            var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
+        //    var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
 
-            var tellerMachines = _child_context
-                .TellerMachines
-                .Select(teller => new { Place = teller, Distance = teller.Position.Distance(searchLocation) })
-                .ToList();
+        //    var tellerMachines = _child_context
+        //        .TellerMachines
+        //        .Select(teller => new { Place = teller, Distance = teller.Position.Distance(searchLocation) })
+        //        .ToList();
 
-            indexViewModel.TellerMachines = tellerMachines
-                .OrderBy(x => x.Distance)
-                .Select(t => new TellerMachineViewModel
-                {
-                    Distance = Math.Round(t.Distance, 6),
-                    Latitude = t.Place.Position.X,
-                    Longitude = t.Place.Position.Y,
-                    Name = t.Place.Name
-                }).ToList();
+        //    indexViewModel.TellerMachines = tellerMachines
+        //        .OrderBy(x => x.Distance)
+        //        .Select(t => new TellerMachineViewModel
+        //        {
+        //            Distance = Math.Round(t.Distance, 6),
+        //            Latitude = t.Place.Position.X,
+        //            Longitude = t.Place.Position.Y,
+        //            Name = t.Place.Name
+        //        }).ToList();
 
-            return View("index", indexViewModel);
-        }
+        //    return View("index", indexViewModel);
+        //}
     }
 }
