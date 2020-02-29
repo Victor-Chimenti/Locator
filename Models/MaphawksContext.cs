@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using NetTopologySuite;
-using GeoAPI.Geometries;
 
 namespace Locator.Models
 {
@@ -17,18 +15,27 @@ namespace Locator.Models
         {
         }
 
-
         public virtual DbSet<Contacts> Contacts { get; set; }
         public virtual DbSet<DailyHours> DailyHours { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }
+        public virtual DbSet<PointTable> PointTable { get; set; }
         public virtual DbSet<SpecialQualities> SpecialQualities { get; set; }
+
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer("Server=csp199.cslab.seattleu.edu;Database=Maphawks;User Id=sa; Password=KoeningMPass2019!;", x => x.UseNetTopologySuite());
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Contacts>(entity =>
             {
                 entity.HasKey(e => e.LocationId)
-                    .HasName("PK__Contacts__E7FEA4779800FC26");
+                    .HasName("PK__Contacts__E7FEA477D88C2B29");
 
                 entity.Property(e => e.LocationId)
                     .HasColumnName("LocationID")
@@ -46,17 +53,12 @@ namespace Locator.Models
                 entity.Property(e => e.WebAddress)
                     .HasMaxLength(64)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Location)
-                    .WithOne(p => p.Contacts)
-                    .HasForeignKey<Contacts>(d => d.LocationId)
-                    .HasConstraintName("FK__Contacts__Locati__763775D2");
             });
 
             modelBuilder.Entity<DailyHours>(entity =>
             {
                 entity.HasKey(e => e.LocationId)
-                    .HasName("PK__DailyHou__E7FEA477955B39F5");
+                    .HasName("PK__DailyHou__E7FEA4771426AFDA");
 
                 entity.Property(e => e.LocationId)
                     .HasColumnName("LocationID")
@@ -188,17 +190,12 @@ namespace Locator.Models
                 entity.Property(e => e.HoursWedOpen)
                     .HasMaxLength(10)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Location)
-                    .WithOne(p => p.DailyHours)
-                    .HasForeignKey<DailyHours>(d => d.LocationId)
-                    .HasConstraintName("FK__DailyHour__Locat__7BF04F28");
             });
 
             modelBuilder.Entity<Locations>(entity =>
             {
                 entity.HasKey(e => e.LocationId)
-                    .HasName("PK__Location__E7FEA477BF27590B");
+                    .HasName("PK__Location__E7FEA477C36D55BC");
 
                 entity.Property(e => e.LocationId)
                     .HasColumnName("LocationID")
@@ -260,10 +257,28 @@ namespace Locator.Models
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<PointTable>(entity =>
+            {
+                entity.HasKey(e => e.LocationId);
+
+                entity.Property(e => e.LocationId)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Point)
+                    .IsRequired()
+                    .HasColumnType("geometry");
+
+                entity.HasOne(d => d.Location)
+                    .WithOne(p => p.PointTable)
+                    .HasForeignKey<PointTable>(d => d.LocationId)
+                    .HasConstraintName("FK_PointTable_Locations");
+            });
+
             modelBuilder.Entity<SpecialQualities>(entity =>
             {
                 entity.HasKey(e => e.LocationId)
-                    .HasName("PK__SpecialQ__E7FEA4770CF793D4");
+                    .HasName("PK__SpecialQ__E7FEA47771114749");
 
                 entity.Property(e => e.LocationId)
                     .HasColumnName("LocationID")
@@ -290,6 +305,10 @@ namespace Locator.Models
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
+                entity.Property(e => e.CoinStar)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.DriveThruOnly)
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -306,7 +325,15 @@ namespace Locator.Models
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InstantDebitCardReplacement)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.LimitedTransactions)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MemberConsultant)
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
@@ -319,6 +346,10 @@ namespace Locator.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.OnPremise)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PartnerCreditUnion)
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
@@ -338,10 +369,19 @@ namespace Locator.Models
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
+                entity.Property(e => e.TellerServices)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
+                entity.Property(e => e._24hourExpressBox)
+                    .HasColumnName("24HourExpressBox")
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.Location)
                     .WithOne(p => p.SpecialQualities)
                     .HasForeignKey<SpecialQualities>(d => d.LocationId)
-                    .HasConstraintName("FK__SpecialQu__Locat__7913E27D");
+                    .HasConstraintName("FK__SpecialQu__Locat__1D5142F3");
             });
 
             OnModelCreatingPartial(modelBuilder);

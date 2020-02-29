@@ -34,7 +34,5 @@ namespace Locator.Models
         public string HoursDtsatClose { get; set; }
         public string HoursDtsunOpen { get; set; }
         public string HoursDtsunClose { get; set; }
-
-        public virtual Locations Location { get; set; }
     }
 }
