@@ -18,14 +18,6 @@ namespace Locator.Controllers
     {
         private readonly MaphawksContext _context;
 
-        ////const string SessionKeyTime = "_Time";
-
-        //public string SessionInfo_Latitude { get; private set; }
-        //public string SessionInfo_Longitude { get; private set; }
-        //public string SessionInfo_CurrentTime { get; private set; }
-        //public string SessionInfo_SessionTime { get; private set; }
-        //public string SessionInfo_MiddlewareValue { get; private set; }
-
         public LocationsController(MaphawksContext context)
         {
             _context = context;
@@ -183,40 +175,5 @@ namespace Locator.Controllers
         {
             return _context.Locations.Any(e => e.LocationId == id);
         }
-
-        //[HttpPost]
-        //public ActionResult GetUserCoords(string stringCoord)
-        //{
-        //    var locationInput = JsonSerializer.Deserialize<LocationInputModel>(stringCoord);
-        //    return View(locationInput);
-        //}
-
-        //[HttpPost]
-        //public IActionResult LocationSearch(IndexViewPageModel indexModel)
-        //{
-        //    var indexViewModel = new IndexViewPageModel
-        //    {
-        //        LocationInput = indexModel.LocationInput
-        //    };
-
-        //    var searchLocation = new Point(indexModel.LocationInput.Latitude, indexModel.LocationInput.Longitude) { SRID = 4326 };
-
-        //    var tellerMachines = _child_context
-        //        .TellerMachines
-        //        .Select(teller => new { Place = teller, Distance = teller.Position.Distance(searchLocation) })
-        //        .ToList();
-
-        //    indexViewModel.TellerMachines = tellerMachines
-        //        .OrderBy(x => x.Distance)
-        //        .Select(t => new TellerMachineViewModel
-        //        {
-        //            Distance = Math.Round(t.Distance, 6),
-        //            Latitude = t.Place.Position.X,
-        //            Longitude = t.Place.Position.Y,
-        //            Name = t.Place.Name
-        //        }).ToList();
-
-        //    return View("index", indexViewModel);
-        //}
     }
 }
