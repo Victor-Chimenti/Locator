@@ -37,7 +37,6 @@ namespace Locator.Models
         public bool TakeCoopData { get; set; }
         public bool SoftDelete { get; set; }
         public string County { get; set; }
-
         public string Country { get; set; }
 
 
