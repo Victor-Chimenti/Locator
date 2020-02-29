@@ -30,6 +30,7 @@ namespace Locator.Controllers
                                 Include(c => c.Contacts).
                                 Include(s => s.SpecialQualities).
                                 Include(h => h.DailyHours).
+                                Include(p => p.PointTable).
                                 ToListAsync();
 
             var Latitude = Request.Cookies["latitude"];
