@@ -31,12 +31,14 @@ namespace Locator.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasPostgresExtension("postgis");
+
             modelBuilder.Entity<Contacts>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__Contacts__E7FEA477CBE4ADBC");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -55,16 +57,16 @@ namespace Locator.Models
 
                 entity.HasOne(d => d.Location)
                     .WithOne(p => p.Contacts)
-                    .HasForeignKey<Contacts>(d => d.LocationId)
+                    .HasForeignKey<Contacts>(d => d.LocationID)
                     .HasConstraintName("FK__Contacts__Locati__38996AB5");
             });
 
             modelBuilder.Entity<DailyHours>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__DailyHou__E7FEA4771614B28C");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -197,16 +199,16 @@ namespace Locator.Models
 
                 entity.HasOne(d => d.Location)
                     .WithOne(p => p.DailyHours)
-                    .HasForeignKey<DailyHours>(d => d.LocationId)
+                    .HasForeignKey<DailyHours>(d => d.LocationID)
                     .HasConstraintName("FK__DailyHour__Locat__3E52440B");
             });
 
             modelBuilder.Entity<Locations>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__Location__E7FEA477AFAB7D4F");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -270,10 +272,10 @@ namespace Locator.Models
 
             modelBuilder.Entity<SpecialQualities>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__SpecialQ__E7FEA47746B3792A");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -373,7 +375,7 @@ namespace Locator.Models
 
                 entity.HasOne(d => d.Location)
                     .WithOne(p => p.SpecialQualities)
-                    .HasForeignKey<SpecialQualities>(d => d.LocationId)
+                    .HasForeignKey<SpecialQualities>(d => d.LocationID)
                     .HasConstraintName("FK__SpecialQu__Locat__3B75D760");
             });
 
