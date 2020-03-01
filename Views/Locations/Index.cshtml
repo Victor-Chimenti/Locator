@@ -78,13 +78,13 @@
                             </div>
                             <div class="card-footer contactInfo">
                                 <h4 class="card-title contactInfoHeader">Contact Information</h4>
-                                <p class="name @card.Name" value="@card.Name">@card.Name</p>
-                                <p class="address @card.Address" value="@card.Address">@card.Address</p>
+                                <p class="name" value="@card.Name">@card.Name</p>
+                                <p class="address" value="@card.Address">@card.Address</p>
                                 <p class="city-state-zip">
-                                    <span class="city @card.City" value="@card.City">@card.City</span>
+                                    <span class="city" value="@card.City">@card.City</span>
                                     <span>, </span>
-                                    <span class="state @card.State" value="@card.State">@card.State </span>
-                                    <span class="postalCode @card.PostalCode" value="@card.PostalCode">@card.PostalCode</span>
+                                    <span class="state" value="@card.State">@card.State </span>
+                                    <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
                                 </p>
 
                                 @******* TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? *********@
@@ -93,8 +93,8 @@
                                 <p class="webAddress @(card.Contacts.WebAddress ?? "empty")" value="@(card.Contacts.WebAddress ?? "empty")">@(card.Contacts.WebAddress ?? "empty")</p>*@
 
 
-                                <p class="lat @card.Latitude" value="@card.Latitude">Latitude: @card.Latitude</p>
-                                <p class="lng @card.Longitude" value="@card.Longitude">Longitude: @card.Longitude</p>
+                                <p class="lat" value="@card.Latitude">Latitude: @card.Latitude</p>
+                                <p class="lng" value="@card.Longitude">Longitude: @card.Longitude</p>
                                 <blockquote class="blockquote my-1 pt-1">
                                     <h5 class="blockquote-footer locationType" value="@card.LocationType">
                                         Location Type: <cite title="@card.LocationType">@card.LocationType</cite>
