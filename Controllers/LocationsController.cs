@@ -28,11 +28,11 @@ namespace Locator.Controllers
             _context = context;
         }
 
-        [HttpPost]
+       
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            var indexViewModel = new IndexViewModel {};
+            //var indexViewModel = new IndexViewModel {};
 
             //var data = await _context.Locations.
             //    Include(c => c.Contacts).
@@ -67,9 +67,9 @@ namespace Locator.Controllers
             {
                 Console.WriteLine("Unable to convert '{0}' to a Double.", Longitude);
             }
-            //var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            //var searchArea = geometryFactory.CreatePoint(new Coordinate(lat, lng));
-            var searchArea = new Point(lat, lng) { SRID = 4326 };
+            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
+            var searchArea = geometryFactory.CreatePoint(new Coordinate(lat, lng));
+            //var searchArea = new Point(lat, lng) { SRID = 4326 };
 
 
             var locations = await _context
@@ -78,22 +78,25 @@ namespace Locator.Controllers
                 .Include(s => s.SpecialQualities)
                 .Include(h => h.DailyHours)
                 .Select(t => new { Place = t, Distance = t.Point.Distance(searchArea) })
-                .ToListAsync();
+            //    .ToListAsync();
 
-            indexViewModel.Locations = locations
+            //indexViewModel.Locations = locations
                 .OrderBy(x => x.Distance)
-                .Select(t => new LocationsViewModel
-                {
-                    Distance = Math.Round(t.Distance, 6),
-                    Name = t.Place.Name
-                }).ToList();
+                //.Select(t => new LocationsViewModel
+                //{
+                //    Distance = Math.Round(t.Distance, 6),
+                //    Latitude = t.Place.Location.X,
+                //    Longitude = t.Place.Location.Y,
+                //    Name = t.Place.Name
+                //})
+                .ToListAsync();
 
 
 
             // TODO, for now filter down to just 3 records
             //data = data.GetRange(0, 28).ToList();
 
-            return View("Index", indexViewModel);
+            return View(locations);
         }
 
 
