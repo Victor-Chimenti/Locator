@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Locator.Models.Locations>
+@*@model IEnumerable<Locator.ViewModels.LocationsViewModel>*@
+
 
 @{
     ViewData["Title"] = "Index";
@@ -37,8 +39,11 @@
         <div class="col-xs-12 col-md-3" id="sidebar-wrapper">
             <h3 id="sidebar-head">ATM Nearby</h3>
             <div class="col-12" id="cards-wrapper">
-                @foreach (var card in Model)
+                @*@foreach (var card in Model)*@
+                @foreach(var card in Model)
                 {
+                    @*<p>@card.Name</p>*@
+
                     <div class="accordion card" id="id-@card.LocationID">
                         <div class="card-header" id="heading-@card.LocationID">
                             <a href="#" class="btn-link" id="button-@card.LocationID" data-toggle="collapse" data-target="#collapse-@card.LocationID" aria-expanded="false" aria-controls="collapse-@card.LocationID">
@@ -82,10 +87,10 @@
                                     <span class="postalCode @card.PostalCode" value="@card.PostalCode">@card.PostalCode</span>
                                 </p>
 
-                                @******* TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? *********@
+                                ****** TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? ********
 
-                                @*<p class="phone @(card.Contacts.Phone ?? "empty")" value="@(card.Contacts.Phone ?? "empty")">Phone: @(card.Contacts.Phone ?? "empty")</p>*@
-                                @*<p class="webAddress @(card.Contacts.WebAddress ?? "empty")" value="@(card.Contacts.WebAddress ?? "empty")">@(card.Contacts.WebAddress ?? "empty")</p>*@
+                                <p class="phone @(card.Contacts.Phone ?? "empty")" value="@(card.Contacts.Phone ?? "empty")">Phone: @(card.Contacts.Phone ?? "empty")</p>
+                                <p class="webAddress @(card.Contacts.WebAddress ?? "empty")" value="@(card.Contacts.WebAddress ?? "empty")">@(card.Contacts.WebAddress ?? "empty")</p>
 
 
                                 <p class="lat @card.Latitude" value="@card.Latitude">Latitude: @card.Latitude</p>

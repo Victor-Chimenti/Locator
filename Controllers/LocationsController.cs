@@ -30,7 +30,7 @@ namespace Locator.Controllers
 
         [HttpPost]
         // GET: Locations
-        public async Task<IActionResult> Index(IndexViewModel indexModel)
+        public async Task<IActionResult> Index()
         {
             var indexViewModel = new IndexViewModel {};
 
@@ -80,7 +80,7 @@ namespace Locator.Controllers
                 .Select(t => new { Place = t, Distance = t.Point.Distance(searchArea) })
                 .ToListAsync();
 
-            indexViewModel.ATMLocations = locations
+            indexViewModel.Locations = locations
                 .OrderBy(x => x.Distance)
                 .Select(t => new LocationsViewModel
                 {
@@ -93,8 +93,11 @@ namespace Locator.Controllers
             // TODO, for now filter down to just 3 records
             //data = data.GetRange(0, 28).ToList();
 
-            return View(indexViewModel);
+            return View("Index", indexViewModel);
         }
+
+
+
 
         // GET: Locations/Details/5
         public async Task<IActionResult> Details(string id)
