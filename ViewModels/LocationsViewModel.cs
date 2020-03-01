@@ -80,8 +80,10 @@ namespace Locator.ViewModels
 
         // Position attributes
         [Display(Name = "Latitude")]
+        public double Lat { get; set; }
         public decimal Latitude { get; set; }
         [Display(Name = "Longitude")]
+        public double Lng { get; set; }
         public decimal Longitude { get; set; }
         [Display(Name = "Distance")]
         public double Distance { get; set; }

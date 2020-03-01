@@ -26,9 +26,11 @@ namespace Locator.Models
         public string RetailOutlet { get; set; }
         [Display(Name = "Location Type")]
         public string LocationType { get; set; }
-        [Display(Name = "Latitude")]
+
+
+
+        // position attributes will be converted to doubles then into a point in the view model
         public decimal Latitude { get; set; }
-        [Display(Name = "Longitude")]
         public decimal Longitude { get; set; }
         [Column(TypeName = "geometry")]
         public Geometry Point { get; set; }

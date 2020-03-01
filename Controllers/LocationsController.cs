@@ -11,29 +11,26 @@ using NetTopologySuite;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
+using Locator.ViewModels;
 
 namespace Locator.Controllers
 {
     public class LocationsController : Controller
     {
         private readonly MaphawksContext _context;
+        private double lat;
+        private double lng;
 
         public LocationsController(MaphawksContext context)
         {
             _context = context;
         }
 
+        [HttpPost]
         // GET: Locations
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(IndexViewModel indexModel)
         {
-            var data = await _context.Locations.
-                                Include(c => c.Contacts).
-                                Include(s => s.SpecialQualities).
-                                Include(h => h.DailyHours).
-                                //Include(p => p.PointTable).
-                                ToListAsync();
-
-
+            var indexViewModel = new IndexViewModel {};
             var Latitude = Request.Cookies["latitude"];
             var Longitude = Request.Cookies["longitude"];
 
@@ -41,11 +38,36 @@ namespace Locator.Controllers
             {
                 return View(data);
             }
-
             if (string.IsNullOrEmpty(Longitude))
             {
                 return View(data);
             }
+            try
+            {
+                lat = Convert.ToDouble(Latitude);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Unable to convert '{0}' to a Double.", Latitude);
+            }
+            try
+            {
+                lng = Convert.ToDouble(Longitude);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Unable to convert '{0}' to a Double.", Longitude);
+            }
+            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
+            var searchArea = geometryFactory.CreatePoint(new Coordinate(lat, lng));
+
+            var data = await _context.Locations.
+                    Include(c => c.Contacts).
+                    Include(s => s.SpecialQualities).
+                    Include(h => h.DailyHours).
+                    ToListAsync();
+
+            //var searchArea = new Point(Latitude, Longitude) { SRID = 4326 };
 
             // TODO, for now filter down to just 3 records
             data = data.GetRange(0, 28).ToList();
