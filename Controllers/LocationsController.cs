@@ -62,7 +62,7 @@ namespace Locator.Controllers
             }
 
             var locations = await _context.Locations
-                .FirstOrDefaultAsync(m => m.LocationId == id);
+                .FirstOrDefaultAsync(m => m.LocationID == id);
             if (locations == null)
             {
                 return NotFound();
@@ -116,7 +116,7 @@ namespace Locator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("LocationID,CoopLocationId,TakeCoopData,SoftDelete,Name,Address,City,County,State,PostalCode,Country,Latitude,Longitude,Hours,RetailOutlet,LocationType")] Locations locations)
         {
-            if (id != locations.LocationId)
+            if (id != locations.LocationID)
             {
                 return NotFound();
             }
@@ -130,7 +130,7 @@ namespace Locator.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LocationsExists(locations.LocationId))
+                    if (!LocationsExists(locations.LocationID))
                     {
                         return NotFound();
                     }
@@ -153,7 +153,7 @@ namespace Locator.Controllers
             }
 
             var locations = await _context.Locations
-                .FirstOrDefaultAsync(m => m.LocationId == id);
+                .FirstOrDefaultAsync(m => m.LocationID == id);
             if (locations == null)
             {
                 return NotFound();
@@ -175,7 +175,7 @@ namespace Locator.Controllers
 
         private bool LocationsExists(string id)
         {
-            return _context.Locations.Any(e => e.LocationId == id);
+            return _context.Locations.Any(e => e.LocationID == id);
         }
     }
 }

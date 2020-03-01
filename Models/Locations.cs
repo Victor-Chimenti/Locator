@@ -6,7 +6,7 @@ namespace Locator.Models
 {
     public partial class Locations
     {
-        public string LocationId { get; set; }
+        public string LocationID { get; set; }
         public string CoopLocationId { get; set; }
         public bool TakeCoopData { get; set; }
         public bool SoftDelete { get; set; }
