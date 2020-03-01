@@ -43,7 +43,7 @@ namespace Locator.Models
         // virtual points to member models
         public virtual PointTable PointTable { get; set; }
         public virtual SpecialQualities SpecialQualities { get; set; }
-        public virtual Contacts Contacts { get; set; }
-        public virtual DailyHours DailyHours { get; set; }
+        //public virtual Contacts Contacts { get; set; }
+        //public virtual DailyHours DailyHours { get; set; }
     }
 }

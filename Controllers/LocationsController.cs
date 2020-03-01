@@ -27,9 +27,9 @@ namespace Locator.Controllers
         public async Task<IActionResult> Index()
         {
             var data = await _context.Locations.
-                                Include(c => c.Contacts).
+                                //Include(c => c.Contacts).
                                 Include(s => s.SpecialQualities).
-                                Include(h => h.DailyHours).
+                                //Include(h => h.DailyHours).
                                 Include(p => p.PointTable).
                                 ToListAsync();
 
