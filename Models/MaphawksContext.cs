@@ -34,10 +34,10 @@ namespace Locator.Models
         {
             modelBuilder.Entity<Contacts>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__Contacts__E7FEA477D88C2B29");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -57,10 +57,10 @@ namespace Locator.Models
 
             modelBuilder.Entity<DailyHours>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__DailyHou__E7FEA4771426AFDA");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -194,10 +194,10 @@ namespace Locator.Models
 
             modelBuilder.Entity<Locations>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__Location__E7FEA477C36D55BC");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -259,9 +259,9 @@ namespace Locator.Models
 
             modelBuilder.Entity<PointTable>(entity =>
             {
-                entity.HasKey(e => e.LocationId);
+                entity.HasKey(e => e.LocationID);
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
@@ -271,16 +271,16 @@ namespace Locator.Models
 
                 entity.HasOne(d => d.Location)
                     .WithOne(p => p.PointTable)
-                    .HasForeignKey<PointTable>(d => d.LocationId)
+                    .HasForeignKey<PointTable>(d => d.LocationID)
                     .HasConstraintName("FK_PointTable_Locations");
             });
 
             modelBuilder.Entity<SpecialQualities>(entity =>
             {
-                entity.HasKey(e => e.LocationId)
+                entity.HasKey(e => e.LocationID)
                     .HasName("PK__SpecialQ__E7FEA47771114749");
 
-                entity.Property(e => e.LocationId)
+                entity.Property(e => e.LocationID)
                     .HasColumnName("LocationID")
                     .HasMaxLength(64)
                     .IsUnicode(false);
@@ -380,7 +380,7 @@ namespace Locator.Models
 
                 entity.HasOne(d => d.Location)
                     .WithOne(p => p.SpecialQualities)
-                    .HasForeignKey<SpecialQualities>(d => d.LocationId)
+                    .HasForeignKey<SpecialQualities>(d => d.LocationID)
                     .HasConstraintName("FK__SpecialQu__Locat__1D5142F3");
             });
 

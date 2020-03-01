@@ -8,7 +8,7 @@ namespace Locator.Models
     public partial class Locations
     {
         [Key]
-        public string LocationId { get; set; }
+        public string LocationID { get; set; }
         [Display(Name = "Name")]
         public string Name { get; set; }
         [Display(Name = "Address")]

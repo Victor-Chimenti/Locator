@@ -12,7 +12,7 @@ namespace Locator.Models
 
 
         public virtual Locations Location { get; set; }
-        public string LocationId { get; set; }
+        public string LocationID { get; set; } = null;
 
     }
 }

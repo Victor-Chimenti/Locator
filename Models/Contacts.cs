@@ -17,7 +17,7 @@ namespace Locator.Models
 
 
         // unused schema items
-        public string LocationId { get; set; }
+        public string LocationID { get; set; } = null;
         public string Fax { get; set; }
     }
 }
