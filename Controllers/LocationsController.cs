@@ -54,13 +54,13 @@ namespace Locator.Controllers
 
             if (string.IsNullOrEmpty(Latitude))
             {
-                return View(data);
-                //Latitude = "47.490209";
+                //return View(data);
+                Latitude = "47.490209";
             }
             if (string.IsNullOrEmpty(Longitude))
             {
-                return View(data);
-                //Longitude = "-122.272126";
+                //return View(data);
+                Longitude = "-122.272126";
             }
 
             // TODO, for now filter down to just 3 records
