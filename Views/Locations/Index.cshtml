@@ -39,9 +39,9 @@
             <div class="col-12" id="cards-wrapper">
                 @foreach (var card in Model)
                 {
-                    <div class="accordion card" id="id-@card.LocationId">
-                        <div class="card-header" id="heading-@card.LocationId">
-                            <a href="#" class="btn-link" id="button-@card.LocationId" data-toggle="collapse" data-target="#collapse-@card.LocationId" aria-expanded="false" aria-controls="collapse-@card.LocationId">
+                    <div class="accordion card" id="id-@card.LocationID">
+                        <div class="card-header" id="heading-@card.LocationID">
+                            <a href="#" class="btn-link" id="button-@card.LocationID" data-toggle="collapse" data-target="#collapse-@card.LocationID" aria-expanded="false" aria-controls="collapse-@card.LocationID">
                                 <span class="cardTitleBox">
                                     <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
                                     <span class="card-title card-name">@card.Name</span>
@@ -49,7 +49,7 @@
                             </a>
                             <p class="address" value="@card.Address">@card.Address</p>
                         </div>
-                        <div class="collapse in" id="collapse-@card.LocationId" aria-expanded="false">
+                        <div class="collapse in" id="collapse-@card.LocationID" aria-expanded="false">
                             <div class="card-body">
                                 <div class="card-subtitle">
                                     <p class="subTitle @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
