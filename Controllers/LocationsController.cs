@@ -11,7 +11,6 @@ using NetTopologySuite;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
-using Locator.ViewModels;
 
 //using GeoAPI.Geometries;
 
