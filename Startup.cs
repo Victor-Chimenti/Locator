@@ -29,10 +29,12 @@ namespace Locator
             var connection = Configuration.GetConnectionString("ATMLocatorDatabase");
             services.AddDbContext<MaphawksContext>(options =>
             {
-                options.UseSqlServer(
-                    connection, /*providerOptions => providerOptions.EnableRetryOnFailure(),*/
-                    x => x.UseNetTopologySuite()
-                );
+                options.UseSqlServer(connection, providerOptions => providerOptions.EnableRetryOnFailure());
+
+                //options.UseSqlServer(
+                //    connection, /*providerOptions => providerOptions.EnableRetryOnFailure(),*/
+                //    x => x.UseNetTopologySuite()
+                //);
             });
             services.AddControllersWithViews();
 

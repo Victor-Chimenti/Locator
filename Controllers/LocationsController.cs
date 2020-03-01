@@ -20,8 +20,8 @@ namespace Locator.Controllers
     public class LocationsController : Controller
     {
         private readonly MaphawksContext _context;
-        private double lat;
-        private double lng;
+        //private double lat;
+        //private double lng;
 
         public LocationsController(MaphawksContext context)
         {
