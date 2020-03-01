@@ -251,7 +251,8 @@ namespace Locator.Models
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Point).HasComputedColumnSql("([geography]::STGeomFromText(((('POINT('+CONVERT([varchar](20),[Longitude]))+' ')+CONVERT([varchar](20),[Latitude]))+')',(4326)))");
+                modelBuilder.Entity<Locations>().Ignore(e => e.Point);
+                //entity.Property(e => e.Point).HasComputedColumnSql("([geography]::STGeomFromText(((('POINT('+CONVERT([varchar](20),[Longitude]))+' ')+CONVERT([varchar](20),[Latitude]))+')',(4326)))");
 
                 entity.Property(e => e.PostalCode)
                     .IsRequired()

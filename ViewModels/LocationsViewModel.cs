@@ -87,7 +87,7 @@ namespace Locator.ViewModels
         public decimal Longitude { get; set; }
         [Display(Name = "Distance")]
         public double Distance { get; set; }
-        [Column(TypeName = "geometry")]
-        public Geometry Point { get; set; }
+        //[Column(TypeName = "geometry")]
+        //public Geometry Point { get; set; }
     }
 }

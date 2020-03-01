@@ -33,7 +33,8 @@ namespace Locator.Models
         // position attributes will be converted to doubles then into a point in the view model
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
-        [Column(TypeName = "geometry")]
+        //[Column(TypeName = "geometry")]
+        [NotMapped]
         public Geometry Point { get; set; }
 
 
