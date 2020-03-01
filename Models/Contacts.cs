@@ -7,7 +7,6 @@ namespace Locator.Models
     public partial class Contacts
     {
         // contact items
-        public string LocationID { get; set; }
         [Display(Name = "Phone")]
         public string Phone { get; set; }
         [Display(Name = "Web Address")]
@@ -19,7 +18,7 @@ namespace Locator.Models
 
         // unused schema items
         public string Fax { get; set; }
-
+        public string LocationID { get; set; }
         public virtual Locations Location { get; set; }
     }
 }

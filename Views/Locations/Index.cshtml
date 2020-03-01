@@ -81,8 +81,13 @@
                                     <span class="state @card.State" value="@card.State">@card.State </span>
                                     <span class="postalCode @card.PostalCode" value="@card.PostalCode">@card.PostalCode</span>
                                 </p>
+
+                                @******* TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? *********@
+
                                 @*<p class="phone @(card.Contacts.Phone ?? "empty")" value="@(card.Contacts.Phone ?? "empty")">Phone: @(card.Contacts.Phone ?? "empty")</p>*@
                                 @*<p class="webAddress @(card.Contacts.WebAddress ?? "empty")" value="@(card.Contacts.WebAddress ?? "empty")">@(card.Contacts.WebAddress ?? "empty")</p>*@
+
+
                                 <p class="lat @card.Latitude" value="@card.Latitude">Latitude: @card.Latitude</p>
                                 <p class="lng @card.Longitude" value="@card.Longitude">Longitude: @card.Longitude</p>
                                 <blockquote class="blockquote my-1 pt-1">
