@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite;
 
 namespace Locator.Models
 {
@@ -20,17 +21,19 @@ namespace Locator.Models
         public virtual DbSet<Locations> Locations { get; set; }
         public virtual DbSet<SpecialQualities> SpecialQualities { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=csp199.cslab.seattleu.edu;Database=Maphawks;User Id=sa; Password=KoeningMPass2019!;", x => x.UseNetTopologySuite());
-            }
-        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer("Server=csp199.cslab.seattleu.edu;Database=Maphawks;User Id=sa; Password=KoeningMPass2019!;", x => x.UseNetTopologySuite());
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasPostgresExtension("postgis");
+
             modelBuilder.Entity<Contacts>(entity =>
             {
                 entity.HasKey(e => e.LocationId)
