@@ -1,4 +1,4 @@
-﻿@model Locator.Models.Locations
+﻿@model DatabaseLibrary.Models.Locations
 
 @{
     ViewData["Title"] = "Delete";
@@ -104,7 +104,7 @@
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="LocationID" />
+        <input type="hidden" asp-for="LocationId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

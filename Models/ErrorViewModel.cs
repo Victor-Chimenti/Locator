@@ -1,6 +1,6 @@
 using System;
 
-namespace Locator.Models
+namespace DatabaseLibrary.Models
 {
     public class ErrorViewModel
     {
