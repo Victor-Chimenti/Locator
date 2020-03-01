@@ -27,7 +27,7 @@ namespace Locator
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("ATMLocatorDatabase");
-            services.AddDbContext<MaphawksContext>(options =>
+            services.AddDbContext<spatialTestContext>(options =>
             {
                 options.UseSqlServer(connection, providerOptions => providerOptions.EnableRetryOnFailure());
 

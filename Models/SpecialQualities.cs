@@ -5,7 +5,7 @@ namespace Locator.Models
 {
     public partial class SpecialQualities
     {
-        public string LocationID { get; set; }
+        public string LocationId { get; set; }
         public string RestrictedAccess { get; set; }
         public string AcceptDeposit { get; set; }
         public string AcceptCash { get; set; }
