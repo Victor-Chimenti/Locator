@@ -13,6 +13,8 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
 using Locator.ViewModels;
 
+//using GeoAPI.Geometries;
+
 namespace Locator.Controllers
 {
     public class LocationsController : Controller
@@ -31,16 +33,23 @@ namespace Locator.Controllers
         public async Task<IActionResult> Index(IndexViewModel indexModel)
         {
             var indexViewModel = new IndexViewModel {};
+
+            //var data = await _context.Locations.
+            //    Include(c => c.Contacts).
+            //    Include(s => s.SpecialQualities).
+            //    Include(h => h.DailyHours).
+            //    ToListAsync();
+
             var Latitude = Request.Cookies["latitude"];
             var Longitude = Request.Cookies["longitude"];
 
             if (string.IsNullOrEmpty(Latitude))
             {
-                return View(data);
+                Latitude = "47.490209";
             }
             if (string.IsNullOrEmpty(Longitude))
             {
-                return View(data);
+                Longitude = "-122.272126";
             }
             try
             {
@@ -58,21 +67,33 @@ namespace Locator.Controllers
             {
                 Console.WriteLine("Unable to convert '{0}' to a Double.", Longitude);
             }
-            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            var searchArea = geometryFactory.CreatePoint(new Coordinate(lat, lng));
+            //var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
+            //var searchArea = geometryFactory.CreatePoint(new Coordinate(lat, lng));
+            var searchArea = new Point(lat, lng) { SRID = 4326 };
 
-            var data = await _context.Locations.
-                    Include(c => c.Contacts).
-                    Include(s => s.SpecialQualities).
-                    Include(h => h.DailyHours).
-                    ToListAsync();
 
-            //var searchArea = new Point(Latitude, Longitude) { SRID = 4326 };
+            var locations = await _context
+                .Locations
+                .Include(c => c.Contacts)
+                .Include(s => s.SpecialQualities)
+                .Include(h => h.DailyHours)
+                .Select(t => new { Place = t, Distance = t.Point.Distance(searchArea) })
+                .ToListAsync();
+
+            indexViewModel.ATMLocations = locations
+                .OrderBy(x => x.Distance)
+                .Select(t => new LocationsViewModel
+                {
+                    Distance = Math.Round(t.Distance, 6),
+                    Name = t.Place.Name
+                }).ToList();
+
+
 
             // TODO, for now filter down to just 3 records
-            data = data.GetRange(0, 28).ToList();
+            //data = data.GetRange(0, 28).ToList();
 
-            return View(data);
+            return View(indexViewModel);
         }
 
         // GET: Locations/Details/5
