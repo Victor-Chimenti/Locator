@@ -5,7 +5,6 @@ namespace Locator.Models
 {
     public partial class DailyHours
     {
-        public string LocationID { get; set; }
         public string HoursMonOpen { get; set; }
         public string HoursMonClose { get; set; }
         public string HoursTueOpen { get; set; }
@@ -36,5 +35,7 @@ namespace Locator.Models
         public string HoursDtsunClose { get; set; }
 
         public virtual Locations Location { get; set; }
+        public string LocationID { get; set; }
+
     }
 }
