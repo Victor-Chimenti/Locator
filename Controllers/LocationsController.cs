@@ -19,23 +19,23 @@ namespace Locator.Controllers
 {
     public class LocationsController : Controller
     {
-        //private readonly MaphawksContext _context;
-        ////private double lat;
-        ////private double lng;
-
-        //public LocationsController(MaphawksContext context)
-        //{
-        //    _context = context;
-        //}
-
-        private readonly spatialTestContext _context;
+        private readonly MaphawksContext _context;
         //private double lat;
         //private double lng;
 
-        public LocationsController(spatialTestContext context)
+        public LocationsController(MaphawksContext context)
         {
             _context = context;
         }
+
+        //private readonly spatialTestContext _context;
+        ////private double lat;
+        ////private double lng;
+
+        //public LocationsController(spatialTestContext context)
+        //{
+        //    _context = context;
+        //}
 
 
         // GET: Locations
