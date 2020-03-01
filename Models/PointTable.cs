@@ -7,8 +7,8 @@ namespace Locator.Models
 {
     //public partial class PointTable
     //{
-    //    [Column(TypeName = "geometry")]
-    //    public Geometry Point { get; set; }
+    //[Column(TypeName = "geometry")]
+    //public Geometry Point { get; set; }
 
 
     //    public virtual Locations Location { get; set; }
