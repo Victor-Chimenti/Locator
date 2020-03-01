@@ -15,6 +15,7 @@ namespace Locator.ViewModels
 
 
 
+//public SearchAreaInputModel SearchAreaInput { get; set; }
 
 
 
