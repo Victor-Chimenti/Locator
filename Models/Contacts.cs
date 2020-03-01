@@ -19,5 +19,7 @@ namespace Locator.Models
 
         // unused schema items
         public string Fax { get; set; }
+
+        public virtual Locations Location { get; set; }
     }
 }

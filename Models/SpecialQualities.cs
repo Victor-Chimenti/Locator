@@ -69,6 +69,6 @@ namespace Locator.Models
 
         // virtual pointer to Locations Model
         public string LocationID { get; set; }
-        public virtual Locations Location { get; set; } = null;
+        public virtual Locations Location { get; set; }
     }
 }

@@ -53,6 +53,11 @@ namespace Locator.Models
                 entity.Property(e => e.WebAddress)
                     .HasMaxLength(64)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Location)
+                    .WithOne(p => p.Contacts)
+                    .HasForeignKey<Contacts>(d => d.LocationID)
+                    .HasConstraintName("FK__Contacts__Locati__3BD5CA13");
             });
 
             modelBuilder.Entity<DailyHours>(entity =>
@@ -190,6 +195,11 @@ namespace Locator.Models
                 entity.Property(e => e.HoursWedOpen)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Location)
+                    .WithOne(p => p.DailyHours)
+                    .HasForeignKey<DailyHours>(d => d.LocationID)
+                    .HasConstraintName("FK__DailyHour__Locat__418EA369");
             });
 
             modelBuilder.Entity<Locations>(entity =>
