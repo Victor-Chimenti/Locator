@@ -5,7 +5,7 @@ namespace Locator.Models
 {
     public partial class Contacts
     {
-        public string LocationId { get; set; }
+        public string LocationID { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string WebAddress { get; set; }
