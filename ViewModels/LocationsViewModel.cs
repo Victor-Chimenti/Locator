@@ -79,5 +79,7 @@ namespace Locator.ViewModels
         public string MemberConsultant { get; set; }
         [Display(Name = "Instant Debit Card Replacement")]
         public string InstantDebitCardReplacement { get; set; }
+
+        // plan on using this vm
     }
 }
