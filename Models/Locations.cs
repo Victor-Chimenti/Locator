@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NetTopologySuite.Geometries;
-
+using Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite;
 namespace Locator.Models
 {
     public partial class Locations

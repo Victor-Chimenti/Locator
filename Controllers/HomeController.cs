@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locator.Models;
 using NetTopologySuite;
+using Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite;
 
 namespace Locator.Controllers
 {
