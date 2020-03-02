@@ -185,10 +185,10 @@ div.card-header a.btn-link div.cardTitleBox {
     font-size: 1.6rem;
 }
 
-    div.card-header a.btn-link div.cardTitleBox span.card-title {
-        color: #006979;
-        font: Museo Sans 700;
-    }
+div.card-header a.btn-link div.cardTitleBox span.card-title {
+    color: #006979;
+    font: Museo Sans 700;
+}
 
 div#sidebar-wrapper div.card p {
     color: #4D5F69;
@@ -238,8 +238,20 @@ div.card div.card-header a.btn-link[aria-expanded="false"] span.cardTitleBox i.f
     display: none;
 }
 
+div#card-wrapper div.card div.card-header a.btn-link:checked span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:visited span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
 #sidebar-wrapper .card div.card-footer {
-background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 #sidebar-wrapper .card div.card-footer a.webAddressLink {
@@ -251,8 +263,8 @@ background-color: #FFFFFF;
 }
 
 #sidebar-wrapper .card .contactInfo span.cardTitleBox {
-color: #192838;
-font-size: 1.6rem;
+    color: #192838;
+    font-size: 1.6rem;
 }
 
 
