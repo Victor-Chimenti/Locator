@@ -53,7 +53,7 @@ namespace Locator.Controllers
             }
 
             // TODO, for now filter down to just 3 records
-            data = data.GetRange(0, 89).ToList();
+            data = data.GetRange(0, 10).ToList();
 
             return View(data);
         }
