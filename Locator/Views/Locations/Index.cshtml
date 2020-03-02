@@ -24,9 +24,49 @@
     <div class="row" id="main-row">
         <div class="col-xs-12 col-md-3" id="filter-wrapper">
             <h3 id="filter-head">Refine by</h3>
-            <div class="text-left" id="filterSearch-wrapper">
-                <div class="accordion panel"></div>
-                <div class="accordion panel"></div>
+            <div id="filterSearch-wrapper">
+                <div class="text-left accordion panel">
+                    <div class="panel-header">
+                        <a href="#" class="btn-link" id="atm-locations" data-toggle="collapse" data-target="#atm-qualities" aria-expanded="false" aria-controls="atm-qualities">
+                            <span class="panelTitleBox">
+                                <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
+                                <span class="panel-name">Show ATMs With...</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="panel-body collapse in" id="atm-qualities" aria-expanded="false">
+                        <ul>
+                            <li>24 Hour</li>
+                            <li>Drive Up</li>
+                            <li>Surcharge Free</li>
+                            <li>Accepts Deposits</li>
+                        </ul>
+                    </div>
+                    <div class="text-left accordion panel">
+                        <!-- this accordion functions only below 767px for mobile -->
+                        <div class="panel-header">
+                            <a href="#" class="btn-link" id="nfc-locations" data-toggle="collapse" data-target="#nfs-qualities" aria-expanded="false" aria-controls="nfs-qualities">
+                                <span class="panelTitleBox">
+                                    <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
+                                    <span class="panel-name">Show Branch Locations With...</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="panel-body collapse in" id="nfs-qualities" aria-expanded="false">
+                            <div>
+                                <ul>
+                                    <li>Drive Up</li>
+                                    <li>Coin Star</li>
+                                    <li>Teller Services</li>
+                                    <li>24 Hour Express Box</li>
+                                    <li>Partner Credit Unions</li>
+                                    <li>Meet With a Member Consultant</li>
+                                    <li>Instant Debit Card Replacement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-xs-12 col-md-6" id="center-index">
