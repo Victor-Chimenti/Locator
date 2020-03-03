@@ -25,6 +25,13 @@
         <div class="col-xs-12 col-md-3" id="filter-wrapper">
             <h3 id="filter-head">Refine by</h3>
             <div id="filterSearch-wrapper">
+                <form class="searchField">
+                    <fieldset class="filterSearch">
+                        <div>
+                            <input type="text" class="form-control" name="searchCards" value="" id="keyword_search" placeholder="Search by Keyword" autofocus aria-label="Search Keyword" />
+                        </div>
+                    </fieldset>
+                </form>
                 <div class="text-left accordion panel">
                     <div class="panel-header">
                         <a href="#" class="btn-link" id="atm-locations" data-toggle="collapse" data-target="#atm-qualities" aria-expanded="false" aria-controls="atm-qualities">
@@ -35,8 +42,8 @@
                         </a>
                     </div>
                     <div class="panel-body collapse in" id="atm-qualities" aria-expanded="false">
-                        <form>
-                            <fieldset>
+                        <form class="searchField">
+                            <fieldset class="filterSearch">
                                 <div>
                                     <input type="checkbox" id="Hours" name="24hrs / Business Hours Access" value="24">
                                     <label for="Hours">24 Hour</label>
@@ -68,7 +75,7 @@
                         </div>
                         <div class="panel-body collapse in" id="nfs-qualities" aria-expanded="false">
                             <form>
-                                <fieldset>
+                                <fieldset class="filterSearch">
                                     <div>
                                         <input type="checkbox" id="DriveThruOnly" name="Drive Thru Only" value="Y">
                                         <label for="DriveThruOnly">Drive Up</label>
@@ -98,7 +105,7 @@
                                         <input type="checkbox" id="InstantDebitCardReplacement" name="Instant Debit Card Replacement" value="Y">
                                         <label for="InstantDebitCardReplacement">Instant Debit Card Replacement</label>
                                     </div>
-                                </fieldset>
+                                </fieldset class="filterSearch">
                             </form>
                         </div>
                     </div>
