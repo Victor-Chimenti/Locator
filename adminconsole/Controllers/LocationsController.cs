@@ -80,13 +80,8 @@ namespace adminconsole.Controllers
             }
 
             return View(result);
+
         }
-
-
-
-
-
-
 
 
         /// <summary>
@@ -102,16 +97,6 @@ namespace adminconsole.Controllers
         {
             return View();
         }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -257,21 +242,9 @@ namespace adminconsole.Controllers
             {
                 return NotFound();
             }
+
             return View(locations);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
