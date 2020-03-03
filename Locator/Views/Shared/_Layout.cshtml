@@ -19,18 +19,20 @@
     @* This is a dev only key with very limited functionality:  *@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR_KkOxYdpXhbRLPAvidcUJdfeXHHHAew&libraries=places" async defer></script>
 
+
+
     @*<script>
-        window.onload = function () {
-            getLocation();
-        }
-    </script>*@
+            window.onload = function () {
+                getLocation();
+            }
+        </script>*@
 
     <!--call google map function without the button-->
     @*<script>
-        window.onload = function () {
-            DisplayGoogleMap();
-        }
-    </script>*@
+            window.onload = function () {
+                DisplayGoogleMap();
+            }
+        </script>*@
 </head>
 <body>
     <header>
@@ -68,6 +70,17 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <script src="~/js/location.js"></script>
+    <script src="~/js/filterCards.js"></script>
+    <script src="~/js/map.js"></script>
+
+    <script src="https://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        getLocation()
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
