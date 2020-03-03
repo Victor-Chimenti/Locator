@@ -33,30 +33,30 @@ $(function assignVisibleItems() {
 
 
 //   ***   Keyword Search   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
-            $(function () {
-                // scan the keyword each character the user inputs
-                $('#keyword_search').on('keyup', function () {
-                    // Assign Search Key
-                    var key = $(this).val().toLowerCase();
-                    // filter the cards for the input key
-                    $(function () {
-                        $('.card').filter(function () {
-                            // when the search key is not present in the item then hide the item
-                            $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
-                        });
-                    });
-                });
-                assignVisibleItems();
-            });
-            // Delay the .on keyup function
-        }, 1);
-    });
-});
+//$(function () {
+//    // After the DOM is ready, Wait until the window loads
+//    $(document).ready(function () {
+//        // Once window loads set a timeout delay
+//        setTimeout(function () {
+//            $(function () {
+//                // scan the keyword each character the user inputs
+//                $('#keyword_search').on('keyup', function () {
+//                    // Assign Search Key
+//                    var key = $(this).val().toLowerCase();
+//                    // filter the cards for the input key
+//                    $(function () {
+//                        $('.card').filter(function () {
+//                            // when the search key is not present in the item then hide the item
+//                            $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
+//                        });
+//                    });
+//                });
+//                assignVisibleItems();
+//            });
+//            // Delay the .on keyup function
+//        }, 1);
+//    });
+//});
 
 
 
