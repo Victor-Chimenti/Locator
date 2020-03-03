@@ -108,273 +108,268 @@ namespace adminconsole.Backend
             var table_type = GetTable(table);
 
 
-
             switch (table_type)
             {
 
-                #region Locations
                 case Table.Locations:
+                    return AlterLocations(action, table);
 
 
-                    var locations_record = (Locations)table;
-
-                    if (action is AlterRecordInfoEnum.Create)
-                    {
-
-                        try
-                        {
-                            context.Add(locations_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Update)
-                    {
-
-                        try
-                        {
-                            context.Update(locations_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Delete)
-                    {
-                        try
-                        {
-                            locations_record.SoftDelete = true;
-                            context.Update(locations_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-
-
-                    if (action is AlterRecordInfoEnum.Recover)
-                    {
-                        try
-                        {
-                            locations_record.SoftDelete = false;
-                            context.Update(locations_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-                    return false;
-
-                #endregion
-
-
-
-
-                #region Contact
                 case Table.Contacts:
+                    return AlterContacts(action, table);
 
 
-                    var contact_record = (Contacts)table;
-
-                    if (action is AlterRecordInfoEnum.Create)
-                    {
-
-                        try
-                        {
-                            context.Add(contact_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Update)
-                    {
-
-                        try
-                        {
-                            context.Update(contact_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Delete)
-                    {
-                        try
-                        {
-                            context.Remove(context.Contacts.Single(c => c.LocationId.Equals(contact_record.LocationId)));
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-                    return false;
-
-                #endregion
-
-
-
-                #region Special Qualities
                 case Table.Special_Qualities:
+                    return AlterSpecialQualities(action, table);
 
 
-                    var special_qualities_record = (SpecialQualities)table;
-
-                    if (action is AlterRecordInfoEnum.Create)
-                    {
-
-                        try
-                        {
-                            context.Add(special_qualities_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Update)
-                    {
-
-                        try
-                        {
-                            context.Update(special_qualities_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Delete)
-                    {
-                        try
-                        {
-                            context.Remove(context.SpecialQualities.Single(c => c.LocationId.Equals(special_qualities_record.LocationId)));
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-                    return false;
-
-                #endregion
-
-
-
-                #region Daily Hours
                 case Table.Daily_Hours:
-
-
-                    var daily_hours_record = (DailyHours)table;
-
-                    if (action is AlterRecordInfoEnum.Create)
-                    {
-
-                        try
-                        {
-                            context.Add(daily_hours_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Update)
-                    {
-
-                        try
-                        {
-                            context.Update(daily_hours_record);
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-                    if (action is AlterRecordInfoEnum.Delete)
-                    {
-                        try
-                        {
-                            context.Remove(context.DailyHours.Single(c => c.LocationId.Equals(daily_hours_record.LocationId)));
-                            context.SaveChanges();
-                            return true;
-                        }
-                        catch (DbUpdateException)
-                        {
-                            return false;
-                        }
-                    }
-
-
-                    return false;
-
-                #endregion
+                    return AlterDailyHours(action, table);
 
 
                 default:
                     return false;
+
             }
         }
 
+        private bool AlterDailyHours(AlterRecordInfoEnum action, IMaphawksDatabaseTable table)
+        {
+            var daily_hours_record = (DailyHours)table;
+
+            if (action is AlterRecordInfoEnum.Create)
+            {
+
+                try
+                {
+                    context.Add(daily_hours_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+
+            }
+
+
+            if (action is AlterRecordInfoEnum.Update)
+            {
+
+                try
+                {
+                    context.Update(daily_hours_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+            if (action is AlterRecordInfoEnum.Delete)
+            {
+                try
+                {
+                    context.Remove(context.DailyHours.Single(c => c.LocationId.Equals(daily_hours_record.LocationId)));
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+            return false;
+        }
+
+        private bool AlterSpecialQualities(AlterRecordInfoEnum action, IMaphawksDatabaseTable table)
+        {
+            var special_qualities_record = (SpecialQualities)table;
+
+            if (action is AlterRecordInfoEnum.Create)
+            {
+
+                try
+                {
+                    context.Add(special_qualities_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+
+            }
+
+
+            if (action is AlterRecordInfoEnum.Update)
+            {
+
+                try
+                {
+                    context.Update(special_qualities_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+            if (action is AlterRecordInfoEnum.Delete)
+            {
+                try
+                {
+                    context.Remove(context.SpecialQualities.Single(c => c.LocationId.Equals(special_qualities_record.LocationId)));
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+            return false;
+        }
+
+        private bool AlterContacts(AlterRecordInfoEnum action, IMaphawksDatabaseTable table)
+        {
+            var contact_record = (Contacts)table;
+
+            if (action is AlterRecordInfoEnum.Create)
+            {
+
+                try
+                {
+                    context.Add(contact_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+
+            }
+
+
+            if (action is AlterRecordInfoEnum.Update)
+            {
+
+                try
+                {
+                    context.Update(contact_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+            if (action is AlterRecordInfoEnum.Delete)
+            {
+                try
+                {
+                    context.Remove(context.Contacts.Single(c => c.LocationId.Equals(contact_record.LocationId)));
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        private bool AlterLocations(AlterRecordInfoEnum action, IMaphawksDatabaseTable table)
+        {
+            var locations_record = (Locations)table;
+
+            if (action is AlterRecordInfoEnum.Create)
+            {
+
+                try
+                {
+                    context.Add(locations_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+
+            }
+
+
+            if (action is AlterRecordInfoEnum.Update)
+            {
+
+                try
+                {
+                    context.Update(locations_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+            if (action is AlterRecordInfoEnum.Delete)
+            {
+                try
+                {
+                    locations_record.SoftDelete = true;
+                    context.Update(locations_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+
+
+            if (action is AlterRecordInfoEnum.Recover)
+            {
+                try
+                {
+                    locations_record.SoftDelete = false;
+                    context.Update(locations_record);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+            }
+
+
+            return false;
+        }
 
         public  Table GetTable(IMaphawksDatabaseTable record)
         {
