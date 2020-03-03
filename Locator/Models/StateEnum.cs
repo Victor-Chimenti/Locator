@@ -8,7 +8,7 @@ using DatabaseLibrary.Models;
 
 namespace Locator.Models
 {
-    public class StateEnum
+    public enum StateEnum
     {
 
         [Display(Name = "Alabama")]

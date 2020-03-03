@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locator.Models
 {
-    public class LocationTypeEnum
+    public enum LocationTypeEnum
     {
         [Display(Name = "ATM")]
         A,
