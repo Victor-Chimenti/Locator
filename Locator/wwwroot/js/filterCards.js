@@ -33,36 +33,36 @@ $(function assignVisibleItems() {
 
 
 //   ***   Keyword Search   ***   //
-//$(function () {
-//    // After the DOM is ready, Wait until the window loads
-//    $(document).ready(function () {
-//        // Once window loads set a timeout delay
-//        setTimeout(function () {
-//            $(function () {
-//                console.log("ready timeout");
-//                // scan the keyword each character the user inputs
-//                $('#keyword_search').on('keyup', function () {
-//                    console.log("on keyup");
-//                    // Assign Search Key
-//                    var key = $(this).val().toLowerCase();
-//                    console.log("key: " +key);
+$(function () {
+    // After the DOM is ready, Wait until the window loads
+    $(document).ready(function () {
+        // Once window loads set a timeout delay
+        setTimeout(function () {
+            $(function () {
+                console.log("ready timeout");
+                // scan the keyword each character the user inputs
+                $('#keyword_search').on('keyup', function () {
+                    console.log("on keyup");
+                    // Assign Search Key
+                    var key = $(this).val().toLowerCase();
+                    console.log("key: " +key);
 
-//                    // filter the cards for the input key
-//                    $(function () {
-//                        $('.card').filter(function () {
-//                            console.log("filter");
+                    // filter the cards for the input key
+                    $(function () {
+                        $('.card').filter(function () {
+                            console.log("filter");
 
-//                            // when the search key is not present in the item then hide the item
-//                            $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
-//                        });
-//                    });
-//                });
-//                assignVisibleItems();
-//            });
-//            // Delay the .on keyup function
-//        }, 1);
-//    });
-//});
+                            // when the search key is not present in the item then hide the item
+                            $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
+                        });
+                    });
+                });
+                assignVisibleItems();
+            });
+            // Delay the .on keyup function
+        }, 1);
+    });
+});
 
 
 
