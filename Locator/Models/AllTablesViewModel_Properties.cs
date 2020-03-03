@@ -35,10 +35,6 @@ namespace Locator.Models
         [DisplayName("Zip Code")]
         public string PostalCode { get; set; }
 
-        [DisplayName("County")]
-        #nullable enable
-        public string? County { get; set; }
-
         [Required]
         [DisplayName("State")]
         [EnumDataType(typeof(StateEnum))]
@@ -85,10 +81,6 @@ namespace Locator.Models
         [DisplayName("Accepts Deposits")]
         #nullable enable
         public BooleanEnum? AcceptDeposit { get; set; }
-
-        [DisplayName("Access")]
-        #nullable enable
-        public BooleanEnum? Access { get; set; }
 
         [DisplayName("Installation Type")]
         #nullable enable
