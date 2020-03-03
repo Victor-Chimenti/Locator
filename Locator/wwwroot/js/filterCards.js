@@ -39,19 +39,13 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                console.log("ready timeout");
                 // scan the keyword each character the user inputs
                 $('#keyword_search').on('keyup', function () {
-                    console.log("on keyup");
                     // Assign Search Key
                     var key = $(this).val().toLowerCase();
-                    console.log("key: " +key);
-
                     // filter the cards for the input key
                     $(function () {
                         $('.card').filter(function () {
-                            console.log("filter");
-
                             // when the search key is not present in the item then hide the item
                             $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
                         });
@@ -156,11 +150,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box Surchargechanges - Execute change function
                 $('#Surcharge').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the Surcharge items
                     if ($('#Surcharge:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.Surcharge').filter(function (i, e) {
@@ -197,11 +191,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box Deposits changes - Execute change function
                 $('#AcceptDeposit').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the ccepts Deposits items
                     if ($('#AcceptDeposit:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.AcceptDeposit').filter(function (i, e) {
@@ -238,11 +232,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box Coin Star changes - Execute change function
                 $('#CoinStar').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the Coin Star items
                     if ($('#CoinStar:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.CoinStar').filter(function (i, e) {
@@ -279,11 +273,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box Teller Services changes - Execute change function
                 $('#TellerServices').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the Teller Services items
                     if ($('#TellerServices:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.TellerServices').filter(function (i, e) {
@@ -320,11 +314,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box 24 Hour Express changes - Execute change function
                 $('#_24hourExpressBox').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the 24 Hour Express card items
                     if ($('#_24hourExpressBox:checkbox').is(':checked', true)) {
                         if (key) {
                             $('._24hourExpressBox').filter(function (i, e) {
@@ -361,11 +355,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box Partner changes - Execute change function
                 $('#PartnerCreditUnion').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the Partner card items
                     if ($('#PartnerCreditUnion:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.PartnerCreditUnion').filter(function (i, e) {
@@ -402,11 +396,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box Consultant changes - Execute change function
                 $('#MemberConsultant').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the Consultant items
                     if ($('#MemberConsultant:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.MemberConsultant').filter(function (i, e) {
@@ -443,11 +437,11 @@ $(function () {
         // Once window loads set a timeout delay
         setTimeout(function () {
             $(function () {
-                // When the select box Drive Thru changes - Execute change function
+                // When the select box Debit Card Replacement changes - Execute change function
                 $('#InstantDebitCardReplacement').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    // If Search Key is Not Null then Compare to the Debit Card Replacement items
                     if ($('#InstantDebitCardReplacement:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.InstantDebitCardReplacement').filter(function (i, e) {
