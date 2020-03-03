@@ -10,7 +10,7 @@ namespace adminconsole.Models
         [Display(Name = "Yes")]
         Y = 1,
         [Display(Name = "None")]
-        NULL
+        NULL=2
     }
 
 
