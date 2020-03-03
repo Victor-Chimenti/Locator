@@ -10,7 +10,3 @@
 // ** Globals ** //
 var visibleItems = [];
 var assignVisibleItems = function () { };
-
-
-
-
