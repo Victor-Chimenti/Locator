@@ -274,6 +274,18 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
 
 
 
+
+/**
+*   card classes for hide/display
+*/
+
+.hideByText, .hideByHours, .hideByDriveThruOnly, .hideBySurcharge, .hideByAcceptDeposit, .hideByCoinStar, .hideByTellerServices, .hideBy_24hourExpressBox, .hideByPartnerCreditUnion, .hideByMemberConsultant, .hideByInstantDebitCardReplacement {
+    display: none;
+}
+
+
+
+
 /**
 *   bootstrap collapse setting for large screens
 */
