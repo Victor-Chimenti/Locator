@@ -12,8 +12,9 @@ using NetTopologySuite;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
+using Locator.Backend;
+using Locator.Models;
 
-//using GeoAPI.Geometries;
 
 namespace Locator.Controllers
 {
@@ -21,44 +22,57 @@ namespace Locator.Controllers
     {
         private readonly MaphawksContext _context;
 
-        public LocationsController(MaphawksContext context)
+        private LocationsBackend backend;
+
+
+        public LocationsController(MaphawksContext context, LocationsBackend backend = null)
         {
             _context = context;
+
+            // Fork to allow for mocking out backend
+            if (backend != null)
+            {
+                this.backend = backend;
+            }
+            else
+            {
+                this.backend = new LocationsBackend(_context);
+            }
         }
 
 
-        // GET: Locations
         public async Task<IActionResult> Index()
         {
-
-            var data = await _context.Locations.
-                    Include(c => c.Contact).
-                    Include(s => s.SpecialQualities).
-                    Include(h => h.DailyHours).
-                    ToListAsync();
-
+            var results = await backend.IndexAsync().ConfigureAwait(false);
 
             var Latitude = Request.Cookies["latitude"];
             var Longitude = Request.Cookies["longitude"];
 
+
             if (string.IsNullOrEmpty(Latitude))
             {
-                return View(data);
+                return View(results);
                 //Latitude = "47.490209";
             }
             if (string.IsNullOrEmpty(Longitude))
             {
-                return View(data);
+                return View(results);
                 //Longitude = "-122.272126";
             }
 
-            // TODO, for now filter down to just 3 records
-            data = data.GetRange(0, 28).ToList();
-
-            return View(data);
+            // TODO, for now filter down to just num records
+            results = results.GetRange(0, 28).ToList();
+            return View(results);
         }
 
 
+
+
+
+
+
+
+        //*** Do I need any of this below here ?????  ****//
 
 
         // GET: Locations/Details/5
@@ -185,5 +199,44 @@ namespace Locator.Controllers
         {
             return _context.Locations.Any(e => e.LocationId == id);
         }
+
+
+
+        //public LocationsController(MaphawksContext context)
+        //{
+        //    _context = context;
+        //}
+
+
+        // GET: Locations
+        //public async Task<IActionResult> Index()
+        //{
+
+        //    var data = await _context.Locations.
+        //            Include(c => c.Contact).
+        //            Include(s => s.SpecialQualities).
+        //            Include(h => h.DailyHours).
+        //            ToListAsync();
+
+
+        //    var Latitude = Request.Cookies["latitude"];
+        //    var Longitude = Request.Cookies["longitude"];
+
+        //    if (string.IsNullOrEmpty(Latitude))
+        //    {
+        //        return View(data);
+        //        //Latitude = "47.490209";
+        //    }
+        //    if (string.IsNullOrEmpty(Longitude))
+        //    {
+        //        return View(data);
+        //        //Longitude = "-122.272126";
+        //    }
+
+        //    // TODO, for now filter down to just 3 records
+        //    data = data.GetRange(0, 28).ToList();
+
+        //    return View(data);
+        //}
     }
 }

@@ -21,11 +21,12 @@ namespace Locator.Backend
         }
 
 
-        public virtual async Task<List<Locations>> IndexAsync(bool deleted = false)
+        public virtual async Task<List<Locations>> IndexAsync()
         {
             var locations_list = new List<Locations>();
 
-            locations_list = await db.ReadMultipleRecordsAsync(deleted).ConfigureAwait(false); // Select * join all tables
+
+            locations_list = await db.ReadMultipleRecordsAsync().ConfigureAwait(false); // Select * join all tables
 
 
             foreach (var location in locations_list)
