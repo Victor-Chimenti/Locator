@@ -75,7 +75,7 @@ namespace Locator
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Locations}/{action=Index}/{id?}");
+                    pattern: "{controller=LocationsController}/{action=Index}/{id?}");
             });
         }
     }
