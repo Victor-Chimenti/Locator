@@ -169,11 +169,7 @@ $(function () {
                     if ($('#DriveThruOnly:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.DriveThruOnly').filter(function (i, e) {
-                                console.log("surcharge key:" + key);
-
                                 var value = $(this).attr('data-value');
-                                console.log("surcharge value:" + value);
-
                                 // Check to see if the Key and Value are a Match
                                 if (key === value) {
                                     $(this).parents('.card').removeClass('hideByDriveThruOnly');
@@ -373,6 +369,68 @@ $(function () {
                         }
                     } else {
                         $('.card').removeClass('hideByCoinStar');
+                    }
+                    $(function assignVisibleItems() {
+                        // assign array of currently visible content items
+                        visibleItems = $('.card').not('.hideByText,' +
+                            ' .hideByHours,' +
+                            ' .hideByDriveThruOnly,' +
+                            ' .hideBySurcharge,' +
+                            ' .hideByAcceptDeposit,' +
+                            ' .hideByCoinStar,' +
+                            ' .hideByTellerServices,' +
+                            ' .hideBy_24hourExpressBox,' +
+                            ' .hideByPartnerCreditUnion,' +
+                            ' .hideByMemberConsultant,' +
+                            ' .hideByInstantDebitCardReplacement');
+                        // check to see if array is empty
+                        if (visibleItems.length == 0) {
+                            // when array is empty show the results message
+                            $('.noResultsToShow').removeClass('hideResultsMessage');
+                        } else {
+                            // when array has content items suppress the results message
+                            $('.noResultsToShow').addClass('hideResultsMessage');
+                        }
+                    });
+                });
+            });
+            // Delay the change function
+        }, 1);
+    });
+});
+
+
+
+
+//   ***   Teller Services   ***   //
+$(function () {
+    // After the DOM is ready, Wait until the window loads
+    $(document).ready(function () {
+        // Once window loads set a timeout delay
+        setTimeout(function () {
+            $(function () {
+                // When the select box Drive Thru changes - Execute change function
+                $('#TellerServices').change(function () {
+                    // Assign Search Key
+                    var key = $(this).val();
+                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    if ($('#TellerServices:checkbox').is(':checked', true)) {
+                        if (key) {
+                            $('.TellerServices').filter(function (i, e) {
+                                var value = $(this).attr('data-value');
+                                // Check to see if the Key and Value are a Match
+                                if (key === value) {
+                                    $(this).parents('.card').removeClass('hideByTellerServices');
+                                } else {
+                                    $(this).parents('.card').addClass('hideByTellerServices');
+                                }
+                            });
+                            // Else the Search Key is Null so Reset all Content Items to Visible
+                        } else {
+                            $('.card').removeClass('hideByTellerServices');
+                        }
+                    } else {
+                        $('.card').removeClass('hideByTellerServices');
                     }
                     $(function assignVisibleItems() {
                         // assign array of currently visible content items
