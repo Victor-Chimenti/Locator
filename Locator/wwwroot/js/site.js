@@ -30,7 +30,7 @@ $(function () {
                     });
                     $(function resultsMessage() {
                         // assign array of currently visible content items
-                        var visibleItems = $('.card').not( '.hideByText,' +
+                        var visibleItems = $('.card').not('.hideByText,' +
                             ' .hideByHours,' +
                             ' .hideByDriveThruOnly,' +
                             ' .hideBySurcharge,' +
@@ -40,8 +40,7 @@ $(function () {
                             ' .hideBy_24hourExpressBox,' +
                             ' .hideByPartnerCreditUnion,' +
                             ' .hideByMemberConsultant,' +
-                            ' .hideByInstantDebitCardReplacement,'
-                        );
+                            ' .hideByInstantDebitCardReplacement');
                         // check to see if array is empty
                         if (visibleItems.length == 0) {
                             // when array is empty show the results message
