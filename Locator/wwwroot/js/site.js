@@ -18,19 +18,30 @@ $(function () {
         setTimeout(function () {
             $(function () {
                 // scan the keyword each character the user inputs
-                $('#id_search').on('keyup', function () {
+                $('#keyword_search').on('keyup', function () {
                     // Assign Search Key
                     var key = $(this).val().toLowerCase();
-                    // filter the education abroad items for the input key
+                    // filter the cards for the input key
                     $(function () {
-                        $('.educationAbroadItemWrapper').filter(function () {
+                        $('#cards-wrapper').filter(function () {
                             // when the search key is not present in the item then hide the item
                             $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
                         });
                     });
                     $(function resultsMessage() {
                         // assign array of currently visible content items
-                        var visibleItems = $('.educationAbroadItemWrapper').not('.hideByText, .hideByDestination, .hideByTerm, .hideByProgramFee, .hideByFeature, .hideByHousing');
+                        var visibleItems = $('#cards-wrapper').not( '.hideByText,' +
+                            '.hideByHours,' +
+                            '.hideByDriveThruOnly,' +
+                            '.hideBySurcharge,' +
+                            '.hideByAcceptDeposit,' +
+                            '.hideByCoinStar,' +
+                            '.hideByTellerServices,' +
+                            '.hideBy_24hourExpressBox,' +
+                            '.hideByPartnerCreditUnion,' +
+                            '.hideByMemberConsultant,' +
+                            '.hideByInstantDebitCardReplacement,'
+                        );
                         // check to see if array is empty
                         if (visibleItems.length == 0) {
                             // when array is empty show the results message
