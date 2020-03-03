@@ -63,7 +63,7 @@ namespace DatabaseLibrary.Models
 
 
         // NFC attributes
-        [Display(Name = "CoinStar")]
+        [Display(Name = "Coin Star")]
         public string CoinStar { get; set; }
         [Display(Name = "Teller Services")]
         public string TellerServices { get; set; }

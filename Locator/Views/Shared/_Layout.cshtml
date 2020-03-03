@@ -19,24 +19,26 @@
     @* This is a dev only key with very limited functionality:  *@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR_KkOxYdpXhbRLPAvidcUJdfeXHHHAew&libraries=places" async defer></script>
 
-    <script>
-        window.onload = function () {
-            getLocation();
-        }
-    </script>
+
+
+    @*<script>
+            window.onload = function () {
+                getLocation();
+            }
+        </script>*@
 
     <!--call google map function without the button-->
     @*<script>
-        window.onload = function () {
-            DisplayGoogleMap();
-        }
-    </script>*@
+            window.onload = function () {
+                DisplayGoogleMap();
+            }
+        </script>*@
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Locator</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img id="nav-logo" src="~/assets/maphawks_logo_horizontal_on_white.png" alt="maphawks" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -68,6 +70,18 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <script src="~/js/location.js"></script>
+    <script src="~/js/filterCards.js"></script>
+    <script src="~/js/map.js"></script>
+
+    <script src="https://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        getLocation()
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

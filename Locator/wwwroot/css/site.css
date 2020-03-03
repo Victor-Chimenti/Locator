@@ -94,16 +94,26 @@ html {
 #filterSearch-wrapper {
     color: #4D5F69;
     font: Museo Sans 700;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 #filterSearch-wrapper a.btn-link .panelTitleBox {
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 #filterSearch-wrapper a.btn-link .panel-name {
     color: #192838;
+}
+
+#filterSearch-wrapper form.searchATM fieldset.atmSearch {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+#filterSearch-wrapper form.searchNFC fieldset.nfcSearch {
+    padding-top: 1rem;
+    padding-left: 1rem;
 }
 
 
@@ -185,10 +195,10 @@ div.card-header a.btn-link div.cardTitleBox {
     font-size: 1.6rem;
 }
 
-    div.card-header a.btn-link div.cardTitleBox span.card-title {
-        color: #006979;
-        font: Museo Sans 700;
-    }
+div.card-header a.btn-link div.cardTitleBox span.card-title {
+    color: #006979;
+    font: Museo Sans 700;
+}
 
 div#sidebar-wrapper div.card p {
     color: #4D5F69;
@@ -238,8 +248,20 @@ div.card div.card-header a.btn-link[aria-expanded="false"] span.cardTitleBox i.f
     display: none;
 }
 
+div#card-wrapper div.card div.card-header a.btn-link:checked span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:visited span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
 #sidebar-wrapper .card div.card-footer {
-background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 #sidebar-wrapper .card div.card-footer a.webAddressLink {
@@ -251,9 +273,21 @@ background-color: #FFFFFF;
 }
 
 #sidebar-wrapper .card .contactInfo span.cardTitleBox {
-color: #192838;
-font-size: 1.6rem;
+    color: #192838;
+    font-size: 1.6rem;
 }
+
+
+
+
+/**
+*   card classes for hide/display
+*/
+
+.hideByText, hideResultsMessage, .hideByHours, .hideByDriveThruOnly, .hideBySurcharge, .hideByAcceptDeposit, .hideByCoinStar, .hideByTellerServices, .hideBy_24hourExpressBox, .hideByPartnerCreditUnion, .hideByMemberConsultant, .hideByInstantDebitCardReplacement {
+    display: none;
+}
+
 
 
 
