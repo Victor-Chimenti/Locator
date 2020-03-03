@@ -13,7 +13,7 @@ namespace Locator.Backend
     public class IDatabaseHelper
     {
 
-        public Task<List<Locations>> ReadMultipleRecordsAsync(bool isDeleted = false);
+        public Task<List<Locations>> ReadMultipleRecordsAsync();
 
         public bool LocationIdNotUnique(string id);
     }

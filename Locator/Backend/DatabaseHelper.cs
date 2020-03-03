@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using DatabaseLibrary.Models;
@@ -18,14 +19,13 @@ namespace Locator.Backend
             this.context = context;
         }
 
-        public virtual async Task<List<Locations>> ReadMultipleRecordsAsync(bool isDeleted = false)
+        public virtual async Task<List<Locations>> ReadMultipleRecordsAsync()
         {
             var result = await context.Locations
                          .Include(c => c.Contact)
                          .Include(s => s.SpecialQualities)
                          .Include(h => h.DailyHours)
                          .AsNoTracking()
-                         .Where(record => record.SoftDelete == isDeleted)
                          .ToListAsync()
                          .ConfigureAwait(false);
 
