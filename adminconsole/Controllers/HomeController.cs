@@ -29,8 +29,18 @@ namespace adminconsole.Controllers
         /// </summary>
         [HttpPost, ActionName("Login")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(string username, string password)
+        public IActionResult Login(string username, string password)
         {
+            if (string.IsNullOrEmpty(username))
+            {
+                return NotFound();
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                return NotFound();
+            }
+
             if (username.Trim() is null)
             {
                 return RedirectToAction(nameof(Index));
