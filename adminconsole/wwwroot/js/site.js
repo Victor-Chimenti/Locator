@@ -132,7 +132,7 @@ function getLatLongFromAddress() {
     geocoder = new google.maps.Geocoder();
 
     geocoder.geocode({ 'address': formattedAddress }, function (results, status) {
-        if (status == 'OK') {
+        if (status === 'OK') {
 
             lat = results[0]['geometry']['location'].lat();
             long = results[0]['geometry']['location'].lng();
@@ -164,7 +164,7 @@ function getLatLongFromAddress() {
  */
 function hasAddress(street, state) {
 
-    console.log(street)
+    console.log(street);
     console.log(state);
 
     if (!street || !state) { // Both null
@@ -182,6 +182,8 @@ function hasAddress(street, state) {
 
 /**
  * Returns value of Street in Create and Edit Forms
+ * 
+ * @returns {string}: String representation of the address
  */
 function getStreet() {
     var street = $("#Address").attr('value');
@@ -200,6 +202,8 @@ function getStreet() {
 
 /**
  * Returns value of State in Create and Edit Forms
+ * 
+ * @returns {string}: String representation of the state
  */
 function getState() {
     return $("#State option:selected").text();
