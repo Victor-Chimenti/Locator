@@ -94,7 +94,7 @@ html {
 #filterSearch-wrapper {
     color: #4D5F69;
     font: Museo Sans 700;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 #filterSearch-wrapper a.btn-link .panelTitleBox {
@@ -106,7 +106,12 @@ html {
     color: #192838;
 }
 
-#filterSearch-wrapper form.searchField fieldset.filterSearch {
+#filterSearch-wrapper form.searchATM fieldset.atmSearch {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+#filterSearch-wrapper form.searchNFC fieldset.nfcSearch {
     padding-top: 1rem;
     padding-left: 1rem;
 }
