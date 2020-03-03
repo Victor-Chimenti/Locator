@@ -82,26 +82,23 @@ $(function () {
                     // Assign Search Key
                     var key = $(this).val();
                     // If Search Key is Not Null then Compare to the Hours card items in card
-                    if (key) {
-                        $('.Hours').filter(function (i, e) {
-                            var value = $(this).text();
-                            // Check to see if the Key and Value are a Match
-                            if (value.match(key)) {
-                                $(this).parents('.card').removeClass('hideByHours');
-                            } else {
-                                $(this).parents('.card').addClass('hideByHours');
-                            }
-                        });
-                        // Else the Search Key is Null so Reset all Content Items to Visible
+                    if ($('#Hours:checkbox').is(':checked', true)) {
+                        if (key) {
+                            $('.Hours').filter(function (i, e) {
+                                var value = $(this).text();
+                                // Check to see if the Key and Value are a Match
+                                if (value.match(key)) {
+                                    $(this).parents('.card').removeClass('hideByHours');
+                                } else {
+                                    $(this).parents('.card').addClass('hideByHours');
+                                }
+                            });
+                            // Else the Search Key is Null so Reset all Content Items to Visible
+                        } else {
+                            $('.card').removeClass('hideByHours');
+                        }
                     } else {
                         $('.card').removeClass('hideByHours');
-                    }
-                    if ($('#Hours:checkbox').is(':checked', false)) {
-                        $('#Hours:checkbox').prop('checked', false).removeAttr('checked');
-                        $('#Hours:checkbox').trigger(function () { $('.card').removeClass('hideByHours'); });
-                    }
-                    else {
-                        $('#Hours:checkbox').prop('checked', true).attr('checked', 'checked');
                     }
                     // check results for null
                     $(function resultsMessage() {
