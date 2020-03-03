@@ -9,8 +9,8 @@ namespace adminconsole.Models
     public enum LocationTypeEnum
     {
         [Display(Name = "ATM")]
-        A,
+        A = 0,
         [Display(Name = "Shared Branch")]
-        S
+        S = 1
     }
 }
