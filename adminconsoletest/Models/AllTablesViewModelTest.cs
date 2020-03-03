@@ -1,4 +1,3 @@
-using adminconsole.Backend;
 using adminconsole.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -14,6 +13,7 @@ namespace adminconsoletest
         [TestMethod]
         public void AllTablesViewModel_Default_Should_Pass()
         {
+
             // Arrange
 
             // Act
@@ -21,11 +21,13 @@ namespace adminconsoletest
 
             // Assert
             Assert.IsNotNull(result);
+
         }
 
         [TestMethod]
         public void AllTablesViewModel_Constructor_With_Context_Parameter_Should_Pass()
         {
+
             // Arrange
             MaphawksContext context = new MaphawksContext();
 
@@ -35,12 +37,14 @@ namespace adminconsoletest
             // Assert
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.locations);
+
         }
 
 
         [TestMethod]
         public void AllTablesViewModel_Constructor_With_Null_Context_Parameter_Should_Pass()
         {
+
             // Arrange
 
             // Act
@@ -49,11 +53,13 @@ namespace adminconsoletest
             // Assert
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.locations);
+
         }
 
         [TestMethod]
         public void AllTablesViewModel_Get_Property_Defaults_Should_Pass()
         {
+
             // Arrange
             var result = new AllTablesViewModel();
 
@@ -134,11 +140,13 @@ namespace adminconsoletest
             Assert.IsNull(result.HoursTueOpen);
             Assert.IsNull(result.HoursWedClose);
             Assert.IsNull(result.HoursWedOpen);
+
         }
 
         [TestMethod]
         public void AllTablesViewModel_Set_Property_Should_Pass()
         {
+
             // Arrange
             var result = new AllTablesViewModel();
 
@@ -278,52 +286,40 @@ namespace adminconsoletest
             Assert.AreEqual(BooleanEnum.Y, result.Surcharge);
             Assert.AreEqual(BooleanEnum.Y, result.TakeCoopData);
             Assert.AreEqual("https://trypap.com/", result.WebAddress);
+
         }
-
-
 
 
         [TestMethod]
         public void AllTablesViewModel_GetNewLocation_Null_Parameter_Should_Pass()
         {
+
             // Arrange
 
             // Act
             var result = AllTablesViewModel.GetNewLocation(null);
             // Assert
             Assert.IsNull(result);
+
         }
-
-
-
-
-
 
         [TestMethod]
         public void AllTablesViewModel_GetNewContact_Null_Parameter_Should_Pass()
         {
+
             // Arrange
 
             // Act
             var result = AllTablesViewModel.GetNewContact(null);
             // Assert
             Assert.IsNull(result);
+
         }
-
-
-
-
-
-
-
-
-
-
-
 
         [TestMethod]
         public void AllTablesViewModel_GetNewContact_NonNull_Parameter_Should_Pass()
         {
+
             // Arrange
             var viewModel = new AllTablesViewModel();
 
@@ -396,31 +392,19 @@ namespace adminconsoletest
             // Act
             var result = AllTablesViewModel.GetNewContact(viewModel);
 
-
             // Assert
             Assert.AreEqual(viewModel.LocationId, result.LocationId);
             Assert.AreEqual(viewModel.Phone, result.Phone);
             Assert.AreEqual(viewModel.Fax, result.Fax);
             Assert.AreEqual(viewModel.WebAddress, result.WebAddress);
             Assert.IsNull(result.Location);
+
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         [TestMethod]
         public void AllTablesViewModel_GetNewContact_All_Contact_Properties_Are_Null_Parameter_Should_Pass()
         {
+
             // Arrange
             var viewModel = new AllTablesViewModel();
 
@@ -493,49 +477,29 @@ namespace adminconsoletest
             // Act
             var result = AllTablesViewModel.GetNewContact(viewModel);
 
-
             // Assert
             Assert.IsNull(result);
+
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         [TestMethod]
         public void AllTablesViewModel_GetNewSpecialQualities_Null_Parameter_Should_Pass()
         {
+
             // Arrange
             
-
             // Act
             var result = AllTablesViewModel.GetNewSpecialQualities(null);
 
-
             // Assert
             Assert.IsNull(result);
+
         }
-
-
-
-
-
-
-
-
 
         [TestMethod]
         public void AllTablesViewModel_GetNewSpecialQualities_NonNull_Parameter_Should_Pass()
         {
+
             // Arrange
             var viewModel = new AllTablesViewModel();
 
@@ -629,19 +593,8 @@ namespace adminconsoletest
             Assert.AreEqual(viewModel.SelfServiceOnly.ToString(), result.SelfServiceOnly);
             Assert.AreEqual(viewModel.Surcharge.ToString(), result.Surcharge);
             Assert.IsNull(result.Location);
+
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
         [TestMethod]
         public void AllTablesViewModel_GetNewSpecialQualities_All_Properties_Are_Null_Parameter_Should_Pass()
@@ -721,12 +674,8 @@ namespace adminconsoletest
 
             // Assert
             Assert.IsNull(result);
+
         }
-
-
-
-
-
 
 
         // Tests null parameter. Should return null.
@@ -739,17 +688,10 @@ namespace adminconsoletest
             // Act
             var result = AllTablesViewModel.GetNewDailyHours(null);
 
-
             // Assert
             Assert.IsNull(result);
+
         }
-
-
-
-
-
-
-
 
         // Tests ConvertStringToBooleanEnum via ViewModel's InstantiateViewModelPropertiesWithOneLocation
         [TestMethod]
@@ -765,7 +707,16 @@ namespace adminconsoletest
             var specialQualitiesPropertyNameList = new List<string>();
             foreach (var property in properties)
             {
-                if (property.Name.Equals("LocationId") || property.Name.Equals("Location"))
+                if (property.Name.Equals("LocationId") ||
+                    property.Name.Equals("AccessNotes") ||
+                    property.Name.Equals("InstallationType") ||
+                    property.Name.Equals("Location") ||
+                    property.Name.Equals("CoinStar") ||
+                    property.Name.Equals("TellerServices") ||
+                    property.Name.Equals("_24hourExpressBox") ||
+                    property.Name.Equals("PartnerCreditUnion") ||
+                    property.Name.Equals("MemberConsultant") ||
+                    property.Name.Equals("InstantDebitCardReplacement"))
                 {
                     continue;
                 }
@@ -781,28 +732,15 @@ namespace adminconsoletest
             properties = typeof(AllTablesViewModel).GetProperties();
             foreach (var property in properties)
             {
-                if (specialQualitiesPropertyNameList.Contains(property.Name))
+                if (!specialQualitiesPropertyNameList.Contains(property.Name))
                 {
-                    if (property.Name.Equals("InstallationType") || property.Name.Equals("AccessNotes"))
-                    {
                         continue;
-                    }
-
+                }
 
                     Assert.AreEqual(BooleanEnum.N, property.GetValue(viewModel));
-                }
             }
+
         }
-
-
-
-
-
-
-
-
-
-
 
 
         // Tests ConvertStringToBooleanEnum via ViewModel's InstantiateViewModelPropertiesWithOneLocation
@@ -819,8 +757,17 @@ namespace adminconsoletest
             var specialQualitiesPropertyNameList = new List<string>();
             foreach (var property in properties)
             {
-                if (property.Name.Equals("LocationId") || property.Name.Equals("Location"))
-                {
+                if (property.Name.Equals("LocationId") ||
+                    property.Name.Equals("AccessNotes") ||
+                    property.Name.Equals("InstallationType") ||
+                    property.Name.Equals("Location") ||
+                    property.Name.Equals("CoinStar") ||
+                    property.Name.Equals("TellerServices") ||
+                    property.Name.Equals("_24hourExpressBox") ||
+                    property.Name.Equals("PartnerCreditUnion") ||
+                    property.Name.Equals("MemberConsultant") ||
+                    property.Name.Equals("InstantDebitCardReplacement"))
+            {
                     continue;
                 }
 
@@ -835,27 +782,15 @@ namespace adminconsoletest
             properties = typeof(AllTablesViewModel).GetProperties();
             foreach (var property in properties)
             {
-                if (specialQualitiesPropertyNameList.Contains(property.Name))
+                if (!specialQualitiesPropertyNameList.Contains(property.Name))
                 {
-                    if (property.Name.Equals("InstallationType") || property.Name.Equals("AccessNotes"))
-                    {
-                        continue;
-                    }
-
-
-                    Assert.AreEqual(BooleanEnum.NULL, property.GetValue(viewModel));
+                    continue;
                 }
+                    
+                Assert.AreEqual(BooleanEnum.NULL, property.GetValue(viewModel));
             }
+
         }
-
-
-
-
-
-
-
-
-
 
 
         // Tests ConvertStringToBooleanEnum via ViewModel's InstantiateViewModelPropertiesWithOneLocation
@@ -872,7 +807,16 @@ namespace adminconsoletest
             var specialQualitiesPropertyNameList = new List<string>();
             foreach (var property in properties)
             {
-                if (property.Name.Equals("LocationId") || property.Name.Equals("Location"))
+                if (property.Name.Equals("LocationId") ||
+                    property.Name.Equals("AccessNotes") ||
+                    property.Name.Equals("InstallationType") ||
+                    property.Name.Equals("Location") ||
+                    property.Name.Equals("CoinStar") ||
+                    property.Name.Equals("TellerServices") ||
+                    property.Name.Equals("_24hourExpressBox") ||
+                    property.Name.Equals("PartnerCreditUnion") ||
+                    property.Name.Equals("MemberConsultant") ||
+                    property.Name.Equals("InstantDebitCardReplacement"))
                 {
                     continue;
                 }
@@ -888,28 +832,21 @@ namespace adminconsoletest
             properties = typeof(AllTablesViewModel).GetProperties();
             foreach (var property in properties)
             {
-                if (specialQualitiesPropertyNameList.Contains(property.Name))
+                if (!specialQualitiesPropertyNameList.Contains(property.Name))
                 {
-                    if (property.Name.Equals("InstallationType") || property.Name.Equals("AccessNotes"))
-                    {
-                        continue;
-                    }
-
-
-                    Assert.AreEqual(BooleanEnum.Y, property.GetValue(viewModel));
+                    continue;
                 }
+                
+                Assert.AreEqual(BooleanEnum.Y, property.GetValue(viewModel));
             }
+
         }
-
-
-
-
-
 
         // Tests ConvertStringToStateEnum
         [TestMethod]
         public void AllTablesViewModel_ConvertStringToStateEnum_All_States_Should_Pass()
         {
+
             // Arrange
             var values = Enum.GetValues(typeof(StateEnum));
 
@@ -925,12 +862,6 @@ namespace adminconsoletest
         }
 
 
-
-
-
-
-
-
         // Tests InstantiateViewModelPropertiesWithOneLocation where parameter is null
         [TestMethod]
         public void AllTablesViewModel_InstantiateViewModelropertiesWithOneLocation_Null_Parameter_Should_Pass()
@@ -939,7 +870,6 @@ namespace adminconsoletest
             var viewModel = new AllTablesViewModel();
             var mockData = new LocationsDataMock();
             viewModel.locations = mockData.GetAllViewModelList();
-
 
             // Act
             var result = viewModel.InstatiateViewModelPropertiesWithOneLocation();
@@ -950,27 +880,22 @@ namespace adminconsoletest
         }
 
 
-
-
-
-
         // Tests ConvertBooleanEnumToString via ViewModel's GetNewSpecialQualities
         [TestMethod]
         public void AllTablesViewModel_ConvertBooleanEnumToString_Parameter_No_Should_Pass()
         {
+
             // Arrange
             var mockData = new LocationsDataMock();
             var location = mockData.GetAllViewModelList()[0];
             var viewModel = new AllTablesViewModel();
 
-
             var viewModelProperties = typeof(AllTablesViewModel).GetProperties();
             var specialQualitiesPropertyNameList = new List<string>();
 
-
-
             foreach (var property in typeof(SpecialQualities).GetProperties())
             {
+
                 if (property.Name.Equals("LocationId") ||
                     property.Name.Equals("AccessNotes") ||
                     property.Name.Equals("InstallationType") ||
@@ -989,30 +914,32 @@ namespace adminconsoletest
             }
 
 
-
-
-
             foreach (var property in viewModelProperties)
             {
+
                 if (!specialQualitiesPropertyNameList.Contains(property.Name))
                 {
                     continue;
                 }
 
                 property.SetValue(viewModel, BooleanEnum.N);
+
             }
+
             // Act
             var result = AllTablesViewModel.GetNewSpecialQualities(viewModel);
-
 
             // Assert
             foreach (var property in typeof(SpecialQualities).GetProperties())
             {
+
                 if (specialQualitiesPropertyNameList.Contains(property.Name))
                 {
                     Assert.AreEqual("N", property.GetValue(result));
                 }
+
             }
+
         }
     }
 }
