@@ -26,8 +26,6 @@ namespace adminconsole.Models
         }
 
 
-
-
         /// <summary>
         /// Returns viewModelList and deletedViewModelList elements to their original values
         /// </summary>
