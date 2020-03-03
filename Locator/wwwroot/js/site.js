@@ -16,28 +16,28 @@ var visibleItems = [];
 
 
 // check results for null
-$(function assignVisibleItems() {
-    // assign array of currently visible content items
-    visibleItems = $('.card').not('.hideByText,' +
-        ' .hideByHours,' +
-        ' .hideByDriveThruOnly,' +
-        ' .hideBySurcharge,' +
-        ' .hideByAcceptDeposit,' +
-        ' .hideByCoinStar,' +
-        ' .hideByTellerServices,' +
-        ' .hideBy_24hourExpressBox,' +
-        ' .hideByPartnerCreditUnion,' +
-        ' .hideByMemberConsultant,' +
-        ' .hideByInstantDebitCardReplacement');
-    // check to see if array is empty
-    if (visibleItems.length == 0) {
-        // when array is empty show the results message
-        $('.noResultsToShow').removeClass('hideResultsMessage');
-    } else {
-        // when array has content items suppress the results message
-        $('.noResultsToShow').addClass('hideResultsMessage');
-    }
-});
+//$(function assignVisibleItems() {
+//    // assign array of currently visible content items
+//    visibleItems = $('.card').not('.hideByText,' +
+//        ' .hideByHours,' +
+//        ' .hideByDriveThruOnly,' +
+//        ' .hideBySurcharge,' +
+//        ' .hideByAcceptDeposit,' +
+//        ' .hideByCoinStar,' +
+//        ' .hideByTellerServices,' +
+//        ' .hideBy_24hourExpressBox,' +
+//        ' .hideByPartnerCreditUnion,' +
+//        ' .hideByMemberConsultant,' +
+//        ' .hideByInstantDebitCardReplacement');
+//    // check to see if array is empty
+//    if (visibleItems.length == 0) {
+//        // when array is empty show the results message
+//        $('.noResultsToShow').removeClass('hideResultsMessage');
+//    } else {
+//        // when array has content items suppress the results message
+//        $('.noResultsToShow').addClass('hideResultsMessage');
+//    }
+//});
 
 
 
@@ -60,7 +60,28 @@ $(function () {
                             $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
                         });
                     });
-                    assignVisibleItems();
+                    $(function assignVisibleItems() {
+                        // assign array of currently visible content items
+                        visibleItems = $('.card').not('.hideByText,' +
+                            ' .hideByHours,' +
+                            ' .hideByDriveThruOnly,' +
+                            ' .hideBySurcharge,' +
+                            ' .hideByAcceptDeposit,' +
+                            ' .hideByCoinStar,' +
+                            ' .hideByTellerServices,' +
+                            ' .hideBy_24hourExpressBox,' +
+                            ' .hideByPartnerCreditUnion,' +
+                            ' .hideByMemberConsultant,' +
+                            ' .hideByInstantDebitCardReplacement');
+                        // check to see if array is empty
+                        if (visibleItems.length == 0) {
+                            // when array is empty show the results message
+                            $('.noResultsToShow').removeClass('hideResultsMessage');
+                        } else {
+                            // when array has content items suppress the results message
+                            $('.noResultsToShow').addClass('hideResultsMessage');
+                        }
+                    });
                 });
             });
             // Delay the .on keyup function
@@ -101,7 +122,28 @@ $(function () {
                     } else {
                         $('.card').removeClass('hideByHours');
                     }
-                    assignVisibleItems();
+                    $(function assignVisibleItems() {
+                        // assign array of currently visible content items
+                        visibleItems = $('.card').not('.hideByText,' +
+                            ' .hideByHours,' +
+                            ' .hideByDriveThruOnly,' +
+                            ' .hideBySurcharge,' +
+                            ' .hideByAcceptDeposit,' +
+                            ' .hideByCoinStar,' +
+                            ' .hideByTellerServices,' +
+                            ' .hideBy_24hourExpressBox,' +
+                            ' .hideByPartnerCreditUnion,' +
+                            ' .hideByMemberConsultant,' +
+                            ' .hideByInstantDebitCardReplacement');
+                        // check to see if array is empty
+                        if (visibleItems.length == 0) {
+                            // when array is empty show the results message
+                            $('.noResultsToShow').removeClass('hideResultsMessage');
+                        } else {
+                            // when array has content items suppress the results message
+                            $('.noResultsToShow').addClass('hideResultsMessage');
+                        }
+                    });
                 });
             });
             // Delay the change function
@@ -127,7 +169,11 @@ $(function () {
                     if ($('#DriveThruOnly:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.DriveThruOnly').filter(function (i, e) {
-                                var value = $(this).val();
+                                console.log("surcharge key:" + key);
+
+                                var value = $(this).attr('data-value');
+                                console.log("surcharge value:" + value);
+
                                 // Check to see if the Key and Value are a Match
                                 if (key === value) {
                                     $(this).parents('.card').removeClass('hideByDriveThruOnly');
@@ -142,7 +188,90 @@ $(function () {
                     } else {
                         $('.card').removeClass('hideByDriveThruOnly');
                     }
-                    assignVisibleItems();
+                    $(function assignVisibleItems() {
+                        // assign array of currently visible content items
+                        visibleItems = $('.card').not('.hideByText,' +
+                            ' .hideByHours,' +
+                            ' .hideByDriveThruOnly,' +
+                            ' .hideBySurcharge,' +
+                            ' .hideByAcceptDeposit,' +
+                            ' .hideByCoinStar,' +
+                            ' .hideByTellerServices,' +
+                            ' .hideBy_24hourExpressBox,' +
+                            ' .hideByPartnerCreditUnion,' +
+                            ' .hideByMemberConsultant,' +
+                            ' .hideByInstantDebitCardReplacement');
+                        // check to see if array is empty
+                        if (visibleItems.length == 0) {
+                            // when array is empty show the results message
+                            $('.noResultsToShow').removeClass('hideResultsMessage');
+                        } else {
+                            // when array has content items suppress the results message
+                            $('.noResultsToShow').addClass('hideResultsMessage');
+                        }
+                    });
+                });
+            });
+            // Delay the change function
+        }, 1);
+    });
+});
+
+
+
+
+//   ***   Surcharge   ***   //
+$(function () {
+    // After the DOM is ready, Wait until the window loads
+    $(document).ready(function () {
+        // Once window loads set a timeout delay
+        setTimeout(function () {
+            $(function () {
+                // When the select box Drive Thru changes - Execute change function
+                $('#Surcharge').change(function () {
+                    // Assign Search Key
+                    var key = $(this).val();
+                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    if ($('#Surcharge:checkbox').is(':checked', true)) {
+                        if (key) {
+                            $('.Surcharge').filter(function (i, e) {
+                                var value = $(this).attr('data-value');
+                                // Check to see if the Key and Value are a Match
+                                if (key === value) {
+                                    $(this).parents('.card').removeClass('hideBySurcharge');
+                                } else {
+                                    $(this).parents('.card').addClass('hideBySurcharge');
+                                }
+                            });
+                            // Else the Search Key is Null so Reset all Content Items to Visible
+                        } else {
+                            $('.card').removeClass('hideBySurcharge');
+                        }
+                    } else {
+                        $('.card').removeClass('hideBySurcharge');
+                    }
+                    $(function assignVisibleItems() {
+                        // assign array of currently visible content items
+                        visibleItems = $('.card').not('.hideByText,' +
+                            ' .hideByHours,' +
+                            ' .hideByDriveThruOnly,' +
+                            ' .hideBySurcharge,' +
+                            ' .hideByAcceptDeposit,' +
+                            ' .hideByCoinStar,' +
+                            ' .hideByTellerServices,' +
+                            ' .hideBy_24hourExpressBox,' +
+                            ' .hideByPartnerCreditUnion,' +
+                            ' .hideByMemberConsultant,' +
+                            ' .hideByInstantDebitCardReplacement');
+                        // check to see if array is empty
+                        if (visibleItems.length == 0) {
+                            // when array is empty show the results message
+                            $('.noResultsToShow').removeClass('hideResultsMessage');
+                        } else {
+                            // when array has content items suppress the results message
+                            $('.noResultsToShow').addClass('hideResultsMessage');
+                        }
+                    });
                 });
             });
             // Delay the change function
