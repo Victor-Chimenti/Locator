@@ -4,11 +4,43 @@
  */
 
 
-
+                    //if ($(".InstallationType:contains('drive')")) {
+                    //    $('.card').removeClass('hideByDriveThruOnly');
+                    //}
 
 //var searchClasses = [];
 var atmSearchClasses = new Array("Hours", "DriveThruOnly", "Surcharge", "AcceptDeposit");
 var nfcSearchClasses = new Array("DriveThruOnly", "CoinStar", "TellerServices", "_24hourExpressBox", "PartnerCreditUnion", "MemberConsultant", "InstantDebitCardReplacement");
+var visibleItems = [];
+
+
+
+// check results for null
+$(function assignVisibleItems() {
+    // assign array of currently visible content items
+    visibleItems = $('.card').not('.hideByText,' +
+        ' .hideByHours,' +
+        ' .hideByDriveThruOnly,' +
+        ' .hideBySurcharge,' +
+        ' .hideByAcceptDeposit,' +
+        ' .hideByCoinStar,' +
+        ' .hideByTellerServices,' +
+        ' .hideBy_24hourExpressBox,' +
+        ' .hideByPartnerCreditUnion,' +
+        ' .hideByMemberConsultant,' +
+        ' .hideByInstantDebitCardReplacement');
+    // check to see if array is empty
+    if (visibleItems.length == 0) {
+        // when array is empty show the results message
+        $('.noResultsToShow').removeClass('hideResultsMessage');
+    } else {
+        // when array has content items suppress the results message
+        $('.noResultsToShow').addClass('hideResultsMessage');
+    }
+});
+
+
+
 
 //   ***   Keyword Search   ***   //
 $(function () {
@@ -28,49 +60,18 @@ $(function () {
                             $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
                         });
                     });
-                    $(function resultsMessage() {
-                        // assign array of currently visible content items
-                        var visibleItems = $('.card').not('.hideByText,' +
-                            ' .hideByHours,' +
-                            ' .hideByDriveThruOnly,' +
-                            ' .hideBySurcharge,' +
-                            ' .hideByAcceptDeposit,' +
-                            ' .hideByCoinStar,' +
-                            ' .hideByTellerServices,' +
-                            ' .hideBy_24hourExpressBox,' +
-                            ' .hideByPartnerCreditUnion,' +
-                            ' .hideByMemberConsultant,' +
-                            ' .hideByInstantDebitCardReplacement');
-                        // check to see if array is empty
-                        if (visibleItems.length == 0) {
-                            // when array is empty show the results message
-                            $('.noResultsToShow').removeClass('hideResultsMessage');
-                        } else {
-                            // when array has content items suppress the results message
-                            $('.noResultsToShow').addClass('hideResultsMessage');
-                        }
-                    });
+                    assignVisibleItems();
                 });
             });
             // Delay the .on keyup function
-        }, 10);
+        }, 1);
     });
 });
 
 
-$("#news_list tr").click(function () {
-    var ele = $(this).find('input');
-    if (ele.is(':checked')) {
-        ele.prop('checked', false);
-        $(this).removeClass('admin_checked');
-    } else {
-        ele.prop('checked', true);
-        $(this).addClass('admin_checked');
-    }
-});
 
 
-//   ***   Term Filter   ***   //
+//   ***   24 Hours Filter   ***   //
 $(function () {
     // After the DOM is ready, Wait until the window loads
     $(document).ready(function () {
@@ -100,216 +101,55 @@ $(function () {
                     } else {
                         $('.card').removeClass('hideByHours');
                     }
-                    // check results for null
-                    $(function resultsMessage() {
-                        // assign array of currently visible content items
-                        var visibleItems = $('.card').not('.hideByText,' +
-                            ' .hideByHours,' +
-                            ' .hideByDriveThruOnly,' +
-                            ' .hideBySurcharge,' +
-                            ' .hideByAcceptDeposit,' +
-                            ' .hideByCoinStar,' +
-                            ' .hideByTellerServices,' +
-                            ' .hideBy_24hourExpressBox,' +
-                            ' .hideByPartnerCreditUnion,' +
-                            ' .hideByMemberConsultant,' +
-                            ' .hideByInstantDebitCardReplacement');
-                        // check to see if array is empty
-                        if (visibleItems.length == 0) {
-                            // when array is empty show the results message
-                            $('.noResultsToShow').removeClass('hideResultsMessage');
-                        } else {
-                            // when array has content items suppress the results message
-                            $('.noResultsToShow').addClass('hideResultsMessage');
-                        }
-                    });
+                    assignVisibleItems();
                 });
             });
             // Delay the change function
-        }, 10);
+        }, 1);
     });
 });
 
 
-//   ***   Program Fee Filter   ***   //
-//$(function () {
-//    $(window).load(function () {
-//        setTimeout(function () {
-//            $(function () {
-//                $('#SelectBox-ByProgramFee').change(function () {
-//                    // Assign Search Key
-//                    var key = $(this).val();
-//                    // If Search Key is Not Null then Compare to the Term List Items in Each Content Item
-//                    if (key) {
-//                        $('.programFee').filter(function (i, e) {
-//                            var value = $(this).text();
-//                            // When the Selected Value is Numeric Compare with Content Items
-//                            if (!isNaN(key)) {
-//                                // When the Content Item is Numeric Parse for higher/lower values
-//                                if ((!isNaN(value)) && (value)) {
-//                                    var keyInt = Number(key);
-//                                    var valueInt = Number(value);
-//                                    // When the Content Value is Lower then Show the Item
-//                                    if (keyInt >= valueInt) {
-//                                        $(this).parents('.educationAbroadItemWrapper').removeClass('hideByProgramFee');
-//                                        // When the Content Value is Higher then Hide the Item
-//                                    } else {
-//                                        $(this).parents('.educationAbroadItemWrapper').addClass('hideByProgramFee');
-//                                    }
-//                                    // Selected Value is Numeric and the Content Value is Not then Hide it
-//                                } else {
-//                                    $(this).parents('.educationAbroadItemWrapper').addClass('hideByProgramFee');
-//                                }
-//                                // When the Selected Value is Not Numeric compare both for a match
-//                            } else {
-//                                if (value.match(key)) {
-//                                    $(this).parents('.educationAbroadItemWrapper').removeClass('hideByProgramFee');
-//                                } else {
-//                                    $(this).parents('.educationAbroadItemWrapper').addClass('hideByProgramFee');
-//                                }
-//                            }
-//                        });
-//                        // When the Selected Value is NULL or Whitespace, reset the group and show all items
-//                    } else {
-//                        $('.educationAbroadItemWrapper').removeClass('hideByProgramFee');
-//                    }
-//                    // check results for null
-//                    $(function resultsMessage() {
-//                        // assign array of currently visible content items
-//                        var visibleItems = $('.educationAbroadItemWrapper').not('.hideByText, .hideByDestination, .hideByTerm, .hideByProgramFee, .hideByFeature, .hideByHousing');
-//                        // check to see if array is empty
-//                        if (visibleItems.length == 0) {
-//                            // when array is empty show the results message
-//                            $('.noResultsToShow').removeClass('hideResultsMessage');
-//                        } else {
-//                            // when array has content items suppress the results message
-//                            $('.noResultsToShow').addClass('hideResultsMessage');
-//                        }
-//                    });
-//                });
-//            });
-//        }, 10);
-//    });
-//});
 
 
-//   ***   Destination Filter   ***   //
-//$(function () {
-//    $(window).load(function () {
-//        setTimeout(function () {
-//            $(function () {
-//                $('#SelectBox-ByDestination').change(function () {
-//                    // Assign Search Key
-//                    var key = $(this).val();
-//                    // If Search Key is Not Null then Compare to the Term List Items in Each Content Item
-//                    if (key) {
-//                        $('.destination').filter(function (i, e) {
-//                            var value = $(this).text();
-//                            if (value.match(key)) {
-//                                $(this).parents('.educationAbroadItemWrapper').removeClass('hideByDestination');
-//                            } else {
-//                                $(this).parents('.educationAbroadItemWrapper').addClass('hideByDestination');
-//                            }
-//                        });
-//                    } else {
-//                        $('.educationAbroadItemWrapper').removeClass('hideByDestination');
-//                    }
-//                    // check results for null
-//                    $(function resultsMessage() {
-//                        // assign array of currently visible content items
-//                        var visibleItems = $('.educationAbroadItemWrapper').not('.hideByText, .hideByDestination, .hideByTerm, .hideByProgramFee, .hideByFeature, .hideByHousing');
-//                        // check to see if array is empty
-//                        if (visibleItems.length == 0) {
-//                            // when array is empty show the results message
-//                            $('.noResultsToShow').removeClass('hideResultsMessage');
-//                        } else {
-//                            // when array has content items suppress the results message
-//                            $('.noResultsToShow').addClass('hideResultsMessage');
-//                        }
-//                    });
-//                });
-//            });
-//        }, 10);
-//    });
-//});
-
-//   ***   Feature Filter   ***   //
-//$(function () {
-//    $(window).load(function () {
-//        setTimeout(function () {
-//            $(function () {
-//                $('#SelectBox-ByFeature').change(function () {
-//                    // Assign Search Key
-//                    var key = $(this).val();
-//                    // If Search Key is Not Null then Compare to the Term List Items in Each Content Item
-//                    if (key) {
-//                        $('.feature').filter(function (i, e) {
-//                            var value = $(this).text();
-//                            if (value.match(key)) {
-//                                $(this).parents('.educationAbroadItemWrapper').removeClass('hideByFeature');
-//                            } else {
-//                                $(this).parents('.educationAbroadItemWrapper').addClass('hideByFeature');
-//                            }
-//                        });
-//                    } else {
-//                        $('.educationAbroadItemWrapper').removeClass('hideByFeature');
-//                    }
-//                    // check results for null
-//                    $(function resultsMessage() {
-//                        // assign array of currently visible content items
-//                        var visibleItems = $('.educationAbroadItemWrapper').not('.hideByText, .hideByDestination, .hideByTerm, .hideByProgramFee, .hideByFeature, .hideByHousing');
-//                        // check to see if array is empty
-//                        if (visibleItems.length == 0) {
-//                            // when array is empty show the results message
-//                            $('.noResultsToShow').removeClass('hideResultsMessage');
-//                        } else {
-//                            // when array has content items suppress the results message
-//                            $('.noResultsToShow').addClass('hideResultsMessage');
-//                        }
-//                    });
-//                });
-//            });
-//        }, 10);
-//    });
-//});
+//   ***   Drive Thru Only   ***   //
+$(function () {
+    // After the DOM is ready, Wait until the window loads
+    $(document).ready(function () {
+        // Once window loads set a timeout delay
+        setTimeout(function () {
+            $(function () {
+                // When the select box Drive Thru changes - Execute change function
+                $('#DriveThruOnly').change(function () {
+                    // Assign Search Key
+                    var key = $(this).val();
+                    // If Search Key is Not Null then Compare to the Drive Thru card items
+                    if ($('#DriveThruOnly:checkbox').is(':checked', true)) {
+                        if (key) {
+                            $('.DriveThruOnly').filter(function (i, e) {
+                                var value = $(this).val();
+                                // Check to see if the Key and Value are a Match
+                                if (key === value) {
+                                    $(this).parents('.card').removeClass('hideByDriveThruOnly');
+                                } else {
+                                    $(this).parents('.card').addClass('hideByDriveThruOnly');
+                                }
+                            });
+                            // Else the Search Key is Null so Reset all Content Items to Visible
+                        } else {
+                            $('.card').removeClass('hideByDriveThruOnly');
+                        }
+                    } else {
+                        $('.card').removeClass('hideByDriveThruOnly');
+                    }
+                    assignVisibleItems();
+                });
+            });
+            // Delay the change function
+        }, 1);
+    });
+});
 
 
-//   ***   Field of Study Filter   ***   //
-//$(function () {
-//    $(window).load(function () {
-//        setTimeout(function () {
-//            $(function () {
-//                $('#SelectBox-ByFieldOfStudy').change(function () {
-//                    // Assign Search Key
-//                    var key = $(this).val();
-//                    // If Search Key is Not Null then Compare to the Term List Items in Each Content Item
-//                    if (key) {
-//                        $('.fieldOfStudy').filter(function (i, e) {
-//                            var value = $(this).text();
-//                            if (value.match(key)) {
-//                                $(this).parents('.educationAbroadItemWrapper').removeClass('hideByFieldOfStudy');
-//                            } else {
-//                                $(this).parents('.educationAbroadItemWrapper').addClass('hideByFieldOfStudy');
-//                            }
-//                        });
-//                    } else {
-//                        $('.educationAbroadItemWrapper').removeClass('hideByFieldOfStudy');
-//                    }
-//                    // check results for null
-//                    $(function resultsMessage() {
-//                        // assign array of currently visible content items
-//                        var visibleItems = $('.educationAbroadItemWrapper').not('.hideByText, .hideByDestination, .hideByTerm, .hideByProgramFee, .hideByFeature, .hideByFieldOfStudy');
-//                        // check to see if array is empty
-//                        if (visibleItems.length == 0) {
-//                            // when array is empty show the results message
-//                            $('.noResultsToShow').removeClass('hideResultsMessage');
-//                        } else {
-//                            // when array has content items suppress the results message
-//                            $('.noResultsToShow').addClass('hideResultsMessage');
-//                        }
-//                    });
-//                });
-//            });
-//        }, 10);
-//    });
-//});
+
+
