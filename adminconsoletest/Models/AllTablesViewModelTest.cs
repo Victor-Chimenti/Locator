@@ -969,14 +969,18 @@ namespace adminconsoletest
 
 
 
-
-
             foreach (var property in typeof(SpecialQualities).GetProperties())
             {
                 if (property.Name.Equals("LocationId") ||
                     property.Name.Equals("AccessNotes") ||
                     property.Name.Equals("InstallationType") ||
-                    property.Name.Equals("Location"))
+                    property.Name.Equals("Location") ||
+                    property.Name.Equals("CoinStar") ||
+                    property.Name.Equals("TellerServices") ||
+                    property.Name.Equals("_24hourExpressBox") ||
+                    property.Name.Equals("PartnerCreditUnion") ||
+                    property.Name.Equals("MemberConsultant") ||
+                    property.Name.Equals("InstantDebitCardReplacement"))
                 {
                     continue;
                 }
