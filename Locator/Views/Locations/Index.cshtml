@@ -8,6 +8,8 @@
 
 <script src="https://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>
 <script src="~/js/location.js"></script>
+<script src="~/js/filterCards.js"></script>
+<script src="~/js/map.js"></script>
 
 <script type="text/javascript">
     getLocation()
@@ -77,9 +79,9 @@
                             <form class="searchNFC">
                                 <fieldset class="nfcSearch d-inline-block">
                                     @*<div>
-                                        <input type="checkbox" id="DriveThruOnly" name="Drive Thru Only" value="Y">
-                                        <label for="DriveThruOnly">Drive Up</label>
-                                    </div>*@
+                                            <input type="checkbox" id="DriveThruOnly" name="Drive Thru Only" value="Y">
+                                            <label for="DriveThruOnly">Drive Up</label>
+                                        </div>*@
                                     <div>
                                         <input type="checkbox" id="CoinStar" name="Coin Star" value="Y">
                                         <label for="CoinStar">Coin Star</label>
@@ -105,7 +107,7 @@
                                         <input type="checkbox" id="InstantDebitCardReplacement" name="Instant Debit Card Replacement" value="Y">
                                         <label for="InstantDebitCardReplacement">Instant Debit Card Replacement</label>
                                     </div>
-                                </fieldset class="filterSearch">
+                                </fieldset>
                             </form>
                         </div>
                     </div>
@@ -123,7 +125,7 @@
             <h3 id="sidebar-head">ATM Nearby</h3>
             <div class="col-12" id="cards-wrapper">
                 @*@foreach (var card in Model)*@
-                @foreach(var card in Model)
+                @foreach (var card in Model)
                 {
                     @*<p>@card.Name</p>*@
 
