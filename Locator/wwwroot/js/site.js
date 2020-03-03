@@ -58,51 +58,80 @@ $(function () {
 });
 
 
+$("#news_list tr").click(function () {
+    var ele = $(this).find('input');
+    if (ele.is(':checked')) {
+        ele.prop('checked', false);
+        $(this).removeClass('admin_checked');
+    } else {
+        ele.prop('checked', true);
+        $(this).addClass('admin_checked');
+    }
+});
+
+
 //   ***   Term Filter   ***   //
-//$(function () {
-//    // After the DOM is ready, Wait until the window loads
-//    $(window).load(function () {
-//        // Once window loads set a timeout delay
-//        setTimeout(function () {
-//            $(function () {
-//                // When the Dropdown Menu Selector Academic Terms Change - Execute change function
-//                $('#SelectBox-ByTerm').change(function () {
-//                    // Assign Search Key
-//                    var key = $(this).val();
-//                    // If Search Key is Not Null then Compare to the Term List Items in Each Content Item
-//                    if (key) {
-//                        $('.term').filter(function (i, e) {
-//                            var value = $(this).text();
-//                            // Check to see if the Key and Value are a Match
-//                            if (value.match(key)) {
-//                                $(this).parents('.educationAbroadItemWrapper').removeClass('hideByTerm');
-//                            } else {
-//                                $(this).parents('.educationAbroadItemWrapper').addClass('hideByTerm');
-//                            }
-//                        });
-//                        // Else the Search Key is Null so Reset all Content Items to Visible
-//                    } else {
-//                        $('.educationAbroadItemWrapper').removeClass('hideByTerm');
-//                    }
-//                    // check results for null
-//                    $(function resultsMessage() {
-//                        // assign array of currently visible content items
-//                        var visibleItems = $('.educationAbroadItemWrapper').not('.hideByText, .hideByDestination, .hideByTerm, .hideByProgramFee, .hideByFeature, .hideByHousing');
-//                        // check to see if array is empty
-//                        if (visibleItems.length == 0) {
-//                            // when array is empty show the results message
-//                            $('.noResultsToShow').removeClass('hideResultsMessage');
-//                        } else {
-//                            // when array has content items suppress the results message
-//                            $('.noResultsToShow').addClass('hideResultsMessage');
-//                        }
-//                    });
-//                });
-//            });
-//            // Delay the change function
-//        }, 10);
-//    });
-//});
+$(function () {
+    // After the DOM is ready, Wait until the window loads
+    $(document).ready(function () {
+        // Once window loads set a timeout delay
+        setTimeout(function () {
+            $(function () {
+                // When the select box Hours changes - Execute change function
+                $('#Hours').change(function () {
+                    // Assign Search Key
+                    var key = $(this).val();
+                    // If Search Key is Not Null then Compare to the Hours card items in card
+                    if (key) {
+                        $('.Hours').filter(function (i, e) {
+                            var value = $(this).text();
+                            // Check to see if the Key and Value are a Match
+                            if (value.match(key)) {
+                                $(this).parents('.card').removeClass('hideByHours');
+                            } else {
+                                $(this).parents('.card').addClass('hideByHours');
+                            }
+                        });
+                        // Else the Search Key is Null so Reset all Content Items to Visible
+                    } else {
+                        $('.card').removeClass('hideByHours');
+                    }
+                    if ($('#Hours:checkbox').is(':checked', false)) {
+                        $('#Hours:checkbox').prop('checked', false).removeAttr('checked');
+                        $('#Hours:checkbox').trigger(function () { $('.card').removeClass('hideByHours'); });
+                    }
+                    else {
+                        $('#Hours:checkbox').prop('checked', true).attr('checked', 'checked');
+                    }
+                    // check results for null
+                    $(function resultsMessage() {
+                        // assign array of currently visible content items
+                        var visibleItems = $('.card').not('.hideByText,' +
+                            ' .hideByHours,' +
+                            ' .hideByDriveThruOnly,' +
+                            ' .hideBySurcharge,' +
+                            ' .hideByAcceptDeposit,' +
+                            ' .hideByCoinStar,' +
+                            ' .hideByTellerServices,' +
+                            ' .hideBy_24hourExpressBox,' +
+                            ' .hideByPartnerCreditUnion,' +
+                            ' .hideByMemberConsultant,' +
+                            ' .hideByInstantDebitCardReplacement');
+                        // check to see if array is empty
+                        if (visibleItems.length == 0) {
+                            // when array is empty show the results message
+                            $('.noResultsToShow').removeClass('hideResultsMessage');
+                        } else {
+                            // when array has content items suppress the results message
+                            $('.noResultsToShow').addClass('hideResultsMessage');
+                        }
+                    });
+                });
+            });
+            // Delay the change function
+        }, 10);
+    });
+});
 
 
 //   ***   Program Fee Filter   ***   //
