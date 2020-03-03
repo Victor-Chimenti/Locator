@@ -50,8 +50,8 @@ $(function () {
                             $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
                         });
                     });
-                    assignVisibleItems();
                 });
+                assignVisibleItems();
             });
             // Delay the .on keyup function
         }, 1);

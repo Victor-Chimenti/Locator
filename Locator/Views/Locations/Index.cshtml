@@ -30,7 +30,7 @@
                 <form class="searchField d-block">
                     <fieldset class="atmSearch">
                         <div>
-                            <input type="text" class="form-control" name="searchCards" value="" id="keyword_search" placeholder="Search by Keyword" autofocus aria-label="Search Keyword" />
+                            <input type="text" class="form-control" name="searchCards" id="keyword_search" placeholder="Search by Keyword" autofocus aria-label="Search Keyword" />
                         </div>
                     </fieldset>
                 </form>
@@ -44,7 +44,7 @@
                         </a>
                     </div>
                     <div class="panel-body collapse in" id="atm-qualities" aria-expanded="false">
-                        <form class="searchATM">
+                        <form class="searchATM d-inline">
                             <fieldset class="atmSearch">
                                 <div>
                                     <input type="checkbox" id="Hours" name="24hrs / Business Hours Access" value="24">
@@ -76,8 +76,8 @@
                             </a>
                         </div>
                         <div class="panel-body collapse in" id="nfs-qualities" aria-expanded="false">
-                            <form class="searchNFC">
-                                <fieldset class="nfcSearch d-inline-block">
+                            <form class="searchNFC d-inline-block">
+                                <fieldset class="nfcSearch">
                                     @*<div>
                                             <input type="checkbox" id="DriveThruOnly" name="Drive Thru Only" value="Y">
                                             <label for="DriveThruOnly">Drive Up</label>
