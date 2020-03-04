@@ -21,9 +21,9 @@ namespace Locator.Backend
         }
 
 
-        public virtual async Task<List<Locations>> IndexAsync()
+        public virtual async Task<List<AllTablesViewModel>> IndexAsync()
         {
-            var locations_list = new List<Locations>();
+            var locations_list = new List<AllTablesViewModel>();
 
 
             locations_list = await db.ReadMultipleRecordsAsync().ConfigureAwait(false); // Select * join all tables

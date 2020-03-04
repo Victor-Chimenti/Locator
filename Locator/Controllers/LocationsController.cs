@@ -45,23 +45,25 @@ namespace Locator.Controllers
         {
             var results = await backend.IndexAsync().ConfigureAwait(false);
 
-            var Latitude = Request.Cookies["latitude"];
-            var Longitude = Request.Cookies["longitude"];
+            //var Latitude = Request.Cookies["latitude"];
+            //var Longitude = Request.Cookies["longitude"];
 
 
-            if (string.IsNullOrEmpty(Latitude))
-            {
-                return View(results);
-                //Latitude = "47.490209";
-            }
-            if (string.IsNullOrEmpty(Longitude))
-            {
-                return View(results);
-                //Longitude = "-122.272126";
-            }
+            //if (string.IsNullOrEmpty(Latitude))
+            //{
+            //    return View(results);
+            //    //Latitude = "47.490209";
+            //}
+            //if (string.IsNullOrEmpty(Longitude))
+            //{
+            //    return View(results);
+            //    //Longitude = "-122.272126";
+            //}
 
-            // TODO, for now filter down to just num records
-            results = results.GetRange(0, 28).ToList();
+
+
+            //// TODO, for now filter down to just num records
+            //results = results.GetRange(0, 28).ToList();
             return View(results);
         }
 
