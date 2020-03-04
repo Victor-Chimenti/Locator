@@ -13,7 +13,5 @@ namespace Locator.Backend
     {
 
         public Task<List<Locations>> ReadMultipleRecordsAsync();
-
-        //public bool LocationIdNotUnique(string id);
     }
 }
