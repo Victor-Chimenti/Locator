@@ -91,6 +91,21 @@ namespace Locator.Models
         [DisplayName("Notes")]
         public string AccessNotes { get; set; }
 
+        [DisplayName("Position")]
+        public PositionModel Position { get; set; }
+
+        // This string will hold the list of all attributes and be passed through Display String
+        public string ListBlockDisplayList { get; set; }
+
+        // This string will hold the list of all attributes and be passed through Display String
+        public string SubTitleDisplayList { get; set; }
+
+        // establish a default html tag for undefined, null attributes
+        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty"" style=""display: none"";></li>";
+
+        // establish a default html tag for undefined, null attributes
+        string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
+
         public CleanLocationModel(Locations data)
         {
             LocationId = data.LocationId;
@@ -141,6 +156,113 @@ namespace Locator.Models
             // Convert Installation Type to enum?
             InstallationType = data.SpecialQualities.InstallationType;
             AccessNotes = data.SpecialQualities.AccessNotes;
+
+            Position = new PositionModel(Latitude, Longitude);
+
+            ListBlockDisplayList  = GetListDisplayStrings();
+        }
+
+
+
+        /// <summary>
+        /// Use for Card Creation to improve performance for ajax
+        /// </summary>
+
+        // attributes with legit values get new html tags built
+        public string BuildListBlockDisplayTag(string Key, string Label, string Display)
+        {
+            var listBlock = string.Format(@"<li class=""list-group-item {0}"" value='{0}'> {1} : {2} </li>", Key, Label, Display);
+
+            return listBlock;
+        }
+
+        // attributes with legit values get new html tags built
+        public string BuildSubTitleDisplayTag(string Key, string Label, string Value)
+        {
+            var subTitle = string.Format(@"<p class=""subTitle {0}"" value='{0}'> {1} : {2} </p>", Key, Label, Value);
+
+            return subTitle;
+        }
+
+        public string CreateBuildListBlockIfYes(string Key, string Label, string Display)
+        {
+            if (Display.Equals("YES"))
+            {
+                return BuildListBlockDisplayTag(Key, Label, Display);
+            }
+            return "";
+        }
+
+        public string CreateBuildListBlockIfNo(string Key, string Label, string Display)
+        {
+            if (Display.Equals("NO"))
+            {
+                return BuildListBlockDisplayTag(Key, Label, Display);
+            }
+            return "";
+        }
+
+        public string GetListDisplayStrings()
+        {
+            // start an empty string
+            ListBlockDisplayList = "";
+
+            // declare attribute variables w/arguments
+            ListBlockDisplayList += CreateBuildListBlockIfYes("HandicapAccess", "Handicap Access", HandicapAccess.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("Surcharge", "Surcharge", Surcharge.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("DriveThruOnly", "Drive Thru Only", DriveThruOnly.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("AcceptsDeposits", "Accepts Deposits", AcceptDeposit.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("AcceptsCash", "Accepts Cash", AcceptCash.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("Cashless", "Cashless", Cashless.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("SelfServiceDevice", "Self Service Device",SelfServiceDevice.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("SelfServiceOnly", "Self Service Only", SelfServiceOnly.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("OnMilitaryBase", "On Military Base", OnMilitaryBase.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("MilitaryIDRequired", "Military ID Required", MilitaryIdRequired.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("RestrictedAccess", "Restricted Access", RestrictedAccess.ToTitle());
+
+            return ListBlockDisplayList;
         }
     }
 }
+
+
+/*
+ * 
+        public void GenerateSubTitleStrings()
+        {
+            // start an empty string
+            SubTitleDisplayList = "";
+
+            // declare attribute variables w/arguments
+            HoursDisplay = GetSubTitleDisplay("LocationHours", "Hours", Hours);
+            RetailOutletDisplay = GetSubTitleDisplay("RetailOutlet", "Retail Location", RetailOutlet);
+            InstallationTypeDisplay = GetSubTitleDisplay("InstallationType", "Installation Type", SpecialQualities.InstallationType);
+            AccessNotesDisplay = GetSubTitleDisplay("AccessNotes", "Notes", SpecialQualities.AccessNotes);
+
+            // concat attributes into the string
+            SubTitleDisplayList = HoursDisplay +
+                RetailOutletDisplay +
+                InstallationTypeDisplay +
+                AccessNotesDisplay;
+
+            //SubTitleDisplayList = HttpUtility.UrlEncode(SubTitleDisplayList);
+        }
+ 
+        // generic parser for each attribute
+        private string GetSubTitleDisplay(string key, string label, string value)
+        {
+            string SubTitleDisplay;
+
+            if (string.IsNullOrEmpty(value))
+            {
+                SubTitleDisplay = DefaultNoValueSubTitleString;
+            }
+            else
+            {
+                SubTitleDisplay = BuildSubTitleDisplayTag(key, label, value);
+            }
+
+            return SubTitleDisplay;
+        }
+ * 
+ */

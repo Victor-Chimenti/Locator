@@ -58,5 +58,14 @@ namespace Locator.Controllers
             //results = results.GetRange(0, 28).ToList();
             return View(cleanResults);
         }
+
+        [Produces("application/json")]
+        public async Task<JsonResult> CardJson()
+        {
+            //  var dirtyResults = await backend.IndexAsync(100,0,point).ConfigureAwait(false);
+            var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
+            var cleanResults = new CleanLocationViewModel(dirtyResults);
+            return new JsonResult(cleanResults);
+        }
     }
 }
