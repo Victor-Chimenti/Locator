@@ -73,7 +73,7 @@ namespace Locator.Controllers
             var cleanResults = new CleanLocationViewModel(dirtyResults);
 
             //// TODO, for now filter down to just num records
-            cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 289);
+            cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 12);
 
             return cleanResults;
         }
