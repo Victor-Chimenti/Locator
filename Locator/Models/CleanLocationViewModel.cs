@@ -9,9 +9,9 @@ namespace Locator.Models
 
         public CleanLocationViewModel(List<Locations> data)
         {
-            foreach (var item in data)
+            foreach (var obj in data)
             {
-                CleanLocationList.Add(new CleanLocationModel(item));
+                CleanLocationList.Add(new CleanLocationModel(obj));
             }
         }
     }
