@@ -145,34 +145,81 @@
                                 <ul class="list-group">
 
 
-                                    @{
-                                        if (card.HandicapAccess == BooleanEnum.Y)
+                                    @card.ListBlockDisplayList
+
+                                        @*if (card.HandicapAccess == BooleanEnum.Y)
                                         {
-                                            <li class="list-group-item HandicapAccess" data-value="@card.HandicapAccess.ToValue()">Handicap Access: @card.HandicapAccess.ToTitle())</li>
+                                            <li class="list-group-item HandicapAccess" data-value="@card.HandicapAccess.ToValue()">Handicap Access: @card.HandicapAccess.ToTitle()</li>
                                         }
 
                                         if (card.DriveThruOnly == BooleanEnum.Y)
                                         {
 
-                                            <li class="list-group-item DriveThruOnly" data-value="@card.DriveThruOnly.ToValue()">Drive Thru Only: @card.DriveThruOnly.ToTitle())</li>
+                                            <li class="list-group-item DriveThruOnly" data-value="@card.DriveThruOnly.ToValue()">Drive Thru Only: @card.DriveThruOnly.ToTitle()</li>
                                         }
-                                    }
 
-                                    @*<li class="list-group-item Surcharge @(card.Surcharge ?? "empty")" data-value="@(card.Surcharge ?? "Unknown")">Surcharge: @(card.Surcharge ?? "Unknown")</li>
-                                        <li class="list-group-item AcceptDeposit @(card.AcceptDeposit ?? "empty")" data-value="@(card.AcceptDeposit ?? "Unknown")">Accepts Deposits: @(card.AcceptDeposit ?? "Unknown")</li>
-                                        <li class="list-group-item AcceptCash @(card.AcceptCash ?? "empty")" data-value="@(card.AcceptCash ?? "Unknown")">Accepts Cash: @(card.AcceptCash ?? "Unknown")</li>
-                                        <li class="list-group-item Cashless @(card.Cashless ?? "empty")" data-value="@(card.Cashless ?? "Unknown")">Cashless: @(card.Cashless ?? "Unknown")</li>
+                                        if (card.Surcharge == BooleanEnum.N)
+                                        {
+
+                                            <li class="list-group-item Surcharge" data-value="@card.Surcharge.ToValue()">Surcharge: @card.Surcharge.ToTitle()</li>
+                                        }
+
+                                        if (card.AcceptDeposit == BooleanEnum.N)
+                                        {
+
+                                            <li class="list-group-item AcceptDeposit" data-value="@card.AcceptDeposit.ToValue()">Surcharge: @card.AcceptDeposit.ToTitle()</li>
+                                        }
+
+                                        if (card.AcceptCash == BooleanEnum.Y)
+                                        {
+
+                                            <li class="list-group-item AcceptCash" data-value="@card.AcceptCash.ToValue()">Surcharge: @card.AcceptCash.ToTitle()</li>
+                                        }
+
+                                        if (card.Cashless == BooleanEnum.Y)
+                                        {
+
+                                            <li class="list-group-item Cashless" data-value="@card.Cashless.ToValue()">Surcharge: @card.Cashless.ToTitle()</li>
+                                        }
+
+                                        if (card.SelfServiceDevice == BooleanEnum.Y)
+                                        {
+
+                                            <li class="list-group-item SelfServiceDevice" data-value="@card.SelfServiceDevice.ToValue()">Surcharge: @card.SelfServiceDevice.ToTitle()</li>
+                                        }
+
+                                        if (card.SelfServiceOnly == BooleanEnum.Y)
+                                        {
+
+                                            <li class="list-group-item SelfServiceOnly" data-value="@card.SelfServiceOnly.ToValue()">Surcharge: @card.SelfServiceOnly.ToTitle()</li>
+                                        }
+
+                                        if (card.OnMilitaryBase == BooleanEnum.Y)
+                                        {
+
+                                            <li class="list-group-item OnMilitaryBase" data-value="@card.OnMilitaryBase.ToValue()">Surcharge: @card.OnMilitaryBase.ToTitle()</li>
+                                        }
+
+                                        if (card.MilitaryIdRequired == BooleanEnum.Y)
+                                        {
+
+                                            <li class="list-group-item MilitaryIdRequired" data-value="@card.MilitaryIdRequired.ToValue()">Surcharge: @card.MilitaryIdRequired.ToTitle()</li>
+                                        }
+
+                                        if (card.RestrictedAccess == BooleanEnum.Y)
+                                        {
+
+                                            <li class="list-group-item RestrictedAccess" data-value="@card.RestrictedAccess.ToValue()">Surcharge: @card.RestrictedAccess.ToTitle()</li>
+                                        }
+                                    }*@
+                                    
+                                        @*********** TODO: Add the new fields to the Clean Location ViewModel   **********
                                         <li class="list-group-item CoinStar @(card.CoinStar ?? "empty")" data-value="@(card.CoinStar ?? "Unknown")">Accepts Cash: @(card.CoinStar ?? "Unknown")</li>
                                         <li class="list-group-item TellerServices @(card.TellerServices ?? "empty")" data-value="@(card.TellerServices ?? "Unknown")">Accepts Cash: @(card.TellerServices ?? "Unknown")</li>
                                         <li class="list-group-item _24hourExpressBox @(card._24hourExpressBox ?? "empty")" data-value="@(card._24hourExpressBox ?? "Unknown")">Accepts Cash: @(card._24hourExpressBox ?? "Unknown")</li>
                                         <li class="list-group-item PartnerCreditUnion @(card.PartnerCreditUnion ?? "empty")" data-value="@(card.PartnerCreditUnion ?? "Unknown")">Accepts Cash: @(card.PartnerCreditUnion ?? "Unknown")</li>
                                         <li class="list-group-item MemberConsultant @(card.MemberConsultant ?? "empty")" data-value="@(card.MemberConsultant ?? "Unknown")">Accepts Cash: @(card.MemberConsultant ?? "Unknown")</li>
-                                        <li class="list-group-item InstantDebitCardReplacement @(card.InstantDebitCardReplacement ?? "empty")" data-value="@(card.InstantDebitCardReplacement ?? "Unknown")">Accepts Cash: @(card.InstantDebitCardReplacement ?? "Unknown")</li>
-                                        <li class="list-group-item SelfServiceDevice @(card.SelfServiceDevice ?? "empty")" data-value="@(card.SelfServiceDevice ?? "Unknown")">Self Service Device: @(card.SelfServiceDevice ?? "Unknown")</li>
-                                        <li class="list-group-item SelfServiceOnly @(card.SelfServiceOnly ?? "empty")" data-value="@(card.SelfServiceOnly ?? "Unknown")">Self Service Only: @(card.SelfServiceOnly ?? "Unknown")</li>
-                                        <li class="list-group-item OnMilitaryBase @(card.OnMilitaryBase ?? "empty")" data-value="@(card.OnMilitaryBase ?? "Unknown")">On Military Base: @(card.OnMilitaryBase ?? "Unknown")</li>
-                                        <li class="list-group-item MilitaryIdRequired @(card.MilitaryIdRequired ?? "empty")" data-value="@(card.MilitaryIdRequired ?? "Unknown")">Military ID Required: @(card.MilitaryIdRequired ?? "Unknown")</li>
-                                        <li class="list-group-item RestrictedAccess @(card.RestrictedAccess ?? "empty")" data-value="@(card.RestrictedAccess ?? "Unknown")">Restricted Access: @(card.RestrictedAccess ?? "Unknown")</li>*@
+                                        <li class="list-group-item InstantDebitCardReplacement @(card.InstantDebitCardReplacement ?? "empty")" data-value="@(card.InstantDebitCardReplacement ?? "Unknown")">Accepts Cash: @(card.InstantDebitCardReplacement ?? "Unknown")</li>*@
                                 </ul>
                             </div>
                             <div class="card-footer contactInfo">
@@ -189,16 +236,27 @@
                                 @******* TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? *********@
 
                                 @*<p class="phone @(card.Contact.Phone ?? "empty")" value="@(card.Contact.Phone ?? "empty")">Phone: @(card.Contact.Phone ?? "empty")</p>
-                                    <p class="webAddress @(card.Contact.WebAddress ?? "empty")" value="@(card.Contact.WebAddress ?? "empty")">@(card.Contact.WebAddress ?? "empty")</p>*@
+        <p class="webAddress @(card.Contact.WebAddress ?? "empty")" value="@(card.Contact.WebAddress ?? "empty")">@(card.Contact.WebAddress ?? "empty")</p>*@
 
 
-                                <p class="lat" value="@card.Latitude">Latitude: @card.Latitude</p>
-                                <p class="lng" value="@card.Longitude">Longitude: @card.Longitude</p>
-                                <blockquote class="blockquote my-1 pt-1">
-                                    <h5 class="blockquote-footer locationType" value="@card.LocationType">
-                                        Location Type: <cite title="@card.LocationType">@card.LocationType</cite>
-                                    </h5>
-                                </blockquote>
+                            <p class="lat" value="@card.Latitude">Latitude: @card.Latitude</p>
+                            <p class="lng" value="@card.Longitude">Longitude: @card.Longitude</p>
+                                @{
+                                    switch (card.LocationTypeCode)
+                                    {
+                                        case "ATM":
+                                        case "A":
+                                        case "S":
+                                            <blockquote class="blockquote my-1 pt-1">
+                                                <h5 class="blockquote-footer locationType" value="@card.LocationTypeCode">
+                                                    Location Type: <cite title="@card.LocationType.ToTitle()">@card.LocationType.ToTitle()</cite>
+                                                </h5>
+                                            </blockquote>
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
                             </div>
                         </div>
                     </div>

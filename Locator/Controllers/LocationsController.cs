@@ -64,14 +64,16 @@ namespace Locator.Controllers
 
             var point = new PositionModel(Latitude, Longitude);
 
-            //// TODO, for now filter down to just num records
-            //results = results.GetRange(0, 28).ToList();
+
 
             // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records
 
             //  var dirtyResults = await backend.IndexAsync(100,0,point).ConfigureAwait(false);
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
             var cleanResults = new CleanLocationViewModel(dirtyResults);
+
+            //// TODO, for now filter down to just num records
+            cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 28);
 
             return cleanResults;
         }
