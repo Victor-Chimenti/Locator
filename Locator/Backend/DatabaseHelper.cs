@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DatabaseLibrary.Models;
 using Locator.Models;
+using Locator.Backend;
 
 namespace Locator.Backend
 {
