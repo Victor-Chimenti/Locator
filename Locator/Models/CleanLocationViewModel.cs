@@ -7,11 +7,11 @@ namespace Locator.Models
     {
         public List<CleanLocationModel> CleanLocationList = new List<CleanLocationModel>();
 
-        public CleanLocationViewModel(List<Locations> locationData)
+        public CleanLocationViewModel(List<Locations> data)
         {
-            foreach (var obj in locationData)
+            foreach (var item in data)
             {
-                CleanLocationList.Add(new CleanLocationModel(obj));
+                CleanLocationList.Add(new CleanLocationModel(item));
             }
         }
     }
