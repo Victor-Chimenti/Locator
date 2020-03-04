@@ -11,7 +11,7 @@ using Locator.Backend;
 
 namespace Locator.Backend
 {
-    public class IDatabaseHelper
+    public interface IDatabaseHelper
     {
 
         public Task<List<Locations>> ReadMultipleRecordsAsync();
