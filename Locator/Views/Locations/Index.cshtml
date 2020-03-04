@@ -1,16 +1,11 @@
-﻿@model IEnumerable<DatabaseLibrary.Models.Locations>
-
-
+﻿@using  Locator.Models;
+@model CleanLocationViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-
-<script src="~/js/location.js"></script>
-<script src="~/js/filterCards.js"></script>
-<script src="~/js/map.js"></script>
-
+<script type="text/javascript" src="~/js/location.js"></script>
 <script type="text/javascript">
     getLocation()
 </script>
@@ -124,73 +119,62 @@
         <div class="col-xs-12 col-md-3" id="sidebar-wrapper">
             <h3 id="sidebar-head">ATM Nearby</h3>
             <div class="col-12" id="cards-wrapper">
-                @foreach (var card in Model)
+                @foreach (var card in Model.CleanLocationList)
                 {
-                <div class="card accordion" id="id-@card.LocationId">
-                    <div class="card-header" id="heading-@card.LocationId">
-                        <a href="#" class="btn-link" id="button-@card.LocationId" data-toggle="collapse" data-target="#collapse-@card.LocationId" aria-expanded="false" aria-controls="collapse-@card.LocationId">
-                            <span class="cardTitleBox">
-                                <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
-                                <span class="Name card-title card-name">@card.Name</span>
-                            </span>
-                        </a>
-                        <p class="address" value="@card.Address">@card.Address</p>
-                    </div>
-                    <div class="collapse in" id="collapse-@card.LocationId" aria-expanded="false">
-                        <div class="card-body">
-                            <div class="card-subtitle">
-                                <p class="subTitle Hours @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
-                                <p class="subTitle RetailOutlet @(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">@(card.RetailOutlet ?? "Unknown")</p>
-                                <p class="subTitle InstallationType @(card.SpecialQualities.InstallationType ?? "empty")" value="@(card.SpecialQualities.InstallationType ?? "Unknown")">@(card.SpecialQualities.InstallationType ?? "Unknown")</p>
-                                <p class="subTitle AccessNotes @(card.SpecialQualities.AccessNotes ?? "empty")" value="@(card.SpecialQualities.AccessNotes ?? "Unknown")">Notes: @(card.SpecialQualities.AccessNotes ?? "Unknown")</p>
-                            </div>
-                            <ul class="list-group">
-                                <li class="list-group-item HandicapAccess @(card.SpecialQualities.HandicapAccess ?? "empty")" data-value="@(card.SpecialQualities.HandicapAccess ?? "Unknown")">Handicap Access: @(card.SpecialQualities.HandicapAccess ?? "Unknown")</li>
-                                <li class="list-group-item DriveThruOnly @(card.SpecialQualities.DriveThruOnly ?? "empty")" data-value="@(card.SpecialQualities.DriveThruOnly ?? "Unknown")">Drive Thru Only: @(card.SpecialQualities.DriveThruOnly ?? "Unknown")</li>
-                                <li class="list-group-item Surcharge @(card.SpecialQualities.Surcharge ?? "empty")" data-value="@(card.SpecialQualities.Surcharge ?? "Unknown")">Surcharge: @(card.SpecialQualities.Surcharge ?? "Unknown")</li>
-                                <li class="list-group-item AcceptDeposit @(card.SpecialQualities.AcceptDeposit ?? "empty")" data-value="@(card.SpecialQualities.AcceptDeposit ?? "Unknown")">Accepts Deposits: @(card.SpecialQualities.AcceptDeposit ?? "Unknown")</li>
-                                <li class="list-group-item AcceptCash @(card.SpecialQualities.AcceptCash ?? "empty")" data-value="@(card.SpecialQualities.AcceptCash ?? "Unknown")">Accepts Cash: @(card.SpecialQualities.AcceptCash ?? "Unknown")</li>
-                                <li class="list-group-item Cashless @(card.SpecialQualities.Cashless ?? "empty")" data-value="@(card.SpecialQualities.Cashless ?? "Unknown")">Cashless: @(card.SpecialQualities.Cashless ?? "Unknown")</li>
-                                <li class="list-group-item CoinStar @(card.SpecialQualities.CoinStar ?? "empty")" data-value="@(card.SpecialQualities.CoinStar ?? "Unknown")">Accepts Cash: @(card.SpecialQualities.CoinStar ?? "Unknown")</li>
-                                <li class="list-group-item TellerServices @(card.SpecialQualities.TellerServices ?? "empty")" data-value="@(card.SpecialQualities.TellerServices ?? "Unknown")">Accepts Cash: @(card.SpecialQualities.TellerServices ?? "Unknown")</li>
-                                <li class="list-group-item _24hourExpressBox @(card.SpecialQualities._24hourExpressBox ?? "empty")" data-value="@(card.SpecialQualities._24hourExpressBox ?? "Unknown")">Accepts Cash: @(card.SpecialQualities._24hourExpressBox ?? "Unknown")</li>
-                                <li class="list-group-item PartnerCreditUnion @(card.SpecialQualities.PartnerCreditUnion ?? "empty")" data-value="@(card.SpecialQualities.PartnerCreditUnion ?? "Unknown")">Accepts Cash: @(card.SpecialQualities.PartnerCreditUnion ?? "Unknown")</li>
-                                <li class="list-group-item MemberConsultant @(card.SpecialQualities.MemberConsultant ?? "empty")" data-value="@(card.SpecialQualities.MemberConsultant ?? "Unknown")">Accepts Cash: @(card.SpecialQualities.MemberConsultant ?? "Unknown")</li>
-                                <li class="list-group-item InstantDebitCardReplacement @(card.SpecialQualities.InstantDebitCardReplacement ?? "empty")" data-value="@(card.SpecialQualities.InstantDebitCardReplacement ?? "Unknown")">Accepts Cash: @(card.SpecialQualities.InstantDebitCardReplacement ?? "Unknown")</li>
-                                <li class="list-group-item SelfServiceDevice @(card.SpecialQualities.SelfServiceDevice ?? "empty")" data-value="@(card.SpecialQualities.SelfServiceDevice ?? "Unknown")">Self Service Device: @(card.SpecialQualities.SelfServiceDevice ?? "Unknown")</li>
-                                <li class="list-group-item SelfServiceOnly @(card.SpecialQualities.SelfServiceOnly ?? "empty")" data-value="@(card.SpecialQualities.SelfServiceOnly ?? "Unknown")">Self Service Only: @(card.SpecialQualities.SelfServiceOnly ?? "Unknown")</li>
-                                <li class="list-group-item OnMilitaryBase @(card.SpecialQualities.OnMilitaryBase ?? "empty")" data-value="@(card.SpecialQualities.OnMilitaryBase ?? "Unknown")">On Military Base: @(card.SpecialQualities.OnMilitaryBase ?? "Unknown")</li>
-                                <li class="list-group-item MilitaryIdRequired @(card.SpecialQualities.MilitaryIdRequired ?? "empty")" data-value="@(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")">Military ID Required: @(card.SpecialQualities.MilitaryIdRequired ?? "Unknown")</li>
-                                <li class="list-group-item RestrictedAccess @(card.SpecialQualities.RestrictedAccess ?? "empty")" data-value="@(card.SpecialQualities.RestrictedAccess ?? "Unknown")">Restricted Access: @(card.SpecialQualities.RestrictedAccess ?? "Unknown")</li>
-                            </ul>
-                        </div>
-                        <div class="card-footer contactInfo">
-                            <h4 class="card-title contactInfoHeader">Contact Information</h4>
-                            <p class="name" value="@card.Name">@card.Name</p>
+                    <div class="card accordion" id="id-@card.LocationId">
+                        <div class="card-header" id="heading-@card.LocationId">
+                            <a href="#" class="btn-link" id="button-@card.LocationId" data-toggle="collapse" data-target="#collapse-@card.LocationId" aria-expanded="false" aria-controls="collapse-@card.LocationId">
+                                <span class="cardTitleBox">
+                                    <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
+                                    <span class="Name card-title card-name">@card.Name</span>
+                                </span>
+                            </a>
                             <p class="address" value="@card.Address">@card.Address</p>
-                            <p class="city-state-zip">
-                                <span class="city" value="@card.City">@card.City</span>
-                                <span>, </span>
-                                <span class="state" value="@card.State">@card.State </span>
-                                <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
-                            </p>
+                        </div>
+                        <div class="collapse in" id="collapse-@card.LocationId" aria-expanded="false">
+                            <div class="card-body">
+                                <div class="card-subtitle">
+                                    <p class="subTitle Hours @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
+                                    <p class="subTitle RetailOutlet @(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">@(card.RetailOutlet ?? "Unknown")</p>
+                                    <p class="subTitle InstallationType @(card.InstallationType ?? "empty")" value="@(card.InstallationType ?? "Unknown")">@(card.InstallationType ?? "Unknown")</p>
+                                    <p class="subTitle AccessNotes @(card.AccessNotes ?? "empty")" value="@(card.AccessNotes ?? "Unknown")">Notes: @(card.AccessNotes ?? "Unknown")</p>
+                                </div>
+                                <ul class="list-group">@card.ListBlockDisplayList</ul>
+                            </div>
+                            <div class="card-footer contactInfo">
+                                <h4 class="card-title contactInfoHeader">Contact Information</h4>
+                                <p class="name" value="@card.Name">@card.Name</p>
+                                <p class="address" value="@card.Address">@card.Address</p>
+                                <p class="city-state-zip">
+                                    <span class="city" value="@card.City">@card.City</span>
+                                    <span>, </span>
+                                    <span class="state" value="@card.State">@card.State </span>
+                                    <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
+                                </p>
 
-                            @******* TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? *********@
+                                @******* TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? *********@
 
-                            @*<p class="phone @(card.Contacts.Phone ?? "empty")" value="@(card.Contacts.Phone ?? "empty")">Phone: @(card.Contacts.Phone ?? "empty")</p>
-                                <p class="webAddress @(card.Contacts.WebAddress ?? "empty")" value="@(card.Contacts.WebAddress ?? "empty")">@(card.Contacts.WebAddress ?? "empty")</p>*@
-
-
-                            <p class="lat" value="@card.Latitude">Latitude: @card.Latitude</p>
-                            <p class="lng" value="@card.Longitude">Longitude: @card.Longitude</p>
-                            <blockquote class="blockquote my-1 pt-1">
-                                <h5 class="blockquote-footer locationType" value="@card.LocationType">
-                                    Location Type: <cite title="@card.LocationType">@card.LocationType</cite>
-                                </h5>
-                            </blockquote>
+                                <p class="phone" value="@card.Phone.">@card.Phone</p>
+                                <p class="webAddress" value="@card.WebAddress">@card.WebAddress</p>
+                                @{
+                                    switch (card.LocationTypeCode)
+                                    {
+                                        case "ATM":
+                                        case "A":
+                                        case "S":
+                                            <blockquote class="blockquote my-1 pt-1">
+                                                <h5 class="blockquote-footer locationType" value="@card.LocationTypeCode">
+                                                    Location Type: <cite title="@card.LocationType.ToTitle()">@card.LocationType.ToTitle()</cite>
+                                                </h5>
+                                            </blockquote>
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
             </div>
         </div>

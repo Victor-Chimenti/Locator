@@ -32,12 +32,17 @@ $(function assignVisibleItems() {
 
 
 
-//   ***   Keyword Search   ***   //
 $(function () {
     // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
+    $(window).on('load', function (e) {
+        //$(document).ready(function () {
+
         // Once window loads set a timeout delay
         setTimeout(function () {
+
+
+
+            //   ***   Keyword Search   ***   //
             $(function () {
                 // scan the keyword each character the user inputs
                 $('#keyword_search').on('keyup', function () {
@@ -53,20 +58,11 @@ $(function () {
                 });
                 assignVisibleItems();
             });
-            // Delay the .on keyup function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   24 Hours Filter   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   24 Hours Filter   ***   //
             $(function () {
                 // When the select box Hours changes - Execute change function
                 $('#Hours').change(function () {
@@ -94,20 +90,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Drive Thru Only   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   Drive Thru Only   ***   //
             $(function () {
                 // When the select box Drive Thru changes - Execute change function
                 $('#DriveThruOnly').change(function () {
@@ -135,20 +122,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Surcharge   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   Surcharge   ***   //
             $(function () {
                 // When the select box Surchargechanges - Execute change function
                 $('#Surcharge').change(function () {
@@ -176,20 +154,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Accepts Deposits   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   Accepts Deposits   ***   //
             $(function () {
                 // When the select box Deposits changes - Execute change function
                 $('#AcceptDeposit').change(function () {
@@ -217,20 +186,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Coin Star   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   Coin Star   ***   //
             $(function () {
                 // When the select box Coin Star changes - Execute change function
                 $('#CoinStar').change(function () {
@@ -258,20 +218,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Teller Services   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   Teller Services   ***   //
             $(function () {
                 // When the select box Teller Services changes - Execute change function
                 $('#TellerServices').change(function () {
@@ -299,20 +250,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   24 Hour Express Box   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   24 Hour Express Box   ***   //
             $(function () {
                 // When the select box 24 Hour Express changes - Execute change function
                 $('#_24hourExpressBox').change(function () {
@@ -340,20 +282,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Partner Credit Union   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   Partner Credit Union   ***   //
             $(function () {
                 // When the select box Partner changes - Execute change function
                 $('#PartnerCreditUnion').change(function () {
@@ -381,20 +314,11 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Member Consultant   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+            //   ***   Member Consultant   ***   //
             $(function () {
                 // When the select box Consultant changes - Execute change function
                 $('#MemberConsultant').change(function () {
@@ -422,20 +346,12 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
-    });
-});
 
 
 
 
-//   ***   Instant Debit Card Replacement   ***   //
-$(function () {
-    // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
-        // Once window loads set a timeout delay
-        setTimeout(function () {
+
+            //   ***   Instant Debit Card Replacement   ***   //
             $(function () {
                 // When the select box Debit Card Replacement changes - Execute change function
                 $('#InstantDebitCardReplacement').change(function () {
@@ -463,7 +379,6 @@ $(function () {
                     assignVisibleItems();
                 });
             });
-            // Delay the change function
-        }, 1);
+        }, 5);
     });
 });
