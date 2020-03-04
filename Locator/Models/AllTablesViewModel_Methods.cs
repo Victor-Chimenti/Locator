@@ -512,7 +512,6 @@ namespace Locator.Models
             Address = referenceLocation.Address;
             Cashless = ConvertStringToBooleanEnum(referenceLocation.SpecialQualities.Cashless);
             City = referenceLocation.City;
-            CoopLocationId = referenceLocation.CoopLocationId;
             Country = referenceLocation.Country;
             DriveThruOnly = ConvertStringToBooleanEnum(referenceLocation.SpecialQualities.DriveThruOnly);
             HandicapAccess = ConvertStringToBooleanEnum(referenceLocation.SpecialQualities.HandicapAccess);
