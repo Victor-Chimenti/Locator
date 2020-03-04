@@ -46,7 +46,7 @@ namespace Locator.Controllers
                Longitude = "-122.272126";
             }
 
-            //var point = MakePoint(Latitude, Longitude); 
+            var point = new PositionModel(Latitude, Longitude); 
 
             // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records
 
@@ -62,6 +62,7 @@ namespace Locator.Controllers
         [Produces("application/json")]
         public async Task<JsonResult> CardJson()
         {
+
             //  var dirtyResults = await backend.IndexAsync(100,0,point).ConfigureAwait(false);
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
             var cleanResults = new CleanLocationViewModel(dirtyResults);
