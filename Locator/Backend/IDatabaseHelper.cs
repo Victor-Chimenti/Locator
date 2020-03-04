@@ -12,7 +12,7 @@ namespace Locator.Backend
     public interface IDatabaseHelper
     {
 
-        public Task<List<AllTablesViewModel>> ReadMultipleRecordsAsync();
+        public Task<List<Locations>> ReadMultipleRecordsAsync();
 
         public bool LocationIdNotUnique(string id);
     }

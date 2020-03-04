@@ -19,7 +19,7 @@ namespace Locator.Backend
             this.context = context;
         }
 
-        public virtual async Task<List<AllTablesViewModel>> ReadMultipleRecordsAsync()
+        public virtual async Task<List<Locations>> ReadMultipleRecordsAsync()
         {
             var result = await context.Locations
                          .Include(c => c.Contact)
