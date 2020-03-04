@@ -98,13 +98,13 @@ namespace Locator.Models
         public string ListBlockDisplayList { get; set; }
 
         // This string will hold the list of all attributes and be passed through Display String
-        public string SubTitleDisplayList { get; set; }
+        //public string SubTitleDisplayList { get; set; }
 
         // establish a default html tag for undefined, null attributes
-        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty"" style=""display: none"";></li>";
+        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty"" data-value=""empty""></li>";
 
-        // establish a default html tag for undefined, null attributes
-        string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
+        //// establish a default html tag for undefined, null attributes
+        //string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
 
         public CleanLocationModel(Locations data)
         {
@@ -137,7 +137,16 @@ namespace Locator.Models
 
                 if (!string.IsNullOrEmpty(data.Contact.WebAddress))
                 {
-                    WebAddress = data.Contact.WebAddress;
+                    var protocol = "http://";
+                    var secureProtocol = "https://";
+                    if (!data.Contact.WebAddress.Contains(protocol) || !data.Contact.WebAddress.Contains(secureProtocol))
+                    {
+                        WebAddress = secureProtocol + data.Contact.WebAddress;
+                    }
+                    else
+                    {
+                        WebAddress = data.Contact.WebAddress;
+                    }
                 }
             }
 
@@ -153,7 +162,6 @@ namespace Locator.Models
             MilitaryIdRequired = BoolEnumHelper.StringToEnum(data.SpecialQualities.MilitaryIdRequired);
             SelfServiceDevice = BoolEnumHelper.StringToEnum(data.SpecialQualities.SelfServiceDevice);
 
-            // Convert Installation Type to enum?
             InstallationType = data.SpecialQualities.InstallationType;
             AccessNotes = data.SpecialQualities.AccessNotes;
 
@@ -169,37 +177,37 @@ namespace Locator.Models
         /// </summary>
 
         // attributes with legit values get new html tags built
-        public string BuildListBlockDisplayTag(string Key, string Label, string Display)
+        public string BuildListBlockDisplayTag(string Key, string Display, string Title)
         {
-            var listBlock = string.Format(@"<li class=""list-group-item {0}"" value='{0}'> {1} : {2} </li>", Key, Label, Display);
+            var listBlock = string.Format(@"<li class=""list-group-item {0}"" data-value='{2}'> {1} : {2} </li>", Key, Display, Title);
 
             return listBlock;
         }
 
         // attributes with legit values get new html tags built
-        public string BuildSubTitleDisplayTag(string Key, string Label, string Value)
-        {
-            var subTitle = string.Format(@"<p class=""subTitle {0}"" value='{0}'> {1} : {2} </p>", Key, Label, Value);
+        //public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
+        //{
+        //    var subTitle = string.Format(@"<p class=""subTitle {0}"" value='{0}'> {1} : {2} </p>", Key, Display, Title);
 
-            return subTitle;
+        //    return subTitle;
+        //}
+
+        public string CreateBuildListBlockIfYes(string Key, string Display, string Title)
+        {
+            if (Title.Equals("Yes"))
+            {
+                return BuildListBlockDisplayTag(Key, Display, Title);
+            }
+            return DefaultNoValueListBlockString;
         }
 
-        public string CreateBuildListBlockIfYes(string Key, string Label, string Display)
+        public string CreateBuildListBlockIfNo(string Key, string Display, string Title)
         {
-            if (Display.Equals("YES"))
+            if (Title.Equals("No"))
             {
-                return BuildListBlockDisplayTag(Key, Label, Display);
+                return BuildListBlockDisplayTag(Key, Display, Title);
             }
-            return "";
-        }
-
-        public string CreateBuildListBlockIfNo(string Key, string Label, string Display)
-        {
-            if (Display.Equals("NO"))
-            {
-                return BuildListBlockDisplayTag(Key, Label, Display);
-            }
-            return "";
+            return DefaultNoValueListBlockString;
         }
 
         public string GetListDisplayStrings()
@@ -209,7 +217,7 @@ namespace Locator.Models
 
             // declare attribute variables w/arguments
             ListBlockDisplayList += CreateBuildListBlockIfYes("HandicapAccess", "Handicap Access", HandicapAccess.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("Surcharge", "Surcharge", Surcharge.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfNo("Surcharge", "Surcharge", Surcharge.ToTitle());
             ListBlockDisplayList += CreateBuildListBlockIfYes("DriveThruOnly", "Drive Thru Only", DriveThruOnly.ToTitle());
             ListBlockDisplayList += CreateBuildListBlockIfYes("AcceptsDeposits", "Accepts Deposits", AcceptDeposit.ToTitle());
             ListBlockDisplayList += CreateBuildListBlockIfYes("AcceptsCash", "Accepts Cash", AcceptCash.ToTitle());
@@ -219,6 +227,7 @@ namespace Locator.Models
             ListBlockDisplayList += CreateBuildListBlockIfYes("OnMilitaryBase", "On Military Base", OnMilitaryBase.ToTitle());
             ListBlockDisplayList += CreateBuildListBlockIfYes("MilitaryIDRequired", "Military ID Required", MilitaryIdRequired.ToTitle());
             ListBlockDisplayList += CreateBuildListBlockIfYes("RestrictedAccess", "Restricted Access", RestrictedAccess.ToTitle());
+
 
             return ListBlockDisplayList;
         }

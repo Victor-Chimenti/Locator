@@ -46,15 +46,15 @@
                                     <label for="Hours">24 Hour</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="DriveThruOnly" name="Drive Thru Only" value="Y">
+                                    <input type="checkbox" id="DriveThruOnly" name="Drive Thru Only" value="Yes">
                                     <label for="DriveThruOnly">Drive Up</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="Surcharge" name="Surcharge" value="N">
+                                    <input type="checkbox" id="Surcharge" name="Surcharge" value="No">
                                     <label for="Surcharge">Surcharge Free</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="AcceptDeposit" name="Accepts Deposit" value="Y">
+                                    <input type="checkbox" id="AcceptDeposit" name="Accepts Deposit" value="Yes">
                                     <label for="AcceptDeposit">Accepts Deposits</label>
                                 </div>
                             </fieldset>
@@ -139,7 +139,7 @@
                                     <p class="subTitle InstallationType @(card.InstallationType ?? "empty")" value="@(card.InstallationType ?? "Unknown")">@(card.InstallationType ?? "Unknown")</p>
                                     <p class="subTitle AccessNotes @(card.AccessNotes ?? "empty")" value="@(card.AccessNotes ?? "Unknown")">Notes: @(card.AccessNotes ?? "Unknown")</p>
                                 </div>
-                                <ul class="list-group">@card.ListBlockDisplayList</ul>
+                                <ul class="list-group">@Html.Raw(@card.ListBlockDisplayList)</ul>
                             </div>
                             <div class="card-footer contactInfo">
                                 <h4 class="card-title contactInfoHeader">Contact Information</h4>
