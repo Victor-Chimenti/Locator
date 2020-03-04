@@ -34,7 +34,9 @@ $(function assignVisibleItems() {
 
 $(function () {
     // After the DOM is ready, Wait until the window loads
-    $(document).ready(function () {
+    $(window).on('load', function (e) {
+        //$(document).ready(function () {
+
         // Once window loads set a timeout delay
         setTimeout(function () {
 
