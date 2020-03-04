@@ -30,11 +30,27 @@ namespace Locator.Controllers
             }
         }
 
+
         public async Task<IActionResult> Index()
+        {
+            var cleanResults = await GetCleanViewModel();
+
+            return View(cleanResults);
+        }
+
+        [Produces("application/json")]
+        public async Task<JsonResult> CardJson()
+        {
+
+            var cleanResults = await GetCleanViewModel();
+
+            return new JsonResult(cleanResults);
+        }
+
+        public async Task<CleanLocationViewModel> GetCleanViewModel()
         {
             var Latitude = Request.Cookies["latitude"];
             var Longitude = Request.Cookies["longitude"];
-
 
             if (string.IsNullOrEmpty(Latitude))
             {
@@ -43,10 +59,13 @@ namespace Locator.Controllers
 
             if (string.IsNullOrEmpty(Longitude))
             {
-               Longitude = "-122.272126";
+                Longitude = "-122.272126";
             }
 
-            var point = new PositionModel(Latitude, Longitude); 
+            var point = new PositionModel(Latitude, Longitude);
+
+            //// TODO, for now filter down to just num records
+            //results = results.GetRange(0, 28).ToList();
 
             // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records
 
@@ -54,19 +73,7 @@ namespace Locator.Controllers
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
             var cleanResults = new CleanLocationViewModel(dirtyResults);
 
-            //// TODO, for now filter down to just num records
-            //results = results.GetRange(0, 28).ToList();
-            return View(cleanResults);
-        }
-
-        [Produces("application/json")]
-        public async Task<JsonResult> CardJson()
-        {
-
-            //  var dirtyResults = await backend.IndexAsync(100,0,point).ConfigureAwait(false);
-            var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
-            var cleanResults = new CleanLocationViewModel(dirtyResults);
-            return new JsonResult(cleanResults);
+            return cleanResults;
         }
     }
 }
