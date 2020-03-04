@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
-using Locator.Models;
-using DatabaseLibrary.Models;
+using System.Reflection;
 
 namespace Locator.Models
 {
     public enum StateEnum
     {
-
         [Display(Name = "Alabama")]
         AL,
         [Display(Name = "Alaska")]
@@ -136,6 +132,35 @@ namespace Locator.Models
         [Display(Name = "Military Base")]
         AE,
         [Display(Name = "Puerto Rico")]
-        PR
+        PR,
+
+        [Display(Name = "Unknown")]
+        Unknown,
+
+    }
+
+    public static class StateEnumExtensions
+    {
+        public static string ToTitle(this StateEnum value)
+        {
+            var title = value.GetType().GetMember(value.ToString()).First().GetCustomAttribute<DisplayAttribute>().Name;
+
+            return title;
+        }
+    }
+
+    public class StateEnumHelper
+    {
+        public static StateEnum StringToEnum(string value)
+        {
+            try
+            {
+                return (StateEnum)Enum.Parse(typeof(StateEnum), value.ToUpper());
+            }
+            catch (Exception)
+            {
+                return StateEnum.Unknown;
+            }
+        }
     }
 }
