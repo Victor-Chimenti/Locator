@@ -29,12 +29,15 @@ namespace Locator.Controllers
         }
 
 
+
         public async Task<IActionResult> Index()
         {
             var cleanResults = await GetCleanViewModel();
 
             return View(cleanResults);
         }
+
+
 
         [Produces("application/json")]
         public async Task<JsonResult> CardJson()
@@ -44,6 +47,9 @@ namespace Locator.Controllers
 
             return new JsonResult(cleanResults);
         }
+
+
+
 
         public async Task<CleanLocationViewModel> GetCleanViewModel()
         {
@@ -60,17 +66,14 @@ namespace Locator.Controllers
                 Longitude = "-122.272126";
             }
 
-            var point = new PositionModel(Latitude, Longitude);
-
-
 
             // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records
-
+            //  var point = new PositionModel(Latitude, Longitude);
             //  var dirtyResults = await backend.IndexAsync(100,0,point).ConfigureAwait(false);
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
+            
+            
             var cleanResults = new CleanLocationViewModel(dirtyResults);
-
-            //// TODO, for now filter down to just num records
             cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 12);
 
             return cleanResults;

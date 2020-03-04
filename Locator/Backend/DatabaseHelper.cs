@@ -33,11 +33,11 @@ namespace Locator.Backend
             return result;
         }
 
-        public virtual bool LocationIdNotUnique(string id)
-        {
-            var idExists = context.Locations.Where(x => x.LocationId.Equals(id)).Any();
+        //public virtual bool LocationIdNotUnique(string id)
+        //{
+        //    var idExists = context.Locations.Where(x => x.LocationId.Equals(id)).Any();
 
-            return idExists;
-        }
+        //    return idExists;
+        //}
     }
 }
