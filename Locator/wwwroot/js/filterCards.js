@@ -132,27 +132,19 @@ $(function () {
                 // When the select box Surchargechanges - Execute change function
                 $('#Surcharge').change(function () {
                     // Assign Search Key
-                    var key = $(this).val().toUpperCase();
+                    var key = $(this).val();
                     console.log("surcharge key: " + key);
                     // If Search Key is Not Null then Compare to the Surcharge items
                     if ($('#Surcharge:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.Surcharge').filter(function (i, e) {
-                                //var check = $(this:contains(key));
                                 var value = $(this).text();
-                                var valString = value.toString();
-                                console.log("surcharge valString: " + valString.toUpperCase());
                                 // Check to see if the Key and Value are a Match
-                                $(this).toggleClass('hideBySurcharge', !(valString.toUpperCase().indexOf(key) > -1));
-
-                                //if (!(value.includes("No"))) {
-                                //    $(this).parents('.card').addClass('hideBySurcharge');
-
-                                //if (value.toString().toUpperCase() == key.toString().toUpperCase()) {
-                                //    $(this).parents('.card').removeClass('hideBySurcharge');
-                                //} else {
-                                //    $(this).parents('.card').addClass('hideBySurcharge');
-                                //}
+                                if (value.match(key)) {
+                                    $(this).parents('.card').removeClass('hideBySurcharge');
+                                } else {
+                                    $(this).parents('.card').addClass('hideBySurcharge');
+                                }
                             });
                             // Else the Search Key is Null so Reset all Content Items to Visible
                         } else {

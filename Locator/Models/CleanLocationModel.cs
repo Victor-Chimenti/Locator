@@ -179,9 +179,16 @@ namespace Locator.Models
         // attributes with legit values get new html tags built
         public string BuildListBlockDisplayTag(string Key, string Label, string Value)
         {
-            var listBlock = string.Format(@"<li class=""list-group-item""> {1} : <span class=""list-value {0}"">{2}</span></li>", Key, Label, Value);
+            var listBlock = string.Format(@"<li class=""list-group-item""> {1} : <span class=""{0}"">{2}</span></li>", Key, Label, Value);
 
             return listBlock;
+        }
+
+        public string BuildDefaultListBlockDisplayTag(string Key)
+        {
+            var defaultListBlock = string.Format(@"<li class=""list-group-item {0} empty"">{0}</li>", Key);
+
+            return defaultListBlock;
         }
 
         // attributes with legit values get new html tags built
@@ -198,7 +205,7 @@ namespace Locator.Models
             {
                 return BuildListBlockDisplayTag(Key, Label, Value);
             }
-            return DefaultNoValueListBlockString;
+            return BuildDefaultListBlockDisplayTag(Key);
         }
 
         public string CreateBuildListBlockIfNo(string Key, string Label, string Value)
@@ -207,7 +214,7 @@ namespace Locator.Models
             {
                 return BuildListBlockDisplayTag(Key, Label, Value);
             }
-            return DefaultNoValueListBlockString;
+            return BuildDefaultListBlockDisplayTag(Key);
         }
 
         public string GetListDisplayStrings()
