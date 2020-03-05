@@ -132,20 +132,27 @@ $(function () {
                 // When the select box Surchargechanges - Execute change function
                 $('#Surcharge').change(function () {
                     // Assign Search Key
-                    var key = $(this).val();
+                    var key = $(this).val().toUpperCase();
                     console.log("surcharge key: " + key);
                     // If Search Key is Not Null then Compare to the Surcharge items
                     if ($('#Surcharge:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.Surcharge').filter(function (i, e) {
-                                var value = $(this).val();//.attr('data-value');
-                                console.log("surcharge value: " + value);
+                                //var check = $(this:contains(key));
+                                var value = $(this).text();
+                                var valString = value.toString();
+                                console.log("surcharge valString: " + valString.toUpperCase());
                                 // Check to see if the Key and Value are a Match
-                                if (value === key) {
-                                    $(this).parents('.card').removeClass('hideBySurcharge');
-                                } else {
-                                    $(this).parents('.card').addClass('hideBySurcharge');
-                                }
+                                $(this).toggleClass('hideBySurcharge', !(valString.toUpperCase().indexOf(key) > -1));
+
+                                //if (!(value.includes("No"))) {
+                                //    $(this).parents('.card').addClass('hideBySurcharge');
+
+                                //if (value.toString().toUpperCase() == key.toString().toUpperCase()) {
+                                //    $(this).parents('.card').removeClass('hideBySurcharge');
+                                //} else {
+                                //    $(this).parents('.card').addClass('hideBySurcharge');
+                                //}
                             });
                             // Else the Search Key is Null so Reset all Content Items to Visible
                         } else {

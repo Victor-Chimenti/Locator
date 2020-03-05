@@ -101,7 +101,7 @@ namespace Locator.Models
         //public string SubTitleDisplayList { get; set; }
 
         // establish a default html tag for undefined, null attributes
-        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty""><span class=""list-display empty"" value=""null""></span></li>";
+        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty""><option class=""list-display empty"" value=""null""></option></li>";
 
         //// establish a default html tag for undefined, null attributes
         //string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
@@ -171,7 +171,7 @@ namespace Locator.Models
         }
 
 
-
+        //<option class=""list-display {0}"" value=""{2}""></option>
         /// <summary>
         /// Use for Card Creation to improve performance for ajax
         /// </summary>
@@ -179,7 +179,7 @@ namespace Locator.Models
         // attributes with legit values get new html tags built
         public string BuildListBlockDisplayTag(string Key, string Label, string Value)
         {
-            var listBlock = string.Format(@"<li class=""list-group-item""><span class=""list-display {0}"" value=""{2}""> {1} : {2} </span></li>", Key, Label, Value);
+            var listBlock = string.Format(@"<li class=""list-group-item""> {1} : <span class=""list-value {0}"">{2}</span></li>", Key, Label, Value);
 
             return listBlock;
         }
