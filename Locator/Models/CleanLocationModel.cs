@@ -214,14 +214,6 @@ namespace Locator.Models
             return defaultListBlock;
         }
 
-        // attributes with legit values get new html tags built
-        public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
-        {
-            var subTitle = string.Format(@"<p class=""subTitle {0}"" value='{0}'> {1} : {2} </p>", Key, Display, Title);
-
-            return subTitle;
-        }
-
         public string CreateBuildListBlockIfYes(string Key, string Label, string Value)
         {
             if (Value.Equals("Yes"))
@@ -266,6 +258,20 @@ namespace Locator.Models
 
 
             return ListBlockDisplayList;
+        }
+
+
+        // attributes with legit values get new html tags built
+        public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
+        {
+            var subTitle = string.Format(@"<p class=""subTitle {0} empty""></p>", Key);
+
+            if (!string.IsNullOrEmpty(Title))
+            {
+                subTitle = string.Format(@"<p class=""subTitle {0}"" value='{2}'> {1} : {2} </p>", Key, Display, Title);
+            }
+
+            return subTitle;
         }
 
         public string GetSubTitleDisplayStrings()
