@@ -88,7 +88,7 @@ namespace Locator.Models
         [DisplayName("Self Service Device")]
         public BooleanEnum SelfServiceDevice { get; set; }
 
-        [DisplayName("Coin Star")]
+        [DisplayName("CoinStar")]
         public BooleanEnum CoinStar { get; set; }
 
         [DisplayName("Teller Services")]
@@ -290,45 +290,3 @@ namespace Locator.Models
         }
     }
 }
-
-
-/*
- * 
-        public void GenerateSubTitleStrings()
-        {
-            // start an empty string
-            SubTitleDisplayList = "";
-
-            // declare attribute variables w/arguments
-            HoursDisplay = GetSubTitleDisplay("LocationHours", "Hours", Hours);
-            RetailOutletDisplay = GetSubTitleDisplay("RetailOutlet", "Retail Location", RetailOutlet);
-            InstallationTypeDisplay = GetSubTitleDisplay("InstallationType", "Installation Type", SpecialQualities.InstallationType);
-            AccessNotesDisplay = GetSubTitleDisplay("AccessNotes", "Notes", SpecialQualities.AccessNotes);
-
-            // concat attributes into the string
-            SubTitleDisplayList = HoursDisplay +
-                RetailOutletDisplay +
-                InstallationTypeDisplay +
-                AccessNotesDisplay;
-
-            //SubTitleDisplayList = HttpUtility.UrlEncode(SubTitleDisplayList);
-        }
- 
-        // generic parser for each attribute
-        private string GetSubTitleDisplay(string key, string label, string value)
-        {
-            string SubTitleDisplay;
-
-            if (string.IsNullOrEmpty(value))
-            {
-                SubTitleDisplay = DefaultNoValueSubTitleString;
-            }
-            else
-            {
-                SubTitleDisplay = BuildSubTitleDisplayTag(key, label, value);
-            }
-
-            return SubTitleDisplay;
-        }
- * 
- */

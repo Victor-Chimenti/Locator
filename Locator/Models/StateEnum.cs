@@ -135,7 +135,7 @@ namespace Locator.Models
         PR,
 
         [Display(Name = "Unknown")]
-        Unknown,
+        Unknown
 
     }
 
