@@ -141,7 +141,7 @@ $(function () {
                                 var value = $(this).attr('data-value');
                                 console.log("surcharge value: " + value);
                                 // Check to see if the Key and Value are a Match
-                                if (value.match(key)) {
+                                if (value === key) {
                                     $(this).parents('.card').removeClass('hideBySurcharge');
                                 } else {
                                     $(this).parents('.card').addClass('hideBySurcharge');

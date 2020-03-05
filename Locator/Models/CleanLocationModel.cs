@@ -101,7 +101,7 @@ namespace Locator.Models
         //public string SubTitleDisplayList { get; set; }
 
         // establish a default html tag for undefined, null attributes
-        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty"" data-value=""empty""></li>";
+        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty""><span class=""list-display empty"" value=""null""></span></li>";
 
         //// establish a default html tag for undefined, null attributes
         //string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
@@ -177,9 +177,9 @@ namespace Locator.Models
         /// </summary>
 
         // attributes with legit values get new html tags built
-        public string BuildListBlockDisplayTag(string Key, string Display, string Title)
+        public string BuildListBlockDisplayTag(string Key, string Label, string Value)
         {
-            var listBlock = string.Format(@"<li class=""list-group-item {0}"" data-value='{2}'> {1} : {2} </li>", Key, Display, Title);
+            var listBlock = string.Format(@"<li class=""list-group-item""><span class=""list-display {0}"" value=""{2}""> {1} : {2} </span></li>", Key, Label, Value);
 
             return listBlock;
         }
@@ -192,20 +192,20 @@ namespace Locator.Models
         //    return subTitle;
         //}
 
-        public string CreateBuildListBlockIfYes(string Key, string Display, string Title)
+        public string CreateBuildListBlockIfYes(string Key, string Label, string Value)
         {
-            if (Title.Equals("Yes"))
+            if (Value.Equals("Yes"))
             {
-                return BuildListBlockDisplayTag(Key, Display, Title);
+                return BuildListBlockDisplayTag(Key, Label, Value);
             }
             return DefaultNoValueListBlockString;
         }
 
-        public string CreateBuildListBlockIfNo(string Key, string Display, string Title)
+        public string CreateBuildListBlockIfNo(string Key, string Label, string Value)
         {
-            if (Title.Equals("No"))
+            if (Value.Equals("No"))
             {
-                return BuildListBlockDisplayTag(Key, Display, Title);
+                return BuildListBlockDisplayTag(Key, Label, Value);
             }
             return DefaultNoValueListBlockString;
         }
