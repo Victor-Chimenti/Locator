@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DatabaseLibrary.Models;
 using Locator.Backend;
 using Locator.Models;
-
+using System.Collections.Generic;
 
 namespace Locator.Controllers
 {
@@ -45,7 +45,15 @@ namespace Locator.Controllers
 
             var cleanResults = await GetCleanViewModel();
 
-            return new JsonResult(cleanResults);
+            //var result = new List<CleanLocationModel>();
+            //foreach( var item in cleanResults)
+            //{
+            //    var attributes = new CleanLocationModel(item);
+            //    result.Add(attributes);
+            //}
+
+
+            return new JsonResult(cleanResults.CleanLocationList);
         }
 
 
