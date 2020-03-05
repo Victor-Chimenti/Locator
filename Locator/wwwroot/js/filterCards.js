@@ -190,6 +190,38 @@ $(function () {
 
 
 
+            //   ***   NFC Drive Thru  ***   //
+            $(function () {
+                // When the select box Coin Star changes - Execute change function
+                $('#NFCDriveThruOnly').change(function () {
+                    // Assign Search Key
+                    var key = $(this).val();
+                    // If Search Key is Not Null then Compare to the Coin Star items
+                    if ($('#NFCDriveThruOnly:checkbox').is(':checked', true)) {
+                        if (key) {
+                            $('.DriveThruOnly').filter(function (i, e) {
+                                var value = $(this).text();
+                                // Check to see if the Key and Value are a Match
+                                if (value.match(key)) {
+                                    $(this).parents('.card').removeClass('hideByDriveThruOnly');
+                                } else {
+                                    $(this).parents('.card').addClass('hideByDriveThruOnly');
+                                }
+                            });
+                            // Else the Search Key is Null so Reset all Content Items to Visible
+                        } else {
+                            $('.card').removeClass('hideByDriveThruOnly');
+                        }
+                    } else {
+                        $('.card').removeClass('hideByDriveThruOnly');
+                    }
+                    assignVisibleItems();
+                });
+            });
+
+
+
+
             //   ***   Coin Star   ***   //
             $(function () {
                 // When the select box Coin Star changes - Execute change function
