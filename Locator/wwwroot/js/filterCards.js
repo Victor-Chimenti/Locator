@@ -132,7 +132,6 @@ $(function () {
                 $('#Surcharge').change(function () {
                     // Assign Search Key
                     var key = $(this).val();
-                    console.log("surcharge key: " + key);
                     // If Search Key is Not Null then Compare to the Surcharge items
                     if ($('#Surcharge:checkbox').is(':checked', true)) {
                         if (key) {
