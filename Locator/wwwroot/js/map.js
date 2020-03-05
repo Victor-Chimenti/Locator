@@ -43,4 +43,6 @@ function initMap() {
     // *** initialize directions renderer to the directionsPanel div below the map-wrapper *** //
     directionsRenderer.setMap(map);
     directionsRenderer.setPanel(document.getElementById('directionsPanel'));
+
+    getJsonData();
 }

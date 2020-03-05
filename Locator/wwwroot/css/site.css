@@ -500,8 +500,8 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
 
 
     /**
-*   Sticky footer styles
-*/
+    *   Sticky footer styles
+    */
     .footer {
         bottom: 0;
         color: #4D5F69;
