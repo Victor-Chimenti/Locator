@@ -131,7 +131,7 @@ html {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 90%;
 }
 
 #map-wrapper {
@@ -400,7 +400,7 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
     @media (max-width: 1400px) {
 
         #mapBlock {
-            width: 75%;
+            width: 90%;
         }
     }
 
@@ -431,10 +431,10 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
         #filterSearch-wrapper .panel-header a.btn-link .panel-name {
             color: #006979;
         }
-            /** setting for left nav collapsable show on mobile **/
-            #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
-                text-decoration: underline;
-            }
+        /** setting for left nav collapsable show on mobile **/
+        #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
+            text-decoration: underline;
+        }
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link:after {
             display: none;
@@ -487,7 +487,7 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
     /**
 *   Main Row Footer
 */
-    #capstone-info {
+    /*#capstone-info {
         color: #4D5F69;
         padding-top: 1rem;
         text-align: center;
@@ -495,7 +495,7 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
 
     #capstone-link {
         color: #006979;
-    }
+    }*/
 
 
 
@@ -512,6 +512,6 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
         white-space: nowrap;
     }
 
-        .footer #privacy-link {
-            color: #006979;
-        }
+    .footer #privacy-link {
+        color: #006979;
+    }
