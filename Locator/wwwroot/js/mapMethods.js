@@ -33,7 +33,6 @@ function processRecords() {
 
 // *** send get request to the locations controller for clean data *** //  
 async function getJsonData() {
-    //console.log("get json");
     $.ajax({
         traditional: true,
         url: '../locations/cardjson',
@@ -44,7 +43,6 @@ async function getJsonData() {
             // load the json objects into a global array
             for (let i = 0; i < data.length; i++) {
                 records[i] = data[i];
-                console.log("record name: " + records[i].name);
             }
         },
         error: function (jqXHR, exception) {
