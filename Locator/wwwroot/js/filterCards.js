@@ -104,10 +104,9 @@ $(function () {
                     if ($('#DriveThruOnly:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.DriveThruOnly').filter(function (i, e) {
-                                var value = $(this).val();//.attr('data-value');
-                                var str = toString(value);
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key == str) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByDriveThruOnly');
                                 } else {
                                     $(this).parents('.card').addClass('hideByDriveThruOnly');
@@ -169,10 +168,10 @@ $(function () {
                     // If Search Key is Not Null then Compare to the ccepts Deposits items
                     if ($('#AcceptDeposit:checkbox').is(':checked', true)) {
                         if (key) {
-                            $('.AcceptDeposit').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                            $('.AcceptsDeposits').filter(function (i, e) {
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key === value) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByAcceptDeposit');
                                 } else {
                                     $(this).parents('.card').addClass('hideByAcceptDeposit');
