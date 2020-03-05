@@ -36,7 +36,7 @@ async function getJsonData() {
     console.log("get json");
     $.ajax({
         traditional: true,
-        url: '.../locations/CardJson',
+        url: '/locations/cardjson',
         type: "GET",
         data: {},
         contentType: 'application/json',
