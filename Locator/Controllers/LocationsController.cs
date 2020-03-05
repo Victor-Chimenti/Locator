@@ -42,16 +42,7 @@ namespace Locator.Controllers
         [Produces("application/json")]
         public async Task<JsonResult> CardJson()
         {
-
             var cleanResults = await GetCleanViewModel();
-
-            //var result = new List<CleanLocationModel>();
-            //foreach( var item in cleanResults)
-            //{
-            //    var attributes = new CleanLocationModel(item);
-            //    result.Add(attributes);
-            //}
-
 
             return new JsonResult(cleanResults.CleanLocationList);
         }
