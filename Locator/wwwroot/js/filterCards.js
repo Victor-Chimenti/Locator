@@ -201,9 +201,9 @@ $(function () {
                     if ($('#CoinStar:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.CoinStar').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key === value) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByCoinStar');
                                 } else {
                                     $(this).parents('.card').addClass('hideByCoinStar');
@@ -233,9 +233,9 @@ $(function () {
                     if ($('#TellerServices:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.TellerServices').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key === value) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByTellerServices');
                                 } else {
                                     $(this).parents('.card').addClass('hideByTellerServices');
@@ -265,9 +265,9 @@ $(function () {
                     if ($('#_24hourExpressBox:checkbox').is(':checked', true)) {
                         if (key) {
                             $('._24hourExpressBox').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key === value) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideBy_24hourExpressBox');
                                 } else {
                                     $(this).parents('.card').addClass('hideBy_24hourExpressBox');
@@ -297,9 +297,9 @@ $(function () {
                     if ($('#PartnerCreditUnion:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.PartnerCreditUnion').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key === value) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByPartnerCreditUnion');
                                 } else {
                                     $(this).parents('.card').addClass('hideByPartnerCreditUnion');
@@ -329,9 +329,9 @@ $(function () {
                     if ($('#MemberConsultant:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.MemberConsultant').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key === value) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByMemberConsultant');
                                 } else {
                                     $(this).parents('.card').addClass('hideByMemberConsultant');
@@ -362,9 +362,9 @@ $(function () {
                     if ($('#InstantDebitCardReplacement:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.InstantDebitCardReplacement').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
-                                if (key === value) {
+                                if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByInstantDebitCardReplacement');
                                 } else {
                                     $(this).parents('.card').addClass('hideByInstantDebitCardReplacement');
