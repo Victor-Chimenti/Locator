@@ -117,7 +117,7 @@ namespace Locator.Models
         public string ListBlockDisplayList { get; set; }
 
         // This string will hold the list of all attributes and be passed through Display String
-        //public string SubTitleDisplayList { get; set; }
+        public string SubTitleDisplayList { get; set; }
 
         //// establish a default html tag for undefined, null attributes
         //string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
@@ -190,6 +190,7 @@ namespace Locator.Models
             Position = new PositionModel(Latitude, Longitude);
 
             ListBlockDisplayList  = GetListDisplayStrings();
+            SubTitleDisplayList = GetSubTitleDisplayStrings();
         }
 
 
@@ -214,12 +215,12 @@ namespace Locator.Models
         }
 
         // attributes with legit values get new html tags built
-        //public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
-        //{
-        //    var subTitle = string.Format(@"<p class=""subTitle {0}"" value='{0}'> {1} : {2} </p>", Key, Display, Title);
+        public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
+        {
+            var subTitle = string.Format(@"<p class=""subTitle {0}"" value='{0}'> {1} : {2} </p>", Key, Display, Title);
 
-        //    return subTitle;
-        //}
+            return subTitle;
+        }
 
         public string CreateBuildListBlockIfYes(string Key, string Label, string Value)
         {
@@ -265,6 +266,21 @@ namespace Locator.Models
 
 
             return ListBlockDisplayList;
+        }
+
+        public string GetSubTitleDisplayStrings()
+        {
+            // start an empty string
+            SubTitleDisplayList = "";
+
+            // declare attribute variables w/arguments
+            SubTitleDisplayList += BuildSubTitleDisplayTag("Hours", "Hours", Hours);
+            SubTitleDisplayList += BuildSubTitleDisplayTag("RetailOutlet", "Retail Outlet", RetailOutlet);
+            SubTitleDisplayList += BuildSubTitleDisplayTag("InstallationType", "Installation Type", InstallationType);
+            SubTitleDisplayList += BuildSubTitleDisplayTag("AccessNotes", "Notes", AccessNotes);
+
+
+            return SubTitleDisplayList;
         }
     }
 }
