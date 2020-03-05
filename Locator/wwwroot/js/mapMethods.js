@@ -15,6 +15,7 @@ function createMarkerFromJsonRecord(record, i) {
         title: record.Name,
         id: record.LocationId
     });
+};
 
 
 
