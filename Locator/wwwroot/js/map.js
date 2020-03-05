@@ -20,7 +20,7 @@ function initMap() {
         center: headquarters,
         gestureHandling: 'cooperative',
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        zoom: 14,
+        zoom: 10,
     };
 
     // *** render map to index page map-wrapper div in the center-index *** //
