@@ -7,13 +7,13 @@
 
 
 
-// drop a marker on each atm provided by the database
+// *** drop a marker on each atm provided by the database *** //
 function createMarkerFromJsonRecord(record, i) {
     atmMarker = new google.maps.Marker({
         map: map,
-        position: record.position,
-        title: rawName,
-        id: markerId
+        position: record.Position,
+        title: record.Name,
+        id: record.LocationId
     });
 
 
