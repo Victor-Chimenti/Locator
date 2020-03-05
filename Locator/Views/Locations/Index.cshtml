@@ -133,7 +133,19 @@
                         </div>
                         <div class="collapse in" id="collapse-@card.LocationId" aria-expanded="false">
                             <div class="card-body">
-                                <div class="card-subtitle">
+                                <div class="card-subtitle contactInfo">
+                                    <h4 class="card-title contactInfoHeader">Contact Information</h4>
+                                    <p class="name" value="@card.Name">@card.Name</p>
+                                    <p class="address" value="@card.Address">@card.Address</p>
+                                    <p class="city-state-zip">
+                                        <span class="city" value="@card.City">@card.City</span>
+                                        <span>, </span>
+                                        <span class="state" value="@card.State">@card.State </span>
+                                        <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
+                                    </p>
+                                    <p class="phone" value="@card.Phone.">@card.Phone</p>
+                                    <p class="webAddress" value="@card.WebAddress">@card.WebAddress</p>
+                                    <hr />
                                     <p class="subTitle Hours @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
                                     <p class="subTitle RetailOutlet @(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">@(card.RetailOutlet ?? "Unknown")</p>
                                     <p class="subTitle InstallationType @(card.InstallationType ?? "empty")" value="@(card.InstallationType ?? "Unknown")">@(card.InstallationType ?? "Unknown")</p>
@@ -141,21 +153,7 @@
                                 </div>
                                 <ul class="list-group">@Html.Raw(@card.ListBlockDisplayList)</ul>
                             </div>
-                            <div class="card-footer contactInfo">
-                                <h4 class="card-title contactInfoHeader">Contact Information</h4>
-                                <p class="name" value="@card.Name">@card.Name</p>
-                                <p class="address" value="@card.Address">@card.Address</p>
-                                <p class="city-state-zip">
-                                    <span class="city" value="@card.City">@card.City</span>
-                                    <span>, </span>
-                                    <span class="state" value="@card.State">@card.State </span>
-                                    <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
-                                </p>
-
-                                @******* TODO: Debug: Phone and WebAddress give ERROR: Object reference not set to an instance of an object - Issue in Contacts Model or DB Table ? *********@
-
-                                <p class="phone" value="@card.Phone.">@card.Phone</p>
-                                <p class="webAddress" value="@card.WebAddress">@card.WebAddress</p>
+                            <div class="card-footer">
                                 @{
                                     switch (card.LocationTypeCode)
                                     {
