@@ -171,6 +171,12 @@ html {
     stroke: #D5D7D9;
 }
 
+div.card.border-dark {
+    border-color: #D5D7D9 !important;
+    border-style:groove;
+    border-width: 0.1rem;
+}
+
 div#sidebar-wrapper div.card p {
     color: #4D5F69;
     font-size: 1.2rem;
@@ -278,6 +284,10 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
 #sidebar-wrapper .card .contactInfo span.cardTitleBox {
     color: #192838;
     font-size: 1.6rem;
+}
+
+#sidebar-wrapper div.card .card-body ul.list-group {
+    background-color: #FFFFFF;
 }
 
 #sidebar-wrapper div.card div.card-footer {
