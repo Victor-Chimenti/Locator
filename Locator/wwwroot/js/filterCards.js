@@ -103,7 +103,7 @@ $(function () {
                     // If Search Key is Not Null then Compare to the Drive Thru card items
                     if ($('#DriveThruOnly:checkbox').is(':checked', true)) {
                         if (key) {
-                            $('.DriveThruOnly').filter(function (i, e) {
+                            $('.InstallationType').filter(function (i, e) {
                                 var value = $(this).text();
                                 // Check to see if the Key and Value are a Match
                                 if (value.match(key)) {
