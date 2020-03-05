@@ -60,7 +60,7 @@ namespace Locator.Models
         {
             if (string.IsNullOrEmpty(value))
             {
-                return BooleanEnum.N;
+                return BooleanEnum.NULL;
             }
 
             var ValueString = value.ToUpper();

@@ -88,6 +88,25 @@ namespace Locator.Models
         [DisplayName("Self Service Device")]
         public BooleanEnum SelfServiceDevice { get; set; }
 
+        [DisplayName("Coin Star")]
+        public BooleanEnum CoinStar { get; set; }
+
+        [DisplayName("Teller Services")]
+        public BooleanEnum TellerServices { get; set; }
+
+        [DisplayName("24 Hour Express Box")]
+        public BooleanEnum _24hourExpressBox { get; set; }
+
+        [DisplayName("Partner Credit Union")]
+        public BooleanEnum PartnerCreditUnion { get; set; }
+
+        [DisplayName("Member Consultant")]
+        public BooleanEnum MemberConsultant { get; set; }
+
+        [DisplayName("Instant Debit Card Replacement")]
+        public BooleanEnum InstantDebitCardReplacement { get; set; }
+
+
         [DisplayName("Notes")]
         public string AccessNotes { get; set; }
 
@@ -99,9 +118,6 @@ namespace Locator.Models
 
         // This string will hold the list of all attributes and be passed through Display String
         //public string SubTitleDisplayList { get; set; }
-
-        // establish a default html tag for undefined, null attributes
-        string DefaultNoValueListBlockString = @"<li class=""list-group-item empty""><option class=""list-display empty"" value=""null""></option></li>";
 
         //// establish a default html tag for undefined, null attributes
         //string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
@@ -161,6 +177,12 @@ namespace Locator.Models
             OnMilitaryBase = BoolEnumHelper.StringToEnum(data.SpecialQualities.OnMilitaryBase);
             MilitaryIdRequired = BoolEnumHelper.StringToEnum(data.SpecialQualities.MilitaryIdRequired);
             SelfServiceDevice = BoolEnumHelper.StringToEnum(data.SpecialQualities.SelfServiceDevice);
+            CoinStar = BoolEnumHelper.StringToEnum(data.SpecialQualities.CoinStar);
+            TellerServices = BoolEnumHelper.StringToEnum(data.SpecialQualities.TellerServices);
+            _24hourExpressBox = BoolEnumHelper.StringToEnum(data.SpecialQualities._24hourExpressBox);
+            PartnerCreditUnion = BoolEnumHelper.StringToEnum(data.SpecialQualities.PartnerCreditUnion);
+            MemberConsultant = BoolEnumHelper.StringToEnum(data.SpecialQualities.MemberConsultant);
+            InstantDebitCardReplacement = BoolEnumHelper.StringToEnum(data.SpecialQualities.InstantDebitCardReplacement);
 
             InstallationType = data.SpecialQualities.InstallationType;
             AccessNotes = data.SpecialQualities.AccessNotes;
@@ -234,6 +256,12 @@ namespace Locator.Models
             ListBlockDisplayList += CreateBuildListBlockIfYes("OnMilitaryBase", "On Military Base", OnMilitaryBase.ToTitle());
             ListBlockDisplayList += CreateBuildListBlockIfYes("MilitaryIDRequired", "Military ID Required", MilitaryIdRequired.ToTitle());
             ListBlockDisplayList += CreateBuildListBlockIfYes("RestrictedAccess", "Restricted Access", RestrictedAccess.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("CoinStar", "CoinStar", CoinStar.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("TellerServices", "Teller Services", TellerServices.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("_24hourExpressBox", "24 Hour Express Box", _24hourExpressBox.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfNo("PartnerCreditUnion", "Partner Credit Union", PartnerCreditUnion.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("MemberConsultant", "Member Consultant", MemberConsultant.ToTitle());
+            ListBlockDisplayList += CreateBuildListBlockIfYes("InstantDebitCardReplacement", "Instant Debit Card Replacement", InstantDebitCardReplacement.ToTitle());
 
 
             return ListBlockDisplayList;
