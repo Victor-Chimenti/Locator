@@ -104,7 +104,7 @@ $(function () {
                     if ($('#DriveThruOnly:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.DriveThruOnly').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).val();//.attr('data-value');
                                 var str = toString(value);
                                 // Check to see if the Key and Value are a Match
                                 if (key == str) {
@@ -138,7 +138,7 @@ $(function () {
                     if ($('#Surcharge:checkbox').is(':checked', true)) {
                         if (key) {
                             $('.Surcharge').filter(function (i, e) {
-                                var value = $(this).attr('data-value');
+                                var value = $(this).val();//.attr('data-value');
                                 console.log("surcharge value: " + value);
                                 // Check to see if the Key and Value are a Match
                                 if (value === key) {
@@ -173,7 +173,7 @@ $(function () {
                             $('.AcceptDeposit').filter(function (i, e) {
                                 var value = $(this).attr('data-value');
                                 // Check to see if the Key and Value are a Match
-                                if (key == value) {
+                                if (key === value) {
                                     $(this).parents('.card').removeClass('hideByAcceptDeposit');
                                 } else {
                                     $(this).parents('.card').addClass('hideByAcceptDeposit');
