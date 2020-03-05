@@ -35,6 +35,7 @@ function initMap() {
 
     // *** render map to index page map-wrapper div in the center-index *** //
     map = new google.maps.Map(document.getElementById('map-wrapper'), mapOptions);
+    let infoWindow = new google.maps.InfoWindow();
 
     // *** add directions service *** //
     directionsService = new google.maps.DirectionsService();
@@ -44,5 +45,6 @@ function initMap() {
     directionsRenderer.setMap(map);
     directionsRenderer.setPanel(document.getElementById('directionsPanel'));
 
+    // *** add directions service *** //
     getJsonData();
 }
