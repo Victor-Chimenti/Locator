@@ -136,6 +136,7 @@
                                 <div class="card-subtitle contactInfo">
                                     <h4 class="card-title contactInfoHeader">Contact Information</h4>
                                     <p class="name" value="@card.Name">@card.Name</p>
+                                    <a href="tel:@card.Phone" class="phoneLink" target="_blank"><p class="phone" value="@card.Phone">@card.Phone</p></a>
                                     <p class="address" value="@card.Address">@card.Address</p>
                                     <p class="city-state-zip">
                                         <span class="city" value="@card.City">@card.City</span>
@@ -143,8 +144,7 @@
                                         <span class="state" value="@card.State">@card.State </span>
                                         <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
                                     </p>
-                                    <p class="phone" value="@card.Phone.">@card.Phone</p>
-                                    <p class="webAddress" value="@card.WebAddress">@card.WebAddress</p>
+                                    <a href="@card.WebAddress" class="webAddressLink" target="_blank"><p class="webAddress" value="@card.WebAddress">@card.WebAddress</p></a>
                                     <hr />
                                     <p class="subTitle Hours @(card.Hours ?? "empty")" value="@(card.Hours ?? "Unknown")">@(card.Hours ?? "Unknown")</p>
                                     <p class="subTitle RetailOutlet @(card.RetailOutlet ?? "empty")" value="@(card.RetailOutlet ?? "Unknown")">@(card.RetailOutlet ?? "Unknown")</p>

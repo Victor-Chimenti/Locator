@@ -260,8 +260,8 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
     text-decoration: none;
 }
 
-#sidebar-wrapper .card div.card-footer {
-    background-color: #FFFFFF;
+#sidebar-wrapper div.card div.card-footer {
+    background-color: #EAEBEC;
 }
 
 #sidebar-wrapper .card div.card-footer a.webAddressLink {
