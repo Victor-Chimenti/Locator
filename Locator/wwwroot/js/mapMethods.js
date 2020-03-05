@@ -11,9 +11,9 @@
 function createMarkerFromJsonRecord(record) {
     atmMarker = new google.maps.Marker({
         map: map,
-        position: record.Position,
-        title: record.Name,
-        id: record.LocationId
+        position: record.position,
+        title: record.name,
+        id: record.locationId
     });
 };
 
@@ -44,7 +44,7 @@ async function getJsonData() {
             // load the json objects into a global array
             for (let i = 0; i < data.length; i++) {
                 records[i] = data[i];
-                //console.log("record name: " + record[i].Name);
+                console.log("record name: " + records[i].name);
             }
         },
         error: function (jqXHR, exception) {
