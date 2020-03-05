@@ -7,15 +7,6 @@
 
 
 
-
-
-// ***  display the Google map with the default Options  *** //
-//infoWindow = new google.maps.InfoWindow();
-//directionsService = new google.maps.DirectionsService();
-//directionsRenderer = new google.maps.DirectionsRenderer();
-
-
-
 function initMap() {
 
     // *** set BECU Headquarters for default map starting location *** //
@@ -29,13 +20,11 @@ function initMap() {
         center: headquarters,
         gestureHandling: 'cooperative',
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        //streetViewControl: false,
-        zoom: 15,
+        zoom: 14,
     };
 
     // *** render map to index page map-wrapper div in the center-index *** //
     map = new google.maps.Map(document.getElementById('map-wrapper'), mapOptions);
-    let infoWindow = new google.maps.InfoWindow();
 
     // *** add directions service *** //
     directionsService = new google.maps.DirectionsService();
