@@ -40,28 +40,9 @@ async function getJsonData() {
         data: {},
         contentType: 'application/json',
         success: function (data) {
-            var userPoint;
-            var atmList;
-            var obj = $.parseJSON(data);
-            for (key in obj) {
-                if (obj.hasOwnProperty(key)) {
-                    var value = obj[key];
-                    userPoint = value;
-                }
+            for (let i = 0; i < data.length; i++) {
+                records[i] = data[i];
             }
-            if (obj.hasOwnProperty(ResultPoint)) {
-                userPoint = obj.ResultPoint;
-            }
-            if (obj.hasOwnProperty(atmList)) {
-                atmList = obj.ResultList;
-            }
-            console.log("point" + userPoint);
-             // load the json objects into a global array
-            for (let i = 0; i < atmList.length; i++) {
-                records[i] = atmList[i];
-            }
-
-
         },
         error: function (jqXHR, exception) {
             alert('Internal Error : unable to parse locations record.');
@@ -70,3 +51,24 @@ async function getJsonData() {
         processRecords();
     });
 };
+
+
+
+            //var userPoint = data.ResultPoint;
+            //var atmList = data.ResultList;
+            //JSON.parse(JSON.stringify(data));
+            //var obj = $.parseJSON(data);
+            //for (key in obj) {
+            //    if (obj.hasOwnProperty(key)) {
+            //        var value = obj[key];
+            //        userPoint = value;
+            //    }
+            //}
+            //if (data.hasOwnProperty(ResultPoint)) {
+            //    userPoint = data.ResultPoint;
+            //}
+            //if (data.hasOwnProperty(ResultList)) {
+            //    atmList = data.ResultList;
+            //}
+            //console.log("point" + userPoint);
+             // load the json objects into a global array

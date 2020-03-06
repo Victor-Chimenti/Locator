@@ -47,10 +47,10 @@ namespace Locator.Controllers
             //var result = { cleanResults.CleanLocationList, cleanResults.point };
 
             //var clean = [cleanResults.CleanLocationList, cleanResults.point];
-            var clean =  Content(JsonConvert.SerializeObject(new { ResultPoint = cleanResults.point, ResultList = cleanResults.CleanLocationList }));
+            //var clean =  Content(JsonConvert.SerializeObject(new { ResultPoint = cleanResults.point, ResultList = cleanResults.CleanLocationList }));
 
 
-            return new JsonResult(clean);
+            return new JsonResult(cleanResults.CleanLocationList);
             //return clean;
         }
 
@@ -74,12 +74,14 @@ namespace Locator.Controllers
 
 
             // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records
-            var point = new PositionModel(Latitude, Longitude);
+            //var point = new PositionModel(Latitude, Longitude);
             //var dirtyResults = await backend.IndexAsync(100, 0, point).ConfigureAwait(false);
+
+
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
 
 
-            var cleanResults = new CleanLocationViewModel(dirtyResults, point);
+            var cleanResults = new CleanLocationViewModel(dirtyResults);
             cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 12);
 
             return cleanResults;

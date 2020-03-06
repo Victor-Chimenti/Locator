@@ -9,9 +9,10 @@ namespace Locator.Models
         public PositionModel point;
         public List<CleanLocationModel> CleanLocationList = new List<CleanLocationModel>();
 
-        public CleanLocationViewModel(List<Locations> data, PositionModel point)
+        public CleanLocationViewModel(List<Locations> data)
         {
-            this.point = point;
+            //, PositionModel point
+            //this.point = point;
             foreach (var item in data)
             {
                 CleanLocationList.Add(new CleanLocationModel(item));
