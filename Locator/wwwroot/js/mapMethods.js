@@ -51,24 +51,3 @@ async function getJsonData() {
         processRecords();
     });
 };
-
-
-
-            //var userPoint = data.ResultPoint;
-            //var atmList = data.ResultList;
-            //JSON.parse(JSON.stringify(data));
-            //var obj = $.parseJSON(data);
-            //for (key in obj) {
-            //    if (obj.hasOwnProperty(key)) {
-            //        var value = obj[key];
-            //        userPoint = value;
-            //    }
-            //}
-            //if (data.hasOwnProperty(ResultPoint)) {
-            //    userPoint = data.ResultPoint;
-            //}
-            //if (data.hasOwnProperty(ResultList)) {
-            //    atmList = data.ResultList;
-            //}
-            //console.log("point" + userPoint);
-             // load the json objects into a global array
