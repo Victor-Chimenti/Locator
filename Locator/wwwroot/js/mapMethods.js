@@ -40,9 +40,21 @@ async function getJsonData() {
         data: {},
         contentType: 'application/json',
         success: function (data) {
+            var userPoint;
+            var atmList;
             var obj = $.parseJSON(data);
-            var userPoint = obj.ResultPoint;
-            var atmList = obj.ResultList;
+            for (key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    var value = obj[key];
+                    userPoint = value;
+                }
+            }
+            if (obj.hasOwnProperty(ResultPoint)) {
+                userPoint = obj.ResultPoint;
+            }
+            if (obj.hasOwnProperty(atmList)) {
+                atmList = obj.ResultList;
+            }
             console.log("point" + userPoint);
              // load the json objects into a global array
             for (let i = 0; i < atmList.length; i++) {
