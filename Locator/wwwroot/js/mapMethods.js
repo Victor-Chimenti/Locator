@@ -40,10 +40,16 @@ async function getJsonData() {
         data: {},
         contentType: 'application/json',
         success: function (data) {
-            // load the json objects into a global array
-            for (let i = 0; i < data.length; i++) {
-                records[i] = data[i];
+            var obj = $.parseJSON(data);
+            var userPoint = obj.ResultPoint;
+            var atmList = obj.ResultList;
+            console.log("point" + userPoint);
+             // load the json objects into a global array
+            for (let i = 0; i < atmList.length; i++) {
+                records[i] = atmList[i];
             }
+
+
         },
         error: function (jqXHR, exception) {
             alert('Internal Error : unable to parse locations record.');

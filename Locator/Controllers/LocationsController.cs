@@ -4,6 +4,7 @@ using DatabaseLibrary.Models;
 using Locator.Backend;
 using Locator.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Locator.Controllers
 {
@@ -43,8 +44,14 @@ namespace Locator.Controllers
         public async Task<JsonResult> CardJson()
         {
             var cleanResults = await GetCleanViewModel();
+            //var result = { cleanResults.CleanLocationList, cleanResults.point };
 
-            return new JsonResult(cleanResults.CleanLocationList);
+            //var clean = [cleanResults.CleanLocationList, cleanResults.point];
+            var clean =  Content(JsonConvert.SerializeObject(new { ResultPoint = cleanResults.point, ResultList = cleanResults.CleanLocationList }));
+
+
+            return new JsonResult(clean);
+            //return clean;
         }
 
 
@@ -67,12 +74,12 @@ namespace Locator.Controllers
 
 
             // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records
-            //var point = new PositionModel(Latitude, Longitude);
+            var point = new PositionModel(Latitude, Longitude);
             //var dirtyResults = await backend.IndexAsync(100, 0, point).ConfigureAwait(false);
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
 
 
-            var cleanResults = new CleanLocationViewModel(dirtyResults);
+            var cleanResults = new CleanLocationViewModel(dirtyResults, point);
             cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 12);
 
             return cleanResults;
