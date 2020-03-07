@@ -169,8 +169,8 @@ namespace Locator.Models
                 Hours = data.Hours;
             }
          
-            Phone = "";
-            WebAddress = "";
+            //Phone = "";
+            //WebAddress = "";
 
             if (data.Contact != null)
             {
