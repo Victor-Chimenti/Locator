@@ -23,18 +23,12 @@
 
 
 
-    @*<script>
-            window.onload = function () {
-                getLocation();
-            }
-        </script>*@
-
     <!--call google map function without the button-->
-    @*<script>
+    <script>
             window.onload = function () {
-                DisplayGoogleMap();
+                initMap();
             }
-        </script>*@
+    </script>
 </head>
 <body>
     <header>
@@ -72,6 +66,7 @@
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/js/filterCards.js"></script>
+    <script type="text/javascript" src="~/js/mapMethods.js"></script>
     <script type="text/javascript" src="~/js/map.js"></script>
 
 

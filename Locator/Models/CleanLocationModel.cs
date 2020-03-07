@@ -166,31 +166,36 @@ namespace Locator.Models
                 }
             }
 
-            RestrictedAccess = BoolEnumHelper.StringToEnum(data.SpecialQualities.RestrictedAccess);
-            AcceptDeposit = BoolEnumHelper.StringToEnum(data.SpecialQualities.AcceptDeposit);
-            DriveThruOnly = BoolEnumHelper.StringToEnum(data.SpecialQualities.DriveThruOnly);
-            HandicapAccess = BoolEnumHelper.StringToEnum(data.SpecialQualities.HandicapAccess);
-            AcceptCash = BoolEnumHelper.StringToEnum(data.SpecialQualities.AcceptCash);
-            Cashless = BoolEnumHelper.StringToEnum(data.SpecialQualities.Cashless);
-            SelfServiceOnly = BoolEnumHelper.StringToEnum(data.SpecialQualities.SelfServiceOnly);
-            Surcharge = BoolEnumHelper.StringToEnum(data.SpecialQualities.Surcharge);
-            OnMilitaryBase = BoolEnumHelper.StringToEnum(data.SpecialQualities.OnMilitaryBase);
-            MilitaryIdRequired = BoolEnumHelper.StringToEnum(data.SpecialQualities.MilitaryIdRequired);
-            SelfServiceDevice = BoolEnumHelper.StringToEnum(data.SpecialQualities.SelfServiceDevice);
-            CoinStar = BoolEnumHelper.StringToEnum(data.SpecialQualities.CoinStar);
-            TellerServices = BoolEnumHelper.StringToEnum(data.SpecialQualities.TellerServices);
-            _24hourExpressBox = BoolEnumHelper.StringToEnum(data.SpecialQualities._24hourExpressBox);
-            PartnerCreditUnion = BoolEnumHelper.StringToEnum(data.SpecialQualities.PartnerCreditUnion);
-            MemberConsultant = BoolEnumHelper.StringToEnum(data.SpecialQualities.MemberConsultant);
-            InstantDebitCardReplacement = BoolEnumHelper.StringToEnum(data.SpecialQualities.InstantDebitCardReplacement);
+            if (data.SpecialQualities != null)
+            {
+                RestrictedAccess = BoolEnumHelper.StringToEnum(data.SpecialQualities.RestrictedAccess);
+                AcceptDeposit = BoolEnumHelper.StringToEnum(data.SpecialQualities.AcceptDeposit);
+                DriveThruOnly = BoolEnumHelper.StringToEnum(data.SpecialQualities.DriveThruOnly);
+                HandicapAccess = BoolEnumHelper.StringToEnum(data.SpecialQualities.HandicapAccess);
+                AcceptCash = BoolEnumHelper.StringToEnum(data.SpecialQualities.AcceptCash);
+                Cashless = BoolEnumHelper.StringToEnum(data.SpecialQualities.Cashless);
+                SelfServiceOnly = BoolEnumHelper.StringToEnum(data.SpecialQualities.SelfServiceOnly);
+                Surcharge = BoolEnumHelper.StringToEnum(data.SpecialQualities.Surcharge);
+                OnMilitaryBase = BoolEnumHelper.StringToEnum(data.SpecialQualities.OnMilitaryBase);
+                MilitaryIdRequired = BoolEnumHelper.StringToEnum(data.SpecialQualities.MilitaryIdRequired);
+                SelfServiceDevice = BoolEnumHelper.StringToEnum(data.SpecialQualities.SelfServiceDevice);
+                CoinStar = BoolEnumHelper.StringToEnum(data.SpecialQualities.CoinStar);
+                TellerServices = BoolEnumHelper.StringToEnum(data.SpecialQualities.TellerServices);
+                _24hourExpressBox = BoolEnumHelper.StringToEnum(data.SpecialQualities._24hourExpressBox);
+                PartnerCreditUnion = BoolEnumHelper.StringToEnum(data.SpecialQualities.PartnerCreditUnion);
+                MemberConsultant = BoolEnumHelper.StringToEnum(data.SpecialQualities.MemberConsultant);
+                InstantDebitCardReplacement = BoolEnumHelper.StringToEnum(data.SpecialQualities.InstantDebitCardReplacement);
 
-            InstallationType = data.SpecialQualities.InstallationType;
-            AccessNotes = data.SpecialQualities.AccessNotes;
+                InstallationType = data.SpecialQualities.InstallationType;
+                AccessNotes = data.SpecialQualities.AccessNotes;
+
+                ListBlockDisplayList = GetListDisplayStrings();
+                SubTitleDisplayList = GetSubTitleDisplayStrings();
+            }
+
+
 
             Position = new PositionModel(Latitude, Longitude);
-
-            ListBlockDisplayList  = GetListDisplayStrings();
-            SubTitleDisplayList = GetSubTitleDisplayStrings();
         }
 
 

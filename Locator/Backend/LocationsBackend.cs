@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DatabaseLibrary.Models;
+using Locator.Models;
 
 namespace Locator.Backend
 {
     public class LocationsBackend
     {
         private DatabaseHelper db;
+        //private int TakeSize;
+        //private int TakeIndex;
+        //private PositionModel point;
 
         public LocationsBackend(MaphawksContext context)
         {
