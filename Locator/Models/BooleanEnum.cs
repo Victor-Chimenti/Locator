@@ -68,7 +68,7 @@ namespace Locator.Models
             switch (ValueString)
             {
                 case "Y":
-                case "Yes":
+                case "YES":
                     return BooleanEnum.Y;
 
                 case "N":

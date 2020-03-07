@@ -184,6 +184,7 @@ namespace Locator.Models
             MemberConsultant = BoolEnumHelper.StringToEnum(data.SpecialQualities.MemberConsultant);
             InstantDebitCardReplacement = BoolEnumHelper.StringToEnum(data.SpecialQualities.InstantDebitCardReplacement);
 
+
             InstallationType = data.SpecialQualities.InstallationType;
             AccessNotes = data.SpecialQualities.AccessNotes;
 
