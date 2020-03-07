@@ -70,11 +70,13 @@ namespace Locator.Models
         [Required(AllowEmptyStrings = false)]
         [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Phone")]
+        [Phone]
         public string Phone { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Web Address")]
+        [Url]
         public string WebAddress { get; set; }
 
         [DisplayName("Restricted Access")]
@@ -144,7 +146,12 @@ namespace Locator.Models
         // This string will hold the list of all attributes and be passed through Display String
         public string SubTitleDisplayList { get; set; }
 
+        // This string will hold the list of all attributes that are displayed with the footer blockquote
+        public string FooterBlockQuoteDisplayList { get; set; }
+
+
         //// establish a default html tag for undefined, null attributes
         //string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
-    } }
+    }
+}
 
