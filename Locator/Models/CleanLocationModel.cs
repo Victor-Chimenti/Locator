@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using DatabaseLibrary.Models;
 
 namespace Locator.Models
@@ -46,63 +47,103 @@ namespace Locator.Models
         [DisplayName("Hours")]
         public string Hours { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Phone")]
         public string Phone { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Web Address")]
         public string WebAddress { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Restricted Access")]
         public BooleanEnum RestrictedAccess { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Accepts Deposits")]
         public BooleanEnum AcceptDeposit { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Installation Type")]
         public string InstallationType { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Drive Thru Only")]
         public BooleanEnum DriveThruOnly { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Handicap Access")]
         public BooleanEnum HandicapAccess { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Accepts Cash")]
         public BooleanEnum AcceptCash { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Cashless")]
         public BooleanEnum Cashless { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Self Service Only")]
         public BooleanEnum SelfServiceOnly { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Surcharge")]
         public BooleanEnum Surcharge { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("On Military Base")]
         public BooleanEnum OnMilitaryBase { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Military ID Required")]
         public BooleanEnum MilitaryIdRequired { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Self Service Device")]
         public BooleanEnum SelfServiceDevice { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("CoinStar")]
         public BooleanEnum CoinStar { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Teller Services")]
         public BooleanEnum TellerServices { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("24 Hour Express Box")]
         public BooleanEnum _24hourExpressBox { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Partner Credit Union")]
         public BooleanEnum PartnerCreditUnion { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Member Consultant")]
         public BooleanEnum MemberConsultant { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Instant Debit Card Replacement")]
         public BooleanEnum InstantDebitCardReplacement { get; set; }
 
