@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using DatabaseLibrary.Models;
-
 
 namespace adminconsole.Models
 {
@@ -11,7 +8,6 @@ namespace adminconsole.Models
     {
         /// <summary>
         /// Default constructor. 
-        /// 
         /// Allows app to access Database
         /// </summary>
         public AllTablesViewModel()
@@ -19,21 +15,16 @@ namespace adminconsole.Models
             locations = new List<Locations>();
         }
 
-
-
-
-
-
         /// <summary>
         /// Parameterized constructor
-        /// 
-        /// 
         /// Allows app to create a ViewModel object out of a Locations object
         /// Allows app to use mock data class when unit testing 
         /// </summary>
+        /// 
         /// <param name="dataSource"></param>
         public AllTablesViewModel(Locations location = null)
         {
+
             locations = new List<Locations>();
 
             if (location is null)
@@ -42,10 +33,7 @@ namespace adminconsole.Models
             }
 
 
-
             //Begin translating location properties to ViewModel
-
-
 
             // Locations Properties
             Address = location.Address;
@@ -66,7 +54,6 @@ namespace adminconsole.Models
             TakeCoopData = ConvertBoolToBooleanEnum(location.TakeCoopData);
 
 
-
             // Contacts Properties
             if (!(location.Contact is null))
             {
@@ -74,9 +61,6 @@ namespace adminconsole.Models
                 Phone = location.Contact.Phone;
                 WebAddress = location.Contact.WebAddress;
             }
-
-
-
 
             // SpecialQualities Properties 
             if (!(location.SpecialQualities is null))
@@ -99,9 +83,6 @@ namespace adminconsole.Models
                 SelfServiceOnly = ConvertStringToBooleanEnum(location.SpecialQualities.SelfServiceOnly);
                 Surcharge = ConvertStringToBooleanEnum(location.SpecialQualities.Surcharge);
             }
-
-
-
 
 
             // DailyHours Properties
@@ -139,23 +120,16 @@ namespace adminconsole.Models
         }
 
 
-
-
-
-
-
-
         /// <summary>
         /// Populates a Locations Object from a View Model Object's properties.
         /// </summary>
         /// 
-        /// 
         /// <param name="newLocation"> A View Model Object from which to extract from </param>
-        /// 
         /// 
         /// <returns> A Locations Object  </returns>
         public static Locations GetNewLocation(AllTablesViewModel newLocation)
         {
+
             if (newLocation is null)
             {
                 return null;
@@ -179,26 +153,20 @@ namespace adminconsole.Models
             location.State = newLocation.State.ToString();
             location.TakeCoopData = string.Equals(BooleanEnumExtensions.GetDisplayName(newLocation.TakeCoopData), "Yes") ? true : false;
             return location;
+
         }
-
-
-
-
-
-
 
 
         /// <summary>
         /// Populates a Contacts Object from a View Model Object's properties.
         /// </summary>
         /// 
-        /// 
         /// <param name="newLocation"> A View Model Object from which to extract from </param>
-        /// 
         /// 
         /// <returns> Null if all fields are null, otherwise returns a Contacts object </returns>
         public static Contacts GetNewContact(AllTablesViewModel newLocation)
         {
+
             if (newLocation is null)
             {
                 return null;
@@ -217,27 +185,20 @@ namespace adminconsole.Models
             }
 
             return contact;
+
         }
-
-
-
-
-
-
-
 
 
         /// <summary>
         /// Populates a Special Qualities Object from a View Model Object's properties.
         /// </summary>
         /// 
-        /// 
         /// <param name="newLocation"> A View Model Object from which to extract from </param>
-        /// 
         /// 
         /// <returns> Null if all fields are empty, otherwise returns a Special Qualities Object  </returns>
         public static SpecialQualities GetNewSpecialQualities(AllTablesViewModel newLocation)
         {
+
             if (newLocation is null)
             {
                 return null;
@@ -270,30 +231,24 @@ namespace adminconsole.Models
             }
 
             return specialQuality;
+
         }
-
-
-
-
-
 
 
         /// <summary>
         /// Populates a DailyHours Object from a View Model Object's properties.
         /// </summary>
         /// 
-        /// 
         /// <param name="newLocation"> A View Model Object from which to extract from </param>
-        /// 
         /// 
         /// <returns> A DailyHours Object or null if all properties are null </returns>
         public static DailyHours GetNewDailyHours(AllTablesViewModel newLocation)
         {
+
             if (newLocation is null)
             {
                 return null;
             }
-
 
             DailyHours dailyHours = new DailyHours();
             dailyHours.LocationId = newLocation.LocationId;
@@ -332,38 +287,28 @@ namespace adminconsole.Models
                 return null;
             }
 
-
             return dailyHours;
+
         }
-
-
-
-
-
-
 
 
         /// <summary>
         /// Converts a BooleanEnum to a String 
         /// </summary>
         /// 
-        /// 
         /// <param name="booleanEnum"> The BooleanEnum type to convert </param>
-        /// 
         /// <param name="returnEmptyStringInsteadOfNull"> Indicates what kind of empty value is desired </param>
         /// 
-        /// 
         /// <returns>
-        /// 
         ///     BooleanEnum.N    ==> "N"
         ///     BooleanEnum.Y    ==> "Y"
         ///     BooleanEnum.NULL ==> ""
         ///             or
         ///     BooleanEnum.NULL ==> null
-        ///     
         /// </returns>
         private static string ConvertBooleanEnumToString(BooleanEnum? booleanEnum)
         {
+
             switch (booleanEnum)
             {
                 case BooleanEnum.N:
@@ -373,30 +318,24 @@ namespace adminconsole.Models
                 default:
                     return null;
             }
+
         }
-
-
-
-
 
 
         /// <summary>
         /// Converts string to BooleanEnum.
         /// </summary>
         /// 
-        /// 
         /// <param name="booleanAsStringFromDb"> Y, N or null </param>
         /// 
-        /// 
         /// <returns>
-        /// 
         ///     "Y"  ==> BooleanEnum.Y
         ///     "N"  ==> BooleanEnum.N
         ///     null ==> BooleanEnum.NULL
-        /// 
         /// </returns>
         private static BooleanEnum ConvertStringToBooleanEnum(string booleanAsStringFromDb)
         {
+
             switch (booleanAsStringFromDb)
             {
                 case "N":
@@ -406,52 +345,39 @@ namespace adminconsole.Models
                 default:
                     return BooleanEnum.NULL;
             }
+
         }
-
-
-
-
-
 
 
         /// <summary>
         /// Converts bool to BooleanEnum
         /// </summary>
         /// 
-        /// 
         /// <param name="booleanValueFromDb"> bool value to convert </param>
         /// 
-        /// 
         /// <returns>
-        /// 
         ///     null  ==> BooleanEnum.NULL
         ///     true  ==> BooleanEnum.Y
         ///     false ==> BooleanEnum.N
-        /// 
         /// </returns>
         private static BooleanEnum ConvertBoolToBooleanEnum(bool? booleanValueFromDb)
         {
+
             if ((bool)booleanValueFromDb)
             {
                 return BooleanEnum.Y;
             }
 
             return BooleanEnum.N;
+
         }
-
-
-
-
-
 
 
         /// <summary>
         /// Converts State code as a string to a StateEnum.
         /// </summary>
         /// 
-        /// 
         /// <param name="stateValueFromDb"> State code to convert </param>
-        /// 
         /// 
         /// <returns> ex. "WA" ==> StateEnum.WA </returns>
         public static StateEnum ConvertStringToStateEnum(string stateValueFromDb)
@@ -712,24 +638,19 @@ namespace adminconsole.Models
         }
 
 
-
-
-
-
         /// <summary>
         /// Converts "A" and "S" to LocationTypeEnum
         /// </summary>
         /// 
-        /// 
         /// <param name="locationTypeValueFromDb"> String to convert </param>
+        /// 
         /// <returns>
-        ///     
         ///     "A" ==> LocationTypeEnum.A
         ///     "S" ==> LocationTypeEnum.S
-        ///     
         /// </returns>
         public static LocationTypeEnum ConvertStringToLocationTypeEnum(string locationTypeValueFromDb)
         {
+
             if (locationTypeValueFromDb == "A")
             {
                 return LocationTypeEnum.A;
@@ -737,28 +658,22 @@ namespace adminconsole.Models
             {
                 return LocationTypeEnum.S;
             }
+
         }
-
-
-
-
-
 
         /// <summary>
         /// Converts a LocationTypeEnum to a string
         /// </summary>
         /// 
-        /// 
         /// <param name="locationTypeEnum"> LocationTypeEnum to convert </param>
         /// 
-        /// 
         /// <returns> 
-        /// 
         ///     LocationTypeEnum.A ==> "A"
         ///     LocationTypeEnum.S ==> "S"
         /// </returns>
         private static string ConvertLocationTypeEnumToString(LocationTypeEnum locationTypeEnum)
         {
+
             if (locationTypeEnum == LocationTypeEnum.A)
             {
                 return "A";
@@ -766,32 +681,27 @@ namespace adminconsole.Models
             {
                 return "S";
             }
+
         }
-
-
-
-
-
-
 
 
         /// <summary>
         /// Converts a Locations Object to a View Model Object.
-        /// 
         /// Is used when a user is editing a Location's information
         /// </summary>
         /// 
-        /// 
         /// <param name="referenceLocation"> The Locations Object to convert </param>
-        /// 
         /// 
         /// <returns> A ViewModel Object populated with the Locations Object's data </returns>
         public bool InstatiateViewModelPropertiesWithOneLocation(Locations referenceLocation = null)
         {
+
             if (referenceLocation == null) // get first location
             {
                 referenceLocation = locations.First();
             }
+
+            // Properties of all tables in alphabetical order
             AcceptCash = ConvertStringToBooleanEnum(referenceLocation.SpecialQualities.AcceptCash);
             AcceptDeposit = ConvertStringToBooleanEnum(referenceLocation.SpecialQualities.AcceptDeposit);
             Access = ConvertStringToBooleanEnum(referenceLocation.SpecialQualities.Access);
@@ -859,7 +769,9 @@ namespace adminconsole.Models
             Surcharge = ConvertStringToBooleanEnum(referenceLocation.SpecialQualities.Surcharge);
             TakeCoopData = ConvertBoolToBooleanEnum(referenceLocation.TakeCoopData);
             WebAddress = referenceLocation.Contact.WebAddress;
+
             return true;
+
         }
     }
 }

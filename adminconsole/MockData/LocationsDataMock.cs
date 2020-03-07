@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DatabaseLibrary.Models;
 
@@ -20,12 +19,12 @@ namespace adminconsole.Models
         /// </summary>
         public LocationsDataMock()
         {
+
             liveLocations = new List<Locations>();
             deletedLocations = new List<Locations>();
             SetDefaultValues();
+
         }
-
-
 
 
         /// <summary>
@@ -36,25 +35,22 @@ namespace adminconsole.Models
         /// <returns> true if no error. else false </returns>
         public bool ResetDefaultValues()
         {
+
             liveLocations = null;
             deletedLocations = null;
             return SetDefaultValues();
+
         }
-
-
 
 
         /// <summary>
         /// Helper method to repopulate viewModelList with default data.
         /// </summary>
         /// 
-        /// 
         /// <returns>
-        /// 
         /// True: If creates all default ViewModel Objects successfully
         /// False: If there is an instantiation error, which will occur only if the Models' (and thereby the ViewModel's)
         ///        properties change.
-        /// 
         /// </returns>
         private bool SetDefaultValues()
         {
@@ -414,25 +410,21 @@ namespace adminconsole.Models
             liveLocations.Add(location_5);
 
             return true;
+
         }
-
-
-
 
 
         /// <summary>
         /// Returns the full list. Equivalent to a SELECT * FROM {join all tables}
         /// </summary>
         /// 
-        /// 
         /// <returns> 
-        /// 
         /// viewModelList: if deleted is false
         /// deletedViewModelList: If deleted is true
-        /// 
         /// </returns>
         public List<Locations> GetAllViewModelList(bool deleted = false)
         {
+
             if (deleted)
             {
                 return deletedLocations;
@@ -441,49 +433,42 @@ namespace adminconsole.Models
             {
                 return liveLocations;
             }
+
         }
-
-
 
 
         /// <summary>
         /// Helper function to determine of the given where clause matches its corresponding column in a specified location.
         /// </summary>
         /// 
-        /// 
         /// <param name="pair"> KeyValuePair<string, string> where key=column name, value=column value of the where clause. </param>
         /// <param name="location"> The AllTablesViewModel object being compared to. </param>
-        /// 
         /// 
         /// <returns> true if match, else false. </returns>
         public bool IsMatch(KeyValuePair<string, string> pair, Locations location)
         {
+
             return StringsAreEqual(location.LocationId.Trim(), pair.Value.Trim());
+
         }
-
-
-
-
 
 
         /// <summary>
         /// Compares nullable strings
         /// </summary>
         /// 
-        /// 
         /// <param name="mockLocation"> Location from viewModelList </param>
         /// <param name="unitTestLocation"> Location passed in from Unit Testing class </param>
-        /// 
         /// 
         /// <returns> True if equal, otherwise false </returns>
         public bool StringsAreEqual(string mockLocation, string unitTestLocation)
         {
+
             if (unitTestLocation is null &&
                 mockLocation is null)
             {
                 return true;
             }
-
 
             if (unitTestLocation is null &&
                 !(mockLocation is null))
@@ -492,24 +477,20 @@ namespace adminconsole.Models
             }
 
             return unitTestLocation.Equals(mockLocation);
+
         }
-
-
-
-
 
 
         /// <summary>
         /// Same as Get_Where_ViewModel_List except will only return at most one location.
         /// </summary>
         /// 
-        /// 
         /// <param name="whereClauses"> The list of where clauses, given as key=column name, value=column value </param>
-        /// 
         /// 
         /// <returns> The first location that meets the where clause conditions, otherwise null </returns>
         public Locations GetOneLocation(List<KeyValuePair<string, string>> whereClauses)
         {
+
             if (whereClauses is null)
             {
                 return liveLocations.First();
@@ -565,10 +546,14 @@ namespace adminconsole.Models
 
         private Locations InstantiateLocation(Locations location)
         {
+
             location.Contact = new Contacts();
             location.SpecialQualities = new SpecialQualities();
             location.DailyHours = new DailyHours();
             return location;
+
         }
+
     }
+
 }
