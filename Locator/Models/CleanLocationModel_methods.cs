@@ -189,10 +189,45 @@ namespace Locator.Models
                 }
 
                 // call to generate list for razor page
-                ListBlockDisplayList = GetListDisplayStrings();
                 SubTitleDisplayList = GetSubTitleDisplayStrings();
+                ListBlockDisplayList = GetListDisplayStrings();
+                FooterBlockQuoteDisplay = GetFooterBlockQuoteDisplayStrings();
             }
         }
+
+
+
+
+        // attributes with legit values get new html tags built
+        public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
+        {
+            var subTitle = string.Format(@"<p class=""subTitle {0} empty""></p>", Key);
+
+            if (!string.IsNullOrEmpty(Title))
+            {
+                subTitle = string.Format(@"<p class=""subTitle {0}"" value='{2}'> {1}: {2} </p>", Key, Display, Title);
+            }
+
+            return subTitle;
+        }
+
+        public string GetSubTitleDisplayStrings()
+        {
+            // start an empty string
+            SubTitleDisplayList = "";
+
+            // declare attribute variables w/arguments
+            SubTitleDisplayList += BuildSubTitleDisplayTag("Hours", "Hours", Hours);
+            SubTitleDisplayList += BuildSubTitleDisplayTag("RetailOutlet", "Retail Outlet", RetailOutlet);
+            SubTitleDisplayList += BuildSubTitleDisplayTag("InstallationType", "Installation Type", InstallationType);
+            SubTitleDisplayList += BuildSubTitleDisplayTag("AccessNotes", "Notes", AccessNotes);
+
+
+            return SubTitleDisplayList;
+        }
+
+
+
 
 
         //<option class=""list-display {0}"" value=""{2}""></option>
@@ -203,7 +238,7 @@ namespace Locator.Models
         // attributes with legit values get new html tags built
         public string BuildListBlockDisplayTag(string Key, string Label, string Value)
         {
-            var listBlock = string.Format(@"<li class=""list-group-item""> {1} : <span class=""{0}"">{2}</span></li>", Key, Label, Value);
+            var listBlock = string.Format(@"<li class=""list-group-item""> {1}: <span class=""{0}"">{2}</span></li>", Key, Label, Value);
 
             return listBlock;
         }
@@ -262,32 +297,41 @@ namespace Locator.Models
         }
 
 
+
         // attributes with legit values get new html tags built
-        public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
+        public string BuildFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
         {
-            var subTitle = string.Format(@"<p class=""subTitle {0} empty""></p>", Key);
+            var footerBlockQuote = string.Format(@"<blockquote><h5 class=""blockquote-footer {0} empty""><cite title =""{2}"">{1}: {2}</cite></h5></blockquote>", Key, Label, Value);
 
-            if (!string.IsNullOrEmpty(Title))
-            {
-                subTitle = string.Format(@"<p class=""subTitle {0}"" value='{2}'> {1} : {2} </p>", Key, Display, Title);
-            }
-
-            return subTitle;
+            return footerBlockQuote;
         }
 
-        public string GetSubTitleDisplayStrings()
+        // default footer blockquote tag
+        public string BuildDefaultFooterBlockQuoteDisplayTag(string Key)
         {
-            // start an empty string
-            SubTitleDisplayList = "";
+            var defaultFooterBlockQuote = string.Format(@"<blockquote><h5 class=""blockquote-footer {0} empty""></h5></blockquote>", Key);
 
-            // declare attribute variables w/arguments
-            SubTitleDisplayList += BuildSubTitleDisplayTag("Hours", "Hours", Hours);
-            SubTitleDisplayList += BuildSubTitleDisplayTag("RetailOutlet", "Retail Outlet", RetailOutlet);
-            SubTitleDisplayList += BuildSubTitleDisplayTag("InstallationType", "Installation Type", InstallationType);
-            SubTitleDisplayList += BuildSubTitleDisplayTag("AccessNotes", "Notes", AccessNotes);
+            return defaultFooterBlockQuote;
+        }
+        
+        // check for unknown value and create appropriate tag
+        public string CreateFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
+        {
+            if (Value.Equals("Unknown"))
+            {
+                return BuildDefaultFooterBlockQuoteDisplayTag(Key);
+            }
+            return BuildFooterBlockQuoteDisplayTag(Key, Label, Value);
+        }
 
+        // convert installation type into footer blockquote
+        public string GetFooterBlockQuoteDisplayStrings()
+        {
+            FooterBlockQuoteDisplay = "";
 
-            return SubTitleDisplayList;
+            FooterBlockQuoteDisplay += CreateFooterBlockQuoteDisplayTag("InstallationType", "Location Type", InstallationType);
+
+            return FooterBlockQuoteDisplay;
         }
     }
 }

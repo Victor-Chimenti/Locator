@@ -147,7 +147,7 @@ namespace Locator.Models
         public string SubTitleDisplayList { get; set; }
 
         // This string will hold the list of all attributes that are displayed with the footer blockquote
-        public string FooterBlockQuoteDisplayList { get; set; }
+        public string FooterBlockQuoteDisplay { get; set; }
 
 
         //// establish a default html tag for undefined, null attributes

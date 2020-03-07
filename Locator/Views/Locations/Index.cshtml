@@ -149,24 +149,7 @@
                                 </div>
                                 <ul class="list-group">@Html.Raw(@card.ListBlockDisplayList)</ul>
                             </div>
-                            <div class="card-footer">
-                                @{
-                                    switch (card.LocationTypeCode)
-                                    {
-                                        case "ATM":
-                                        case "A":
-                                        case "S":
-                                            <blockquote class="blockquote my-1 pt-1">
-                                                <h5 class="blockquote-footer locationType" value="@card.LocationTypeCode">
-                                                    Location Type: <cite title="@card.LocationType.ToTitle()">@card.LocationType.ToTitle()</cite>
-                                                </h5>
-                                            </blockquote>
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }
-                            </div>
+                            <div class="card-footer">@Html.Raw(@card.FooterBlockQuoteDisplay)</div>
                         </div>
                     </div>
                 }
