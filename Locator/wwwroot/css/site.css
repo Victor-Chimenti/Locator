@@ -171,16 +171,20 @@ html {
     stroke: #D5D7D9;
 }
 
+div.card.border-dark {
+    border-color: #D5D7D9 !important;
+    border-style:groove;
+    border-width: 0.1rem;
+}
+
+div#sidebar-wrapper div.card p {
+    color: #4D5F69;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
 #sidebar-wrapper .card .card-header {
     background-color: #EAEBEC;
-}
-
-#sidebar-wrapper .card .card-body {
-    background-color: #F4F5F5;
-}
-
-#sidebar-wrapper .card .card-body div.card-subtitle {
-    padding-bottom: 1rem;
 }
 
 div.card-header a.btn-link {
@@ -200,12 +204,6 @@ div.card-header a.btn-link div.cardTitleBox span.card-title {
     font: Museo Sans 700;
 }
 
-div#sidebar-wrapper div.card p {
-    color: #4D5F69;
-    font-size: 1.2rem;
-    margin: 0;
-}
-
 btn-link:hover {
     text-decoration: none;
 }
@@ -215,7 +213,6 @@ a:hover {
 
 div.card div.card-header a.btn-link:hover span.card-name {
     color: #006979;
-    /*text-decoration: underline;*/
 }
 
 div.card div.card-header a.btn-link span.cardTitleBox i.fas {
@@ -260,21 +257,41 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
     text-decoration: none;
 }
 
-#sidebar-wrapper .card div.card-footer {
-    background-color: #FFFFFF;
+#sidebar-wrapper div.card .card-body {
+    background-color: #F4F5F5;
 }
 
-#sidebar-wrapper .card div.card-footer a.webAddressLink {
+#sidebar-wrapper .card .card-body div.card-subtitle {
+    padding-bottom: 1rem;
+}
+
+#sidebar-wrapper .card div.card-subtitle a.webAddressLink {
     color: #006979;
 }
 
-#sidebar-wrapper .card div.card-footer a.phoneLink {
+#sidebar-wrapper .card div.card-subtitle a.phoneLink {
     color: #006979;
+}
+
+#sidebar-wrapper .card div.card-subtitle a.webAddressLink:hover {
+    text-decoration: underline;
+}
+
+#sidebar-wrapper .card div.card-subtitle a.phoneLink:hover {
+    text-decoration: underline;
 }
 
 #sidebar-wrapper .card .contactInfo span.cardTitleBox {
     color: #192838;
     font-size: 1.6rem;
+}
+
+#sidebar-wrapper div.card .card-body ul.list-group {
+    background-color: #FFFFFF;
+}
+
+#sidebar-wrapper div.card div.card-footer {
+    background-color: #F4F5F5;
 }
 
 
