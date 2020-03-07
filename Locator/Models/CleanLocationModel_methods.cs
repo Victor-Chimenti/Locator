@@ -87,13 +87,22 @@ namespace Locator.Models
                 {
                     var protocol = "http";
                     var secureProtocol = "https://";
+                    var commercialDomain = ".com";
+                    var netDomain = ".net";
+                    var nonProfitDomain = ".org";
                     if (!data.Contact.WebAddress.Contains(protocol))
                     {
-                        WebAddress = secureProtocol + data.Contact.WebAddress;
+                        if (data.Contact.WebAddress.Contains(commercialDomain) || data.Contact.WebAddress.Contains(netDomain) || data.Contact.WebAddress.Contains(nonProfitDomain))
+                        {
+                            WebAddress = secureProtocol + data.Contact.WebAddress;
+                        }
                     }
                     else
                     {
-                        WebAddress = data.Contact.WebAddress;
+                        if (data.Contact.WebAddress.Contains(commercialDomain) || data.Contact.WebAddress.Contains(netDomain) || data.Contact.WebAddress.Contains(nonProfitDomain))
+                        {
+                            WebAddress = data.Contact.WebAddress;
+                        }
                     }
                 }
             }
