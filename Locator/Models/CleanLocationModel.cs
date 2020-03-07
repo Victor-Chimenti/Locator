@@ -6,32 +6,48 @@ namespace Locator.Models
 {
     public partial class CleanLocationModel
     {
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         public string LocationId { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Institution")]
         public string Name { get; set; }
 
         [DisplayName("Type")]
         public LocationTypeEnum LocationType { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Type Code")]
         public string LocationTypeCode { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Street")]
         public string Address { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("City")]
         public string City { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Zip Code")]
         public string PostalCode { get; set; }
 
         [DisplayName("State Code")]
         public StateEnum State { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("State")]
         public string StateTitle { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Country")]
         public string Country { get; set; }
 
@@ -41,113 +57,81 @@ namespace Locator.Models
         [DisplayName("Longitude")]
         public decimal Longitude { get; set; } = 0.0M;
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Retail Outlet")]
         public string RetailOutlet { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Hours")]
         public string Hours { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Phone")]
         public string Phone { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Web Address")]
         public string WebAddress { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Restricted Access")]
         public BooleanEnum RestrictedAccess { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Accepts Deposits")]
         public BooleanEnum AcceptDeposit { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Installation Type")]
         public string InstallationType { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Drive Thru Only")]
         public BooleanEnum DriveThruOnly { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Handicap Access")]
         public BooleanEnum HandicapAccess { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Accepts Cash")]
         public BooleanEnum AcceptCash { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Cashless")]
         public BooleanEnum Cashless { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Self Service Only")]
         public BooleanEnum SelfServiceOnly { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Surcharge")]
         public BooleanEnum Surcharge { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("On Military Base")]
         public BooleanEnum OnMilitaryBase { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Military ID Required")]
         public BooleanEnum MilitaryIdRequired { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Self Service Device")]
         public BooleanEnum SelfServiceDevice { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("CoinStar")]
         public BooleanEnum CoinStar { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Teller Services")]
         public BooleanEnum TellerServices { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("24 Hour Express Box")]
         public BooleanEnum _24hourExpressBox { get; set; }
-
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Partner Credit Union")]
         public BooleanEnum PartnerCreditUnion { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Member Consultant")]
         public BooleanEnum MemberConsultant { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Instant Debit Card Replacement")]
         public BooleanEnum InstantDebitCardReplacement { get; set; }
 
-
+        [Required(AllowEmptyStrings = false)]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [DisplayName("Notes")]
         public string AccessNotes { get; set; }
 
@@ -165,22 +149,25 @@ namespace Locator.Models
 
         public CleanLocationModel(Locations data)
         {
-            LocationId = data.LocationId;
-            Name = data.Name;
+            if (data != null)
+            {
+                LocationId = data.LocationId;
+                Name = data.Name;
 
-            LocationType = LocationTypeEnumHelper.StringToEnum(data.LocationType);
-            LocationTypeCode = LocationType.ToTitle();
+                LocationType = LocationTypeEnumHelper.StringToEnum(data.LocationType);
+                LocationTypeCode = LocationType.ToTitle();
 
-            Address = data.Address;
-            City = data.City;
-            PostalCode = data.PostalCode;
-            State = StateEnumHelper.StringToEnum(data.State);
-            StateTitle = State.ToTitle();
-            Country = data.Country;
-            Latitude = data.Latitude; 
-            Longitude = data.Longitude; 
-            RetailOutlet = data.RetailOutlet;
-            Hours = data.Hours;
+                Address = data.Address;
+                City = data.City;
+                PostalCode = data.PostalCode;
+                State = StateEnumHelper.StringToEnum(data.State);
+                StateTitle = State.ToTitle();
+                Country = data.Country;
+                Latitude = data.Latitude;
+                Longitude = data.Longitude;
+                RetailOutlet = data.RetailOutlet;
+                Hours = data.Hours;
+            }
          
             Phone = "";
             WebAddress = "";
