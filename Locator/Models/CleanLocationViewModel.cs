@@ -5,13 +5,13 @@ namespace Locator.Models
 {
     public class CleanLocationViewModel
     {
-        public List<CleanLocationModel_properties> CleanLocationList = new List<CleanLocationModel_properties>();
+        public List<CleanLocationModel> CleanLocationList = new List<CleanLocationModel>();
 
         public CleanLocationViewModel(List<Locations> data)
         {
             foreach (var item in data)
             {
-                CleanLocationList.Add(new CleanLocationModel_properties(item));
+                CleanLocationList.Add(new CleanLocationModel(item));
             }
         }
     }
