@@ -1,15 +1,8 @@
-﻿using adminconsole.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-
-namespace adminconsole.Backend
+﻿namespace adminconsole.Backend
 {
+    /// <summary>
+    /// Used to fake the login page, 
+    /// </summary>
     public class HomeBackend
     {
         private const string U = "jake";
@@ -17,6 +10,7 @@ namespace adminconsole.Backend
 
         public bool Login(string username, string password)
         {
+
             if (username is null)
             {
                 return false;
@@ -40,6 +34,7 @@ namespace adminconsole.Backend
             }
 
             return true;
+
         }
     }
 }

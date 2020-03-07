@@ -157,6 +157,32 @@ namespace adminconsole.Models
         #nullable enable
         [StringLength(100)]
         public string? AccessNotes { get; set; }
+
+
+        // NFC attributes
+        [Display(Name = "Coin Star")]
+        #nullable enable
+        public string? CoinStar { get; set; }
+        
+        [Display(Name = "Teller Services")]
+        #nullable enable
+        public string? TellerServices { get; set; }
+
+        [Display(Name = "24 Hour Express Box")]
+        #nullable enable
+        public string? _24hourExpressBox { get; set; }
+        
+        [Display(Name = "Partner Credit Union")]
+        #nullable enable
+        public string? PartnerCreditUnion { get; set; }
+        
+        [Display(Name = "Member Consultant")]
+        #nullable enable
+        public string? MemberConsultant { get; set; }
+        
+        [Display(Name = "Instant Debit Card Replacement")]
+        #nullable enable
+        public string? InstantDebitCardReplacement { get; set; }
         #endregion
 
         #region Hours Per Day Of The Week Properties
