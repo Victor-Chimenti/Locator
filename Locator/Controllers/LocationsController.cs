@@ -73,7 +73,7 @@ namespace Locator.Controllers
 
 
             var cleanResults = new CleanLocationViewModel(dirtyResults);
-            cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 612);
+            cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 256);
 
             return cleanResults;
         }
