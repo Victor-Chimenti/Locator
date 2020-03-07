@@ -41,6 +41,7 @@ namespace adminconsole.Controllers
         {
 
             var results = await backend.IndexAsync().ConfigureAwait(false);
+            results = results.GetRange(0, 3);
             return View(results);
 
         }
@@ -158,7 +159,7 @@ namespace adminconsole.Controllers
             if (!ModelState.IsValid)
             {
                 var view = View(newLocation);
-                view.ViewName = "Create Post";
+                view.ViewName = "Create";
                 return view;
             }
 
