@@ -66,9 +66,9 @@ namespace Locator.Controllers
                 point,
                 cleanResults.CleanLocationList
             };
-            return new JsonResult(data);
 
-            //return new JsonResult(cleanResults.CleanLocationList);
+
+            return new JsonResult(data);
         }
 
 
@@ -76,22 +76,7 @@ namespace Locator.Controllers
 
         public async Task<CleanLocationViewModel> GetCleanViewModel()
         {
-            //var Latitude = Request.Cookies["latitude"];
-            //var Longitude = Request.Cookies["longitude"];
 
-            //if (string.IsNullOrEmpty(Latitude))
-            //{
-            //    Latitude = "47.490209";
-            //}
-
-            //if (string.IsNullOrEmpty(Longitude))
-            //{
-            //    Longitude = "-122.272126";
-            //}
-
-
-            // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records
-            //var point = new PositionModel(Latitude, Longitude);
             //var dirtyResults = await backend.IndexAsync(100, 0, point).ConfigureAwait(false);
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
 

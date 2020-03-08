@@ -40,16 +40,9 @@ async function getJsonData() {
         data: {},
         contentType: 'application/json',
         success: function (data) {
-            //var json = JSON.parse(data);
-            //var myJSON = JSON.stringify(json);
-            //var newData = userData.data.userList;
-            console.log("data: " + data);
+            // assign global js user position variable
             userPosition = JSON.stringify(data.point);
-            //var incommingList = JSON.parse(data.cleanResults.CleanLocationList);
-
-            console.log("userPosition: " + userPosition);
-            //console.log("incommingList: " + incommingList);
-            // load the json objects into a global array
+            // add clean location list to global js array
             for (let i = 0; i < data.cleanLocationList.length; i++) {
                 records[i] = data.cleanLocationList[i];
             }
@@ -58,10 +51,8 @@ async function getJsonData() {
             var err = JSON.parse(xhr.responseText);
             alert(err.Message);
         },
-        //error: function (jqXHR, exception) {
-        //    //alert('Internal Error : unable to parse locations record.');
-        //},
     }).done(function () {
+        // initiate call to map marker functions
         processRecords();
     });
 };
