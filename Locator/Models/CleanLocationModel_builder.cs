@@ -7,26 +7,6 @@ namespace Locator.Models
 {
     public partial class CleanLocationModel
     {
-
-        public string GetTitleBoxDisplayStrings()
-        {
-            var titleBox = "";
-            return titleBox;
-        }
-
-
-
-
-        public string GetContactBoxDisplayStrings()
-        {
-            var contactBox = "";
-            return contactBox;
-        }
-
-
-
-
-
         // attributes with legit values get new html tags built
         public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
         {

@@ -140,10 +140,6 @@ namespace Locator.Models
         [DisplayName("Position")]
         public PositionModel Position { get; set; }
 
-        public string TitleBoxDisplay { get; set; }
-
-        public string ContactBoxDisplay { get; set; }
-
         // This string will hold the list of all attributes and be passed through Display String
         public string ListBlockDisplay { get; set; }
 
