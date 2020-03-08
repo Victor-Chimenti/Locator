@@ -71,9 +71,6 @@ html {
     padding-top: 1rem;
 }
 
-/*#main-brand {
-    color: #D12A2E;
-}*/
 
 
 
@@ -329,16 +326,32 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
 /**
 *   grid areas for responsive screens
 */
-#left-nav.col {
-    grid-area: lhs;
+div#filter-wrapper.col {
+    grid-area: filter;
 }
 
-#center-index.col {
-    grid-area: main-map;
+div#center-index.col {
+    grid-area: map;
 }
 
-#right-sidebar.col {
+div#sidebar-wrapper.col {
     grid-area: sidebar;
+}
+
+.grid {
+    grid-template-areas: 'map' 'filter' 'sidebar';
+}
+
+div#filter-wrapper {
+    width: 100%;
+}
+
+div#center-index {
+    width: 100%;
+}
+
+div#sidebar-wrapper {
+    width: 100%;
 }
 
 
@@ -464,38 +477,8 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
         #filterSearch-wrapper .panel-body {
             font-size: 1.2rem;
         }
-
-        .grid {
-            grid-template-areas: 'lhs' 'main-map' 'sidebar';
-        }
-
-        #left-nav {
-            width: 100%;
-        }
-
-        #center-index {
-            width: 100%;
-        }
-
-        #right-sidebar {
-            width: 100%;
-        }
     }
 
-
-
-    /**
-*   Main Row Footer
-*/
-    /*#capstone-info {
-        color: #4D5F69;
-        padding-top: 1rem;
-        text-align: center;
-    }
-
-    #capstone-link {
-        color: #006979;
-    }*/
 
 
 
