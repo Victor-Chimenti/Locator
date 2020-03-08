@@ -188,151 +188,17 @@ namespace Locator.Models
                     AccessNotes = data.SpecialQualities.AccessNotes;
                 }
 
-                // call to generate list for razor page
-                SubTitleDisplayList = GetSubTitleDisplayStrings();
-                ListBlockDisplayList = GetListDisplayStrings();
+
+
+
+
+                // call builder functions
+                TitleBoxDisplay = GetTitleBoxDisplayStrings();
+                ContactBoxDisplay = GetContactBoxDisplayStrings();
+                SubTitleDisplay = GetSubTitleDisplayStrings();
+                ListBlockDisplay = GetListDisplayStrings();
                 FooterBlockQuoteDisplay = GetFooterBlockQuoteDisplayStrings();
             }
-        }
-
-
-
-
-        // attributes with legit values get new html tags built
-        public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
-        {
-            var subTitle = string.Format(@"<p class=""subTitle {0} empty""></p>", Key);
-
-            if (!string.IsNullOrEmpty(Title))
-            {
-                subTitle = string.Format(@"<p class=""subTitle {0}"" value='{2}'> {1}: {2} </p>", Key, Display, Title);
-            }
-
-            return subTitle;
-        }
-
-        public string GetSubTitleDisplayStrings()
-        {
-            // start an empty string
-            SubTitleDisplayList = "";
-
-            // declare attribute variables w/arguments
-            SubTitleDisplayList += BuildSubTitleDisplayTag("Hours", "Hours", Hours);
-            SubTitleDisplayList += BuildSubTitleDisplayTag("RetailOutlet", "Retail Outlet", RetailOutlet);
-            SubTitleDisplayList += BuildSubTitleDisplayTag("InstallationType", "Installation Type", InstallationType);
-            SubTitleDisplayList += BuildSubTitleDisplayTag("AccessNotes", "Notes", AccessNotes);
-
-
-            return SubTitleDisplayList;
-        }
-
-
-
-
-
-        //<option class=""list-display {0}"" value=""{2}""></option>
-        /// <summary>
-        /// Use for Card Creation to improve performance for ajax
-        /// </summary>
-
-        // attributes with legit values get new html tags built
-        public string BuildListBlockDisplayTag(string Key, string Label, string Value)
-        {
-            var listBlock = string.Format(@"<li class=""list-group-item""> {1}: <span class=""{0}"">{2}</span></li>", Key, Label, Value);
-
-            return listBlock;
-        }
-
-        public string BuildDefaultListBlockDisplayTag(string Key)
-        {
-            var defaultListBlock = string.Format(@"<li class=""list-group-item {0} empty"">{0}</li>", Key);
-
-            return defaultListBlock;
-        }
-
-        public string CreateBuildListBlockIfYes(string Key, string Label, string Value)
-        {
-            if (Value.Equals("Yes"))
-            {
-                return BuildListBlockDisplayTag(Key, Label, Value);
-            }
-            return BuildDefaultListBlockDisplayTag(Key);
-        }
-
-        public string CreateBuildListBlockIfNo(string Key, string Label, string Value)
-        {
-            if (Value.Equals("No"))
-            {
-                return BuildListBlockDisplayTag(Key, Label, Value);
-            }
-            return BuildDefaultListBlockDisplayTag(Key);
-        }
-
-        public string GetListDisplayStrings()
-        {
-            // start an empty string
-            ListBlockDisplayList = "";
-
-            // declare attribute variables w/arguments
-            ListBlockDisplayList += CreateBuildListBlockIfYes("HandicapAccess", "Handicap Access", HandicapAccess.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfNo("Surcharge", "Surcharge", Surcharge.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("DriveThruOnly", "Drive Thru Only", DriveThruOnly.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("AcceptsDeposits", "Accepts Deposits", AcceptDeposit.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("AcceptsCash", "Accepts Cash", AcceptCash.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("Cashless", "Cashless", Cashless.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("SelfServiceDevice", "Self Service Device", SelfServiceDevice.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("SelfServiceOnly", "Self Service Only", SelfServiceOnly.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("OnMilitaryBase", "On Military Base", OnMilitaryBase.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("MilitaryIDRequired", "Military ID Required", MilitaryIdRequired.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("RestrictedAccess", "Restricted Access", RestrictedAccess.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("CoinStar", "CoinStar", CoinStar.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("TellerServices", "Teller Services", TellerServices.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("_24hourExpressBox", "24 Hour Express Box", _24hourExpressBox.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfNo("PartnerCreditUnion", "Partner Credit Union", PartnerCreditUnion.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("MemberConsultant", "Member Consultant", MemberConsultant.ToTitle());
-            ListBlockDisplayList += CreateBuildListBlockIfYes("InstantDebitCardReplacement", "Instant Debit Card Replacement", InstantDebitCardReplacement.ToTitle());
-
-
-            return ListBlockDisplayList;
-        }
-
-
-
-        // attributes with legit values get new html tags built
-        public string BuildFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
-        {
-            var footerBlockQuote = string.Format(@"<blockquote class=""blockquote my-1 pt-1""><h5 class=""blockquote-footer {0} empty""><cite title =""{2}"">{1}: {2}</cite></h5></blockquote>", Key, Label, Value);
-
-            return footerBlockQuote;
-        }
-
-        // default footer blockquote tag
-        public string BuildDefaultFooterBlockQuoteDisplayTag(string Key)
-        {
-            var defaultFooterBlockQuote = string.Format(@"<blockquote><h5 class=""blockquote-footer {0} empty""></h5></blockquote>", Key);
-
-            return defaultFooterBlockQuote;
-        }
-        
-        // check for unknown value and create appropriate tag
-        public string CreateFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
-        {
-            // TODO: this breaks if (Value.Equals("Unknown"))
-            if (Value != null)
-            {
-                return BuildDefaultFooterBlockQuoteDisplayTag(Key);
-            }
-            return BuildFooterBlockQuoteDisplayTag(Key, Label, Value);
-        }
-
-        // convert installation type into footer blockquote
-        public string GetFooterBlockQuoteDisplayStrings()
-        {
-            FooterBlockQuoteDisplay = "";
-
-            FooterBlockQuoteDisplay += CreateFooterBlockQuoteDisplayTag("InstallationType", "Location Type", InstallationType);
-
-            return FooterBlockQuoteDisplay;
         }
     }
 }

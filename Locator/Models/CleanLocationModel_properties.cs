@@ -140,18 +140,18 @@ namespace Locator.Models
         [DisplayName("Position")]
         public PositionModel Position { get; set; }
 
-        // This string will hold the list of all attributes and be passed through Display String
-        public string ListBlockDisplayList { get; set; }
+        public string TitleBoxDisplay { get; set; }
+
+        public string ContactBoxDisplay { get; set; }
 
         // This string will hold the list of all attributes and be passed through Display String
-        public string SubTitleDisplayList { get; set; }
+        public string ListBlockDisplay { get; set; }
+
+        // This string will hold the list of all attributes and be passed through Display String
+        public string SubTitleDisplay { get; set; }
 
         // This string will hold the list of all attributes that are displayed with the footer blockquote
         public string FooterBlockQuoteDisplay { get; set; }
-
-
-        //// establish a default html tag for undefined, null attributes
-        //string DefaultNoValueSubTitleString = @"<p class=""subTitle empty"" style=""display: none"";></p>";
     }
 }
 
