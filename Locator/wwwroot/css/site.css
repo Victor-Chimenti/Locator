@@ -7,7 +7,9 @@
 *   Media Queries are at the bottom and flow from largest down to smallest
 */
 
-p.empty {
+
+
+blockquote.empty {
     display: none;
 }
 
@@ -15,9 +17,15 @@ li.empty {
     display:none;
 }
 
+p.empty {
+    display: none;
+}
+
 span.empty {
     display: none;
 }
+
+
 
 
 /**
