@@ -40,9 +40,13 @@ async function getJsonData() {
         data: {},
         contentType: 'application/json',
         success: function (data) {
+            var json = JSON.parse(data);
+            confirm.log("json" + json);
+            userPosition = json[1];
+            console.log("userPosition: " + userPosition);
             // load the json objects into a global array
-            for (let i = 0; i < data.length; i++) {
-                records[i] = data[i];
+            for (let i = 0; i < json[0].length; i++) {
+                records[i] = json[0][i];
             }
         },
         error: function (xhr, status, error) {

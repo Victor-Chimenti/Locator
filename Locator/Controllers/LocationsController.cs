@@ -5,6 +5,7 @@ using Locator.Backend;
 using Locator.Models;
 using System.Collections.Generic;
 
+
 namespace Locator.Controllers
 {
     public class LocationsController : Controller
@@ -42,16 +43,7 @@ namespace Locator.Controllers
         [Produces("application/json")]
         public async Task<JsonResult> CardJson()
         {
-            var cleanResults = await GetCleanViewModel();
 
-            return new JsonResult(cleanResults.CleanLocationList);
-        }
-
-
-
-
-        public async Task<CleanLocationViewModel> GetCleanViewModel()
-        {
             var Latitude = Request.Cookies["latitude"];
             var Longitude = Request.Cookies["longitude"];
 
@@ -64,6 +56,38 @@ namespace Locator.Controllers
             {
                 Longitude = "-122.272126";
             }
+
+            var point = new PositionModel(Latitude, Longitude);
+
+            var cleanResults = await GetCleanViewModel();
+
+            var data = new
+            {
+                point,
+                cleanResults.CleanLocationList
+            };
+            return new JsonResult(data);
+
+            //return new JsonResult(cleanResults.CleanLocationList);
+        }
+
+
+
+
+        public async Task<CleanLocationViewModel> GetCleanViewModel()
+        {
+            //var Latitude = Request.Cookies["latitude"];
+            //var Longitude = Request.Cookies["longitude"];
+
+            //if (string.IsNullOrEmpty(Latitude))
+            //{
+            //    Latitude = "47.490209";
+            //}
+
+            //if (string.IsNullOrEmpty(Longitude))
+            //{
+            //    Longitude = "-122.272126";
+            //}
 
 
             // Change the call to IndexAsync, to pass in a TakeIndex, TakeSize, and Point to get spacial search for Take Size number of records

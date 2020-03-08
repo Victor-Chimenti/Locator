@@ -34,6 +34,14 @@ function initMap() {
     directionsRenderer.setMap(map);
     directionsRenderer.setPanel(document.getElementById('directionsPanel'));
 
-    // *** add directions service *** //
+    // *** initiate ajax call to get marker list *** //
     getJsonData();
+
+    //var Latitude = Request.Cookies["latitude"];
+    //var Longitude = Request.Cookies["longitude"];
+
+    //var userPosition = {
+    //    lat: position.coords.Latitude,
+    //    lng: position.coords.Longitude
+    //};
 }

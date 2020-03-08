@@ -28,3 +28,4 @@ var records = [];
 
 // *** map items *** //
 var atmMarker;
+var userPosition;
