@@ -461,10 +461,12 @@ div#sidebar-wrapper {
             padding-bottom: 1rem;
         }
 
-        /** hide the h3 column headers on mobile **/
+        /** hide the h3 filter header on mobile **/
         h3#filter-head {
             display: none;
         }
+
+        /** hide the h3 sidebar header on mobile **/
         h3#sidebar-head {
             display: none;
         }
