@@ -41,9 +41,10 @@ function createMarkerFromJsonRecord(record) {
 
 
 
+// *** drop a marker on the user's location or search request area *** //
 function createSearchAreaMarker(searchArea) {
 
-    // drop pin on user location
+    // launch a user marker
     var userMarker = new google.maps.Marker({
         animation: google.maps.Animation.DROP,
         icon: {
@@ -63,10 +64,6 @@ function createSearchAreaMarker(searchArea) {
     map.setCenter(searchArea);
     map.setZoom(15);
 
-
-    //map.setCenter(userMarker.getPosition());
-
-
     // double click on user location marker to delete it
     userMarker.addListener('dblclick', function () {
         userMarker.setMap(null);
@@ -78,8 +75,14 @@ function createSearchAreaMarker(searchArea) {
 
 // *** initiate production of map markers *** //  
 function processRecords(userPosition) {
-    searchArea = new google.maps.LatLng(userPosition.lat, userPosition.lng),
+
+    // create a lat lng object for the map
+    searchArea = new google.maps.LatLng(userPosition.lat, userPosition.lng);
+
+    // launch a marker and functionality on the user's requested search area
     createSearchAreaMarker(searchArea);
+
+    // launch a marker for each atm or nfc in the list of records
     for (let i = 0; i < records.length; i++) {
         let record = records[i];
         createMarkerFromJsonRecord(record);
@@ -97,6 +100,7 @@ async function getJsonData() {
     var doubleLng;
     var userPosition = {}
 
+    // receive ajax json message from the locations controller method cardjson
     $.ajax({
         traditional: true,
         url: '../locations/cardjson',
