@@ -40,13 +40,18 @@ async function getJsonData() {
         data: {},
         contentType: 'application/json',
         success: function (data) {
-            var json = JSON.parse(data);
-            confirm.log("json" + json);
-            userPosition = json[1];
+            //var json = JSON.parse(data);
+            //var myJSON = JSON.stringify(json);
+            //var newData = userData.data.userList;
+            console.log("data: " + data);
+            userPosition = JSON.stringify(data.point);
+            //var incommingList = JSON.parse(data.cleanResults.CleanLocationList);
+
             console.log("userPosition: " + userPosition);
+            //console.log("incommingList: " + incommingList);
             // load the json objects into a global array
-            for (let i = 0; i < json[0].length; i++) {
-                records[i] = json[0][i];
+            for (let i = 0; i < data.cleanLocationList.length; i++) {
+                records[i] = data.cleanLocationList[i];
             }
         },
         error: function (xhr, status, error) {
