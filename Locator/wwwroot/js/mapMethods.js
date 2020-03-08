@@ -38,8 +38,9 @@ function createSearchAreaMarker(user) {
     });
 
     // center and zoom map on user location
-    map.setZoom(15);
     map.setCenter(user);
+    map.setZoom(15);
+
 
     //map.setCenter(userMarker.getPosition());
 
@@ -67,9 +68,12 @@ function processRecords(searchArea) {
 
 // *** send get request to the locations controller for clean data *** //  
 async function getJsonData() {
+
+    // assign function scope variables to unmarshal json object
     var doubleLat;
     var doubleLng;
     var userPosition = {}
+
     $.ajax({
         traditional: true,
         url: '../locations/cardjson',
@@ -77,25 +81,25 @@ async function getJsonData() {
         data: {},
         contentType: 'application/json',
         success: function (data) {
-            // assign global js user position variable
-            console.log("data point lat: " + data.point.lat);
+
+            // process and assign location data
             doubleLat = parseFloat(data.point.lat);
-            console.log("doubleLat: " + doubleLat);
             doubleLng = parseFloat(data.point.lng);
-            console.log("doubleLng: " + doubleLng);
             userPosition = { lat: doubleLat, lng: doubleLng };
 
-            //userPosition = JSON.stringify(data.point);
             // add clean location list to global js array
             for (let i = 0; i < data.cleanLocationList.length; i++) {
                 records[i] = data.cleanLocationList[i];
             }
         },
+
         error: function (xhr, status, error) {
             var err = JSON.parse(xhr.responseText);
             alert(err.Message);
         },
+
     }).done(function () {
+
         // initiate call to map marker functions
         processRecords(userPosition);
     });
