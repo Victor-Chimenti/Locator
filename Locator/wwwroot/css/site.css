@@ -443,44 +443,82 @@ div#sidebar-wrapper {
 *   Media queries small screens
 */
     @media (max-width: 767px) {
+
+        div.col-12 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /** setting for the left-hand column as it migrates below the map on mobile sm screens**/
+        div#filter-wrapper {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        div#center-index {
+            padding-bottom: 1rem;
+        }
+
+        h3#filter-head {
+            display: none;
+        }
+
+        h3#sidebar-head {
+            display: none;
+        }
+
+        div.panel#atm-panel {
+            padding-top: 0.5rem;
+            padding-bottom: 0.25rem;
+        }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link .panelTitleBox {
             color: #006979;
             font-size: 1.6rem;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link .panel-name {
             color: #006979;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
             text-decoration: underline;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link:after {
             display: none;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel .collapse:not(.show) {
             display: none;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link .fas {
             display: inline-block;
             padding-right: 5px;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
             display: none;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-plus {
             display: initial;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-minus {
             display: none;
         }
+
         /** setting for left nav collapsable show on mobile **/
         #filterSearch-wrapper .panel-body {
             font-size: 1.2rem;
