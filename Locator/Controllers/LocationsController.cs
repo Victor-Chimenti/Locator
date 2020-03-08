@@ -51,16 +51,16 @@ namespace Locator.Controllers
             {
                 Latitude = "47.490209";
             }
-
             if (string.IsNullOrEmpty(Longitude))
             {
                 Longitude = "-122.272126";
             }
 
             var point = new PositionModel(Latitude, Longitude);
-
             var cleanResults = await GetCleanViewModel();
 
+
+            // create an object to pass thru json to the ajax
             var data = new
             {
                 point,
