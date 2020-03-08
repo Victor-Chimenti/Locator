@@ -90,19 +90,17 @@ namespace Locator.Models
                     var commercialDomain = ".com";
                     var netDomain = ".net";
                     var nonProfitDomain = ".org";
-                    if (!data.Contact.WebAddress.Contains(protocol))
+                    if (data.Contact.WebAddress.Contains(commercialDomain) || data.Contact.WebAddress.Contains(netDomain) || data.Contact.WebAddress.Contains(nonProfitDomain))
                     {
-                        if (data.Contact.WebAddress.Contains(commercialDomain) || data.Contact.WebAddress.Contains(netDomain) || data.Contact.WebAddress.Contains(nonProfitDomain))
+                        if (!data.Contact.WebAddress.Contains(protocol))
                         {
                             WebAddress = secureProtocol + data.Contact.WebAddress;
                         }
-                    }
-                    else
-                    {
-                        if (data.Contact.WebAddress.Contains(commercialDomain) || data.Contact.WebAddress.Contains(netDomain) || data.Contact.WebAddress.Contains(nonProfitDomain))
+                        else
                         {
                             WebAddress = data.Contact.WebAddress;
                         }
+
                     }
                 }
             }

@@ -7,6 +7,7 @@ namespace Locator.Models
 {
     public partial class CleanLocationModel
     {
+
         // attributes with legit values get new html tags built
         public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
         {
@@ -110,7 +111,7 @@ namespace Locator.Models
         // attributes with legit values get new html tags built
         public string BuildFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
         {
-            var footerBlockQuote = string.Format(@"<blockquote class=""blockquote my-1 pt-1""><h5 class=""blockquote-footer {0} empty""><cite title =""{2}"">{1}: {2}</cite></h5></blockquote>", Key, Label, Value);
+            var footerBlockQuote = string.Format(@"<blockquote class=""blockquote my-1 pt-1""><h5 class=""blockquote-footer {0}""><cite title =""{2}"">{1}: {2}</cite></h5></blockquote>", Key, Label, Value);
 
             return footerBlockQuote;
         }
@@ -126,12 +127,11 @@ namespace Locator.Models
         // check for unknown value and create appropriate tag
         public string CreateFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
         {
-            // TODO: this breaks if (Value.Equals("Unknown"))
-            if (Value != null)
+            if (LocationTypeCode != null)
             {
-                return BuildDefaultFooterBlockQuoteDisplayTag(Key);
+                return BuildFooterBlockQuoteDisplayTag(Key, Label, Value);
             }
-            return BuildFooterBlockQuoteDisplayTag(Key, Label, Value);
+            return BuildDefaultFooterBlockQuoteDisplayTag(Key);
         }
 
         // convert installation type into footer blockquote
@@ -139,7 +139,7 @@ namespace Locator.Models
         {
             var footerBlock = "";
 
-            footerBlock += CreateFooterBlockQuoteDisplayTag("InstallationType", "Location Type", InstallationType);
+            footerBlock += CreateFooterBlockQuoteDisplayTag("LocationType", "Location Type", LocationTypeCode);
 
             return footerBlock;
         }
