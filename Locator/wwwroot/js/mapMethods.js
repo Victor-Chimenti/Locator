@@ -8,10 +8,10 @@
 
 
 // *** drop a marker on each atm provided by the database *** //
-function createMarkerFromJsonRecord(record) {
+function createMarkerFromJsonRecord(record, searchArea) {
 
     // launch new marker
-    atmMarker = new google.maps.Marker({
+    var atmMarker = new google.maps.Marker({
         map: map,
         position: record.position,
         title: record.name,
@@ -77,7 +77,7 @@ function createSearchAreaMarker(searchArea) {
 function processRecords(userPosition) {
 
     // create a lat lng object for the map
-    searchArea = new google.maps.LatLng(userPosition.lat, userPosition.lng);
+    var searchArea = new google.maps.LatLng(userPosition.lat, userPosition.lng);
 
     // launch a marker and functionality on the user's requested search area
     createSearchAreaMarker(searchArea);
@@ -85,7 +85,7 @@ function processRecords(userPosition) {
     // launch a marker for each atm or nfc in the list of records
     for (let i = 0; i < records.length; i++) {
         let record = records[i];
-        createMarkerFromJsonRecord(record);
+        createMarkerFromJsonRecord(record, searchArea);
     }
 };
 

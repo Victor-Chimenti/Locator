@@ -22,10 +22,3 @@ var assignVisibleItems = function () { };
 // *** data received by map from ajax call to locations controller *** //
 var records = [];
 
-
-
-
-
-// *** map items *** //
-var atmMarker;
-var searchArea;
