@@ -45,9 +45,13 @@ async function getJsonData() {
                 records[i] = data[i];
             }
         },
-        error: function (jqXHR, exception) {
-            alert('Internal Error : unable to parse locations record.');
+        error: function (xhr, status, error) {
+            var err = JSON.parse(xhr.responseText);
+            alert(err.Message);
         },
+        //error: function (jqXHR, exception) {
+        //    //alert('Internal Error : unable to parse locations record.');
+        //},
     }).done(function () {
         processRecords();
     });
