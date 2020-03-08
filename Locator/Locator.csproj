@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon>wwwroot\assets\favicon_maphawks.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
