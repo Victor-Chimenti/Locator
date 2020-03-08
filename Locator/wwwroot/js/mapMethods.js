@@ -9,17 +9,39 @@
 
 // *** drop a marker on each atm provided by the database *** //
 function createMarkerFromJsonRecord(record) {
+
+    // launch new marker
     atmMarker = new google.maps.Marker({
         map: map,
         position: record.position,
         title: record.name,
         id: record.locationId
     });
+
+    //display name when hovered
+    google.maps.event.addListener(atmMarker, 'hover', function () {
+        map.setZoom(16);
+        map.setCenter(atmMarker.getPosition());
+    });
+
+    // user clicks marker to initiate directions
+    google.maps.event.addListener(atmMarker, 'click', function () {
+        var request = {
+            origin: searchArea,
+            destination: record.position,
+            travelMode: 'DRIVING'
+        };
+        directionsService.route(request, function (response, status) {
+            if (status == 'OK') {
+                directionsRenderer.setDirections(response);
+            }
+        });
+    });
 };
 
 
 
-function createSearchAreaMarker(user) {
+function createSearchAreaMarker(searchArea) {
 
     // drop pin on user location
     var userMarker = new google.maps.Marker({
@@ -33,12 +55,12 @@ function createSearchAreaMarker(user) {
             strokeWeight: 3
         },
         map: map,
-        position: new google.maps.LatLng(user.lat, user.lng),
+        position: searchArea,
         title: 'My Location',
     });
 
     // center and zoom map on user location
-    map.setCenter(user);
+    map.setCenter(searchArea);
     map.setZoom(15);
 
 
@@ -55,12 +77,13 @@ function createSearchAreaMarker(user) {
 
 
 // *** initiate production of map markers *** //  
-function processRecords(searchArea) {
+function processRecords(userPosition) {
+    searchArea = new google.maps.LatLng(userPosition.lat, userPosition.lng),
+    createSearchAreaMarker(searchArea);
     for (let i = 0; i < records.length; i++) {
         let record = records[i];
         createMarkerFromJsonRecord(record);
     }
-    createSearchAreaMarker(searchArea);
 };
 
 
