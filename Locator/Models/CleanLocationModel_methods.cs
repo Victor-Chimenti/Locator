@@ -301,7 +301,7 @@ namespace Locator.Models
         // attributes with legit values get new html tags built
         public string BuildFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
         {
-            var footerBlockQuote = string.Format(@"<blockquote><h5 class=""blockquote-footer {0} empty""><cite title =""{2}"">{1}: {2}</cite></h5></blockquote>", Key, Label, Value);
+            var footerBlockQuote = string.Format(@"<blockquote class=""blockquote my-1 pt-1""><h5 class=""blockquote-footer {0} empty""><cite title =""{2}"">{1}: {2}</cite></h5></blockquote>", Key, Label, Value);
 
             return footerBlockQuote;
         }
@@ -317,7 +317,8 @@ namespace Locator.Models
         // check for unknown value and create appropriate tag
         public string CreateFooterBlockQuoteDisplayTag(string Key, string Label, string Value)
         {
-            if (Value.Equals("Unknown"))
+            // TODO: this breaks if (Value.Equals("Unknown"))
+            if (Value != null)
             {
                 return BuildDefaultFooterBlockQuoteDisplayTag(Key);
             }
