@@ -428,8 +428,8 @@ div#sidebar-wrapper {
 
 
     /**
-*   Media queries large screens
-*/
+    *   Media queries large screens
+    */
     @media (max-width: 1200px) {
 
         #mapBlock {
@@ -440,10 +440,11 @@ div#sidebar-wrapper {
 
 
     /**
-*   Media queries small screens
-*/
+    *   Media queries small screens
+    */
     @media (max-width: 767px) {
 
+        /**  align all three columns to the same width when they stack on mobile-sm **/
         div.col-12 {
             padding-left: 0;
             padding-right: 0;
@@ -455,18 +456,20 @@ div#sidebar-wrapper {
             padding-bottom: 1rem;
         }
 
+        /** center index will need padding as it stack on the top **/
         div#center-index {
             padding-bottom: 1rem;
         }
 
+        /** hide the h3 column headers on mobile **/
         h3#filter-head {
             display: none;
         }
-
         h3#sidebar-head {
             display: none;
         }
 
+        /** on mobile the keyword search and filter search accordion need breathing room **/
         div.panel#atm-panel {
             padding-top: 0.5rem;
             padding-bottom: 0.25rem;
