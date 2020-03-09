@@ -76,30 +76,17 @@ namespace Locator.Controllers
             {
                 value.MyPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
                 value.MyDistance = value.MyPoint.Distance(userPoint);
-                //if (!IsNanOrInfinity(value.MyDistance))
-                //{
-                //    value.MyDistance = 0.0;
-                //}
                 value.MyPoint = null;
             }
             // sort the clean results list by distance
             cleanSortedList = cleanResults.CleanLocationList
                 .OrderBy(x => x.MyDistance).ToList();
 
-            //string json = JsonConvert.SerializeObject(new
-            //{
-            //    point,
-            //    cleanSortedList
-            //});
-
-
             var data = new
             {
                 point,
                 cleanSortedList
             };
-
-            //return JsonResult(new { data = json }, JsonRequestBehavior.AllowGet);
 
             return new JsonResult(data);
         }
