@@ -18,6 +18,9 @@ namespace Locator.Controllers
 
         private LocationsBackend backend;
 
+        public List<CleanLocationModel> cleanSortedList = new List<CleanLocationModel>();
+
+
         public LocationsController(MaphawksContext context, LocationsBackend backend = null)
         {
             _context = context;
@@ -65,23 +68,23 @@ namespace Locator.Controllers
             var cleanResults = await GetCleanViewModel();
 
             // assign user coordinates
-            //var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            //Point userPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
-            //// update distance value based on user coordinates
-            //foreach (var value in cleanResults.CleanLocationList)
-            //{
-            //    value.MyDistance = value.MyPoint.Distance(userPoint);
-            //    if (!IsNanOrInfinity(value.MyDistance)) {
-            //        value.MyDistance = 0.0;
-            //    }
-            //    if (!IsNanOrInfinity(value.))
-            //    {
-            //        value.MyDistance = 0.0;
-            //    }
-            //}
-            //// sort the clean results list by distance
-            //var cleanSortedList = cleanResults.CleanLocationList
-            //    .OrderBy(x => x.MyDistance).ToList();
+            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
+            Point userPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
+            
+            // update distance value based on user coordinates
+            foreach (var value in cleanResults.CleanLocationList)
+            {
+                value.MyPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
+                value.MyDistance = value.MyPoint.Distance(userPoint);
+                //if (!IsNanOrInfinity(value.MyDistance))
+                //{
+                //    value.MyDistance = 0.0;
+                //}
+                value.MyPoint = null;
+            }
+            // sort the clean results list by distance
+            cleanSortedList = cleanResults.CleanLocationList
+                .OrderBy(x => x.MyDistance).ToList();
 
             //string json = JsonConvert.SerializeObject(new
             //{
@@ -93,7 +96,7 @@ namespace Locator.Controllers
             var data = new
             {
                 point,
-                cleanResults.CleanLocationList
+                cleanSortedList
             };
 
             //return JsonResult(new { data = json }, JsonRequestBehavior.AllowGet);

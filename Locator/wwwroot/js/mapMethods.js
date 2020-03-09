@@ -115,8 +115,8 @@ async function getJsonData() {
             userPosition = { lat: doubleLat, lng: doubleLng };
 
             // add clean location list to global js array
-            for (let i = 0; i < data.cleanLocationList.length; i++) {
-                records[i] = data.cleanLocationList[i];
+            for (let i = 0; i < data.cleanSortedList.length; i++) {
+                records[i] = data.cleanSortedList[i];
             }
         },
 
