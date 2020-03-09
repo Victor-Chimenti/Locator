@@ -7,7 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using NetTopologySuite;
 using NetTopologySuite.Geometries;
-
+using Newtonsoft.Json;
+using System;
 
 namespace Locator.Controllers
 {
@@ -64,25 +65,38 @@ namespace Locator.Controllers
             var cleanResults = await GetCleanViewModel();
 
             // assign user coordinates
-            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            Point userPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
-            // update distance value based on user coordinates
-            foreach (var value in cleanResults.CleanLocationList)
-            {
-                value.MyDistance = value.MyPoint.Distance(userPoint);
-            }
-            // sort the clean results list by distance
-            var cleanSortedList = cleanResults.CleanLocationList
-                .OrderBy(x => x.MyDistance).ToList();
+            //var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
+            //Point userPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
+            //// update distance value based on user coordinates
+            //foreach (var value in cleanResults.CleanLocationList)
+            //{
+            //    value.MyDistance = value.MyPoint.Distance(userPoint);
+            //    if (!IsNanOrInfinity(value.MyDistance)) {
+            //        value.MyDistance = 0.0;
+            //    }
+            //    if (!IsNanOrInfinity(value.))
+            //    {
+            //        value.MyDistance = 0.0;
+            //    }
+            //}
+            //// sort the clean results list by distance
+            //var cleanSortedList = cleanResults.CleanLocationList
+            //    .OrderBy(x => x.MyDistance).ToList();
 
+            //string json = JsonConvert.SerializeObject(new
+            //{
+            //    point,
+            //    cleanSortedList
+            //});
 
 
             var data = new
             {
                 point,
-                cleanSortedList
+                cleanResults.CleanLocationList
             };
 
+            //return JsonResult(new { data = json }, JsonRequestBehavior.AllowGet);
 
             return new JsonResult(data);
         }
@@ -101,6 +115,13 @@ namespace Locator.Controllers
             cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 16);
 
             return cleanResults;
+        }
+
+
+
+        public static bool IsNanOrInfinity(double value)
+        {
+            return !Double.IsNaN(value) && !Double.IsInfinity(value);
         }
     }
 }
