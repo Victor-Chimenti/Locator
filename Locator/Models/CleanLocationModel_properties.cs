@@ -141,8 +141,9 @@ namespace Locator.Models
         [DisplayName("Notes")]
         public string AccessNotes { get; set; }
 
-        [DisplayName("Distance")]
-        public double Distance { get; set; }
+        public double MyDistance { get; set; } = 0.0;
+
+        public Point MyPoint { get; set; }
 
         [DisplayName("Position")]
         public PositionModel Position { get; set; }
