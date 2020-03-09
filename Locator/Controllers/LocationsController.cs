@@ -74,7 +74,7 @@ namespace Locator.Controllers
             // update distance value based on user coordinates
             foreach (var value in cleanResults.CleanLocationList)
             {
-                value.MyPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
+                value.MyPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(value.Position.Lat, value.Position.Lng));
                 value.MyDistance = value.MyPoint.Distance(userPoint);
                 value.MyPoint = null;
             }
