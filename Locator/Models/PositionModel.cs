@@ -11,7 +11,7 @@ namespace Locator.Models
     {
         public double Lat { get; set; } = 0.0;
         public double Lng { get; set; } = 0.0;
-        public double Distance { get; set; } = 0.0;
+
 
         /// <summary>
         /// Convert from String to Position
