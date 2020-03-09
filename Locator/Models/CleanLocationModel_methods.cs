@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DatabaseLibrary.Models;
+using Locator.Models;
+using NetTopologySuite;
 
 namespace Locator.Models
 {
