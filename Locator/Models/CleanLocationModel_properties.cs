@@ -1,6 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using DatabaseLibrary.Models;
+using GeoAPI.Geometries;
+using NetTopologySuite;
+using NetTopologySuite.Geometries;
 
 namespace Locator.Models
 {
@@ -54,8 +59,18 @@ namespace Locator.Models
         [DisplayName("Latitude")]
         public decimal Latitude { get; set; } = 0.0M;
 
+        internal object Distance(Point currentLocation)
+        {
+            throw new NotImplementedException();
+        }
+
         [DisplayName("Longitude")]
         public decimal Longitude { get; set; } = 0.0M;
+
+        internal object Distance(PositionModel point)
+        {
+            throw new NotImplementedException();
+        }
 
         [Required(AllowEmptyStrings = false)]
         [DisplayFormat(ConvertEmptyStringToNull = true)]
@@ -137,8 +152,14 @@ namespace Locator.Models
         [DisplayName("Notes")]
         public string AccessNotes { get; set; }
 
+        //[DisplayName("Distance")]
+        //public double Distance { get; set; }
+
         [DisplayName("Position")]
         public PositionModel Position { get; set; }
+
+        [Column("geography")]
+        public IPoint PointPosition { get; set; }
 
         // This string will hold the list of all attributes and be passed through Display String
         public string ListBlockDisplay { get; set; }
