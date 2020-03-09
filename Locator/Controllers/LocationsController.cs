@@ -46,7 +46,6 @@ namespace Locator.Controllers
         [Produces("application/json")]
         public async Task<JsonResult> CardJson()
         {
-
             var Latitude = Request.Cookies["latitude"];
             var Longitude = Request.Cookies["longitude"];
 
@@ -54,35 +53,34 @@ namespace Locator.Controllers
             {
                 Latitude = "47.490209";
             }
+
             if (string.IsNullOrEmpty(Longitude))
             {
                 Longitude = "-122.272126";
             }
+
             var point = new PositionModel(Latitude, Longitude);
+
             var cleanResults = await GetCleanViewModel();
 
+            // assign user coordinates
             var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            var currentLocation = geometryFactory.CreatePoint(new Coordinate (point.Lat, point.Lng));
+            Point userPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
+            // update distance value based on user coordinates
+            foreach (var value in cleanResults.CleanLocationList)
+            {
+                value.MyDistance = value.MyPoint.Distance(userPoint);
+            }
+            // sort the clean results list by distance
+            var cleanSortedList = cleanResults.CleanLocationList
+                .OrderBy(x => x.MyDistance).ToList();
 
-            //foreach (var item in cleanResults.CleanLocationList)
-            //{
-            //    var loc = geometryFactory.CreatePoint(new Coordinate(point.Lat, point.Lng));
-            //    item.PointPosition = loc;
-            //}
-
-            //var nearestATM = cleanResults.CleanLocationList
-            //    .Select(t => new { Place = t, Distance = t.Distance(currentLocation) })
-            //    .ToList();
-
-            //var sortedResults = cleanResults.CleanLocationList
-            //    .Select(t => new { Place = t, Distance = t.Distance(point)})
-            //    .ToList();
 
 
             var data = new
             {
                 point,
-                cleanResults.CleanLocationList
+                cleanSortedList
             };
 
 
