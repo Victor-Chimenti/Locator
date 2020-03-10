@@ -137,14 +137,18 @@
             <a href="@card.WebAddress" class="webAddressLink" target="_blank"><p class="webAddress" value="@card.WebAddress">@card.WebAddress</p></a>*@
                     <hr />
                     @Html.Raw(card.SubTitleDisplay)
-                    @Html.Raw(card.SingleDivDisplay)
+                    @*@Html.Raw(card.SingleDivDisplay)*@
                     @*</div>*@
-                    <ul class="list-group">@Html.Raw(@card.ListBlockDisplay)</ul>
+                    @*<ul class="list-group">*@
+                @Html.Raw(@card.ListBlockDisplay)
+                @*</ul>*@
                     @*</div>*@
-                    @Html.Raw(card.SingleDivDisplay)
+                    @*@Html.Raw(card.SingleDivDisplay)*@
 
-                    <div class="card-footer">@Html.Raw(@card.FooterBlockQuoteDisplay)</div>
-                    @Html.Raw(card.ClosingDisplay)
+                    @*<div class="card-footer">*@
+                @Html.Raw(@card.FooterBlockQuoteDisplay)
+            @*</div>*@
+                    @*@Html.Raw(card.DoubleDivDisplay)*@
                 }
             </div>
         </div>

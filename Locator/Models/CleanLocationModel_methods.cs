@@ -200,7 +200,7 @@ namespace Locator.Models
                 HeaderDisplay = GetHeaderDisplayStrings();
                 BodyDisplay = GetBodyDisplayStrings();
                 DoubleDivDisplay = GetDoubleClosingDivString();
-                SingleDivDisplay - GetSingleDivDisplayString();
+                SingleDivDisplay = GetSingleDivDisplayString();
                 SubTitleDisplay = GetSubTitleDisplayStrings();
                 ListBlockDisplay = GetListDisplayStrings();
                 FooterBlockQuoteDisplay = GetFooterBlockQuoteDisplayStrings();

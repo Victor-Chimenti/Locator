@@ -89,7 +89,7 @@ namespace Locator.Models
 
         public string GetSubTitleDisplayStrings()
         {
-            // start an empty string
+            // start an empty string as the subtitle div is already open from the Card BOdy Display Tags
             var subTitle = "";
 
             // declare attribute variables w/arguments
@@ -97,6 +97,9 @@ namespace Locator.Models
             subTitle += BuildSubTitleDisplayTag("RetailOutlet", "Retail Outlet", RetailOutlet);
             subTitle += BuildSubTitleDisplayTag("InstallationType", "Installation Type", InstallationType);
             subTitle += BuildSubTitleDisplayTag("AccessNotes", "Notes", AccessNotes);
+
+            // close the subtitle
+            subTitle += "</div>";
 
 
             return subTitle;
@@ -146,8 +149,8 @@ namespace Locator.Models
 
         public string GetListDisplayStrings()
         {
-            // start an empty string
-            var listBlock = "";
+            // start unordered list
+            var listBlock = "<ul class='list-group'>";
 
             // declare attribute variables w/arguments
             listBlock += CreateBuildListBlockIfYes("HandicapAccess", "Handicap Access", HandicapAccess.ToTitle());
@@ -168,6 +171,8 @@ namespace Locator.Models
             listBlock += CreateBuildListBlockIfYes("MemberConsultant", "Member Consultant", MemberConsultant.ToTitle());
             listBlock += CreateBuildListBlockIfYes("InstantDebitCardReplacement", "Instant Debit Card Replacement", InstantDebitCardReplacement.ToTitle());
 
+            // close unordered list and the card-body
+            listBlock += "</ul></div>";
 
             return listBlock;
         }
@@ -206,9 +211,14 @@ namespace Locator.Models
         // convert installation type into footer blockquote
         public string GetFooterBlockQuoteDisplayStrings()
         {
-            var footerBlock = "";
+            // open footer tag
+            var footerBlock = "<div class='card-footer'>";
 
+            // assign and validate footer blockquote attributes
             footerBlock += CreateFooterBlockQuoteDisplayTag("LocationType", "Location Type", LocationTypeCode);
+
+            // close the footer div, the collapse div and the card div
+            footerBlock += "</div></div></div>";
 
             return footerBlock;
         }
