@@ -184,7 +184,7 @@ namespace Locator.Models
 
                 // call builder functions
                 HeaderDisplay = GetHeaderDisplayStrings();
-                SingleClosingDiv = GetSingleClosingDivString();
+                //SingleClosingDiv = GetSingleClosingDivString();
                 BodyDisplay = GetBodyDisplayStrings();
                 //DoubleDivDisplay = GetDoubleClosingDivString();
                 //SingleDivDisplay = GetSingleDivDisplayString();
