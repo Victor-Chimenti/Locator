@@ -20,6 +20,7 @@ function initMap() {
         center: headquarters,
         gestureHandling: 'cooperative',
         mapTypeId: google.maps.MapTypeId.ROADMAP,
+        visibility: new google.maps.MVCObject,
         zoom: 10,
     };
 
