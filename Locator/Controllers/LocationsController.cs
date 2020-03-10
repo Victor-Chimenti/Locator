@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using DatabaseLibrary.Models;
 using Locator.Backend;
 using Locator.Models;
-using System.Collections.Generic;
 using System.Linq;
 using NetTopologySuite;
 using NetTopologySuite.Geometries;
-using Newtonsoft.Json;
-using System;
+
 
 namespace Locator.Controllers
 {
