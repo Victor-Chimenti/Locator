@@ -7,7 +7,8 @@ using Locator.Models;
 using NetTopologySuite;
 using NetTopologySuite.Geometries;
 using GeoAPI.Geometries;
-//using ProjNet;
+
+
 
 namespace Locator.Models
 {
@@ -76,16 +77,6 @@ namespace Locator.Models
                 {
                     Position = new PositionModel(Latitude, Longitude);
                 }
-
-
-                // set default distance value from tukwila headquarters
-                //var defaultLatStr = "47.490209";
-                //var defaultLngStr = "-122.272126";
-                //var defaultPosition = new PositionModel(defaultLatStr, defaultLngStr);
-                //var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-                //MyPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Position.Lat, Position.Lng));
-                //Point defaultPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(defaultPosition.Lat, defaultPosition.Lng));
-                //MyDistance = MyPoint.Distance(defaultPoint);
             }
 
 

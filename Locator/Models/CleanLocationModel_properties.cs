@@ -141,8 +141,10 @@ namespace Locator.Models
         [DisplayName("Notes")]
         public string AccessNotes { get; set; }
 
+        [DisplayName("Distance from Search Location")]
         public double MyDistance { get; set; } = 0.0;
 
+        [DisplayName("Geographical Coordinates")]
         public Point MyPoint { get; set; }
 
         [DisplayName("Position")]
