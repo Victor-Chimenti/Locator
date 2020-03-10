@@ -122,33 +122,10 @@
                 {
                     @Html.Raw(card.HeaderDisplay)
                     @Html.Raw(card.BodyDisplay)
-                    @*<div class="card-body">
-            <div class="card-subtitle contactInfo">
-                <h4 class="card-title contactInfoHeader">Contact Information</h4>*@
-                    @*<p class="name" value="@card.Name">@card.Name</p>
-            <a href="tel:@card.Phone" class="phoneLink" target="_blank"><p class="phone" value="@card.Phone">@card.Phone</p></a>
-            <p class="address" value="@card.Address">@card.Address</p>
-            <p class="city-state-zip">
-                <span class="city" value="@card.City">@card.City</span>
-                <span>, </span>
-                <span class="state" value="@card.State">@card.State </span>
-                <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
-            </p>
-            <a href="@card.WebAddress" class="webAddressLink" target="_blank"><p class="webAddress" value="@card.WebAddress">@card.WebAddress</p></a>*@
                     <hr />
                     @Html.Raw(card.SubTitleDisplay)
-                    @*@Html.Raw(card.SingleDivDisplay)*@
-                    @*</div>*@
-                    @*<ul class="list-group">*@
-                @Html.Raw(@card.ListBlockDisplay)
-                @*</ul>*@
-                    @*</div>*@
-                    @*@Html.Raw(card.SingleDivDisplay)*@
-
-                    @*<div class="card-footer">*@
-                @Html.Raw(@card.FooterBlockQuoteDisplay)
-            @*</div>*@
-                    @*@Html.Raw(card.DoubleDivDisplay)*@
+                    @Html.Raw(@card.ListBlockDisplay)
+                    @Html.Raw(@card.FooterBlockQuoteDisplay)
                 }
             </div>
         </div>
