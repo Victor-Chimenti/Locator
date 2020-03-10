@@ -182,10 +182,12 @@ namespace Locator.Models
 
 
 
-                // call builder functions to create html for the index sidebar cards
+                // call builder functions
                 HeaderDisplay = GetHeaderDisplayStrings();
                 SingleClosingDiv = GetSingleClosingDivString();
                 BodyDisplay = GetBodyDisplayStrings();
+                DoubleDivDisplay = GetDoubleClosingDivString();
+                SingleDivDisplay = GetSingleDivDisplayString();
                 SubTitleDisplay = GetSubTitleDisplayStrings();
                 ListBlockDisplay = GetListDisplayStrings();
                 FooterBlockQuoteDisplay = GetFooterBlockQuoteDisplayStrings();

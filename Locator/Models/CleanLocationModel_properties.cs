@@ -150,12 +150,12 @@ namespace Locator.Models
         [DisplayName("Position")]
         public PositionModel Position { get; set; }
 
-
-        // This string will hold the attributes of the card header and be passed through a display string
         public string HeaderDisplay { get; set; }
-
-        // This string will hold the attributes of the card body and be passed through a display string
         public string BodyDisplay { get; set; }
+        public string DoubleDivDisplay { get; set; }
+        public string SingleDivDisplay { get; set; }
+
+
 
         // This string will hold the list of all attributes and be passed through Display String
         public string ListBlockDisplay { get; set; }
