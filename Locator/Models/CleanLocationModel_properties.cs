@@ -152,7 +152,9 @@ namespace Locator.Models
 
         public string HeaderDisplay { get; set; }
         public string BodyDisplay { get; set; }
-        public string ClosingDisplay { get; set; }
+        public string DoubleDivDisplay { get; set; }
+        public string SingleDivDisplay { get; set; }
+
 
 
         // This string will hold the list of all attributes and be passed through Display String

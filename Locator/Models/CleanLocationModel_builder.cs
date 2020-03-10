@@ -10,7 +10,8 @@ namespace Locator.Models
 {
     public partial class CleanLocationModel
     {
-        public string GetClosingDisplayString() { return string.Format(@"</div></div>"); }
+        public string GetDoubleClosingDivString() { return string.Format(@"</div></div>"); }
+        public string GetSingleDivDisplayString() { return string.Format(@"</div>"); }
 
         public string BuildHeaderDisplayTags(string CardId, string CardName, string CardAddress, string CardDistance)
         {
@@ -27,6 +28,7 @@ namespace Locator.Models
 
             return cardHeader;
         }
+
         public string GetHeaderDisplayStrings()
         {
             var cardHeader = "";
@@ -39,9 +41,36 @@ namespace Locator.Models
         }
 
 
+
+
+
+
+
+        public string BuildBodyDisplayTags(string Name, string Phone, string Address, string City, string State, string PostalCode, string WebAddress)
+        {
+            var cardBody = string.Format(@"<div class=""card-body"">
+                                            <div class=""card-subtitle contactInfo"">
+                                            <h4 class=""card-title contactInfoHeader"">Contact Information</h4>
+                                            <p class=""name"" value=""{0}"">{0}</p>
+                                            <a href=""tel:{1}"" class=""phoneLink"" target=""_blank"">
+                                            <p class=""phone"" value=""{1}"">{1}</p></a>
+                                            <p class=""address"" value=""{2}"">{2}</p>
+                                            <p class=""city-state-zip"">
+                                            <span class=""city"" value=""{3}"">{3}</span><span>,</span>
+                                            <span class=""state"" value=""{4}"">{4}</span>
+                                            <span class=""postalCode"" value=""{5}"">{5}</span></p>
+                                            <a href=""{6}"" class=""webAddressLink"" target=""_blank"">
+                                            <p class=""webAddress"" value=""{6}"">{6}</p></a>",
+                                            Name, Phone, Address, City, State, PostalCode, WebAddress);
+
+
+            return cardBody;
+        }
+
         public string GetBodyDisplayStrings()
         {
             var cardBody = "";
+            cardBody += BuildBodyDisplayTags(Name, Phone, Address, City, State.ToTitle(), PostalCode, WebAddress);
             return cardBody;
         }
 

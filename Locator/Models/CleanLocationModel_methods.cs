@@ -199,7 +199,8 @@ namespace Locator.Models
                 // call builder functions
                 HeaderDisplay = GetHeaderDisplayStrings();
                 BodyDisplay = GetBodyDisplayStrings();
-                ClosingDisplay = GetClosingDisplayString();
+                DoubleDivDisplay = GetDoubleClosingDivString();
+                SingleDivDisplay - GetSingleDivDisplayString();
                 SubTitleDisplay = GetSubTitleDisplayStrings();
                 ListBlockDisplay = GetListDisplayStrings();
                 FooterBlockQuoteDisplay = GetFooterBlockQuoteDisplayStrings();
