@@ -10,7 +10,7 @@ namespace Locator.Models
 {
     public partial class CleanLocationModel
     {
-
+        public string GetClosingDisplayString() { return string.Format(@"</div></div>"); }
 
         public string BuildHeaderDisplayTags(string CardId, string CardName, string CardAddress, string CardDistance)
         {
