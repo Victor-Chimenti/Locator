@@ -25,5 +25,6 @@ var records = [];
 
 
 
+// *** set is populated with card items that become hidden during filter search
 var removeMarker = new Set();
 
