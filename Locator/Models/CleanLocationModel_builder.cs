@@ -45,6 +45,8 @@ namespace Locator.Models
 
 
 
+
+
         public string BuildBodyDisplayTags(string Name, string Phone, string Address, string City, string State, string PostalCode, string WebAddress)
         {
             var cardBody = string.Format(@"<div class=""card-body"">
@@ -72,6 +74,9 @@ namespace Locator.Models
             cardBody += BuildBodyDisplayTags(Name, Phone, Address, City, State.ToTitle(), PostalCode, WebAddress);
             return cardBody;
         }
+
+
+
 
 
 
@@ -108,6 +113,9 @@ namespace Locator.Models
 
             return subTitle;
         }
+
+
+
 
 
 
@@ -182,6 +190,9 @@ namespace Locator.Models
 
             return listBlock;
         }
+
+
+
 
 
 
