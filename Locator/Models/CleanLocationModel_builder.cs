@@ -10,8 +10,7 @@ namespace Locator.Models
 {
     public partial class CleanLocationModel
     {
-        public string GetDoubleClosingDivString() { return string.Format(@"</div></div>"); }
-        public string GetSingleDivDisplayString() { return string.Format(@"</div>"); }
+
 
         public string BuildHeaderDisplayTags(string CardId, string CardName, string CardAddress, string CardDistance)
         {
@@ -74,6 +73,11 @@ namespace Locator.Models
             return cardBody;
         }
 
+
+
+
+
+
         // attributes with legit values get new html tags built
         public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
         {
@@ -104,6 +108,8 @@ namespace Locator.Models
 
             return subTitle;
         }
+
+
 
 
 
@@ -176,6 +182,9 @@ namespace Locator.Models
 
             return listBlock;
         }
+
+
+
 
 
 
