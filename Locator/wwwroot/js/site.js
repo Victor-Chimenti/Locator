@@ -21,11 +21,13 @@ var assignVisibleItems = function () { };
 
 // *** data received by map from ajax call to locations controller *** //
 var records = [];
+var gMarker = [];
 
 
 
 
 
 // *** set is populated with card items that become hidden during filter search
+var viewCards = function () { };
 var removeMarker = new Set();
 

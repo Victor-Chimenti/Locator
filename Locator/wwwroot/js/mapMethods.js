@@ -7,6 +7,15 @@
 
 
 
+
+
+//function viewCards() {
+//    console.log("cardMarkerDIsplay");
+//    gMarker.forEach(function (record) {
+//        console.log("record id: " + record.locationId);
+//    });
+//};
+
 // *** drop a marker on each atm provided by the database *** //
 function createMarkerFromJsonRecord(record, searchArea) {
 
@@ -37,6 +46,8 @@ function createMarkerFromJsonRecord(record, searchArea) {
             }
         });
     });
+
+    gMarker.push(record);
 };
 
 
@@ -117,6 +128,7 @@ async function getJsonData() {
             // add clean location list to global js array
             for (let i = 0; i < data.cleanLocationList.length; i++) {
                 records[i] = data.cleanLocationList[i];
+                console.log("ajax record: " + records[i].locationId);
             }
         },
 
@@ -131,3 +143,6 @@ async function getJsonData() {
         processRecords(userPosition);
     });
 };
+
+
+

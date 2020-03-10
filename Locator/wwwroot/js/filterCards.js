@@ -6,6 +6,7 @@
 
 
 
+
 // check results for null
 $(function assignVisibleItems() {
     // assign array of currently visible content items
@@ -20,7 +21,7 @@ $(function assignVisibleItems() {
         ' .hideByPartnerCreditUnion,' +
         ' .hideByMemberConsultant,' +
         ' .hideByInstantDebitCardReplacement');
-    // check to see if array is empty
+    // check to see if array is empty)
     if (visibleItems.length == 0) {
         // when array is empty show the results message
         $('.noResultsToShow').removeClass('hideResultsMessage');
@@ -88,6 +89,7 @@ $(function () {
                         $('.card').removeClass('hideByHours');
                     }
                     assignVisibleItems();
+                    viewCards();
                 });
             });
 
