@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DatabaseLibrary.Models;
-using Locator.Models;
-using NetTopologySuite;
-using NetTopologySuite.Geometries;
-using GeoAPI.Geometries;
+﻿using DatabaseLibrary.Models;
+
 
 
 
@@ -69,13 +62,6 @@ namespace Locator.Models
                 if (!data.Longitude.Equals(null))
                 {
                     Longitude = data.Longitude;
-                }
-
-
-                // create a lat lng object for google map
-                if ((!Latitude.Equals(null)) && (!Longitude.Equals(null)))
-                {
-                    Position = new PositionModel(Latitude, Longitude);
                 }
             }
 
@@ -198,6 +184,7 @@ namespace Locator.Models
 
                 // call builder functions to create html for the index sidebar cards
                 HeaderDisplay = GetHeaderDisplayStrings();
+                SingleClosingDiv = GetSingleClosingDivString();
                 BodyDisplay = GetBodyDisplayStrings();
                 SubTitleDisplay = GetSubTitleDisplayStrings();
                 ListBlockDisplay = GetListDisplayStrings();

@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 using NetTopologySuite;
 using DatabaseLibrary.Models;
 using Locator.Models;
+using System.Globalization;
 
 namespace Locator.Models
 {
     public partial class CleanLocationModel
     {
+
+        public string GetSingleClosingDivString() { return "</div>"; }
+
 
 
         public string BuildHeaderDisplayTags(string CardId, string CardName, string CardAddress, string CardDistance)
@@ -21,8 +25,7 @@ namespace Locator.Models
                                                 <i class=""fas fa-minus""></i><i class=""fas fa-plus""></i>
                                                 <span class=""Name card-title card-name"">{1}</span></span></a>
                                                 <p class=""address"" value=""{2}"">{2}</p>
-                                                <span class=""distance"">Distance: {3}</span></div>
-                                                <div class=""collapse in"" id=""collapse-{0}"" aria-expanded=""false"">",
+                                                ",
                                                 CardId, CardName, CardAddress, CardDistance);
 
             return cardHeader;
@@ -30,9 +33,15 @@ namespace Locator.Models
 
         public string GetHeaderDisplayStrings()
         {
-            var cardHeader = "";
+            string specifier;
+            CultureInfo culture;
 
-            String distance = MyDistance.ToString();
+            specifier = "F5";
+            culture = CultureInfo.CreateSpecificCulture("en-CA");
+            var cardHeader = "";
+            //doubleNumber.ToString("F1", CultureInfo.InvariantCulture)
+
+            String distance = MyDistance.ToString(specifier, culture);
 
             cardHeader += BuildHeaderDisplayTags(LocationId, Name, Address, distance);
 
@@ -47,9 +56,10 @@ namespace Locator.Models
 
 
 
-        public string BuildBodyDisplayTags(string Name, string Phone, string Address, string City, string State, string PostalCode, string WebAddress)
+        public string BuildBodyDisplayTags(string Name, string Phone, string Address, string City, string State, string PostalCode, string WebAddress, string LocationId)
         {
-            var cardBody = string.Format(@"<div class=""card-body"">
+            var cardBody = string.Format(@"<div class=""collapse in"" id=""collapse-{0}"" aria-expanded=""false"">
+                                            <div class=""card-body"">
                                             <div class=""card-subtitle contactInfo"">
                                             <h4 class=""card-title contactInfoHeader"">Contact Information</h4>
                                             <p class=""name"" value=""{0}"">{0}</p>
@@ -71,7 +81,7 @@ namespace Locator.Models
         public string GetBodyDisplayStrings()
         {
             var cardBody = "";
-            cardBody += BuildBodyDisplayTags(Name, Phone, Address, City, State.ToTitle(), PostalCode, WebAddress);
+            cardBody += BuildBodyDisplayTags(Name, Phone, Address, City, State.ToTitle(), PostalCode, WebAddress, LocationId);
             return cardBody;
         }
 
@@ -237,9 +247,10 @@ namespace Locator.Models
             // assign and validate footer blockquote attributes
             footerBlock += CreateFooterBlockQuoteDisplayTag("LocationType", "Location Type", LocationTypeCode);
 
-            // close the footer div, the collapse div and the card div
-            footerBlock += "</div></div></div>";
+            // close the footer div, the collapse div
+            footerBlock += "</div></div>";
 
+            // leave card div open for the distance which must be derived in the controller - for now
             return footerBlock;
         }
     }

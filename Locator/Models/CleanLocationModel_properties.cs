@@ -165,6 +165,9 @@ namespace Locator.Models
 
         // This string will hold the list of all attributes that are displayed with the footer blockquote
         public string FooterBlockQuoteDisplay { get; set; }
+
+        // The distance is derived in the controller so we use this closing div for the card header
+        public string SingleClosingDiv { get; set; }
     }
 }
 
