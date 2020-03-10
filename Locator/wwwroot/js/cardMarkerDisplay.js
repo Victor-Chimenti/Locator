@@ -7,7 +7,7 @@
 
 
 // this fires on change from the wrapper and can access records but not visible items
-$(function viewCards() {
+$(function viewCards(id) {
     $('#filterSearch-wrapper').change(function () {
         console.log("cardMarkerDisplay");
         records.forEach(function (item) {
@@ -16,5 +16,6 @@ $(function viewCards() {
         gMarker.forEach(function (item) {
             console.log("visibleItems id: " + item.locationId);
         });
+        console.log("card id: " + id);
     });
 });

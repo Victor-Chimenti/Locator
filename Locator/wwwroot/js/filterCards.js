@@ -67,6 +67,7 @@ $(function () {
             $(function () {
                 // When the select box Hours changes - Execute change function
                 $('#Hours').change(function () {
+                    var id = "";
                     // Assign Search Key
                     var key = $(this).val();
                     // If Search Key is Not Null then Compare to the Hours card items in card
@@ -79,6 +80,7 @@ $(function () {
                                     $(this).parents('.card').removeClass('hideByHours');
                                 } else {
                                     $(this).parents('.card').addClass('hideByHours');
+                                    id = $('.card').attr("id");
                                 }
                             });
                             // Else the Search Key is Null so Reset all Content Items to Visible
@@ -89,7 +91,7 @@ $(function () {
                         $('.card').removeClass('hideByHours');
                     }
                     assignVisibleItems();
-                    viewCards();
+                    viewCards(id);
                 });
             });
 
