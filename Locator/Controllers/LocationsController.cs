@@ -18,7 +18,9 @@ namespace Locator.Controllers
 
         private LocationsBackend backend;
 
-        public List<CleanLocationModel> cleanSortedList = new List<CleanLocationModel>();
+        //public List<CleanLocationModel> cleanSortedList = new List<CleanLocationModel>();
+        //public List<CleanLocationViewModel> cleanSortedViewList = new List<CleanLocationViewModel>();
+
 
 
         public LocationsController(MaphawksContext context, LocationsBackend backend = null)
@@ -50,42 +52,31 @@ namespace Locator.Controllers
         [Produces("application/json")]
         public async Task<JsonResult> CardJson()
         {
+
+            var cleanResults = await GetCleanViewModel();
+
+            // get the user's location values in the session cookie
             var Latitude = Request.Cookies["latitude"];
             var Longitude = Request.Cookies["longitude"];
 
+            // if the user blocks cookies then use the tukwila headquarters as default coordinates
             if (string.IsNullOrEmpty(Latitude))
             {
                 Latitude = "47.490209";
             }
-
             if (string.IsNullOrEmpty(Longitude))
             {
                 Longitude = "-122.272126";
             }
 
+            // create a new latlng object from the assigned location values
             var point = new PositionModel(Latitude, Longitude);
 
-            var cleanResults = await GetCleanViewModel();
-
-            // assign user coordinates
-            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            Point userPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(point.Lat, point.Lng));
-            
-            // update distance value based on user coordinates
-            foreach (var value in cleanResults.CleanLocationList)
-            {
-                value.MyPoint = geometryFactory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(value.Position.Lat, value.Position.Lng));
-                value.MyDistance = value.MyPoint.Distance(userPoint);
-                value.MyPoint = null;
-            }
-            // sort the clean results list by distance
-            cleanSortedList = cleanResults.CleanLocationList
-                .OrderBy(x => x.MyDistance).ToList();
-
+            // create and object that can pass the user location along with the list of atms to the ajax via json
             var data = new
             {
                 point,
-                cleanSortedList
+                cleanResults.CleanLocationList
             };
 
             return new JsonResult(data);
@@ -96,22 +87,45 @@ namespace Locator.Controllers
 
         public async Task<CleanLocationViewModel> GetCleanViewModel()
         {
-
-            //var dirtyResults = await backend.IndexAsync(100, 0, point).ConfigureAwait(false);
+            // get the raw un-parsed values from the locations model
             var dirtyResults = await backend.IndexAsync().ConfigureAwait(false);
-
-
+            // get the parsed values to eliminate undefined values after processing in the CleanLocationModel
             var cleanResults = new CleanLocationViewModel(dirtyResults);
-            cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 16);
+
+            // get the user's location values in the session cookie
+            var Latitude = Request.Cookies["latitude"];
+            var Longitude = Request.Cookies["longitude"];
+
+            // if the user blocks cookies then use the tukwila headquarters as default coordinates
+            if (string.IsNullOrEmpty(Latitude))
+            {
+                Latitude = "47.490209";
+            }
+            if (string.IsNullOrEmpty(Longitude))
+            {
+                Longitude = "-122.272126";
+            }
+
+            // create a new latlng object from the assigned location values
+            var point = new PositionModel(Latitude, Longitude);
+
+            // assign user coordinates from the latlng object
+            var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
+            Point userPoint = geometryFactory.CreatePoint(new Coordinate(point.Lat, point.Lng));
+
+            // update distance value based on user coordinates and reset geometry factory to null before sending
+            foreach (var value in cleanResults.CleanLocationList)
+            {
+                value.MyPoint = geometryFactory.CreatePoint(new Coordinate(value.Position.Lat, value.Position.Lng));
+                value.MyDistance = value.MyPoint.Distance(userPoint);
+                value.MyPoint = null;
+            }
+
+            // sort the clean results list by distance and reduce by range
+            cleanResults.CleanLocationList = cleanResults.CleanLocationList.OrderBy(x => x.MyDistance).ToList().GetRange(0, 32);
+            //cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 32);
 
             return cleanResults;
-        }
-
-
-
-        public static bool IsNanOrInfinity(double value)
-        {
-            return !Double.IsNaN(value) && !Double.IsInfinity(value);
         }
     }
 }
