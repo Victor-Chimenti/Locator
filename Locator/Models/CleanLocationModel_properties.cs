@@ -150,6 +150,10 @@ namespace Locator.Models
         [DisplayName("Position")]
         public PositionModel Position { get; set; }
 
+        public string HeaderDisplay { get; set; }
+        public string BodyDisplay { get; set; }
+
+
         // This string will hold the list of all attributes and be passed through Display String
         public string ListBlockDisplay { get; set; }
 

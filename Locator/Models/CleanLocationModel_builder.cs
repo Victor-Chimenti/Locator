@@ -11,6 +11,19 @@ namespace Locator.Models
     public partial class CleanLocationModel
     {
 
+
+
+        public string GetHeaderDisplayStrings()
+        {
+            var cardHeader = "";
+            return cardHeader;
+        }
+        public string GetBodyDisplayStrings()
+        {
+            var cardBody = "";
+            return cardBody;
+        }
+
         // attributes with legit values get new html tags built
         public string BuildSubTitleDisplayTag(string Key, string Display, string Title)
         {
