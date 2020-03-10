@@ -119,7 +119,7 @@ namespace Locator.Controllers
 
             // sort the clean results list by distance and reduce by range
             cleanResults.CleanLocationList = cleanResults.CleanLocationList.OrderBy(x => x.MyDistance).ToList().GetRange(0, 32);
-            //cleanResults.CleanLocationList = cleanResults.CleanLocationList.GetRange(0, 32);
+
 
             return cleanResults;
         }
