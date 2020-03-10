@@ -12,12 +12,33 @@ namespace Locator.Models
     {
 
 
+        public string BuildHeaderDisplayTags(string CardId, string CardName, string CardAddress, string CardDistance)
+        {
+            var cardHeader = string.Format(@"<div class=""card border-dark accordion"" id=""id-{0}"">
+                                                <div class=""card-header"" id=""heading-{0}"">
+                                                <a href=""#"" class=""btn-link"" id=""button-{0}"" data-toggle=""collapse"" data-target=""#collapse-{0}"" aria-expanded=""false"" aria-controls=""collapse-{0}"">
+                                                <span class=""cardTitleBox"">
+                                                <i class=""fas fa-minus""></i><i class=""fas fa-plus""></i>
+                                                <span class=""Name card-title card-name"">{1}</span></span></a>
+                                                <p class=""address"" value=""{2}"">{2}</p>
+                                                <span class=""distance"">Distance: {3}</span></div>
+                                                <div class=""collapse in"" id=""collapse-{0}"" aria-expanded=""false"">",
+                                                CardId, CardName, CardAddress, CardDistance);
 
+            return cardHeader;
+        }
         public string GetHeaderDisplayStrings()
         {
             var cardHeader = "";
+
+            String distance = MyDistance.ToString();
+
+            cardHeader += BuildHeaderDisplayTags(LocationId, Name, Address, distance);
+
             return cardHeader;
         }
+
+
         public string GetBodyDisplayStrings()
         {
             var cardBody = "";
