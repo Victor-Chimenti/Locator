@@ -10,6 +10,7 @@
 $(function assignVisibleItems() {
     // assign array of currently visible content items
     visibleItems = $('.card').not('.hideByText,' +
+        ' .hideMarkers' +
         ' .hideByHours,' +
         ' .hideByDriveThruOnly,' +
         ' .hideBySurcharge,' +
@@ -53,6 +54,7 @@ $(function () {
                         $('.card').filter(function () {
                             // when the search key is not present in the item then hide the item
                             $(this).toggleClass('hideByText', !($(this).text().toLowerCase().indexOf(key) > -1));
+                            $(this).toggleClass('hideMarkers', !($(this).text().toLowerCase().indexOf(key) > -1));
                         });
                     });
                 });
@@ -76,16 +78,23 @@ $(function () {
                                 // Check to see if the Key and Value are a Match
                                 if (value.match(key)) {
                                     $(this).parents('.card').removeClass('hideByHours');
+                                    $(this).parents('.card').removeClass('hideMarkers');
                                 } else {
                                     $(this).parents('.card').addClass('hideByHours');
+                                    $(this).parents('.card').addClass('hideMarkers');
+
                                 }
                             });
                             // Else the Search Key is Null so Reset all Content Items to Visible
                         } else {
                             $('.card').removeClass('hideByHours');
+                            $('.card').removeClass('hideMarkers');
+
                         }
                     } else {
                         $('.card').removeClass('hideByHours');
+                        $('.card').removeClass('hideMarkers');
+
                     }
                     assignVisibleItems();
                 });

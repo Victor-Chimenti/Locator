@@ -18,6 +18,20 @@ function createMarkerFromJsonRecord(record, searchArea) {
         id: record.locationId
     });
 
+    if (typeof map.get('visibility').get(record) === 'undefined') {
+        map.get('visibility').set(record, true);
+    }
+
+    atmMarker.bindTo('visible', map.get('visibility'), record);
+
+    google.maps.event.addDomListener(
+        document.getElementsByClassName('hideMarkers'),
+        'click',
+        function () {
+            //simply set the desired property of the MVCObject to false
+            map.get('visibility').set('Other', false);
+        });
+
     //display name when hovered
     google.maps.event.addListener(atmMarker, 'hover', function () {
         map.setZoom(16);

@@ -306,7 +306,7 @@ div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.f
 *   card classes for hide/display
 */
 
-.hideByText, hideResultsMessage, .hideByHours, .hideByDriveThruOnly, .hideBySurcharge, .hideByAcceptDeposit, .hideByCoinStar, .hideByTellerServices, .hideBy_24hourExpressBox, .hideByPartnerCreditUnion, .hideByMemberConsultant, .hideByInstantDebitCardReplacement {
+.hideByText, .hideResultsMessage, .hideMarkers, .hideByHours, .hideByDriveThruOnly, .hideBySurcharge, .hideByAcceptDeposit, .hideByCoinStar, .hideByTellerServices, .hideBy_24hourExpressBox, .hideByPartnerCreditUnion, .hideByMemberConsultant, .hideByInstantDebitCardReplacement {
     display: none;
 }
 
