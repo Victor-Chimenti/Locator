@@ -121,7 +121,7 @@
                 @foreach (var card in Model.CleanLocationList)
                 {
                     @Html.Raw(card.HeaderDisplay)
-                    <span class="distance" value="@(card.MyDistance)">Distance: @(card.MyDistance)</span>
+                    <span class="distance">Distance: @card.MyDistance</span>
                     @Html.Raw(card.SingleClosingDiv)
                     @Html.Raw(card.BodyDisplay)
                     <hr />

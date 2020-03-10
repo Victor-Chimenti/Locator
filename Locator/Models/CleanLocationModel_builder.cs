@@ -16,7 +16,7 @@ namespace Locator.Models
 
 
 
-        public string BuildHeaderDisplayTags(string CardId, string CardName, string CardAddress, string CardDistance)
+        public string BuildHeaderDisplayTags(string CardId, string CardName, string CardAddress)
         {
             var cardHeader = string.Format(@"<div class=""card border-dark accordion"" id=""id-{0}"">
                                                 <div class=""card-header"" id=""heading-{0}"">
@@ -24,26 +24,29 @@ namespace Locator.Models
                                                 <span class=""cardTitleBox"">
                                                 <i class=""fas fa-minus""></i><i class=""fas fa-plus""></i>
                                                 <span class=""Name card-title card-name"">{1}</span></span></a>
-                                                <p class=""address"" value=""{2}"">{2}</p>
-                                                ",
-                                                CardId, CardName, CardAddress, CardDistance);
+                                                <p class=""address"" value=""{2}"">{2}</p>",
+                                                CardId, CardName, CardAddress);
 
             return cardHeader;
         }
 
         public string GetHeaderDisplayStrings()
         {
-            string specifier;
-            CultureInfo culture;
+            //string specifier;
+            //CultureInfo culture;
 
-            specifier = "F5";
-            culture = CultureInfo.CreateSpecificCulture("en-CA");
-            var cardHeader = "";
+            //specifier = "F5";
+            //culture = CultureInfo.CreateSpecificCulture("en-CA");
+
             //doubleNumber.ToString("F1", CultureInfo.InvariantCulture)
 
-            String distance = MyDistance.ToString(specifier, culture);
+            //String distance = MyDistance.ToString(specifier, culture);
 
-            cardHeader += BuildHeaderDisplayTags(LocationId, Name, Address, distance);
+
+            var cardHeader = "";
+
+
+            cardHeader += BuildHeaderDisplayTags(LocationId, Name, Address);
 
             return cardHeader;
         }
@@ -56,9 +59,9 @@ namespace Locator.Models
 
 
 
-        public string BuildBodyDisplayTags(string Name, string Phone, string Address, string City, string State, string PostalCode, string WebAddress, string LocationId)
+        public string BuildBodyDisplayTags(string cardName, string cardPhone, string cardAddress, string cardCity, string cardState, string cardPostalCode, string cardWebAddress, string cardLocationId)
         {
-            var cardBody = string.Format(@"<div class=""collapse in"" id=""collapse-{0}"" aria-expanded=""false"">
+            var cardBody = string.Format(@"<div class=""collapse in"" id=""collapse-{7}"" aria-expanded=""false"">
                                             <div class=""card-body"">
                                             <div class=""card-subtitle contactInfo"">
                                             <h4 class=""card-title contactInfoHeader"">Contact Information</h4>
@@ -72,7 +75,7 @@ namespace Locator.Models
                                             <span class=""postalCode"" value=""{5}"">{5}</span></p>
                                             <a href=""{6}"" class=""webAddressLink"" target=""_blank"">
                                             <p class=""webAddress"" value=""{6}"">{6}</p></a>",
-                                            Name, Phone, Address, City, State, PostalCode, WebAddress);
+                                            cardName, cardPhone, cardAddress, cardCity, cardState, cardPostalCode, cardWebAddress, cardLocationId);
 
 
             return cardBody;
