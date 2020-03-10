@@ -21,7 +21,6 @@ namespace Locator.Models
                                                 <i class=""fas fa-minus""></i><i class=""fas fa-plus""></i>
                                                 <span class=""Name card-title card-name"">{1}</span></span></a>
                                                 <p class=""address"" value=""{2}"">{2}</p>
-                                                <span class=""distance"">Distance: {3}</span></div>
                                                 <div class=""collapse in"" id=""collapse-{0}"" aria-expanded=""false"">",
                                                 CardId, CardName, CardAddress, CardDistance);
 
