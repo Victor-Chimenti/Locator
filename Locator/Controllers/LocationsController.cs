@@ -15,11 +15,7 @@ namespace Locator.Controllers
     public class LocationsController : Controller
     {
         private readonly MaphawksContext _context;
-
         private LocationsBackend backend;
-
-        //public List<CleanLocationModel> cleanSortedList = new List<CleanLocationModel>();
-        //public List<CleanLocationViewModel> cleanSortedViewList = new List<CleanLocationViewModel>();
 
 
 
