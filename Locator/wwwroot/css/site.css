@@ -387,6 +387,12 @@ div#sidebar-wrapper {
         max-width: 100%;
     }
 
+    div#cards-wrapper {
+        height: 700px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
     #filterSearch-wrapper .panel-header a.btn-link {
         cursor: default;
         display: inline-block;
