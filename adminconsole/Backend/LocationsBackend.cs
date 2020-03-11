@@ -68,6 +68,13 @@ namespace adminconsole.Backend
 
         }
 
+        public virtual async Task<List<Locations>> GetRangeOfRecords(int start_index, int num_records, bool isDeleted=false)
+        {
+            var locations_list = await db.GetRangeOfRecords(start_index, num_records, isDeleted).ConfigureAwait(false);
+
+            return locations_list;
+        }
+
 
         /// <summary>
         /// Gets a single Locations record with a join on all tables on LocationId
@@ -380,6 +387,128 @@ namespace adminconsole.Backend
 
             return location;
 
+        }
+
+
+        public string CreateTableRow(List<Locations> locations, int start_index)
+        {
+            string returnString = "";
+            string tdOpen = @"<td>";
+            string tdClose = @"</td>";
+            string tdOpenDisplayNone = @"<td class=""d-none"">";
+            string nullPlaceholder = null;
+
+            foreach (var location in locations)
+            {
+                if (location.Contact != null)
+                {
+                    location.Contact.Location = null;
+                }
+                
+                if (location.SpecialQualities != null)
+                {
+                    location.SpecialQualities.Location = null;
+                }
+                
+                if (location.DailyHours != null)
+                {
+                    location.DailyHours.Location = null;
+                }
+
+                location.Point = null;
+
+                returnString = returnString + string.Format(@"<tr data-index = ""{0}"" >", start_index);
+                returnString = returnString + tdOpen;
+                returnString = returnString + string.Format(@"<a href = ""/Locations/Edit/{0}""> Edit </a> | ", location.LocationId);
+                returnString = returnString + string.Format(@"<a href = ""/Locations/Details/{0}""> Details </a> | ", location.LocationId);
+                returnString = returnString + string.Format(@"<a href = ""/Locations/Delete/{0}""> Delete </a> |", location.LocationId);
+                returnString = returnString + tdClose;
+                returnString = returnString + tdOpen;
+                if (location.Name.ToLower().Equals("becu"))
+                {
+                    returnString = returnString + @"<img src=""/media/BEC-Logo-Icon-pms.png"">" + location.Name;
+                } else
+                {
+                    returnString = returnString + @"<img src=""/media/logo_co-op.png"" style=""height: 40px;"">" + location.Name;
+                }
+                returnString = returnString + tdClose;
+                returnString = returnString + tdOpen + location.LocationType + tdClose;
+                returnString = returnString + tdOpen + location.Address + tdClose;
+                returnString = returnString + tdOpen + location.City + tdClose;
+                returnString = returnString + tdOpenDisplayNone + location.PostalCode + tdClose;
+                returnString = returnString + CreateTableDataNullableField(location.County);
+                returnString = returnString + tdOpen + location.State + tdClose;
+                returnString = returnString + CreateTableDataNullableField(location.Country);
+                returnString = returnString + tdOpenDisplayNone + location.Latitude + tdClose;
+                returnString = returnString + tdOpenDisplayNone + location.Longitude + tdClose;
+                returnString = returnString + CreateTableDataNullableField(location.RetailOutlet);
+                returnString = returnString + CreateTableDataNullableField(location.Hours);
+                returnString = location.Contact == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.Contact.Phone);
+                returnString = location.Contact == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.Contact.Fax);
+                returnString = location.Contact == null ? returnString + tdOpen + tdClose : returnString + tdOpen + string.Format(@"<a href=""{0}\"">{0}</a>", location.Contact.WebAddress);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.RestrictedAccess);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.AcceptDeposit);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.EnvelopeRequired);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.OnPremise);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.Access);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.InstallationType);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.DriveThruOnly);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.LimitedTransactions);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.HandicapAccess);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.AcceptCash);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.Cashless);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.SelfServiceOnly);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.Surcharge);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.OnMilitaryBase);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.MilitaryIdRequired);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.SelfServiceDevice);
+                returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.AccessNotes);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursMonOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursMonClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursTueOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursTueClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursWedOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursWedClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursThuOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursThuClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursFriOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursFriClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursSatOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursSatClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursSunOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursSunClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtmonOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtmonClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDttueOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDttueClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtwedOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtwedClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtthuOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtthuClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtfriOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtfriClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtsatOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtsatClose);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtsunOpen);
+                returnString = location.DailyHours == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.DailyHours.HoursDtsunClose);
+                start_index = start_index + 1;
+                returnString = returnString + @"</tr>";
+            }
+            return returnString;
+        }
+
+        private string CreateTableDataNullableField<T>(T field)
+        {
+            string tdClose = @"</td>";
+            string tdOpenDisplayNone = @"<td class=""d-none"">";
+            if (field is null)
+            {
+                return tdOpenDisplayNone + tdClose;
+            }
+            else
+            {
+                return tdOpenDisplayNone + field + tdClose;
+            }
         }
 
     }
