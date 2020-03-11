@@ -8,7 +8,14 @@
 
     if (hasDailyHours)
     {
-        bootstrapColumnSize = "col-4";
+        if (string.IsNullOrWhiteSpace(Model.DailyHours.HoursMonOpen) &&
+            string.IsNullOrWhiteSpace(Model.DailyHours.HoursDtmonOpen))
+        {
+            bootstrapColumnSize = "col-6";
+        } else 
+        {
+            bootstrapColumnSize = "col-4";
+        }
     } else
     {
         bootstrapColumnSize = "col-6";
@@ -199,9 +206,9 @@
                     @Html.DisplayFor(model => model.SpecialQualities.AcceptDeposit)
                 </dd>
             </div>
-        
-        
-        
+
+
+
             <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.EnvelopeRequired):
@@ -270,8 +277,8 @@
                     @Html.DisplayFor(model => model.SpecialQualities.LimitedTransactions)
                 </dd>
             </div>
-            
-            
+
+
             <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.HandicapAccess):
@@ -280,10 +287,10 @@
                     @Html.DisplayFor(model => model.SpecialQualities.HandicapAccess)
                 </dd>
             </div>
-        
-        
-        
-            <div class="row hoverable"> 
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.AcceptCash):
                 </dt>
@@ -291,10 +298,10 @@
                     @Html.DisplayFor(model => model.SpecialQualities.AcceptCash)
                 </dd>
             </div>
-        
-        
-        
-            <div class="row hoverable"> 
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.Cashless):
                 </dt>
@@ -302,12 +309,12 @@
                     @Html.DisplayFor(model => model.SpecialQualities.Cashless)
                 </dd>
             </div>
-        
-        
-        
-        
-        
-            <div class="row hoverable"> 
+
+
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.SelfServiceOnly):
                 </dt>
@@ -315,10 +322,10 @@
                     @Html.DisplayFor(model => model.SpecialQualities.SelfServiceOnly)
                 </dd>
             </div>
-         
-        
-        
-            <div class="row hoverable"> 
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.Surcharge):
                 </dt>
@@ -326,10 +333,10 @@
                     @Html.DisplayFor(model => model.SpecialQualities.Surcharge)
                 </dd>
             </div>
-            
-        
-        
-            <div class="row hoverable"> 
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.OnMilitaryBase):
                 </dt>
@@ -337,10 +344,10 @@
                     @Html.DisplayFor(model => model.SpecialQualities.OnMilitaryBase)
                 </dd>
             </div>
-        
-        
-        
-            <div class="row hoverable"> 
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.MilitaryIdRequired):
                 </dt>
@@ -348,10 +355,10 @@
                     @Html.DisplayFor(model => model.SpecialQualities.MilitaryIdRequired)
                 </dd>
             </div>
-        
-        
-        
-            <div class="row hoverable"> 
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.SelfServiceDevice):
                 </dt>
@@ -359,10 +366,10 @@
                     @Html.DisplayFor(model => model.SpecialQualities.SelfServiceDevice)
                 </dd>
             </div>
-            
-        
-        
-            <div class="row hoverable"> 
+
+
+
+            <div class="row hoverable">
                 <dt class="col-8">
                     @Html.DisplayNameFor(model => model.SpecialQualities.AccessNotes):
                 </dt>
@@ -377,298 +384,297 @@
 
 
 
-        
+
         @{
 
             if (hasDailyHours)
             {
-                <div class="@bootstrapColumnSize">
+            <div class="@bootstrapColumnSize">
 
-                    @if (!string.IsNullOrEmpty(Model.DailyHours.HoursMonOpen))
+                @if (!string.IsNullOrEmpty(Model.DailyHours.HoursMonOpen))
                     {
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursMonOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursMonOpen)
-                            </dd>
-                        </div>
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursMonClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursMonClose)
-                            </dd>
-                        </div>
-
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursTueOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursTueOpen)
-                            </dd>
-                        </div>
-
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursTueClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursTueClose)
-                            </dd>
-                        </div>
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursWedOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursWedOpen)
-                            </dd>
-                        </div>
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursWedClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursWedClose)
-                            </dd>
-                        </div>
-
-
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursThuOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursThuOpen)
-                            </dd>
-                        </div>
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursFriOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursFriOpen)
-                            </dd>
-                        </div>
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursFriClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursFriClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursSatOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursSatOpen)
-                            </dd>
-                        </div>
-
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursSatClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursSatClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursSunOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursSunOpen)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursSunClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursSunClose)
-                            </dd>
-                        </div>
-                    }
-
-
-
-                    @if (!string.IsNullOrEmpty(Model.DailyHours.HoursDtmonOpen))
-                    {
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtmonOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtmonOpen)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtmonClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtmonClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDttueOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDttueOpen)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDttueClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDttueClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtwedOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtwedClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtthuOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtthuOpen)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtthuClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtthuClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtfriOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtfriOpen)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtfriClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtfriClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtsatOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtsatOpen)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtsatClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtsatClose)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtsunOpen):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtsunOpen)
-                            </dd>
-                        </div>
-
-
-                        <div class="row hoverable">
-                            <dt class="col-7">
-                                @Html.DisplayNameFor(model => model.DailyHours.HoursDtsunClose):
-                            </dt>
-                            <dd class="col-5 text-right">
-                                @Html.DisplayFor(model => model.DailyHours.HoursDtsunClose)
-                            </dd>
-                        </div>
-                    }
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursMonOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursMonOpen)
+                    </dd>
                 </div>
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursMonClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursMonClose)
+                    </dd>
+                </div>
+
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursTueOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursTueOpen)
+                    </dd>
+                </div>
+
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursTueClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursTueClose)
+                    </dd>
+                </div>
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursWedOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursWedOpen)
+                    </dd>
+                </div>
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursWedClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursWedClose)
+                    </dd>
+                </div>
+
+
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursThuOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursThuOpen)
+                    </dd>
+                </div>
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursFriOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursFriOpen)
+                    </dd>
+                </div>
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursFriClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursFriClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursSatOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursSatOpen)
+                    </dd>
+                </div>
+
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursSatClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursSatClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursSunOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursSunOpen)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursSunClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursSunClose)
+                    </dd>
+                </div>
+                    }
+
+
+
+                @if (!string.IsNullOrEmpty(Model.DailyHours.HoursDtmonOpen))
+                    {
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtmonOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtmonOpen)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtmonClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtmonClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDttueOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDttueOpen)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDttueClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDttueClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtwedOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtwedClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtthuOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtthuOpen)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtthuClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtthuClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtfriOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtfriOpen)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtfriClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtfriClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtsatOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtsatOpen)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtsatClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtsatClose)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtsunOpen):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtsunOpen)
+                    </dd>
+                </div>
+
+
+                <div class="row hoverable">
+                    <dt class="col-7">
+                        @Html.DisplayNameFor(model => model.DailyHours.HoursDtsunClose):
+                    </dt>
+                    <dd class="col-5 text-right">
+                        @Html.DisplayFor(model => model.DailyHours.HoursDtsunClose)
+                    </dd>
+                </div>
+                    }
+            </div>
                 }
-            }
+        }
+
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.LocationId">Edit</a> |
+            <a asp-action="Index">Back to List</a>
         </div>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.LocationId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>
