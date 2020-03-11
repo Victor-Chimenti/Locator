@@ -363,6 +363,29 @@ div#sidebar-wrapper {
 }
 
 
+
+
+
+/**
+*   Media queries xlarge screens
+*/
+@media (max-width: 1400px) {
+
+    #mapBlock {
+        width: 90%;
+    }
+}
+
+/**
+*   Media queries large screens
+*/
+@media (max-width: 1200px) {
+
+    #mapBlock {
+        width: auto;
+    }
+}
+
 @media (min-width: 1200px) {
 
     .container {
@@ -371,17 +394,25 @@ div#sidebar-wrapper {
 }
 
 
-@media (min-width: 992px) {
+/**
+*   Media Query micro adjustment from large to mid
+*/
+@media (max-width: 1100px) {
+    #filterSearch-wrapper {
+        color: #4D5F69;
+        font: Museo Sans 700;
+        font-size: 1.2rem;
+    }
 
-    .container {
-        max-width: 100%;
+    #filterSearch-wrapper a.btn-link .panelTitleBox {
+        display: inline-block;
+        font-size: 1.6rem;
     }
 }
 
 
-
 /** Defines the left hand column on screens larger than mobile **/
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 
     .container {
         max-width: 100%;
@@ -412,6 +443,102 @@ div#sidebar-wrapper {
     }
 }
 
+
+
+
+/**
+*   Media queries mid screens
+*/
+@media (max-width: 992px) {
+
+    /**  align all three columns to the same width when they stack on mobile-sm **/
+    div.col-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /** setting for the left-hand column as it migrates below the map on mobile sm screens**/
+    div#filter-wrapper {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    /** center index will need padding as it stack on the top **/
+    div#center-index {
+        padding-bottom: 1rem;
+    }
+
+    /** hide the h3 filter header on mobile **/
+    h3#filter-head {
+        display: none;
+    }
+
+    /** hide the h3 sidebar header on mobile **/
+    h3#sidebar-head {
+        display: none;
+    }
+
+    /** on mobile the keyword search and filter search accordion need breathing room **/
+    div.panel#atm-panel {
+        padding-top: 0.5rem;
+        padding-bottom: 0.25rem;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panelTitleBox {
+        color: #006979;
+        font-size: 1.6rem;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panel-name {
+        color: #006979;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
+        text-decoration: underline;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link:after {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel .collapse:not(.show) {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .fas {
+        display: inline-block;
+        padding-right: 5px;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-plus {
+        display: initial;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-minus {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-body {
+        color: #4D5F69;
+        font-size: 1.2rem;
+    }
+}
+
+
 @media (min-width: 576px) {
 
     .container {
@@ -421,137 +548,20 @@ div#sidebar-wrapper {
 
 
 
-    /**
-*   Media queries xlarge screens
+
+/**
+*   Sticky footer styles
 */
-    @media (max-width: 1400px) {
+.footer {
+    bottom: 0;
+    color: #4D5F69;
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+}
 
-        #mapBlock {
-            width: 90%;
-        }
-    }
-
-
-
-    /**
-    *   Media queries large screens
-    */
-    @media (max-width: 1200px) {
-
-        #mapBlock {
-            width: auto;
-        }
-    }
-
-
-
-    /**
-    *   Media queries small screens
-    */
-    @media (max-width: 767px) {
-
-        /**  align all three columns to the same width when they stack on mobile-sm **/
-        div.col-12 {
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        /** setting for the left-hand column as it migrates below the map on mobile sm screens**/
-        div#filter-wrapper {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        /** center index will need padding as it stack on the top **/
-        div#center-index {
-            padding-bottom: 1rem;
-        }
-
-        /** hide the h3 filter header on mobile **/
-        h3#filter-head {
-            display: none;
-        }
-
-        /** hide the h3 sidebar header on mobile **/
-        h3#sidebar-head {
-            display: none;
-        }
-
-        /** on mobile the keyword search and filter search accordion need breathing room **/
-        div.panel#atm-panel {
-            padding-top: 0.5rem;
-            padding-bottom: 0.25rem;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link .panelTitleBox {
-            color: #006979;
-            font-size: 1.6rem;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link .panel-name {
-            color: #006979;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
-            text-decoration: underline;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link:after {
-            display: none;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel .collapse:not(.show) {
-            display: none;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link .fas {
-            display: inline-block;
-            padding-right: 5px;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
-            display: none;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-plus {
-            display: initial;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-minus {
-            display: none;
-        }
-
-        /** setting for left nav collapsable show on mobile **/
-        #filterSearch-wrapper .panel-body {
-            font-size: 1.2rem;
-        }
-    }
-
-
-
-
-    /**
-    *   Sticky footer styles
-    */
-    .footer {
-        bottom: 0;
-        color: #4D5F69;
-        height: 60px;
-        line-height: 60px;
-        position: absolute;
-        width: 100%;
-        white-space: nowrap;
-    }
-
-    .footer #privacy-link {
-        color: #006979;
-    }
+.footer #privacy-link {
+    color: #006979;
+}
