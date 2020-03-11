@@ -651,7 +651,8 @@ namespace adminconsole.Models
         public static LocationTypeEnum ConvertStringToLocationTypeEnum(string locationTypeValueFromDb)
         {
 
-            if (locationTypeValueFromDb == "A")
+            if (locationTypeValueFromDb.ToLower().Equals("a") ||
+                locationTypeValueFromDb.ToLower().Equals("atm"))
             {
                 return LocationTypeEnum.A;
             } else
