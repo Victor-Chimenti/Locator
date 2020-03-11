@@ -52,6 +52,24 @@ namespace adminconsole.Backend
 
         }
 
+        public virtual async Task<List<Locations>> GetRangeOfRecords(int start_index, int num_records, bool isDeleted=false)
+        {
+
+            var result = await context.Locations
+                            .Include(c => c.Contact)
+                            .Include(s => s.SpecialQualities)
+                            .Include(h => h.DailyHours)
+                            .AsNoTracking()
+                            .Where(record => record.SoftDelete == isDeleted)
+                            .Skip(start_index)
+                            .Take(num_records)
+                            .ToListAsync()
+                            .ConfigureAwait(false);
+
+            return result;
+
+        }
+
 
         /// <summary>
         /// Reads all records from database. 
