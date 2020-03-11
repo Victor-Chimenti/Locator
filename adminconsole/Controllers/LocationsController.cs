@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using adminconsole.Models;
 using adminconsole.Backend;
 using DatabaseLibrary.Models;
-
+using System;
+using Newtonsoft.Json;
 
 namespace adminconsole.Controllers
 {
@@ -39,10 +40,53 @@ namespace adminconsole.Controllers
         /// <returns> Index View with injected list of Locations objects </returns>
         public async Task<IActionResult> Index()
         {
-
-            var results = await backend.IndexAsync().ConfigureAwait(false);
-            results = results.GetRange(0, 3);
+            var results = await backend.GetRangeOfRecords(0, 10);
+            //var results = await backend.IndexAsync().ConfigureAwait(false);
+            //results = results.GetRange(0, 3);
             return View(results);
+
+        }
+
+
+        /// POST: 
+        /// <summary>Receives a LocationsContactsSpecialQualitiesViewModel Object with the intent of inserting into the Database.</summary>
+        /// 
+        /// <param name="newLocation"> LocationsContactsSpecialQualitiesViewModel Object, instantiated with values provided by the user </param>
+        /// 
+        /// <returns> Either returns the existing view if there is an error, otherwise returns the Index View </returns>
+        [HttpPost]
+        [Produces("application/json")]
+        public async Task<JsonResult> GetRangeOfRecords(int start_index, int num_records)
+        {
+            string error_msg = null;
+            if (start_index < 0)
+            {
+                error_msg = "Start index cannot be less than 0. Your start index was: " + start_index;
+            }
+
+            if (num_records < 1)
+            {
+                error_msg = "Number of records cannot be less than 1. Your number of records was: " + num_records;
+            }
+
+            if (!string.IsNullOrEmpty(error_msg))
+            {
+                var ret =  new JsonResult(error_msg);
+                return ret;
+            }
+
+            var result_list = await backend.GetRangeOfRecords(start_index, num_records);
+
+            var result_html = backend.CreateTableRow(result_list, start_index);
+
+            //var location_list = JsonConvert.SerializeObject(new
+            //{
+            //    locations = result
+            //});
+            var response = new JsonResult(result_html);
+
+
+            return response;
 
         }
 
@@ -364,7 +408,8 @@ namespace adminconsole.Controllers
         public async Task<IActionResult> Deleted()
         {
 
-            var results = await backend.IndexAsync(true).ConfigureAwait(false);
+            //var results = await backend.IndexAsync(true).ConfigureAwait(false);
+            var results = await backend.GetRangeOfRecords(0, 25, true);
             return View(results);
         
         }
