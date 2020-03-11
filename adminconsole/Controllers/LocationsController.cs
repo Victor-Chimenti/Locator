@@ -5,6 +5,9 @@ using adminconsole.Backend;
 using DatabaseLibrary.Models;
 using System;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace adminconsole.Controllers
 {
@@ -38,13 +41,40 @@ namespace adminconsole.Controllers
         /// <summary>Locations objects with joins on Contacts, SpecialQualities, and DailyHours.</summary>
         /// 
         /// <returns> Index View with injected list of Locations objects </returns>
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchKeyword)
         {
-            var results = await backend.GetRangeOfRecords(0, 10);
+            var results = await backend.GetRangeOfRecords(0, 1);
+            
             //var results = await backend.IndexAsync().ConfigureAwait(false);
             //results = results.GetRange(0, 3);
             return View(results);
 
+        }
+
+
+        /// POST: 
+        /// <summary>Receives a LocationsContactsSpecialQualitiesViewModel Object with the intent of inserting into the Database.</summary>
+        /// 
+        /// <param name="newLocation"> LocationsContactsSpecialQualitiesViewModel Object, instantiated with values provided by the user </param>
+        /// 
+        /// <returns> Either returns the existing view if there is an error, otherwise returns the Index View </returns>
+        [HttpPost]
+        public ActionResult Search(string SearchKeyword)
+        {
+
+            if (string.IsNullOrEmpty(SearchKeyword) ||
+                string.IsNullOrWhiteSpace(SearchKeyword))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            var results = _context.Locations
+                                .Include(c => c.Contact)
+                                .Include(s => s.SpecialQualities)
+                                .Include(d => d.DailyHours)
+                                .Where(record => record.Name.Contains(SearchKeyword) || record.Address.Contains(SearchKeyword) || record.City.Contains(SearchKeyword) || record.State.Contains(SearchKeyword))
+                                .Where(record => record.SoftDelete == false)
+                                .ToList();
+            return View(results);
         }
 
 
@@ -83,8 +113,12 @@ namespace adminconsole.Controllers
             //{
             //    locations = result
             //});
-            var response = new JsonResult(result_html);
-
+            //var response = new JsonResult(result_html);
+            var response = new JsonResult(new
+            {
+                html = result_html,
+                number_records = result_list.Count
+            });
 
             return response;
 
