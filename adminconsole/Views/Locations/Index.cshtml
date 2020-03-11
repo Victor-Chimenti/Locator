@@ -4,7 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-
+    <div class="d-flex justify-content-center">
+        @using (Html.BeginForm("Search", "Locations", FormMethod.Post))
+        {
+            @Html.TextBox("SearchKeyword", null, new { @class = "form-control", placeholder = "Search DB for keyword..." })
+            <input type="submit" value="Search" />    
+        }
+    </div>
 <table class="table table-bordered table-striped"
        id="table"
        data-search="true"
