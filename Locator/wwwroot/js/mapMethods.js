@@ -12,25 +12,38 @@ function createMarkerFromJsonRecord(record, searchArea) {
 
     // launch new marker
     var atmMarker = new google.maps.Marker({
+        id: record.locationId,
         map: map,
         position: record.position,
         title: record.name,
-        id: record.locationId
+        visibility: true
     });
 
-    if (typeof map.get('visibility').get(record) === 'undefined') {
-        map.get('visibility').set(record, true);
-    }
+    //if (typeof map.get('visibility').get(record.locationId) === 'undefined') {
+    //    map.get('visibility').set(record.locationId, true);
+    //}
+    //filterSearch - wrapper
+    //atmMarker.bindTo('visible', map.get('visibility'), record.locationId);
 
-    atmMarker.bindTo('visible', map.get('visibility'), record);
+    //google.maps.event.addDomListener(
+    //    document.getElementsByClassName('hideMarkers'),'onselect', function () {
+    //        //simply set the desired property of the MVCObject to false
+    //        $(".hideMarkers:first").is("#" + record.locationId), function () {
+    //            atmMarker.setVisible(false);
+    //        }
+    //    }
+    //);
+    //document.getElementById('filterSearch-wrapper')
 
-    google.maps.event.addDomListener(
-        document.getElementsByClassName('hideMarkers'),
-        'click',
-        function () {
-            //simply set the desired property of the MVCObject to false
-            map.get('visibility').set('Other', false);
-        });
+    //(document.querySelectorAll('input[type="checkbox"][id="Hours"]'))
+
+    google.maps.event.addListener(
+        document.querySelectorAll('input[type="checkbox"][id="Hours"]'), 'click', function () {
+            $(".hideMarkers").is("#" + record.locationId), function () {
+                atmMarker.setVisible(false);
+            }
+        }
+    );
 
     //display name when hovered
     google.maps.event.addListener(atmMarker, 'hover', function () {

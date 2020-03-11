@@ -120,7 +120,7 @@
             <div class="col-12" id="cards-wrapper">
                 @foreach (var card in Model.CleanLocationList)
                 {
-                    <div class="card border-dark accordion" id="id-@card.LocationId">
+                    <div class="card border-dark accordion" id="@card.LocationId">
                         <div class="card-header" id="heading-@card.LocationId">
                             <a href="#" class="btn-link" id="button-@card.LocationId" data-toggle="collapse" data-target="#collapse-@card.LocationId" aria-expanded="false" aria-controls="collapse-@card.LocationId">
                                 <span class="cardTitleBox">
