@@ -52,6 +52,16 @@ namespace adminconsole.Backend
 
         }
 
+
+        /// <summary>
+        /// Queries database for records in a certain  range
+        /// </summary>
+        /// 
+        /// <param name="start_index"> Number of records to Skip() </param>
+        /// <param name="num_records"> Number of records to Take() </param>
+        /// <param name="isDeleted"> SoftDelete=true (get deleted records) or SoftDelete=false (get live records) </param>
+        /// 
+        /// <returns> Locations List Object (with related record from other tables nested in each Locations object) </returns>
         public virtual async Task<List<Locations>> GetRangeOfRecords(int start_index, int num_records, bool isDeleted=false)
         {
 

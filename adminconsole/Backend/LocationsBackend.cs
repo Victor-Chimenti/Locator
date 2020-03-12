@@ -68,6 +68,14 @@ namespace adminconsole.Backend
 
         }
 
+
+        /// <summary>
+        /// Gets a range of records from the database
+        /// </summary>
+        /// <param name="start_index"> Number of records to Skip() </param>
+        /// <param name="num_records"> Number of records to Take() </param>
+        /// <param name="isDeleted"> SoftDelete=true or SoftDelete=false </param>
+        /// <returns> Locations List Object </returns>
         public virtual async Task<List<Locations>> GetRangeOfRecords(int start_index, int num_records, bool isDeleted=false)
         {
             var locations_list = await db.GetRangeOfRecords(start_index, num_records, isDeleted).ConfigureAwait(false);
@@ -390,6 +398,15 @@ namespace adminconsole.Backend
         }
 
 
+        /// <summary>
+        /// Creates HTML table row from model data. Intended to allow for table plugin to register 
+        /// and export added records, but plugin does not act accordingly
+        /// </summary>
+        /// 
+        /// <param name="locations"> A Locations List Object </param>
+        /// <param name="start_index"> Ensures we keep our <tr data-index="{some_number}"> increasing in sequential order </param>
+        /// 
+        /// <returns> Location rows as a string of HTML </returns>
         public string CreateTableRow(List<Locations> locations, int start_index)
         {
             string returnString = "";
@@ -400,6 +417,7 @@ namespace adminconsole.Backend
 
             foreach (var location in locations)
             {
+                // Prevents an infinite loop from forming
                 if (location.Contact != null)
                 {
                     location.Contact.Location = null;
@@ -497,6 +515,13 @@ namespace adminconsole.Backend
             return returnString;
         }
 
+
+        /// <summary>
+        /// Takes a hidden data column and populates it with an empty string (if null) or the field value
+        /// </summary>
+        /// <typeparam name="T"> Database field, occasionally string, occationally bit </typeparam>
+        /// <param name="field"> Database field value </param>
+        /// <returns> Table column HTML string </returns>
         private string CreateTableDataNullableField<T>(T field)
         {
             string tdClose = @"</td>";

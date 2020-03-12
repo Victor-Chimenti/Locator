@@ -53,11 +53,11 @@ namespace adminconsole.Controllers
 
 
         /// POST: 
-        /// <summary>Receives a LocationsContactsSpecialQualitiesViewModel Object with the intent of inserting into the Database.</summary>
+        /// <summary>Searches database for a keyword in the Name, Address, City, or State fields.</summary>
         /// 
-        /// <param name="newLocation"> LocationsContactsSpecialQualitiesViewModel Object, instantiated with values provided by the user </param>
+        /// <param name="SearchKeyword"> Search keyword or phrase </param>
         /// 
-        /// <returns> Either returns the existing view if there is an error, otherwise returns the Index View </returns>
+        /// <returns> Redirects to Index if an error, otherwise returns the Search view </returns>
         [HttpPost]
         public ActionResult Search(string SearchKeyword)
         {
@@ -79,11 +79,12 @@ namespace adminconsole.Controllers
 
 
         /// POST: 
-        /// <summary>Receives a LocationsContactsSpecialQualitiesViewModel Object with the intent of inserting into the Database.</summary>
+        /// <summary> Endpoint for Ajax pagin call.</summary>
         /// 
-        /// <param name="newLocation"> LocationsContactsSpecialQualitiesViewModel Object, instantiated with values provided by the user </param>
+        /// <param name="start_index"> Defines how many records to Skip() </param>
+        /// <param name="num_records"> Defines how many records to Take() </param>
         /// 
-        /// <returns> Either returns the existing view if there is an error, otherwise returns the Index View </returns>
+        /// <returns> Returns records as an HTML string to insert if there are more records, otherwise returns an empty string </returns>
         [HttpPost]
         [Produces("application/json")]
         public async Task<JsonResult> GetRangeOfRecords(int start_index, int num_records)
@@ -109,11 +110,7 @@ namespace adminconsole.Controllers
 
             var result_html = backend.CreateTableRow(result_list, start_index);
 
-            //var location_list = JsonConvert.SerializeObject(new
-            //{
-            //    locations = result
-            //});
-            //var response = new JsonResult(result_html);
+
             var response = new JsonResult(new
             {
                 html = result_html,
