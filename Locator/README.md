@@ -27,8 +27,23 @@ This model has 3 partial classes
 1. CleanLocationModel_properties
 - This partial class is a declaration of all attributes in the Database Library Locations Model which will be used to create ATM objects for both cards and map marker pins.
 2. CleanLocationModel_methods
-- This partial class is the implementation of the parsing logic which scrubbs null and undefined values before being passed on to the CleanLocationViewModel.
+- This partial class is the implementation of the parsing logic which scrubs null and undefined values before being passed on to the CleanLocationViewModel.
 3. CleanLocationModel_builder
 - This partial class generates the raw html tags that will populate the Razor page
--   
+
+## JavasScript Files
+The global javascript declarations are in the site.js file.
+
+### location.js
+This file contains the session cookie which gathers and stores user location coordinates. This data is called by the LocationsController which handles the default location logic when the user declines cookies or location data.
+
+### filterCards.js
+This file contains the jQuery logic for the filter/search check boxes on the Razor page
+
+### map.js
+This file contains the basic map init() function to render a google map.
+
+### mapMethods.js
+This file contains the methods used by the google map to produce map markers.
+
 
