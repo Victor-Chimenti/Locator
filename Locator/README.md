@@ -46,4 +46,9 @@ This file contains the basic map init() function to render a google map.
 ### mapMethods.js
 This file contains the methods used by the google map to produce map markers.
 
+## Next Steps
+These items should be addressed:
+1. The distance value used to sort the ATM Objects by distance from the user is currently displayed on the Razor page as a default geography value. The value is derived using the NetTopologySuite library and can be converted to kilometers or miles. This conversion needs to be done yet.
+2. The mapMethods.js file has a method called createMarkerFromJsonRecord() which produces the map markers. This method also creates the event listeners that are used on the marker to display the title box and generate directions. This method needs to add a thrid event listener so that the cards hide and display based on the filter-search checkboxes.
 
+ 
