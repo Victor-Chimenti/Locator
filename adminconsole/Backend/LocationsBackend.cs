@@ -461,7 +461,7 @@ namespace adminconsole.Backend
                 returnString = returnString + tdOpenDisplayNone + location.Longitude + tdClose;
                 returnString = returnString + CreateTableDataNullableField(location.RetailOutlet);
                 returnString = returnString + CreateTableDataNullableField(location.Hours);
-                returnString = location.Contact == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.Contact.Phone);
+                returnString = location.Contact == null ? returnString + tdOpen + tdClose : returnString + tdOpen + location.Contact.Phone + tdClose;
                 returnString = location.Contact == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.Contact.Fax);
                 returnString = location.Contact == null ? returnString + tdOpen + tdClose : returnString + tdOpen + string.Format(@"<a href=""{0}\"">{0}</a>", location.Contact.WebAddress);
                 returnString = location.SpecialQualities == null ? returnString + CreateTableDataNullableField(nullPlaceholder) : returnString + CreateTableDataNullableField(location.SpecialQualities.RestrictedAccess);
